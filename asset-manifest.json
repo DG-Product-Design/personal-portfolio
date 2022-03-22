@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.adb47d48.css",
-    "main.js": "/static/js/main.7d76650a.js",
+    "main.css": "/static/css/main.8f35e554.css",
+    "main.js": "/static/js/main.05c1a670.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
-    "static/media/property-details-view.png": "/static/media/property-details-view.7050eacad4fa6ac2098d.png",
-    "static/media/search-screen.png": "/static/media/search-screen.b03f3140444714458e90.png",
+    "static/media/homesearch-collage.png": "/static/media/homesearch-collage.d6850ccb7cd016d7a790.png",
     "static/media/matched-profile-with-highlighted-matches.png": "/static/media/matched-profile-with-highlighted-matches.f993384ea7acfb381fdb.png",
     "static/media/capabilities-table-wrapper.png": "/static/media/capabilities-table-wrapper.8060b5c707480a6f804b.png",
     "static/media/david-a-george-design-headshot.png": "/static/media/david-a-george-design-headshot.f8831194e33bfaa5f482.png",
@@ -12,17 +11,16 @@
     "static/media/matching-engine-results-and-score.png": "/static/media/matching-engine-results-and-score.0fa58f1ae56f7f641c44.png",
     "static/media/form-submit-app.png": "/static/media/form-submit-app.487b4e61b79a0e2bdd62.png",
     "static/media/form-current-address.png": "/static/media/form-current-address.0fb522f86ce02b0e7738.png",
-    "static/media/schedule-tour-widget.png": "/static/media/schedule-tour-widget.f44a356d817d3f18765c.png",
     "static/media/form-liabilities-select.png": "/static/media/form-liabilities-select.f7d4fde23d0f99faf414.png",
     "static/media/form-employment-info.png": "/static/media/form-employment-info.b7de42c536a030dc3417.png",
     "static/media/bg-pattern.svg": "/static/media/bg-pattern.1fe82b8aa37a26f27449.svg",
     "index.html": "/index.html",
-    "main.adb47d48.css.map": "/static/css/main.adb47d48.css.map",
-    "main.7d76650a.js.map": "/static/js/main.7d76650a.js.map",
+    "main.8f35e554.css.map": "/static/css/main.8f35e554.css.map",
+    "main.05c1a670.js.map": "/static/js/main.05c1a670.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.adb47d48.css",
-    "static/js/main.7d76650a.js"
+    "static/css/main.8f35e554.css",
+    "static/js/main.05c1a670.js"
   ]
 }
