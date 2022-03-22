@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { RecoilRoot } from 'recoil';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as HashRouter } from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,11 +9,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './index.scss';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <HashRouter>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </HashRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

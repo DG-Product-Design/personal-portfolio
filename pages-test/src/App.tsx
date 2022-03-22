@@ -33,7 +33,7 @@ function App() {
     <div className="app-wrapper w-100">
       <Nav />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/gh-pages" element={<HomePage />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
       <Footer />
