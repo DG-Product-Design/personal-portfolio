@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
-  "homepage": "https://dg-product-design.github.io/gh-pages/",
-  "version": "0.1.0",
+  "homepage": "https://davidageorge.me",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.0",
