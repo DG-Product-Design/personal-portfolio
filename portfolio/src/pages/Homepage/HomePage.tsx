@@ -105,7 +105,7 @@ const HomePage = (props: any) => {
               Weighted Algorithm<br />Matching Engine
             </React.Fragment>
           }
-          body='Designed and built a tool for social workers in California to match foster parents and children for adoption based on numerous weighted criteria.'
+          body='Designed and built a tool for social workers in California to match foster parents and children for adoption based on numerous weighted criteria. Won the 2017 Innovation Award from California County Information Services Directors Association (CCISDA).'
           bannerContent={
             <React.Fragment>
               <i className='banner__icon fas fa-award w-50 fs-1 text-center mb-3' />

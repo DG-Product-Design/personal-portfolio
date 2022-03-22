@@ -50,7 +50,7 @@ const WorkCard = (props: WorkCardProps) => {
 
       {!props.rightAlign ? (
         <React.Fragment>
-          <div className="work-card__text-wrapper col-12 col-lg-4 order-1 order-lg-0 mt-5 mt-lg-0">
+          <div className={classNames(props.bannerContent && "mt-lg-5 pt-lg-5 pt-xl-0", "work-card__text-wrapper col-12 col-lg-4 order-1 order-lg-0 mt-5 mt-lg-0")}>
             <h4 className={classNames(props.bannerContent && "work-card__headline--shrink-width", "work-card__headline mb-4")}>{ props.headline }</h4>
             <p className="max-w-xs mb-5">{ props.body }</p>
             { props.button && (
@@ -76,7 +76,7 @@ const WorkCard = (props: WorkCardProps) => {
               <img src={ props.img } alt={ props.imgAltText } className="work-card__img w-100"/>
             )}
           </div>
-          <div className="work-card__text-wrapper col-12 col-lg-4 order-0 order-lg-1 ps-0 ps-lg-4 mt-5 mt-lg-0">
+          <div className={classNames(props.bannerContent && "mt-lg-5 pt-lg-5 pt-xl-0", "work-card__text-wrapper col-12 col-lg-4 order-0 order-lg-1 ps-0 ps-lg-4 mt-5 mt-lg-0")}>
             <h4 className={classNames(props.bannerContent && "work-card__headline--shrink-width", "work-card__headline mb-4")}>{ props.headline }</h4>
             <p className="max-w-xs mb-5">{ props.body }</p>
             { props.button && (
