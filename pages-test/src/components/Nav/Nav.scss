@@ -1,0 +1,22 @@
+@use '../../style/variables' as vars;
+
+nav {
+  background-color: vars.$white;
+  box-shadow: 0 10px 50px 0 rgb(74 144 226 / 8%);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav__headline {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.nav__nav-link {
+  color: vars.$blue-800;
+
+  &:hover {
+    color: vars.$blue-500;
+  }
+}

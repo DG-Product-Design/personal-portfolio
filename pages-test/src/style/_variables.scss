@@ -1,0 +1,17 @@
+$white:     #FFFFFF;
+$blue-100:  #E0EFFF;
+$blue-200:  #A3CEFF;
+$blue-300:  #6BA6E8;
+$blue-400:  #64ADFF;
+$blue-500:  #0393ff;
+$blue-600:  #0082f3;
+$blue-800:  #002f70;
+
+$green-200: #c2fbe6;
+$green-300: #75fac8;
+$green-400: #4eedb1;
+
+$gradient-blue-100: linear-gradient(0deg, $blue-100, $white);
+$gradient-blue-200: linear-gradient(90deg, $blue-200, $blue-300);
+$gradient-blue-400: linear-gradient(135deg, $blue-400, $blue-600);
+$gradient-green-200: linear-gradient(90deg, $green-200, $green-400);

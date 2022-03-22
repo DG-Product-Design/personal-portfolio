@@ -1,24 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSetRecoilState } from 'recoil';
+import * as AppState from './AppState';
+import { Routes, Route } from "react-router-dom";
+import smoothscroll from 'smoothscroll-polyfill';
+import Nav from './components/Nav/Nav';
+import HomePage from './pages/Homepage/HomePage';
+import Footer from './components/Footer/Footer';
+import Error404Page from './pages/404';
+
+
+import './App.scss';
 
 function App() {
+  const setScreenBelowLg = useSetRecoilState(AppState.screenBelowLg);
+  const setScreenBelowSm = useSetRecoilState(AppState.screenBelowSm);
+
+  smoothscroll.polyfill();
+
+  function handleWindowSize() {
+    let windowWidth = window.innerWidth;
+    setScreenBelowLg(windowWidth < 992);
+    setScreenBelowSm(windowWidth < 576);
+  }
+
+  React.useEffect(() => {
+    handleWindowSize();
+    window.addEventListener('resize', handleWindowSize, { passive: true });
+    return () => window.removeEventListener('resize', handleWindowSize);
+  });
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-wrapper w-100">
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<Error404Page />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
