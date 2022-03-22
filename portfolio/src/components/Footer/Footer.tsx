@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="container-lg d-flex align-items-center px-0 pt-5 pb-2">
         <div className="w-100 d-flex justify-content-start">
           <p className="small mb-0">
-            &copy;2022 David A. George - 
+            &copy;2022 David A. George -&nbsp;
             <span className="whitespace-no-wrap">Designer &amp; Builder &lt;/&gt;</span>
           </p>
         </div>
