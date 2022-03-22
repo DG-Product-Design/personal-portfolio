@@ -41,7 +41,7 @@ const WorkCard = (props: WorkCardProps) => {
       props.color === 'rose' && 'bg-gradient-rose',
       props.color === 'yellow' && 'bg-gradient-yellow',
       props.color === 'nickel' && 'bg-gradient-nickel',
-      "portfolio__work-card d-flex flex-wrap align-items-center"
+      "portfolio__work-card d-flex flex-wrap align-items-center px-3 px-md-5"
     )}>
       
       {props.bannerContent && (
