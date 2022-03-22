@@ -17,9 +17,7 @@ interface HeroSectionProps {
 const headshotImg = require('../../img/david-a-george-design-headshot.png');
 
 // PROPERTY SEARCH
-const psHomeSearchImg = require('../../img/homeSearch/search-screen.png');
-const psPropertyDetailsImg = require('../../img/homeSearch/property-details-view.png');
-const psScheduleTourWidgetImg = require('../../img/homeSearch/schedule-tour-widget.png');
+const psHomeSearchImg = require('../../img/homeSearch/homesearch-collage.png');
 
 // LOAN APP
 const formCurrentAddressImg = require('../../img/loanApp/form/form-current-address.png');
@@ -86,16 +84,7 @@ const HomePage = (props: any) => {
               </button>
             </a>
           }
-          altImage={
-            <ComboImg3
-              img1={psHomeSearchImg}
-              img1AltText="Find homes for sale U.I."
-              img2={psScheduleTourWidgetImg}
-              img2AltText="Schedule a Tour widget U.I."
-              img3={psPropertyDetailsImg}
-              img3AltText="Property Details U.I."
-            />
-          }
+          img={psHomeSearchImg}
         />
 
         <WorkCard
