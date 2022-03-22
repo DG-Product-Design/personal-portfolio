@@ -25,10 +25,11 @@ const Nav = () => {
         <div>
           <span className="nav__nav-link link ms-2 ms-sm-3" onClick={() => scrollIntoView('work')}>Work</span>
           <a href={PDF} className="nav__nav-link link ms-2 ms-sm-3" rel='noopener noreferrer' target="_blank" download>Resume</a>
-
-          <button className="dg-btn bg-gradient-green-200 py-2 px-3 ms-2 ms-sm-3" onClick={() => {}}>
-            Let's chat
-          </button>
+          <a href="mailto:dav.a.george@gmail.com" className="ms-2 ms-sm-3">
+            <button className="dg-btn bg-gradient-green-200 py-2 px-3" onClick={() => {}}>
+              Let's chat
+            </button>
+          </a>
         </div>
       </div>
     </nav>
