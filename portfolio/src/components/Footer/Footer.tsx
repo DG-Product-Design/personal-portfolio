@@ -36,6 +36,8 @@ const Footer = () => {
           <p className="small mb-0">
             &copy;2022 David A. George -&nbsp;
             <span className="whitespace-nowrap">Designer &amp; Builder &lt;/&gt;</span>
+            &nbsp; &nbsp;
+            <small className="whitespace-nowrap">v{process.env.REACT_APP_VERSION}</small>
           </p>
         </div>
         <div className="w-auto d-flex justify-content-end">
