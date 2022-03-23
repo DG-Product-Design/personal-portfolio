@@ -89,7 +89,7 @@ const WorkSection = () => {
         }
         imgWrapperClass="col-12 col-lg"
         headline='Fintech Mortgage Loan Application'
-        body='Redesigned the product responsible for the company&apos;s primary source of revenue - the Loan Application. Improved NPS and facilitated 500% growth in intake volume.'
+        body='Redesigned the product responsible for the company&apos;s primary source of revenue - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume.'
         textWrapperClass="work-card__text--padding-top pb-5"
         button={
           <button className="dg-btn dg-btn--white" onClick={() => {}}>

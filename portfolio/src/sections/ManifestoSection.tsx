@@ -26,7 +26,7 @@ const ManifestoSection = () => {
         <Manifesto
           img={trophyImg}
           imgAlt="trophy"
-          title="Learn from the best"
+          title="Learn from the masters"
           body="Benchmarking against the industry is foundational to establishing a realistic product goal and for understanding where we currently are. Find out why the top players are successful and compare against our own strategy. Then fill in the gaps with our own style and story."
         />
         <Manifesto
