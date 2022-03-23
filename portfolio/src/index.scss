@@ -1,12 +1,12 @@
-@use './style/variables' as vars;
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+@import './style/variables';
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
 $font-family-sans-serif: 'Sora', sans-serif;
-$body-color: vars.$blue-800;
+$body-color: $blue-800;
 $enable-negative-margins: true;
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -15,16 +15,14 @@ $enable-negative-margins: true;
 
 // map extra colors to theme
 $custom-theme-colors: (
-  "blue-100": vars.$blue-100,
-  "blue-200": vars.$blue-200,
-  "blue-300": vars.$blue-300,
-  "blue-400": vars.$blue-400,
-  "blue-500": vars.$blue-500,
-  "blue-600": vars.$blue-600,
-  "blue-800": vars.$blue-800,
+  "blue-100": $blue-100,
+  "blue-200": $blue-200,
+  "blue-300": $blue-300,
+  "blue-400": $blue-400,
+  "blue-500": $blue-500,
+  "blue-600": $blue-600,
+  "blue-800": $blue-800,
 );
-
-$theme-colors: () !default;
 
 // merge new colors with existing theme
 $theme-colors: map-merge($theme-colors, $custom-theme-colors);
@@ -48,16 +46,16 @@ $theme-colors: map-merge($theme-colors, $custom-theme-colors);
 // 6. Add additional custom code here
 
 .bg-gradient-green-200 {
-  background: vars.$gradient-green-200;
+  background: $gradient-green-200;
 }
 .bg-gradient-blue-100 {
-  background: vars.$gradient-blue-100;
+  background: $gradient-blue-100;
 }
 .bg-gradient-blue-200 {
-  background: vars.$gradient-blue-200;
+  background: $gradient-blue-200;
 }
 .bg-gradient-blue-400 {
-  background: vars.$gradient-blue-400;
+  background: $gradient-blue-400;
 }
 
 .max-w-xs {
