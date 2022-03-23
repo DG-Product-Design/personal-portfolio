@@ -16,7 +16,7 @@ const Manifesto = (props: ManifestoProps) => {
   return (
     <div className="col-12 col-sm-6 col-lg-4 px-3 mb-4">
       <div className="manifesto__image-wrapper mb-4">
-        <img src={props.img} className={classNames(props.imgClass, "manifesto__image mx-auto")} alt={props.imgAlt} />
+        <img src={props.img} className={classNames(props.imgClass, "manifesto__image mx-auto")} alt={props.imgAlt} tabIndex={-1} />
       </div>
       <h4 className="text-primary fw-bold mb-3">
         {props.title}

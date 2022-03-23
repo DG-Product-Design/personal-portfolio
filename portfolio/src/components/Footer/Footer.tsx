@@ -21,7 +21,7 @@ const SocialButton = (props: {
 }) => {
   return (
     <a href={props.href} className="footer__social-button-wrapper" rel="noopener noreferrer" target="_blank">
-      <button className={classNames(props.className && props.className, "dg-btn bg-transparent")}>
+      <button aria-label="Click to see David A. George's LinkedIn profile" className={classNames(props.className && props.className, "dg-btn bg-transparent")}>
         {props.icon}
       </button>
     </a>

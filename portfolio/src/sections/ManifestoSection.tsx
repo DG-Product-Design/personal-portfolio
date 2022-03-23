@@ -54,7 +54,7 @@ const ManifestoSection = () => {
         <Manifesto
           img={pencilRideImg}
           imgAlt="3D woman riding pencil"
-          title="Don't more than yourself"
+          title="Trust more than yourself"
           body="Own our work, but be open to feedback. And for the sake of our own mental health, don't take it personally. I'm continually humbled by user behavior - expect the unexpected. Trust the user-testing process and remember, going alone might be fast, but going together is what lasts."
         />
       </div>
