@@ -11,6 +11,18 @@ nav {
 .nav__headline {
   cursor: pointer;
   font-weight: 700;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  color: vars.$blue-300;
+  background-image: vars.$gradient-blue-200;
+  background-clip: text;
+  -webkit-background-clip: text;
+  
+  
+  &:focus,
+  &:hover {
+    background-image: vars.$gradient-green-200;
+  }
 }
 
 .nav__nav-link {

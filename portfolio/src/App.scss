@@ -13,7 +13,7 @@ body {
   background-attachment: scroll;
 }
 
-.link.link {
+.link {
   text-decoration: none;
   transition: all 0.15s ease;
   cursor: pointer;
@@ -50,13 +50,21 @@ body {
   }
 }
 
-.text--gradient {
+.text-gradient--blue,
+.text-gradient--green {
   -moz-text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
-  background: vars.$gradient-blue-200;
+  color: vars.$blue-300;
   background-clip: text;
   -webkit-background-clip: text;
-  color: vars.$blue-300;
+}
+
+.text-gradient--blue {
+  background-image: vars.$gradient-blue-200;
+}
+
+.text-gradient--green {
+  background-image: vars.$gradient-green-200;
 }
 
 

@@ -17,13 +17,13 @@ const Nav = () => {
   const screenBelowSm = useRecoilValue(AppState.screenBelowSm);
 
   return (
-    <nav className="w-100 px-2 px-lg-5 py-3">
+    <nav role="navigation" className="w-100 px-2 px-lg-5 py-3">
       <div className="d-flex w-100 container-lg align-items-center justify-content-between">
-        <h1 className="nav__headline text--gradient link link-blue-300 fs-4 mb-0" onClick={() => scrollIntoView('homepage')}>
+        <h1 role="link" className="nav__headline link link-blue-300 fs-4 mb-0" onClick={() => scrollIntoView('homepage')} tabIndex={0}>
           { screenBelowSm ? 'DG.' : 'David A. George' }
         </h1>
         <div>
-          <span className="nav__nav-link link ms-2 ms-sm-3" onClick={() => scrollIntoView('work')}>Work</span>
+          <span role="link" tabIndex={0} className="nav__nav-link link ms-2 ms-sm-3" onClick={() => scrollIntoView('work')}>Work</span>
           <a href={PDF} className="nav__nav-link link ms-2 ms-sm-3" rel='noopener noreferrer' target="_blank" download>Resume</a>
           <a href="mailto:dav.a.george@gmail.com" className="ms-2 ms-sm-3">
             <button className="dg-btn bg-gradient-green-200 py-2 px-3" onClick={() => {}}>

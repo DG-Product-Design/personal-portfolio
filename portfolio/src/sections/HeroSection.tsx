@@ -12,7 +12,7 @@ const HeroSection = (props: HeroSectionProps) => {
   return (
     <div className={classNames(props.wrapperClass && props.wrapperClass, "hero-section d-flex flex-wrap align-items-center w-100")}>
       <div className="col-12 col-md-5 col-lg-8 pr-0 pr-lg-4">
-        <h2 className="hero-section__headline text--gradient fw-bold lh-sm mb-4">
+        <h2 className="hero-section__headline text-gradient text-gradient--blue fw-bold lh-sm mb-4">
           Hi, I'm David:
           <br />
           A product designer
