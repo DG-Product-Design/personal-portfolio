@@ -1,23 +1,20 @@
 @use '../../style/variables' as vars;
 
-$pink: #EA638C;
-$blush: #B33C86;
-$tan: #D89D6A;
 $apricot: #FFD6BA;
 
 $rose-300: #F67984;
 $rose-500: #F45B69;
 
-
-// $yellow-300: #FFBF69;
 $yellow-300: #FFB347;
-$yellow-400: #FFAA33;
 $yellow-500: #FF9F1C;
 
-
 $nickel-300: #818980;
-$nickel-400: #767F76;
 $nickel-500: #6C756B;
+
+$purple-300: #8F56C8;
+$purple-400: #8546C3;
+$purple-500: #7A3CB9;
+
 
 
 
@@ -45,6 +42,11 @@ $nickel-500: #6C756B;
       transform: scale(.98);
     }
   }
+}
+
+
+.work-card__text--padding-top {
+  padding-top: 0rem;
 }
 
 .work-card__img-wrapper,
@@ -142,6 +144,21 @@ $nickel-500: #6C756B;
   }
 }
 
+.work-card__loan-app-image-wrapper--alt {
+  min-height: 30rem;
+  position: relative;
+}
+
+.work-card__loan-app-image--alt {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../img/loanApp/loan-app-collage--no-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 
 
 
@@ -169,11 +186,11 @@ $nickel-500: #6C756B;
   background: linear-gradient(45deg, $yellow-500, $yellow-300);
 }
 
-.bg-gradient-nickel {
-  background: linear-gradient(135deg, $nickel-300, $nickel-500);
+.bg-gradient-purple {
+  background: linear-gradient(135deg, $purple-300, $purple-500);
 }
-.right-align.bg-gradient-nickel {
-  background: linear-gradient(45deg, $nickel-500, $nickel-300);
+.right-align.bg-gradient-purple {
+  background: linear-gradient(45deg, $purple-500, $purple-300);
 }
 
 
@@ -198,6 +215,16 @@ $nickel-500: #6C756B;
   }
 }
 
+@media only screen and (min-width: 992px) {
+  .work-card__text--padding-top {
+    padding-top: 3.5rem;
+  }
+
+  .work-card__loan-app-image--alt {
+    background-size: contain;
+  }
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .work-card__headline--shrink-width {
     width: 60%;
@@ -207,5 +234,9 @@ $nickel-500: #6C756B;
 @media only screen and (min-width: 1200px) {
   .work-card__headline--shrink-width {
     width: 100%;
+  }
+
+  .work-card__text--padding-top {
+    padding-top: 18rem;
   }
 }

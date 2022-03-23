@@ -20,10 +20,7 @@ const headshotImg = require('../../img/david-a-george-design-headshot.png');
 const psHomeSearchImg = require('../../img/homeSearch/homesearch-collage.png');
 
 // LOAN APP
-const formCurrentAddressImg = require('../../img/loanApp/form/form-current-address.png');
-const formEmploymentInfoImg = require('../../img/loanApp/form/form-employment-info.png');
-const formLiabilitiesSelectImg = require('../../img/loanApp/form/form-liabilities-select.png');
-const formLoanSubmitImg = require('../../img/loanApp/form/form-submit-app.png');
+const loanAppCollage = require('../../img/loanApp/loan-app-collage--no-bg.png');
 
 // SJC ICAN
 const sjcImg1 = require('../../img/sjc/matching-engine-results-and-score.png');
@@ -67,7 +64,8 @@ const HomePage = (props: any) => {
       <div className="container-lg">
         <HeroSection wrapperClass='w-100'/>
 
-        <h4 id="work" className="w-100 fs-2 mb-4">Work</h4>
+        {/* WORK SECTION */}
+        <h4 id="work" className="homepage__section-header w-100 fs-2 mb-4">Work</h4>
 
         <WorkCard
           color="blue"
@@ -122,21 +120,17 @@ const HomePage = (props: any) => {
         />
 
         <WorkCard
+          className="align-items-stretch py-0"
           color="yellow"
-          altImage={ 
-            <ComboImg4 
-              img1={formCurrentAddressImg}
-              img1AltText="Loan Application screen - why are you refinancing?"
-              img2={formLiabilitiesSelectImg}
-              img2AltText="Loan Application screen - where in the process are you?"
-              img3={formEmploymentInfoImg}
-              img3AltText="Loan Application screen - employment info"
-              img4={formLoanSubmitImg}
-              img4AltText="Loan Application screen - submit loan"
-            />
+          altImage={
+            <div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
+              <div className="work-card__loan-app-image--alt" />
+            </div>
           }
+          imgWrapperClass="col-12 col-lg"
           headline='Fintech Mortgage Loan Application'
           body='Redesigned the product responsible for the company&apos;s primary source of revenue - the Loan Application. Improved NPS and facilitated 500% growth in intake volume.'
+          textWrapperClass="work-card__text--padding-top pb-5 pb-lg-0"
           button={
             <button className="dg-btn dg-btn--white" onClick={() => {}}>
               Details in-development
@@ -146,7 +140,7 @@ const HomePage = (props: any) => {
         
         <WorkCard
           rightAlign
-          color="nickel"
+          color="purple"
           className="layout--alt-left"
           altImage={ 
             <ComboImg
@@ -164,6 +158,10 @@ const HomePage = (props: any) => {
             </button>
           }
         />
+
+
+        {/* MANIFESTO SECTION */}
+        <h4 id="manifesto" className="homepage__section-header w-100 fs-2 mb-4">Manifesto</h4>
       </div>
     </div>
   )
