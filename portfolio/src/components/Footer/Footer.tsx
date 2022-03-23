@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="w-100 d-flex justify-content-start">
           <p className="small mb-0">
             &copy;2022 David A. George -&nbsp;
-            <span className="whitespace-no-wrap">Designer &amp; Builder &lt;/&gt;</span>
+            <span className="whitespace-nowrap">Designer &amp; Builder &lt;/&gt;</span>
           </p>
         </div>
         <div className="w-auto d-flex justify-content-end">
