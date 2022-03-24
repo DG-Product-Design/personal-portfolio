@@ -3,9 +3,9 @@ import { useSetRecoilState } from 'recoil';
 import * as AppState from './AppState';
 import { Routes, Route } from "react-router-dom";
 import smoothscroll from 'smoothscroll-polyfill';
-import Nav from './components/Nav/Nav';
+import Nav from './Nav/Nav';
 import HomePage from './pages/Homepage/HomePage';
-import Footer from './components/Footer/Footer';
+import Footer from './Footer/Footer';
 import Error404Page from './pages/404';
 
 
