@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/531.6002b126.chunk.css","mappings":"AAAA,0BAEE,aADA,cACA,CAGF,kBACE,aACA","sources":["components/Manifesto/Manifesto.scss"],"sourcesContent":[".manifesto__image-wrapper {\n  max-width: 100%;\n  display: flex;\n}\n\n.manifesto__image {\n  height: 10rem;\n  width: auto;\n}"],"names":[],"sourceRoot":""}
