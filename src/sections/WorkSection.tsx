@@ -124,7 +124,7 @@ const WorkSection = () => {
 						<span className='fs-5'>React + Storybook + NPM</span>
 					</React.Fragment>
 				}
-        body='Created a UI component library that utilizes Storybook for component documentation and testing. Components are built in React using Typescript and Tailwind. The components were then published as an NPM package for distribution.'
+        body='Created a UI component library that utilizes Storybook for component documentation and testing. Components are built in React using Typescript and Tailwind. The components are then published as a public NPM package for distribution.'
         textWrapperClass="work-card__text--padding-top pb-5"
         button={
 					<a href='https://github.com/DG-Product-Design/component-library' target='_blank' rel='noopener noreferrer' className='no-underline'>
