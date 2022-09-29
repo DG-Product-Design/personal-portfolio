@@ -1,5 +1,11 @@
 #homepage {
-  padding-top: 8rem
+	background-image: url('../../img/bg-pattern.svg');
+  background-position: 50% 0%;
+  background-size: auto 800px;
+  background-repeat: repeat-x;
+  background-attachment: scroll;
+	margin-top: -72px;
+	padding-top: 12.5rem;
 }
 
 .hero-section__headline {
