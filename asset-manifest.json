@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.3f0114d3.css",
+    "main.css": "/static/css/main.7b51fd1d.css",
     "main.js": "/static/js/main.999fe263.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/media/loan-app-collage--no-bg.png": "/static/media/loan-app-collage--no-bg.31497daa3b5634c5c3b5.png",
@@ -18,12 +18,12 @@
     "static/media/shapes.png": "/static/media/shapes.35d39b84e2232cb7d7a1.png",
     "static/media/bg-pattern.svg": "/static/media/bg-pattern.1fe82b8aa37a26f27449.svg",
     "index.html": "/index.html",
-    "main.3f0114d3.css.map": "/static/css/main.3f0114d3.css.map",
+    "main.7b51fd1d.css.map": "/static/css/main.7b51fd1d.css.map",
     "main.999fe263.js.map": "/static/js/main.999fe263.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f0114d3.css",
+    "static/css/main.7b51fd1d.css",
     "static/js/main.999fe263.js"
   ]
 }
