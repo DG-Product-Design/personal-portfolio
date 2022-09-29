@@ -156,14 +156,17 @@ $purple-500: #7A3CB9;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+	background-image: url('../../img/loan-app-collage--no-bg.png');
+}
 
-	&.image--loan-app {
-		background-image: url('../../img/loan-app-collage--no-bg.png');
-	}
-
-	&.image--components {
-		background-image: url('../../img/component-library--no-bg.png');
-	}
+.work-card__component-library-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+	background-image: url('../../img/component-library--no-bg.png');
 }
 
 
