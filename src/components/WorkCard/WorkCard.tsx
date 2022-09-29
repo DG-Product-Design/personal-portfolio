@@ -65,11 +65,7 @@ const WorkCard = (props: WorkCardProps) => {
             >
             <h4 className={classNames(props.bannerContent && "work-card__headline--shrink-width", "work-card__headline mb-4")}>{ props.headline }</h4>
             <p className="max-w-xs mb-5">{ props.body }</p>
-            { props.button && (
-              <div className="text-center text-lg-start">
-                { props.button }
-              </div>
-            )}
+            { props.button && props.button }
 						{ props.secondaryButton && props.secondaryButton }
           </div>
           <div className={classNames(props.imgWrapperClass ? props.imgWrapperClass : "col-12 col-lg-8 ps-0 ps-lg-4", "work-card__img-wrapper order-0 order-lg-1")}>
@@ -99,11 +95,7 @@ const WorkCard = (props: WorkCardProps) => {
             <h4 className={classNames(props.bannerContent && "work-card__headline--shrink-width", "work-card__headline mb-4")}>{ props.headline }</h4>
             <p className="max-w-xs mb-5">{ props.body }</p>
 						<div className="d-flex gap-3">
-							{ props.button && (
-								<div className="text-center text-lg-start mb-5">
-									{ props.button }
-								</div>
-							)}
+							{ props.button && props.button }
 							{ props.secondaryButton && props.secondaryButton }
 						</div>
           </div>

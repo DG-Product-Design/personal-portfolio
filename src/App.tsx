@@ -30,7 +30,7 @@ function App() {
   });
   
   return (
-    <div className="app-wrapper w-100">
+    <div id="app" className="app-wrapper">
       <Nav />
       <Routes>
         <Route path="/" element={<HomePage />} />
