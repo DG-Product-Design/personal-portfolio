@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.641ab811.css",
-    "main.js": "/static/js/main.46e8e1d9.js",
+    "main.css": "/static/css/main.a86bf93a.css",
+    "main.js": "/static/js/main.929191c4.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/media/loan-app-collage--no-bg.png": "/static/media/loan-app-collage--no-bg.31497daa3b5634c5c3b5.png",
+    "static/media/component-library--no-bg.png": "/static/media/component-library--no-bg.ae84c66a2b953d3d6595.png",
     "static/media/homesearch-collage.png": "/static/media/homesearch-collage.d6850ccb7cd016d7a790.png",
-    "static/media/matched-profile-with-highlighted-matches.png": "/static/media/matched-profile-with-highlighted-matches.f993384ea7acfb381fdb.png",
+    "static/media/sjc-matching-engine.png": "/static/media/sjc-matching-engine.3e7e7debf98cb1eb57ac.png",
     "static/media/capabilities-table-wrapper.png": "/static/media/capabilities-table-wrapper.8060b5c707480a6f804b.png",
     "static/media/david-a-george-design-headshot.png": "/static/media/david-a-george-design-headshot.f8831194e33bfaa5f482.png",
     "static/media/list-view.png": "/static/media/list-view.31cce6e643dc489e9427.png",
-    "static/media/matching-engine-results-and-score.png": "/static/media/matching-engine-results-and-score.0fa58f1ae56f7f641c44.png",
     "static/media/chart.png": "/static/media/chart.fafbc5baf89fc0475b53.png",
     "static/media/globe.png": "/static/media/globe.bb1fb6d79c6c68092e87.png",
     "static/media/student.png": "/static/media/student.a177231e4d35d1a1ed81.png",
@@ -18,12 +18,12 @@
     "static/media/shapes.png": "/static/media/shapes.35d39b84e2232cb7d7a1.png",
     "static/media/bg-pattern.svg": "/static/media/bg-pattern.1fe82b8aa37a26f27449.svg",
     "index.html": "/index.html",
-    "main.641ab811.css.map": "/static/css/main.641ab811.css.map",
-    "main.46e8e1d9.js.map": "/static/js/main.46e8e1d9.js.map",
+    "main.a86bf93a.css.map": "/static/css/main.a86bf93a.css.map",
+    "main.929191c4.js.map": "/static/js/main.929191c4.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.641ab811.css",
-    "static/js/main.46e8e1d9.js"
+    "static/css/main.a86bf93a.css",
+    "static/js/main.929191c4.js"
   ]
 }
