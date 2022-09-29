@@ -61,3 +61,7 @@ $theme-colors: map-merge($theme-colors, $custom-theme-colors);
 .max-w-xs {
   max-width: 575px;
 }
+
+.no-underline {
+	text-decoration: none;
+}

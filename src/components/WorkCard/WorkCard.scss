@@ -153,10 +153,17 @@ $purple-500: #7A3CB9;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url('../../img/loanApp/loan-app-collage--no-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+	&.image--loan-app {
+		background-image: url('../../img/loan-app-collage--no-bg.png');
+	}
+
+	&.image--components {
+		background-image: url('../../img/component-library--no-bg.png');
+	}
 }
 
 

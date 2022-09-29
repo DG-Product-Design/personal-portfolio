@@ -9,6 +9,7 @@ interface WorkCardProps {
   headline: ReactFragment | string,
   body: string | ReactFragment,
   button?: object;
+  secondaryButton?: object;
   rightAlign?: boolean,
   altImage?: any,
   imgAltText?: string,
@@ -45,7 +46,7 @@ const WorkCard = (props: WorkCardProps) => {
         props.color === 'rose' && 'bg-gradient-rose',
         props.color === 'yellow' && 'bg-gradient-yellow',
         props.color === 'purple' && 'bg-gradient-purple',
-        "portfolio__work-card d-flex flex-wrap align-items-center px-3 px-md-5"
+        "portfolio__work-card d-flex flex-wrap align-items-center overflow-hidden px-3 px-md-5"
       )}
     >
       
@@ -65,10 +66,11 @@ const WorkCard = (props: WorkCardProps) => {
             <h4 className={classNames(props.bannerContent && "work-card__headline--shrink-width", "work-card__headline mb-4")}>{ props.headline }</h4>
             <p className="max-w-xs mb-5">{ props.body }</p>
             { props.button && (
-              <div className="text-center text-lg-start mb-0 mb-lg-5">
+              <div className="text-center text-lg-start">
                 { props.button }
               </div>
             )}
+						{ props.secondaryButton && props.secondaryButton }
           </div>
           <div className={classNames(props.imgWrapperClass ? props.imgWrapperClass : "col-12 col-lg-8 ps-0 ps-lg-4", "work-card__img-wrapper order-0 order-lg-1")}>
             {props.altImage ? (
@@ -96,11 +98,14 @@ const WorkCard = (props: WorkCardProps) => {
             >
             <h4 className={classNames(props.bannerContent && "work-card__headline--shrink-width", "work-card__headline mb-4")}>{ props.headline }</h4>
             <p className="max-w-xs mb-5">{ props.body }</p>
-            { props.button && (
-              <div className="text-center text-lg-start mb-5">
-                { props.button }
-              </div>
-            )}
+						<div className="d-flex gap-3">
+							{ props.button && (
+								<div className="text-center text-lg-start mb-5">
+									{ props.button }
+								</div>
+							)}
+							{ props.secondaryButton && props.secondaryButton }
+						</div>
           </div>
         </React.Fragment>
       )}
