@@ -1,5 +1,6 @@
-## About this project:
+# About this project:
 This is my personal portfolio website, built from the ground-up with React and Typescript. More coming soon. Thanks for looking!
+
 
 # Getting Started with Create React App
 
