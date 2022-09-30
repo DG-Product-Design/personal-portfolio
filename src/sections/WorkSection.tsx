@@ -9,6 +9,7 @@ import {
 	FigmaSVG,
 	GcpSVG,
 	GithubSVG,
+	GitlabSVG,
 	JavascriptSVG,
 	KubernetesSVG,
 	MaterialSVG,
@@ -82,7 +83,7 @@ const WorkSection = () => {
 						I designed and built a tool for social workers in California to match foster parents with children ready for adoption based on numerous weighted criteria. Won the 2017 Innovation Award from California County Information Services Directors Association (CCISDA).
 						<br  />
 						<br  />
-						Designed in Adobe XD, written in Angular with Material Design and Javascript (which we migrated to Typescript), then deployed on Google Cloud Platform with Google App Engine.
+						Designed in Adobe XD, written in Angular with Material Design and Javascript (which we migrated to Typescript), then deployed on Google Cloud Platform and Google App Engine with Gitlab CI/CD.
 					</React.Fragment>
 				}
         bannerContent={
@@ -105,7 +106,8 @@ const WorkSection = () => {
 					<MaterialSVG />,
 					<JavascriptSVG />,
 					<TypescriptSVG />,
-					<GcpSVG />
+					<GcpSVG />,
+					<GitlabSVG />
 				]}
       />
 
