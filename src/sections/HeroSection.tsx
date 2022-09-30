@@ -20,7 +20,7 @@ const HeroSection = (props: HeroSectionProps) => {
           &amp; developer
         </h2>
         <h4 className="max-w-xs lh-base mb-5 px-0">
-          I help companies design intuitive digital products with a profit-driven approach.
+          I help companies design and build intuitive digital products with a profit-driven approach.
         </h4>
         <a href="mailto:dav.a.george@gmail.com">
           <button className="dg-btn dg-btn--white bg-gradient-green-200 px-4 py-3">Let's chat</button>
