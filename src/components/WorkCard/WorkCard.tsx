@@ -84,7 +84,7 @@ const WorkCard = (props: WorkCardProps) => {
             {props.altImage ? (
               props.altImage
             ) : (
-              <img src={ props.img } alt="property search application UI" className={classNames(props.imgClass && props.imgClass, "work-card__img w-100")} loading="lazy" />
+              <img src={ props.img } alt="property search application UI" className={classNames(props.imgClass && props.imgClass, "work-card__img w-100")} />
             )}
           </div>
         </React.Fragment>
@@ -94,7 +94,7 @@ const WorkCard = (props: WorkCardProps) => {
             {props.altImage ? (
               props.altImage
             ) : (
-              <img src={ props.img } alt={ props.imgAltText } className={classNames(props.imgClass && props.imgClass, "work-card__img w-100")} loading="lazy" />
+              <img src={ props.img } alt={ props.imgAltText } className={classNames(props.imgClass && props.imgClass, "work-card__img w-100")} />
             )}
           </div>
           <div 
