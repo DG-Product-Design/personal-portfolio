@@ -23,10 +23,10 @@ import {
 
 //// IMAGES
 const homeSearchImg = require('../img/homesearch-collage.png');
-const sjcImg = require('../img/sjc/sjc-matching-engine.png');
-const lcaDesktop = require('../img/lca/capabilities-table-wrapper.png');
+const sjcImg = require('../img/sjc-matching-engine.jpg');
+const lcaDesktop = require('../img/lca/capabilities-table-wrapper.jpg');
 const lcaMobile = require('../img/lca/list-view.png');
-const uxUiImg = require('../img/ux-ui--no-bg.png');
+const uxUiImg = require('../img/ux-ui--no-bg.jpg');
 
 
 const WorkSection = () => {
