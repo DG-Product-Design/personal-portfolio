@@ -52,7 +52,7 @@ const WorkSection = () => {
 				}
         button={
           <a href="https://capcenter.com/homes/" rel="noopener noreferrer" target="_blank" className="text-decoration-none">
-            <button className="dg-btn dg-btn--white mb-0 mb-lg-5">
+            <button className="dg-btn dg-btn--white">
               View live site
             </button>
           </a>
