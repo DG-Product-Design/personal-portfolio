@@ -26,8 +26,12 @@
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  filter: drop-shadow(0 0 4px rgba(vars.$blue-800, 0.2));
   width: 100%;
+	
+	.combo-img__img--1 {
+		filter: drop-shadow(0 0 4px rgba(vars.$blue-800, 0.8));
+		padding: 0.75rem;
+	}
 }
 
 .combo-img__img--1 {
