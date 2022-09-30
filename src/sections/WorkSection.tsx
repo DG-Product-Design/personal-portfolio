@@ -122,7 +122,7 @@ const WorkSection = () => {
         headline='Fintech Mortgage Loan Application'
         body={
 					<React.Fragment>
-						I redesigned the business&apos; primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design still actively facilitates loan applications today.
+						I redesigned the business&apos; primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design is still actively facilitating loan applications today.
 						<br />
 						<br />
 						Designed in Sketch, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD and Kubernetes clusters.
