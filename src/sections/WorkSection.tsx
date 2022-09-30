@@ -26,6 +26,7 @@ const homeSearchImg = require('../img/homesearch-collage.png');
 const sjcImg = require('../img/sjc/sjc-matching-engine.png');
 const lcaDesktop = require('../img/lca/capabilities-table-wrapper.png');
 const lcaMobile = require('../img/lca/list-view.png');
+const uxUiImg = require('../img/ux-ui--no-bg.png');
 
 
 const WorkSection = () => {
@@ -243,7 +244,7 @@ const WorkSection = () => {
 						Depending on the client needs, the protyping is then done within Figma/Sketch or on the web with HTML, CSS, and minimal Javascript.
 					</React.Fragment>
 				}
-				img={homeSearchImg}
+				img={uxUiImg}
 				logos={[
 					<FigmaSVG />,
 					<SketchSVG />,
