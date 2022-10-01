@@ -1,3 +1,5 @@
+import React from 'react';
+
 const TypescriptSVG = () => {
 	return (
 		<svg width="512" height="512" fill="none" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
