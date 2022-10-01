@@ -18,7 +18,7 @@ import {
 	SketchSVG,
 	TailwindSVG,
 	TypescriptSVG
-} from '../img/svgLogos'
+} from '../img/svgLogos';
 
 
 //// IMAGES
@@ -30,21 +30,21 @@ const uxUiImg = require('../img/ux-ui--no-bg.jpg');
 
 
 const WorkSection = () => {
-  return (
-    <React.Fragment>
-      <h4 id="work" className="homepage__section-header w-100 fs-2 mb-4">Work</h4>
-      
+	return (
+		<React.Fragment>
+			<h4 id="work" className="homepage__section-header w-100 fs-2 mb-4">Work</h4>
+			
 			{/* PROPERTY SEARCH */}
 			<WorkCard
-        color="blue"
-        headline={
-          <React.Fragment>
-            Real Estate
-            <br />
-            Property Search
-          </React.Fragment>
-        }
-        body={
+				color="blue"
+				headline={
+					<React.Fragment>
+						Real Estate
+						<br />
+						Property Search
+					</React.Fragment>
+				}
+				body={
 					<React.Fragment>
 						I designed and built a lead-gen tool for prospective Real Estate clients to find homes to purchase and schedule tours. Upon implementation, tour leads increased by over 3x.
 						<br />
@@ -52,34 +52,35 @@ const WorkSection = () => {
 						Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD and Kubernetes clusters.
 					</React.Fragment>
 				}
-        button={
-          <a href="https://capcenter.com/homes/" rel="noopener noreferrer" target="_blank" className="text-decoration-none">
-            <button className="dg-btn dg-btn--white">
-              View live site
-            </button>
-          </a>
-        }
-        img={homeSearchImg}
+				button={
+					<a href="https://capcenter.com/homes/" rel="noopener noreferrer" target="_blank" className="text-decoration-none">
+						<button className="dg-btn dg-btn--white">
+							View live site
+						</button>
+					</a>
+				}
+				img={homeSearchImg}
+				imgAltText='Screenshots of lead-gen tool for prospective Real Estate clients.'
 				logos={[
-					<FigmaSVG />,
-					<ReactSVG />,
-					<BootstrapSVG />,
-					<TypescriptSVG />,
-					<AzureSVG />,
-					<KubernetesSVG />
+					<FigmaSVG key='figma' />,
+					<ReactSVG key='react' />,
+					<BootstrapSVG key='bootstrap' />,
+					<TypescriptSVG key='tsx'/>,
+					<AzureSVG key='azure' />,
+					<KubernetesSVG key='k8s' />
 				]}
 			/>
 
 			{/* SJC MATCHING ENGINE */}
-      <WorkCard
-        rightAlign
-        color="rose"
-        headline={
+			<WorkCard
+				rightAlign
+				color="rose"
+				headline={
 					<React.Fragment>
-            Weighted Algorithm<br />Matching Engine
-          </React.Fragment>
-        }
-        body={
+						Weighted Algorithm<br />Matching Engine
+					</React.Fragment>
+				}
+				body={
 					<React.Fragment>
 						I designed and built a tool for social workers in California to match foster parents with children ready for adoption based on numerous weighted criteria. Won the 2017 Innovation Award from California County Information Services Directors Association (CCISDA).
 						<br  />
@@ -87,43 +88,44 @@ const WorkSection = () => {
 						Designed in Adobe XD, written in Angular with Material Design and Javascript (which we migrated to Typescript), then deployed on Google Cloud Platform and Google App Engine with Gitlab CI/CD.
 					</React.Fragment>
 				}
-        bannerContent={
+				bannerContent={
 					<React.Fragment>
-            <i className='banner__icon fas fa-award w-50 fs-1 text-center mb-3' />
-            <p className="lh-sm text-center">CCISDA Innovation Award, 2017</p>
-          </React.Fragment>
-        }
-        button={
+						<i className='banner__icon fas fa-award w-50 fs-1 text-center mb-3' />
+						<p className="lh-sm text-center">CCISDA Innovation Award, 2017</p>
+					</React.Fragment>
+				}
+				button={
 					<a href="https://www.youtube.com/watch?v=V3bQb4yMH3k" rel="noopener noreferrer" target="_blank" className="text-decoration-none">
-            <button className="dg-btn dg-btn--white mb-5 mb-lg-0">
-              Watch video by Google
-            </button>
-          </a>
-        }
+						<button className="dg-btn dg-btn--white mb-5 mb-lg-0">
+							Watch video by Google
+						</button>
+					</a>
+				}
 				img={sjcImg}
+				imgAltText='Screenshots of weighted Matching Engine.'
 				logos={[
-					<AdobeSVG />,
-					<AngularSVG />,
-					<MaterialSVG />,
-					<JavascriptSVG />,
-					<TypescriptSVG />,
-					<GcpSVG />,
-					<GitlabSVG />
+					<AdobeSVG key='adobe'/>,
+					<AngularSVG key='angular' />,
+					<MaterialSVG key='material' />,
+					<JavascriptSVG key='js' />,
+					<TypescriptSVG key='tsx'/>,
+					<GcpSVG key='gcp' />,
+					<GitlabSVG key='gitlab' />
 				]}
-      />
+			/>
 
 			{/* LOAN APP */}
-      <WorkCard
-        className="align-items-stretch py-0"
-        color="yellow"
-        altImage={
-          <div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
-            <div className="work-card__loan-app-image--alt" />
-          </div>
-        }
-        imgWrapperClass="col-12 col-lg"
-        headline='Fintech Mortgage Loan Application'
-        body={
+			<WorkCard
+				className="align-items-stretch py-0"
+				color="yellow"
+				altImage={
+					<div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
+						<div className="work-card__loan-app-image--alt" aria-label='Screenshots of Mortgage loan and refinance application.' />
+					</div>
+				}
+				imgWrapperClass="col-12 col-lg"
+				headline='Fintech Mortgage Loan Application'
+				body={
 					<React.Fragment>
 						I redesigned the business&apos; primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design is still actively facilitating loan applications today.
 						<br />
@@ -131,32 +133,32 @@ const WorkSection = () => {
 						Designed in Sketch, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD and Kubernetes clusters.
 					</React.Fragment>
 				}
-        textWrapperClass="work-card__text--padding-top pb-5"
+				textWrapperClass="work-card__text--padding-top pb-5"
 				logos={[
-					<SketchSVG />,
-					<ReactSVG />,
-					<BootstrapSVG />,
-					<TypescriptSVG />,
-					<AzureSVG />,
-					<KubernetesSVG />
+					<SketchSVG  key='sketch'/>,
+					<ReactSVG key='react' />,
+					<BootstrapSVG key='bootstrap' />,
+					<TypescriptSVG key='tsx'/>,
+					<AzureSVG key='azure' />,
+					<KubernetesSVG key='k8s' />
 				]}
-      />
+			/>
 
 			{/* ASSIGNER APP */}
 			<WorkCard
-        rightAlign
-        color="purple"
-        className="layout--alt-left"
-        altImage={ 
-          <ComboImg
-            img1={lcaMobile}
-            img1AltText="Fintech Client Assignment and Management - desktop"
-            img2={lcaDesktop}
-            img2AltText="Fintech Client Assignment and Management - desktop"
-          />
-        }
-        headline='Client Assigner &amp; Management Tool'
-        body={
+				rightAlign
+				color="purple"
+				className="layout--alt-left"
+				altImage={ 
+					<ComboImg
+						img1={lcaMobile}
+						img1AltText="Mobile screenshot of fintech internal client assigner management tool."
+						img2={lcaDesktop}
+						img2AltText="Desktop screenshot of fintech internal client assigner management tool."
+					/>
+				}
+				headline='Client Assigner &amp; Management Tool'
+				body={
 					<React.Fragment>
 						I designed an internal management tool to automatically match clients with consultants based on geolocation, skills and qualifications, and availability. Upon implementation, each manager in the program successfully saved over 30 min per day, or 125 hours per year.
 						<br />
@@ -165,32 +167,32 @@ const WorkSection = () => {
 					</React.Fragment>
 				}
 				logos={[
-					<FigmaSVG />,
-					<ReactSVG />,
-					<BootstrapSVG />,
-					<TypescriptSVG />,
-					<AzureSVG />,
+					<FigmaSVG key='figma' />,
+					<ReactSVG key='react' />,
+					<BootstrapSVG key='bootstrap' />,
+					<TypescriptSVG key='tsx'/>,
+					<AzureSVG key='azure' />,
 				]}
-      />
+			/>
 
 			{/* COMPONENT LIBRARY */}
 			<WorkCard
-        className="align-items-stretch py-0"
-        color="blue"
-        altImage={
-          <div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
-            <div className="work-card__component-library-image" />
-          </div>
-        }
-        imgWrapperClass="col-12 col-lg ps-0 ps-lg-4"
-        headline={
+				className="align-items-stretch py-0"
+				color="blue"
+				altImage={
+					<div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
+						<div className="work-card__component-library-image" aria-label='Screenshots of component library.' />
+					</div>
+				}
+				imgWrapperClass="col-12 col-lg ps-0 ps-lg-4"
+				headline={
 					<React.Fragment>
 						<span className='lh-0'>UI Component Library</span>
 						<br  />
 						<span className='fs-5'>React + Storybook + NPM</span>
 					</React.Fragment>
 				}
-        body={
+				body={
 					<React.Fragment>
 						A UI component library that utilizes Storybook for component documentation and testing. Components are designed in Figma, built in React using Typescript and Tailwind, then published as a public NPM package for distribution and released to Github. 
 						<br  />
@@ -198,14 +200,14 @@ const WorkSection = () => {
 						I&apos;ve built similar component libraries to this one, which are currently in use distributing design systems across various application ecosystems, including websites, web apps, and digital tools.
 					</React.Fragment>
 				}
-        textWrapperClass="work-card__text--padding-top pb-5"
-        button={
+				textWrapperClass="work-card__text--padding-top pb-5"
+				button={
 					<a href='https://github.com/DG-Product-Design/component-library' target='_blank' rel='noopener noreferrer' className='no-underline'>
 						<button className='dg-btn dg-btn--white no-underline'>
 							View project on Github
 						</button>
 					</a>
-        }
+				}
 				secondaryButton={
 					<div className='my-3 my-sm-1'>
 						<a href='https://www.npmjs.com/package/@j33p1n/component-library' target='_blank' rel='noopener noreferrer' className='no-underline'>
@@ -216,19 +218,19 @@ const WorkSection = () => {
 					</div>
 				}
 				logos={[
-					<FigmaSVG />,
-					<ReactSVG />,
-					<TailwindSVG />,
-					<TypescriptSVG />,
-					<NpmSVG />,
-					<GithubSVG />
+					<FigmaSVG key='figma' />,
+					<ReactSVG key='react' />,
+					<TailwindSVG key='tw' />,
+					<TypescriptSVG key='tsx'/>,
+					<NpmSVG key='npm' />,
+					<GithubSVG key='github' />
 				]}
-      />
+			/>
 
 			{/* UX/UI DESIGN */}
 			<WorkCard
-        rightAlign
-        color="rose"
+				rightAlign
+				color="rose"
 				headline={
 					<React.Fragment>
 						<span className='lh-0'>UX &amp; UI Design</span>
@@ -236,7 +238,7 @@ const WorkSection = () => {
 						<span className='fs-5'>Figma / Sketch / XD</span>
 					</React.Fragment>
 				}
-        body={
+				body={
 					<React.Fragment>
 						From style guides and wireframes to production-ready designs, I have years of experience building and working within pre-existing design systems. My product designs are typically initiated in Figma or Sketch and iterated upon until they&apos;re ready for interactive feedback (big believer in naming layers!).
 						<br  />
@@ -245,16 +247,17 @@ const WorkSection = () => {
 					</React.Fragment>
 				}
 				img={uxUiImg}
+				imgAltText='Screenshots of design work in Figma and Sketch.'
 				logos={[
-					<FigmaSVG />,
-					<SketchSVG />,
-					<AdobeSVG />
+					<FigmaSVG key='figma' />,
+					<SketchSVG  key='sketch' />,
+					<AdobeSVG key='adobe' />
 				]}
-      />
+			/>
 
 			
-    </React.Fragment>
-  )
-}
+		</React.Fragment>
+	);
+};
 
 export default WorkSection;

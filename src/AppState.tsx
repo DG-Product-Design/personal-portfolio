@@ -1,11 +1,11 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const screenBelowLg = atom({
-  key: "screenBelowLg",
-  default: false
+	key: 'screenBelowLg',
+	default: false
 });
 
 export const screenBelowSm = atom({
-  key: "screenBelowSm",
-  default: false
+	key: 'screenBelowSm',
+	default: false
 });
