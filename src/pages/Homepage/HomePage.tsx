@@ -7,16 +7,16 @@ import './Homepage.scss';
 
 
 
-const HomePage = (props: any) => {
-  return (
-    <div id="homepage" className="w-100 px-2 px-lg-5">
-      <div className="container-lg">
-        <HeroSection wrapperClass='w-100'/>
-        <WorkSection />
-        <ManifestoSection />
-      </div>
-    </div>
-  )
-}
+const HomePage = () => {
+	return (
+		<div id="homepage" className="w-100 px-2 px-lg-5">
+			<div className="container-lg">
+				<HeroSection wrapperClass='w-100'/>
+				<WorkSection />
+				<ManifestoSection />
+			</div>
+		</div>
+	);
+};
 
 export default HomePage;

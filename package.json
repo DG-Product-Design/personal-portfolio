@@ -35,9 +35,46 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "es6": true,
+      "node": true
+    },
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off",
+          "indent": [
+            "warn",
+            "tab",
+            {
+              "SwitchCase": 1
+            }
+          ],
+          "linebreak-style": [
+            "warn",
+            "unix"
+          ],
+          "quotes": [
+            "warn",
+            "single"
+          ],
+          "semi": [
+            "warn",
+            "always"
+          ],
+          "react/display-name": "off",
+          "@typescript-eslint/explicit-function-return-type": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -54,6 +91,10 @@
   },
   "devDependencies": {
     "@types/smoothscroll-polyfill": "^0.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "^7.31.8",
     "gh-pages": "^3.2.3"
   }
 }
