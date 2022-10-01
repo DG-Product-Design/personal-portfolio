@@ -1,3 +1,5 @@
+import React from 'react';
+
 const KubernetesSVG = () => {
 	return (
 		<svg width="705px" height="684px" viewBox="0 0 705 684" version="1.1" xmlns="http://www.w3.org/2000/svg">

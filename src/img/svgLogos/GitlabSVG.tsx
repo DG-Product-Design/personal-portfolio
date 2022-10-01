@@ -1,3 +1,5 @@
+import React from 'react';
+
 const GitlabSVG = () => {
 	return (
 		<svg viewBox="0 0 157 150" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +12,7 @@ const GitlabSVG = () => {
 				</g>
 			</g>
 		</svg>
-	)
-}
+	);
+};
 
 export default GitlabSVG;
