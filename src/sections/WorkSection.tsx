@@ -54,7 +54,7 @@ const WorkSection = () => {
 						I designed and built a lead-gen tool for prospective Real Estate clients to find homes to purchase and schedule tours. Upon implementation, tour leads increased by over 3x.
 						<br />
 						<br />
-						Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD and Kubernetes clusters.
+						Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD and Kubernetes clusters. ADA level AA compliant design.
 					</React.Fragment>
 				}
 				button={
@@ -200,7 +200,7 @@ const WorkSection = () => {
 						A UI component library that utilizes Storybook for component documentation and testing. Components are designed in Figma, built in React using Typescript and Tailwind, then published as a public NPM package for distribution and released to Github. 
 						<br  />
 						<br  />
-						I&apos;ve built similar component libraries to this one, which are currently in use distributing design systems across various application ecosystems, including websites, web apps, and digital tools.
+						I&apos;ve built similar (but larger) component libraries to this one, which are currently in use distributing design systems across various application ecosystems, including websites, web apps, and digital tools.
 					</React.Fragment>
 				}
 				textWrapperClass="work-card__text--padding-top pb-5"
