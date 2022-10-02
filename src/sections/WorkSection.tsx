@@ -180,7 +180,7 @@ const WorkSection = () => {
 
 			{/* COMPONENT LIBRARY */}
 			<WorkCard
-				className="py-0"
+				className="align-items-stretch py-0"
 				color="blue"
 				altImage={
 					<div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
