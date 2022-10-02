@@ -1,5 +1,5 @@
 # About this project:
-This is my personal portfolio website, built from the ground-up with React and Typescript. Thanks for looking!
+This is my personal portfolio website, built from the ground-up with React, Typescript, and Bootstrap 5. It's published to https://davidageorge.me via Github Pages CI/CD. Thanks for looking!
 
 
 # Getting Started with Create React App
