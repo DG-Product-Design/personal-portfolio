@@ -4,18 +4,21 @@ import ComboImg from '../components/ComboImg/ComboImg';
 import {
 	AdobeSVG,
 	AngularSVG,
+	AppsScriptSVG,
 	AzureSVG,
 	BootstrapSVG,
 	FigmaSVG,
 	GcpSVG,
 	GithubSVG,
 	GitlabSVG,
+	HubspotSVG,
 	JavascriptSVG,
 	KubernetesSVG,
 	MaterialSVG,
 	NpmSVG,
 	ReactSVG,
 	SketchSVG,
+	SlackSVG,
 	TailwindSVG,
 	TypescriptSVG
 } from '../img/svgLogos';
@@ -27,6 +30,8 @@ const sjcImg = require('../img/sjc-matching-engine.jpg');
 const lcaDesktop = require('../img/lca/capabilities-table-wrapper.jpg');
 const lcaMobile = require('../img/lca/list-view.png');
 const uxUiImg = require('../img/ux-ui--no-bg.jpg');
+const topshotImg = require('../img/topshot.jpg');
+const customerIoImg = require('../img/customerIo.png');
 
 
 const WorkSection = () => {
@@ -96,7 +101,7 @@ const WorkSection = () => {
 				}
 				button={
 					<a href="https://www.youtube.com/watch?v=V3bQb4yMH3k" rel="noopener noreferrer" target="_blank" className="text-decoration-none">
-						<button className="dg-btn dg-btn--white mb-5 mb-lg-0">
+						<button className="dg-btn dg-btn--white">
 							Watch video by Google
 						</button>
 					</a>
@@ -123,7 +128,7 @@ const WorkSection = () => {
 						<div className="work-card__loan-app-image--alt" aria-label='Screenshots of Mortgage loan and refinance application.' />
 					</div>
 				}
-				imgWrapperClass="col-12 col-lg"
+				imgWrapperClass="col-12 col-xl"
 				headline='Fintech Mortgage Loan Application'
 				body={
 					<React.Fragment>
@@ -144,47 +149,45 @@ const WorkSection = () => {
 				]}
 			/>
 
-			{/* ASSIGNER APP */}
+			{/* NBA TOPSHOT */}
 			<WorkCard
 				rightAlign
 				color="purple"
-				className="layout--alt-left"
-				altImage={ 
-					<ComboImg
-						img1={lcaMobile}
-						img1AltText="Mobile screenshot of fintech internal client assigner management tool."
-						img2={lcaDesktop}
-						img2AltText="Desktop screenshot of fintech internal client assigner management tool."
-					/>
+				img={topshotImg}
+				headline={
+					<React.Fragment>
+						<span className='lh-0'>NBA Top Shot</span>
+						<br  />
+						<span className='fs-5'>with Dapper</span>
+					</React.Fragment>
 				}
-				headline='Client Assigner &amp; Management Tool'
 				body={
 					<React.Fragment>
-						I designed an internal management tool to automatically match clients with consultants based on geolocation, skills and qualifications, and availability. Upon implementation, each manager in the program successfully saved over 30 min per day, or 125 hours per year.
+						I was a technical marketing consultant with Dapper Labs for the NBA Top Shot crypto/NFT project. 
+						Worked with the data engineering team to sync data between their DBs and various marketing automation tools, like customer.io and HubSpot.
 						<br />
 						<br />
-						Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD.
+						Implemented data normalization for personalizing emails at scale for 2M+ users. Grew and improved platform onboarding through creative campaigns and A/B testing. Built internal communication tools with Slack API and Google Apps Script.
 					</React.Fragment>
 				}
 				logos={[
-					<FigmaSVG key='figma' />,
-					<ReactSVG key='react' />,
-					<BootstrapSVG key='bootstrap' />,
-					<TypescriptSVG key='tsx'/>,
-					<AzureSVG key='azure' />,
+					<img src={customerIoImg} alt='customer.io logo' key='customerIo' style={{ height: '1.5rem', width: 'auto' }} />,
+					<HubspotSVG key='hubspot' />,
+					<AppsScriptSVG key='appsScript' />,
+					<SlackSVG key='slack' />,
 				]}
 			/>
 
 			{/* COMPONENT LIBRARY */}
 			<WorkCard
-				className="align-items-stretch py-0"
+				className="py-0"
 				color="blue"
 				altImage={
 					<div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
 						<div className="work-card__component-library-image" aria-label='Screenshots of component library.' />
 					</div>
 				}
-				imgWrapperClass="col-12 col-lg ps-0 ps-lg-4"
+				imgWrapperClass="col-12 col-xl ps-0 ps-xl-4"
 				headline={
 					<React.Fragment>
 						<span className='lh-0'>UI Component Library</span>
@@ -226,11 +229,41 @@ const WorkSection = () => {
 					<GithubSVG key='github' />
 				]}
 			/>
-
-			{/* UX/UI DESIGN */}
+			
+			{/* ASSIGNER APP */}
 			<WorkCard
 				rightAlign
 				color="rose"
+				className="layout--alt-left"
+				altImage={ 
+					<ComboImg
+						img1={lcaMobile}
+						img1AltText="Mobile screenshot of fintech internal client assigner management tool."
+						img2={lcaDesktop}
+						img2AltText="Desktop screenshot of fintech internal client assigner management tool."
+					/>
+				}
+				headline='Client Assigner &amp; Management Tool'
+				body={
+					<React.Fragment>
+						I designed an internal management tool to automatically match clients with consultants based on geolocation, skills and qualifications, and availability. Upon implementation, each manager in the program successfully saved over 30 min per day, or 125 hours per year.
+						<br />
+						<br />
+						Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD.
+					</React.Fragment>
+				}
+				logos={[
+					<FigmaSVG key='figma' />,
+					<ReactSVG key='react' />,
+					<BootstrapSVG key='bootstrap' />,
+					<TypescriptSVG key='tsx'/>,
+					<AzureSVG key='azure' />,
+				]}
+			/>
+
+			{/* UX/UI DESIGN */}
+			<WorkCard
+				color="yellow"
 				headline={
 					<React.Fragment>
 						<span className='lh-0'>UX &amp; UI Design</span>
