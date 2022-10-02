@@ -59,12 +59,12 @@ const WorkCard = (props: WorkCardProps) => {
 				<React.Fragment>
 					<div 
 						className={classNames(
-							props.bannerContent && 'mt-lg-5 pt-lg-5 pt-xl-0',
+							props.bannerContent && 'mt-xl-5 pt-xl-3 pt-xl-0',
 							props.textWrapperClass && props.textWrapperClass,
-							'work-card__text-wrapper col-12 col-lg-4 order-1 order-lg-0 mt-5 mt-lg-0'
+							'work-card__text-wrapper col-12 col-xl-4 order-1 order-xl-0'
 						)}
 					>
-						<h4 className={classNames(props.bannerContent && 'work-card__headline--shrink-width', 'work-card__headline')}>{ props.headline }</h4>
+						<h4 className={classNames(props.bannerContent && 'work-card__headline--shrink-width', 'work-card__headline mt-5 mt-xl-0')}>{ props.headline }</h4>
 						<div className='work-card__logo-wrapper d-flex justify-center w-100 align-items-center gap-3 rounded-pill my-3 py-2 px-4' style={{maxWidth: 'fit-content'}}>
 							{props.logos?.map((logo: React.ReactElement, index: number) => {
 								return (
@@ -74,13 +74,13 @@ const WorkCard = (props: WorkCardProps) => {
 								);
 							})}
 						</div>
-						<p className='work-card__body-text max-w-xs'>{ props.body }</p>
+						<p className='work-card__body-text max-w-xs mb-0'>{ props.body }</p>
 						<div className={classNames((props.button || props.secondaryButton) && 'mt-5', 'd-flex flex-wrap align-items-center gap-1')}>
 							{ props.button && props.button }
 							{ props.secondaryButton && props.secondaryButton }
 						</div>
 					</div>
-					<div className={classNames(props.imgWrapperClass ? props.imgWrapperClass : 'col-12 col-lg-8 ps-0 ps-lg-4', 'work-card__img-wrapper order-0 order-lg-1')}>
+					<div className={classNames(props.imgWrapperClass ? props.imgWrapperClass : 'col-12 col-xl-8 ps-0 ps-xl-4', 'work-card__img-wrapper order-0 order-xl-1')}>
 						{props.altImage ? (
 							props.altImage
 						) : (
@@ -90,7 +90,7 @@ const WorkCard = (props: WorkCardProps) => {
 				</React.Fragment>
 			) : (
 				<React.Fragment>
-					<div className={classNames(props.imgWrapperClass ? props.imgWrapperClass : 'work-card__img-wrapper order-1 order-lg-0', 'col-12 col-lg-8 pe-0 pe-lg-4')}>
+					<div className={classNames(props.imgWrapperClass ? props.imgWrapperClass : 'work-card__img-wrapper', 'col-12 col-xl-8 pe-0 pe-xl-4')}>
 						{props.altImage ? (
 							props.altImage
 						) : (
@@ -99,12 +99,12 @@ const WorkCard = (props: WorkCardProps) => {
 					</div>
 					<div 
 						className={classNames(
-							props.bannerContent && 'mt-lg-5 pt-lg-5 pt-xl-0',
+							props.bannerContent && 'mt-xl-5 pt-xl-3 pt-xl-0',
 							props.textWrapperClass && props.textWrapperClass,
-							'work-card__text-wrapper col-12 col-lg-4 order-0 order-lg-1 ps-0 ps-lg-4 mt-5 mt-lg-0'
+							'work-card__text-wrapper col-12 col-xl-4 order-0 order-xl-1 ps-0 ps-xl-4'
 						)}
 					>
-						<h4 className={classNames(props.bannerContent && 'work-card__headline--shrink-width', 'work-card__headline')}>{ props.headline }</h4>
+						<h4 className={classNames(props.bannerContent && 'work-card__headline--shrink-width', 'work-card__headline mt-5 mt-xl-0')}>{ props.headline }</h4>
 						<div className='work-card__logo-wrapper d-flex justify-center w-100 align-items-center gap-3 rounded-pill my-3 py-2 px-4' style={{maxWidth: 'fit-content'}}>
 							{props.logos?.map((logo: React.ReactElement, index: number) => {
 								return (
@@ -114,7 +114,7 @@ const WorkCard = (props: WorkCardProps) => {
 								);
 							})}
 						</div>
-						<p className='work-card__body-text max-w-xs'>{ props.body }</p>
+						<p className='work-card__body-text max-w-xs mb-0'>{ props.body }</p>
 						<div className={classNames((props.button || props.secondaryButton) && 'mt-5', 'd-flex flex-wrap align-items-center gap-1')}>
 							{ props.button && props.button }
 							{ props.secondaryButton && props.secondaryButton }
