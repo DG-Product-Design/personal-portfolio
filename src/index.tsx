@@ -9,11 +9,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 
 ReactDOM.render(
-	<BrowserRouter>
-		<RecoilRoot>
-			<App />
-		</RecoilRoot>
-	</BrowserRouter>,
+	<React.StrictMode>
+		<BrowserRouter>
+			<RecoilRoot>
+				<App />
+			</RecoilRoot>
+		</BrowserRouter>
+	</React.StrictMode>,
 	document.getElementById('root')
 );
 

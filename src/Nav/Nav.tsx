@@ -15,11 +15,10 @@ function scrollIntoView(id: string) {
 }
 
 const Nav = () => {
-	const [scrollDistance, setScrollDistance] = React.useState<number>(0);
 	const [rootElement, setRootElement] = React.useState<HTMLElement | null>();
+	const [transparentBg, setTransparentBg] = React.useState(true);
 
 	const screenBelowSm = useRecoilValue(AppState.screenBelowSm);
-	const transparentBg = scrollDistance < 63;
 	const PDF = process.env.PUBLIC_URL + '/download/David-A-George-Resume.pdf';
 
 	React.useEffect(() => {
@@ -32,8 +31,9 @@ const Nav = () => {
 
 	function getDistance() {
 		if (rootElement) {
-			const scrollTop = rootElement.scrollTop;
-			return setScrollDistance(scrollTop);
+			if (rootElement.scrollTop < 63) {
+				setTransparentBg(true);
+			} else setTransparentBg(false);
 		}
 	}
 
