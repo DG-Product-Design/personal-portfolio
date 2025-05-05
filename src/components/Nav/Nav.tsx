@@ -1,8 +1,6 @@
 import classNames from 'classnames';
-import React from 'react';
-import { useRecoilValue } from 'recoil';
-import * as AppState from '../AppState';
-import { GithubSVG } from '../img/svgLogos';
+import React, { useEffect, useState } from 'react';
+import { GithubSVG } from '../../img/svgLogos';
 import './Nav.scss';
 
 
@@ -15,17 +13,27 @@ function scrollIntoView(id: string) {
 }
 
 const Nav = () => {
-	const [rootElement, setRootElement] = React.useState<HTMLElement | null>();
-	const [transparentBg, setTransparentBg] = React.useState(true);
-
-	const screenBelowSm = useRecoilValue(AppState.screenBelowSm);
+	const [rootElement, setRootElement] = useState<HTMLElement | null>();
+	const [transparentBg, setTransparentBg] = useState(true);
+	const [screenBelowSm, setScreenBelowSm] = useState(false);
 	const PDF = process.env.PUBLIC_URL + '/download/David-A-George-Resume.pdf';
 
-	React.useEffect(() => {
+	function handleWindowSize() {
+		const windowWidth = window.innerWidth;
+		setScreenBelowSm(windowWidth < 576);
+	}
+
+	useEffect(() => {
+		handleWindowSize();
+		window.addEventListener('resize', handleWindowSize, { passive: true });
+		return () => window.removeEventListener('resize', handleWindowSize);
+	});
+
+	useEffect(() => {
 		getDistance();
 	});
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setRootElement(document.getElementById('app'));
 	}, []);
 
@@ -37,7 +45,7 @@ const Nav = () => {
 		}
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (rootElement) {
 			rootElement.addEventListener('scroll', getDistance, { passive: true });
 			return () => rootElement.removeEventListener('scroll', getDistance);

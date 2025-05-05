@@ -1,16 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
+import HeadshotImg from '../img/david-a-george-design-headshot.png';
 
 
 interface HeroSectionProps {
   wrapperClass?: string,
 }
 
-const headshotImg = require('../img/david-a-george-design-headshot.png');
 
-const HeroSection = (props: HeroSectionProps) => {
+const HeroSection = ({
+	wrapperClass
+}: HeroSectionProps) => {
 	return (
-		<div className={classNames(props.wrapperClass && props.wrapperClass, 'hero-section d-flex flex-wrap align-items-center w-100')}>
+		<div className={classNames(wrapperClass && wrapperClass, 'hero-section d-flex flex-wrap align-items-center w-100')}>
 			<div className="col-12 col-md-5 col-lg-8 pr-0 pr-lg-4">
 				<h2 className="hero-section__headline text-gradient text-gradient--blue fw-bold lh-sm mb-4">
 					Hi, I&apos;m David:
@@ -28,7 +30,7 @@ const HeroSection = (props: HeroSectionProps) => {
 			</div>
 			<div className="col-12 col-md-7 col-lg-4 d-flex justify-content-center mt-4 mt-lg-0">
 				<div className="hero-section__headshot-wrapper px-4 px-md-3 mt-5 mt-sm-4 mt-lg-0">
-					<img src={headshotImg} className="img-fluid" alt="David A George - product designer headshot" />
+					<img src={HeadshotImg} className="img-fluid" alt="David A George - product designer headshot" />
 				</div>
 			</div>
 		</div>

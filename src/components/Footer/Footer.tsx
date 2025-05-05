@@ -34,7 +34,7 @@ const Footer = () => {
 			<div className="container-lg d-flex align-items-center px-0 pt-5 pb-2">
 				<div className="w-100 d-flex justify-content-start">
 					<p className="small mb-0">
-						&copy;2022 David A. George -&nbsp;
+						&copy;2025 David A. George -&nbsp;
 						<span className="whitespace-nowrap">Designer &amp; Builder &lt;/&gt;</span>
 						&nbsp; &nbsp;
 						<small className="whitespace-nowrap">v{process.env.REACT_APP_VERSION}</small>
