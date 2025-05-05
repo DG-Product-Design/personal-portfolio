@@ -15,9 +15,9 @@ const HeroSection = (props: HeroSectionProps) => {
 				<h2 className="hero-section__headline text-gradient text-gradient--blue fw-bold lh-sm mb-4">
 					Hi, I&apos;m David:
 					<br />
-					A product designer
+					A front-end/design engineer
 					<br />
-					&amp; developer
+					&amp; product designer
 				</h2>
 				<h4 className="max-w-xs lh-base mb-5 px-0">
 					I help companies design and build intuitive digital products with a profit-driven approach.
