@@ -1,11 +1,11 @@
 {
-  "name": "David A. George - Designer and Developer Portfolio",
+  "name": "David A. George - Engineer & Designer Portfolio",
   "short_name": "David A. George",
-  "description": "Personal portfolio for David A. George, displaying UX design, UI design, and product design work.",
+  "description": "Personal portfolio for David A. George, displaying front-end engineering, design engineering, UX design, UI design, and product design work.",
   "start_url": ".",
   "display": "fullscreen",
   "theme_color": "#0393ff",
-  "categories": ["ux design", "ui design", "product design", "portfolio", "david a george"],
+  "categories": ["front-end engineering", "design engineering", "ux design", "ui design", "product design", "portfolio", "david a george"],
   "background_color": "#6BA6E8",
   "icons": [
     { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },

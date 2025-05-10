@@ -1,18 +1,14 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import smoothscroll from 'smoothscroll-polyfill';
-import Nav from './components/Nav/Nav';
-import HomePage from './pages/Homepage/HomePage';
-import Footer from './components/Footer/Footer';
+import Nav from './components/Nav';
+import HomePage from './pages/HomePage';
+import Footer from './components/Footer';
 import Error404Page from './pages/404';
-
-
-import './App.scss';
 
 function App() {
 	smoothscroll.polyfill();
 	return (
-		<div id="app" className="app-wrapper">
+		<div id="app" className="w-full h-screen overflow-y-auto overflow-x-hidden relative">
 			<Nav />
 			<Routes>
 				<Route path="/" element={<HomePage />} />

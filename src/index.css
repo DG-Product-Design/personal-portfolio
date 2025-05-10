@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme static {
+  --font-sans: 'Sora', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-white: #FFFFFF;
+  --color-blue-100: #E0EFFF;
+  --color-blue-200: #A3CEFF;
+  --color-blue-300: #6BA6E8;
+  --color-blue-400: #64ADFF;
+  --color-blue-500: #0393ff;
+  --color-blue-600: #0082f3;
+  --color-blue-800: #002f70;
+  --color-green-200: #c2fbe6;
+  --color-green-300: #75fac8;
+  --color-green-400: #4eedb1;
+  --color-apricot: #FFD6BA;
+  --color-rose-300: #F67984;
+  --color-rose-500: #F45B69;
+  --color-yellow-300: #FFB347;
+  --color-yellow-500: #FF9F1C;
+  --color-nickel-300: #818980;
+  --color-nickel-500: #6C756B;
+  --color-purple-300: #8F56C8;
+  --color-purple-400: #8546C3;
+  --color-purple-500: #7A3CB9;
+}
+
+/* Scaffolding for future DaisyUI themes */
+@plugin "daisyui" {
+  themes: false;
+}
+@plugin "daisyui/theme" {
+  name: "light-theme";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Primary colors (blue theme) */
+  --color-primary: #0393ff; /* --color-blue-500 */
+  --color-primary-content: #FFFFFF; /* --color-white */
+  --color-primary-focus: #0082f3; /* --color-blue-600 */
+  
+  /* Secondary colors (green theme) */
+  --color-secondary: #4eedb1; /* --color-green-400 */
+  --color-secondary-content: #002f70; /* --color-blue-800 */
+  --color-secondary-focus: #75fac8; /* --color-green-300 */
+  
+  /* Accent colors (yellow theme) */
+  --color-accent: #FF9F1C; /* --color-yellow-500 */
+  --color-accent-content: #FFFFFF; /* --color-white */
+  --color-accent-focus: #FFB347; /* --color-yellow-300 */
+  
+  /* Neutral colors */
+  --color-neutral: #6C756B; /* --color-nickel-500 */
+  --color-neutral-content: #FFFFFF; /* --color-white */
+  --color-neutral-focus: #818980; /* --color-nickel-300 */
+  
+  /* Base colors */
+  --color-base-100: #FFFFFF; /* --color-white */
+  --color-base-200: #E0EFFF; /* --color-blue-100 */
+  --color-base-300: #A3CEFF; /* --color-blue-200 */
+  --color-base-content: #002f70; /* --color-blue-800 */
+  
+  /* State colors */
+  --color-info: #6BA6E8; /* --color-blue-300 */
+  --color-info-content: #FFFFFF; /* --color-white */
+  --color-success: #75fac8; /* --color-green-300 */
+  --color-success-content: #002f70; /* --color-blue-800 */
+  --color-warning: #FFB347; /* --color-yellow-300 */
+  --color-warning-content: #FFFFFF; /* --color-white */
+  --color-error: #F45B69; /* --color-rose-500 */
+  --color-error-content: #ffffff;
+}
+
+html,
+body {
+  font-size: 16px;
+}
