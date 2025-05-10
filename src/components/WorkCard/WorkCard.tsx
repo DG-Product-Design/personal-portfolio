@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import classNames from 'classnames';
 
-import './WorkCard.scss';
+import './WorkCard.css';
 
 interface WorkCardProps {
   color: 'blue' | 'rose' | 'yellow' | 'purple',
@@ -20,7 +20,7 @@ interface WorkCardProps {
   };
   rightAlign?: boolean,
   altImage?: ReactElement,
-  imgAltText?: string,
+  imgAltText: string,
   bannerContent? : ReactElement,
   className?: string,
   imgWrapperClass?: string,
@@ -32,20 +32,18 @@ interface WorkCardProps {
 const Banner = ({
 	bannerContent,
 	rightAlign
-}: { bannerContent: ReactElement, rightAlign?: boolean }) => {
-	return (
-		<div className={classNames(
-			rightAlign && 'right-align',
-			'work-card__banner-wrapper'
-		)}>
-			<div className="work-card__banner py-3">
-				<div className="work-card__banner-content px-4 pb-2">
-					{bannerContent}
-				</div>
+}: { bannerContent: ReactElement, rightAlign?: boolean }) => (
+	<div className={classNames(
+		rightAlign && 'left-auto right-[1rem] sm:right-[3rem] top-[-3px]',
+		'filter-[drop-shadow(0_10px_10px_rgba(82,33,0,0.2))] w-[7rem] sm:w-[10rem] absolute left-[3rem] flex items-center flex-wrap justify-center px-4 sm:px-0'
+	)}>
+		<div className="bg-apricot text-blue-800 text-center py-4" style={{clipPath: 'polygon(100% 0,100% 78%,50% 100%,0 78%,0 0)'}}>
+			<div className="px-4 pb-2">
+				{bannerContent}
 			</div>
 		</div>
-	);
-};
+	</div>
+);
 
 const WorkCard = ({
 	color,
@@ -63,118 +61,80 @@ const WorkCard = ({
 	imgClass,
 	textWrapperClass,
 	logos
-}: WorkCardProps) => {
-	return (
-		<div 
-			className={classNames(
-				className && className,
-				rightAlign && 'right-align',
-				bannerContent && 'portfolio__work-card--with-banner',
-				color === 'blue' && 'bg-gradient-blue--angle',
-				color === 'rose' && 'bg-gradient-rose',
-				color === 'yellow' && 'bg-gradient-yellow',
-				color === 'purple' && 'bg-gradient-purple',
-				'portfolio__work-card d-flex flex-wrap align-items-center overflow-hidden px-3 px-md-5'
-			)}
-		>
-			
-			{bannerContent && (
-				<Banner bannerContent={bannerContent} rightAlign={rightAlign}/>
-			)}
+}: WorkCardProps) => (
+	<div 
+		className={classNames(
+			className && className,
+			rightAlign && 'right-align',
+			bannerContent && 'xl:pt-14',
+			color === 'blue' && 'bg-gradient-blue--angle',
+			color === 'rose' && 'bg-gradient-rose',
+			color === 'yellow' && 'bg-gradient-yellow',
+			color === 'purple' && 'bg-gradient-purple',
+			'relative rounded-2xl text-white flex flex-wrap items-center px-4 sm:px-8 md:px-12 py-12 md:py-20'
+		)}
+	>
+		
+		{bannerContent && (
+			<Banner bannerContent={bannerContent} rightAlign={rightAlign}/>
+		)}
 
-			{rightAlign ? (
-				<>
-					<div className={classNames(imgWrapperClass ? imgWrapperClass : 'work-card__img-wrapper', 'col-12 col-xl-8 pe-0 pe-xl-4')}>
-						{altImage ? (
-							altImage
-						) : (
-							<img src={ img } alt={ imgAltText } className={classNames(imgClass && imgClass, 'work-card__img w-100')} />
-						)}
-					</div>
-					<div 
-						className={classNames(
-							bannerContent && 'mt-xl-5 pt-xl-3 pt-xl-0',
-							textWrapperClass && textWrapperClass,
-							'work-card__text-wrapper col-12 col-xl-4 order-0 order-xl-1 ps-0 ps-xl-4'
-						)}
-					>
-						<h4 className={classNames(bannerContent && 'work-card__headline--shrink-width', 'work-card__headline mt-5 mt-xl-0')}>{ headline }</h4>
-						<div className='work-card__logo-wrapper d-flex justify-center w-100 align-items-center gap-3 rounded-pill my-3 py-2 px-4' style={{maxWidth: 'fit-content'}}>
-							{logos?.map((logo: ReactElement, index: number) => {
-								return (
-									<div key={logo.key + '-' + index} className='work-card__img--tooling-logo'>
-										{ logo }
-									</div>
-								);
-							})}
+		<div className={classNames('flex flex-wrap xl:flex-nowrap items-center gap-8 sm:gap-12', bannerContent && 'items-start mt-0 xl:mt-36')}>
+			{/* Text */}
+			<div 
+				className={classNames(
+					textWrapperClass && textWrapperClass,
+					'w-full xl:w-1/3 order-last',
+					rightAlign ? 'xl:order-last' : 'xl:order-first'
+				)}
+			>
+				<h4 className="w-full text-shadow-[0_0_6px_rgba(0,0,0,0.2)] text-white font-bold text-2xl md:text-4xl mt-5 xl:mt-0">{ headline }</h4>
+				<div className='bg-[rgba(62,62,62,0.18)] flex justify-center w-full items-center gap-3 rounded-full my-4 py-2 px-4 max-w-fit'>
+					{logos?.map((logo: ReactElement, index: number) => (
+						<div key={logo.key + '-' + index} className='work-card__img--tooling-logo'>
+							{ logo }
 						</div>
-						<p className='work-card__body-text max-w-xs mb-0'>{ body }</p>
-						<div className={classNames((button || secondaryButton) && 'mt-5', 'd-flex flex-wrap align-items-center gap-1')}>
-							{ button && (
-								<a href={button.href} rel="noopener noreferrer" target="_blank" className={button.className}>
-									<button className="dg-btn dg-btn--white">
-										{button.text}
-									</button>
-								</a>
-							) }
-							{ secondaryButton && (
-								<a href={secondaryButton.href} rel="noopener noreferrer" target="_blank" className={classNames(secondaryButton.className && secondaryButton.className, 'my-3 my-sm-1')}>
-									<button className="dg-btn dg-btn--white">
-										{secondaryButton.text}
-									</button>
-								</a>
-							) }
-						</div>
+					))}
+				</div>
+				<div className='text-shadow-[0_0_6px_rgba(0,0,0,0.2)] mt-6'>{ body }</div>
+				{(button || secondaryButton) && (
+					<div className="flex flex-wrap items-center gap-3 mt-8">
+						{ button && (
+							<a href={button.href} rel="noopener noreferrer" target="_blank" className={classNames(button.className)}>
+								<button className="ml-1 bg-white text-blue-800 text-sm sm:text-base rounded-2xl px-6 py-4 cursor-pointer outline-white hover:text-blue-600 hover:underline hover:shadow-sm hover:outline-1 hover:outline-offset-2 transition-all duration-150 ease-out">
+									{button.text}
+								</button>
+							</a>
+						) }
+						{ secondaryButton && (
+							<a href={secondaryButton.href} rel="noopener noreferrer" target="_blank" className={classNames(secondaryButton.className)}>
+								<button className="ml-1 bg-white text-blue-800 text-sm sm:text-base rounded-2xl px-6 py-4 cursor-pointer outline-white hover:text-blue-600 hover:underline hover:shadow-sm hover:outline-1 hover:outline-offset-2 transition-all duration-150 ease-out">
+									{secondaryButton.text}
+								</button>
+							</a>
+						) }
 					</div>
-				</>
-			) : (
-				<>
-					<div 
-						className={classNames(
-							bannerContent && 'mt-xl-5 pt-xl-3 pt-xl-0',
-							textWrapperClass && textWrapperClass,
-							'work-card__text-wrapper col-12 col-xl-4 order-1 order-xl-0'
-						)}
-					>
-						<h4 className={classNames(bannerContent && 'work-card__headline--shrink-width', 'work-card__headline mt-5 mt-xl-0')}>{ headline }</h4>
-						<div className='work-card__logo-wrapper d-flex justify-center w-100 align-items-center gap-3 rounded-pill my-3 py-2 px-4' style={{maxWidth: 'fit-content'}}>
-							{logos?.map((logo: ReactElement, index: number) => {
-								return (
-									<div key={logo.key + '-' + index} className='work-card__img--tooling-logo'>
-										{ logo }
-									</div>
-								);
-							})}
-						</div>
-						<p className='work-card__body-text max-w-xs mb-0'>{ body }</p>
-						<div className={classNames((button || secondaryButton) && 'mt-5', 'd-flex flex-wrap align-items-center gap-1')}>
-							{ button && (
-								<a href={button.href} rel="noopener noreferrer" target="_blank">
-									<button className="dg-btn dg-btn--white">
-										{button.text}
-									</button>
-								</a>
-							) }
-							{ secondaryButton && (
-								<a href={secondaryButton.href} rel="noopener noreferrer" target="_blank">
-									<button className="dg-btn dg-btn--white">
-										{secondaryButton.text}
-									</button>
-								</a>
-							) }
-						</div>
-					</div>
-					<div className={classNames(imgWrapperClass ? imgWrapperClass : 'col-12 col-xl-8 ps-0 ps-xl-4', 'work-card__img-wrapper order-0 order-xl-1')}>
-						{altImage ? (
-							altImage
-						) : (
-							<img src={ img } alt="property search application UI" className={classNames(imgClass && imgClass, 'work-card__img w-100')} />
-						)}
-					</div>
-				</>
-			)}
+				) }
+			</div>
+
+			{/* Image */}
+			<div 
+				className={classNames(
+					imgWrapperClass || 'w-full',
+					'xl:w-2/3 order-first',
+					rightAlign ? 'xl:order-first' : 'xl:order-last'
+				)}
+			>
+				{altImage || (
+					<img 
+						src={img} 
+						alt={imgAltText} 
+						className={classNames(imgClass && imgClass, 'rounded-2xl w-full shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]')} 
+					/>
+				)}
+			</div>
 		</div>
-	);
-};
+	</div>
+);
 
 export default WorkCard;

@@ -1,5 +1,4 @@
-import React from 'react';
-import ComboImg from './components/ComboImg/ComboImg';
+import ComboImg from './components/ComboImg';
 import {
 	AdobeSVG,
 	AngularSVG,
@@ -8,7 +7,6 @@ import {
 	BootstrapSVG,
 	FigmaSVG,
 	GcpSVG,
-	GithubSVG,
 	GitlabSVG,
 	HubspotSVG,
 	JavascriptSVG,
@@ -20,30 +18,33 @@ import {
 	SlackSVG,
 	TailwindSVG,
 	TypescriptSVG
-} from './img/svgLogos';
-import HomeSearchImg from './img/homesearch-collage.png';
-import SjcImg from './img/sjc-matching-engine.jpg';
-import LcaDesktop from './img/lca/capabilities-table-wrapper.jpg';
-import LcaMobile from './img/lca/list-view.png';
-import UxUiImg from './img/ux-ui--no-bg.jpg';
-import TopshotImg from './img/topshot.jpg';
-import CustomerIoImg from './img/customerIo.png';
-import StudentImg from './img/manifesto/student.png';
-import TrophyImg from './img/manifesto/trophy.png';
-import ChartImg from './img/manifesto/chart.png';
-import ShapesImg from './img/manifesto/shapes.png';
-import GlobeImg from './img/manifesto/globe.png';
-import PencilRideImg from './img/manifesto/pencil-ride.png';
+} from './assets/svgLogos/svgs';
+import GithubSVG from './assets/svgLogos/GithubSVG';
+import HomeSearchImg from './assets/img/homesearch-collage.png';
+import SjcImg from './assets/img/sjc-matching-engine.jpg';
+import LcaDesktop from './assets/img/lca/capabilities-table-wrapper.jpg';
+import LcaMobile from './assets/img/lca/list-view.png';
+import UxUiImg from './assets/img/ux-ui--no-bg.jpg';
+import TopshotImg from './assets/img/topshot.jpg';
+import CustomerIoImg from './assets/img/customerIo.png';
+import StudentImg from './assets/img/manifesto/student.png';
+import TrophyImg from './assets/img/manifesto/trophy.png';
+import ChartImg from './assets/img/manifesto/chart.png';
+import ShapesImg from './assets/img/manifesto/shapes.png';
+import GlobeImg from './assets/img/manifesto/globe.png';
+import PencilRideImg from './assets/img/manifesto/pencil-ride.png';
+import ComponentLibraryImg from './assets/img/component-library--no-bg.png';
+import LoanAppImg from './assets/img/loan-app-collage--no-bg.png';
 
 export const workCardData = [
 	// PROPERTY SEARCH
 	{
 		body:
 			<>
-				I designed and built a lead-gen tool for prospective Real Estate clients to find homes to purchase and schedule tours. Upon implementation, tour leads increased by over 3x.
+				I designed and built a Zillow and Redfin replacement tool for prospective Real Estate clients to find homes, view photos, and schedule tours. Upon implementation, tour leads increased by over 200%.
 				<br />
 				<br />
-				Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD and Kubernetes clusters. ADA level AA compliant design.
+				Designed in Figma, written in React with Bootstrap and Typescript, then deployed via Azure CI/CD and Kubernetes clusters. ADA level AA compliant design.
 			</>,
 		button: {
 			className: 'text-decoration-none',
@@ -51,21 +52,16 @@ export const workCardData = [
 			text: 'View live site',
 		},
 		color: 'blue' as const,
-		headline:
-			<>
-				Real Estate
-				<br />
-				Property Search
-			</>,
+		headline: "Real Estate Property Search",
 		img: HomeSearchImg,
 		imgAltText: 'Screenshots of lead-gen tool for prospective Real Estate clients.',
 		logos: [
-			<FigmaSVG key='figma' />,
-			<ReactSVG key='react' />,
-			<BootstrapSVG key='bootstrap' />,
-			<TypescriptSVG key='tsx'/>,
-			<AzureSVG key='azure' />,
-			<KubernetesSVG key='k8s' />
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
+			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
+			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" />,
+			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />
 		]
 	},
 	// SJC MATCHING ENGINE
@@ -73,8 +69,8 @@ export const workCardData = [
 		rightAlign: true,
 		bannerContent:
 			<>
-				<i className='banner__icon fas fa-award w-50 fs-1 text-center mb-3' />
-				<p className="lh-sm text-center">CCISDA Innovation Award, 2017</p>
+				<i className='fas fa-award text-2xl md:text-3xl xl:text-5xl text-yellow-500 text-center mb-2 md:mb-4 filter-[drop-shadow(0_0_10px_rgba(255,215,0,0.5))]' />
+				<p className="text-xs md:text-base xl:text-lg leading-[1.25] text-center mb-4">State of California Innovation Award</p>
 			</>,
 		body:
 			<>
@@ -88,50 +84,49 @@ export const workCardData = [
 			href: 'https://www.youtube.com/watch?v=V3bQb4yMH3k',
 			text: 'Watch video by Google',
 		},
+		className: 'xl:mt-32',
 		color: 'rose' as const,
-		headline:
-			<>
-				Weighted Algorithm<br />Matching Engine
-			</>,
+		headline: "Weighted-Algorithm Matching Engine",
 		img: SjcImg,
 		imgAltText: 'Screenshots of weighted Matching Engine.',
 		logos: [
-			<AdobeSVG key='adobe'/>,
-			<AngularSVG key='angular' />,
-			<MaterialSVG key='material' />,
-			<JavascriptSVG key='js' />,
-			<TypescriptSVG key='tsx'/>,
-			<GcpSVG key='gcp' />,
-			<GitlabSVG key='gitlab' />
-		]
+			<img src={AdobeSVG} alt='Adobe logo' key='adobe' className="w-auto h-6" />,
+			<img src={AngularSVG} alt='Angular logo' key='angular' className="w-auto h-6" />,
+			<img src={MaterialSVG} alt='Material logo' key='material' className="w-auto h-6" />,
+			<img src={JavascriptSVG} alt='Javascript logo' key='js' className="w-auto h-6" />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
+			<img src={GcpSVG} alt='GCP logo' key='gcp' className="w-auto h-6" />,
+			<img src={GitlabSVG} alt='Gitlab logo' key='gitlab' className="w-auto h-6" />
+		],
 	},
 	// LOAN APP
 	{
 		altImage:
-			<div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
-				<div className="work-card__loan-app-image--alt" aria-label='Screenshots of Mortgage loan and refinance application.' />
+			<div className="alt-image__wrapper">
+				<img src={LoanAppImg} alt='Loan application' aria-label='Screenshots of Mortgage loan and refinance application.' />
 			</div>
 		,
 		body:
-			<>
-				I redesigned the business&apos; primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design is still actively facilitating loan applications today.
+		<>
+				I redesigned the business's primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design is still actively facilitating loan applications today.
 				<br />
 				<br />
-				Designed in Sketch, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD.
+				Designed in Sketch, written in React with Bootstrap and Typescript, then deployed via Azure CI/CD.
 			</>,
-		className: 'align-items-stretch py-0',
+		className: 'xl:items-stretch py-0',
 		color: 'yellow' as const,
 		headline: 'Fintech Mortgage Loan Application',
-		imgWrapperClass: 'col-12 col-xl',
+		imgAltText: 'Screenshots of Mortgage loan and refinance application.',
+		imgWrapperClass: 'w-auto h-full',
 		logos: [
-			<SketchSVG  key='sketch'/>,
-			<ReactSVG key='react' />,
-			<BootstrapSVG key='bootstrap' />,
-			<TypescriptSVG key='tsx'/>,
-			<AzureSVG key='azure' />,
-			<KubernetesSVG key='k8s' />
+			<img src={SketchSVG} alt='Sketch logo' key='sketch' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
+			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" />,
+			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" />,
+			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />
 		],
-		textWrapperClass: 'work-card__text--padding-top pb-5'
+		textWrapperClass: 'xl:pt-14 pb-12'
 	},
 	// NBA TOPSHOT
 	{
@@ -146,60 +141,61 @@ export const workCardData = [
 			</>,
 		color: 'purple' as const,
 		headline:
-			<>
-				<span className='lh-0'>NBA Top Shot</span>
-				<br  />
-				<span className='fs-5'>with Dapper</span>
-			</>,
+			<span className='leading-normal xl:leading-tight flex xl:flex-wrap gap-2 items-baseline'>
+				<p>NBA Top Shot</p>{' '}
+				<p className='text-lg whitespace-nowrap'>with Dapper</p>
+			</span>,
 		img: TopshotImg,
+		imgAltText: 'Screenshots of NBA Top Shot.',
 		logos: [
-			<img src={CustomerIoImg} alt='customer.io logo' key='customerIo' style={{ height: '1.5rem', width: 'auto' }} />,
-			<HubspotSVG key='hubspot' />,
-			<AppsScriptSVG key='appsScript' />,
-			<SlackSVG key='slack' />,
+			<img src={CustomerIoImg} alt='customer.io logo' key='customerIo' className="w-auto h-6" />,
+			<img src={HubspotSVG} alt='Hubspot logo' key='hubspot' className="w-auto h-6" />,
+			<img src={AppsScriptSVG} alt='Google Apps Script logo' key='appsScript' className="w-auto h-6" />,
+			<img src={SlackSVG} alt='Slack logo' key='slack' className="w-auto h-6" />,
 		]
 	},
 	// COMPONENT LIBRARY
 	{
 		altImage:
-			<div className="work-card__loan-app-image-wrapper--alt d-flex align-items-stretch h-100">
-				<div className="work-card__component-library-image" aria-label='Screenshots of component library.' />
+			<div className="alt-image__wrapper">
+				<img src={ComponentLibraryImg} alt='Component library' aria-label='Screenshots of component library.' />
 			</div>,
 		body:
 			<>
-				A UI component library that utilizes Storybook for component documentation and testing. Components are designed in Figma, built in React using Typescript and Tailwind, then published as a public NPM package for distribution and released to Github. 
-				<br  />
-				<br  />
-				I&apos;ve built similar (but larger) component libraries to this one, which are currently in use distributing design systems across various application ecosystems, including websites, apps, and digital tools.
+				A UI component library that utilizes Storybook for component documentation and testing. Components are designed in Figma, built in React using Typescript and Tailwind, then published as a public NPM package for distribution and released to Github.
+				<br />
+				<br />
+				I've built similar (but larger) component libraries to this one, which are currently in use distributing design systems across various application ecosystems, including websites, apps, and digital tools.
 			</>,
 		button: {
 			className: 'no-underline',
 			href: 'https://github.com/DG-Product-Design/component-library',
 			text: 'View project on Github',
 		},
-		className: 'align-items-stretch py-0',
+		className: 'xl:items-stretch py-0',
 		color: 'blue' as const,
 		headline:
 			<>
 				<span className='lh-0'>UI Component Library</span>
 				<br  />
-				<span className='fs-5'>React + Tailwind + Storybook + NPM</span>
+				<span className='text-xl'>React + Tailwind + Storybook + NPM</span>
 			</>,
-		imgWrapperClass: 'col-12 col-xl ps-0 ps-xl-4',
+		imgAltText: 'Screenshots of UI component library.',
+		imgWrapperClass: 'w-auto h-full',
 		logos: [
-			<FigmaSVG key='figma' />,
-			<ReactSVG key='react' />,
-			<TailwindSVG key='tw' />,
-			<TypescriptSVG key='tsx'/>,
-			<NpmSVG key='npm' />,
-			<GithubSVG key='github' />
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
+			<img src={TailwindSVG} alt='Tailwind logo' key='tw' className="w-auto h-6" />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" />,
+			<img src={NpmSVG} alt='NPM logo' key='npm' className="w-auto h-6" />,
+			<GithubSVG key='github' className="w-auto h-6" />
 		],
 		secondaryButton: {
 			className: 'no-underline',
 			href: 'https://www.npmjs.com/package/@j33p1n/component-library',
 			text: 'View NPM package',
 		},
-		textWrapperClass: 'work-card__text--padding-top pb-5'
+		textWrapperClass: 'xl:pt-14 pb-12'
 	},
 	// ASSIGNER APP
 	{
@@ -216,41 +212,43 @@ export const workCardData = [
 				I designed an internal management tool to automatically match clients with consultants based on geolocation, skills and qualifications, and availability. Upon implementation, each manager in the program successfully saved over 30 min per day, or 125 hours per year.
 				<br />
 				<br />
-				Designed in Figma, written in React with Bootstrap and Typescript, then deployed on Azure with CI/CD.
+				Designed in Figma, written in React with Bootstrap and Typescript, then deployed via Azure CI/CD.
 			</>,
-		className: 'layout--alt-left',
 		color: 'rose' as const,
 		headline: 'Client Assigner Management Tool',
+		imgAltText: 'Screenshots of client assigner management tool.',
 		logos: [
-			<FigmaSVG key='figma' />,
-			<ReactSVG key='react' />,
-			<BootstrapSVG key='bootstrap' />,
-			<TypescriptSVG key='tsx'/>,
-			<AzureSVG key='azure' />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
+			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" />,
+			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" />,
 		]
 	},
 	// UX/UI DESIGN
 	{
 		body:
 			<>
-				From style guides and wireframes to production-ready designs, I have years of experience building and working within pre-existing design systems. My product designs are typically initiated in Figma or Sketch and iterated upon until they&apos;re ready for interactive feedback (big believer in naming layers!).
-				<br  />
-				<br  />
-				Depending on the client needs, the protyping is then done within Figma/Sketch or on the web with HTML, CSS, and minimal Javascript.
+				<p className='mb-4'>
+					From style guides and wireframes to production-ready designs, I have years of experience both building proprietary design systems and working within pre-existing design systems. My product designs are typically initiated in Figma or Sketch and iterated upon until they're ready for interactive feedback (big believer in naming layers!).
+				</p>
+				<p>
+					Depending on the client needs, the prototyping is then done within Figma/Sketch or on the web with HTML, CSS, and minimal Javascript.
+				</p>
 			</>,
 		color: 'yellow' as const,
 		headline:
 			<>
 				<span className='lh-0'>UX &amp; UI Design</span>
 				<br  />
-				<span className='fs-5'>Figma / Sketch / XD</span>
+				<span className='text-xl'>Figma / Sketch / XD</span>
 			</>,
 		img: UxUiImg,
 		imgAltText: 'Screenshots of design work in Figma and Sketch.',
 		logos: [
-			<FigmaSVG key='figma' />,
-			<SketchSVG  key='sketch' />,
-			<AdobeSVG key='adobe' />
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={SketchSVG} alt='Sketch logo' key='sketch' className="w-auto h-6" />,
+			<img src={AdobeSVG} alt='Adobe logo' key='adobe' className="w-auto h-6" />
 		]
 	}
 ];
@@ -278,7 +276,7 @@ export const manifestoData = [
 		title: 'Simple is sophisticated',
 		body:
 			<>
-				<em>&quot;I apologize for the length of this letter, for I lacked the time to make it shorter.&quot;</em>&nbsp; Truly one of my favorite quotes. The simplification process is often more difficult than maintaining complexity. But it&apos;s worth it - our users, clients, and teammates will thank us.
+				<em>"I apologize for the length of this letter, for I lacked the time to make it shorter."</em> Truly one of my favorite quotes. The simplification process is often more difficult than maintaining complexity. But it's worth it - our users, clients, and teammates will thank us.
 			</>
 	},
 	{
@@ -291,12 +289,12 @@ export const manifestoData = [
 		img: ChartImg,
 		imgAlt: '3D pie chart',
 		title: 'Do your (market) research',
-		body: 'Successful products solve a problem or provide an experience effectively and efficiently - for the user and the business. Start by understanding our (or our client&apos;s) business model then seek to understand its users. This ensures that products aren&apos;t simply beautiful, but are usable and profitable at the core.'
+		body: "Successful products solve a problem or provide an experience effectively and efficiently - for the user and the business. Start by understanding our (or our client's) business model then seek to understand its users. This ensures that products aren't simply beautiful, but are usable and profitable at the core."
 	},
 	{
 		img: PencilRideImg,
 		imgAlt: '3D woman riding pencil',
 		title: 'Trust more than yourself',
-		body: 'Own our work, but be open to feedback. And for the sake of our own mental health, don&apos;t take it personally. I&apos;m continually humbled by user behavior - expect the unexpected. Trust the user-testing process and remember, going alone might be fast, but going together is what lasts.'
+		body: "Own our work, but be open to feedback. And for the sake of our own mental health, don't take it personally. I'm continually humbled by user behavior - expect the unexpected. Trust the user-testing process and remember, going alone might be fast, but going together is what lasts."
 	}
 ]

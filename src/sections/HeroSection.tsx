@@ -1,40 +1,30 @@
-import React from 'react';
-import classNames from 'classnames';
-import HeadshotImg from '../img/david-a-george-design-headshot.png';
+import HeadshotImg from '../assets/img/david-a-george-design-headshot.png';
 
-
-interface HeroSectionProps {
-  wrapperClass?: string,
-}
-
-
-const HeroSection = ({
-	wrapperClass
-}: HeroSectionProps) => {
-	return (
-		<div className={classNames(wrapperClass && wrapperClass, 'hero-section d-flex flex-wrap align-items-center w-100')}>
-			<div className="col-12 col-md-5 col-lg-8 pr-0 pr-lg-4">
-				<h2 className="hero-section__headline text-gradient text-gradient--blue fw-bold lh-sm mb-4">
-					Hi, I&apos;m David:
-					<br />
-					A front-end/design engineer
-					<br />
-					&amp; product designer
-				</h2>
-				<h4 className="max-w-xs lh-base mb-5 px-0">
-					I help companies design and build intuitive digital products with a profit-driven approach.
-				</h4>
-				<a href="mailto:dav.a.george@gmail.com">
-					<button className="dg-btn dg-btn--white bg-gradient-green-200 px-4 py-3">Let&apos;s chat</button>
-				</a>
-			</div>
-			<div className="col-12 col-md-7 col-lg-4 d-flex justify-content-center mt-4 mt-lg-0">
-				<div className="hero-section__headshot-wrapper px-4 px-md-3 mt-5 mt-sm-4 mt-lg-0">
-					<img src={HeadshotImg} className="img-fluid" alt="David A George - product designer headshot" />
-				</div>
+const HeroSection = () => (
+	<div className="flex flex-wrap items-center justify-between w-full">
+		<div className="gap-0 lg:gap-4">
+			<h2 className="text-transparent bg-linear-90 from-blue-200 to-blue-300 bg-clip-text text-4xl md:text-5xl leading-snug sm:leading-tight font-bold mb-6">
+				Hi, I&apos;m David:
+				<br />
+				A front-end developer,
+				<br />
+				design engineer,
+				<br />
+				&amp; product designer
+			</h2>
+			<h4 className="text-2xl max-w-xl leading-snug mb-12 px-0">
+				I help companies design and build intuitive digital products with a profit-driven approach.
+			</h4>
+			<a href="mailto:dav.a.george@gmail.com">
+				<button className="bg-linear-90 from-green-200 to-green-300 rounded-2xl hover:shadow hover:underline transition-shadow duration-150 ease-linear cursor-pointer px-6 py-4">Let&apos;s chat</button>
+			</a>
+		</div>
+		<div className="flex justify-center w-full md:w-auto mx-auto mt-4 lg:mt-0">
+			<div className="px-6 mt-5 sm:mt-4 lg:mt-0 max-w-[22rem]">
+				<img src={HeadshotImg} className="h-auto max-w-full" alt="David A George - product designer headshot" />
 			</div>
 		</div>
-	);
-};
+	</div>
+);
 
 export default HeroSection;

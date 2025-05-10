@@ -1,16 +1,15 @@
-import React from 'react';
 import WorkCard from '../components/WorkCard/WorkCard';
 import { workCardData } from '../appData';
 
-const WorkSection = () => {
-	return (
-		<>
-			<h4 id="work" className="homepage__section-header w-100 fs-2 mb-4">Work</h4>
+const WorkSection = () => (
+	<div>
+		<h4 id="work" className="w-100 text-3xl mb-6">Work</h4>
+		<div className="flex flex-col gap-24">
 			{workCardData.map((card, index) => (
 				<WorkCard key={index} {...card} />
 			))}
-		</>
-	);
-};
+		</div>
+	</div>
+);
 
 export default WorkSection;

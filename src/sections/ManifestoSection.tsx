@@ -1,24 +1,21 @@
-import React from 'react';
-import Manifesto from '../components/Manifesto/Manifesto';
+import Manifesto from '../components/Manifesto';
 import { manifestoData } from '../appData';
 
-const ManifestoSection = () => {
-	return (
-		<>
-			<h4 id="manifesto" className="homepage__section-header w-100 fs-2 mb-4">Manifesto</h4>
-			<div className="homepage__manifesto-section row w-100">
-				{manifestoData.map((manifesto, index) => (
-					<Manifesto
-						key={index}
-						img={manifesto.img}
-						imgAlt={manifesto.imgAlt}
-						title={manifesto.title}
-						body={manifesto.body}
-					/>
-				))}
-			</div>
-		</>
-	);
-};
+const ManifestoSection = () => (
+	<div>
+		<h4 id="manifesto" className="text-2xl mb-4 w-full">Manifesto</h4>
+		<div className="w-full gap-x-8 gap-y-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+			{manifestoData.map((item, index) => (
+				<Manifesto
+					key={index}
+					img={item.img}
+					imgAlt={item.imgAlt}
+					title={item.title}
+					body={item.body}
+				/>
+			))}
+		</div>
+	</div>
+);
 
 export default ManifestoSection;
