@@ -1,50 +1,79 @@
-# About this project:
-This is my personal portfolio website, built from the ground-up with React, Typescript, and Bootstrap 5. It's published to https://davidageorge.me via Github Pages CI/CD. Thanks for looking!
+# Personal Portfolio Website
 
+This is my personal portfolio website, built from the ground-up with Vite, React, TypeScript, and Tailwind CSS v4. It's published to [davidageorge.me](https://davidageorge.me) via GitHub Pages CI/CD.
 
-# Getting Started with Create React App
+## Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Modern, responsive design
+- Project showcase
+- Skills and experience sections
+- Contact information
+- Built with accessibility in mind
+
+## Technologies
+
+- **Frontend**: React 19, TypeScript
+- **Styling**: Tailwind CSS v4, DaisyUI
+- **Build Tool**: Vite
+- **Testing**: Vitest
+- **Deployment**: GitHub Pages
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version specified in `.nvmrc`)
+- Yarn package manager
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/personal-portfolio.git
+   cd personal-portfolio
+   ```
+
+2. Install dependencies
+   ```bash
+   yarn install
+   ```
+
+3. Start the development server
+   ```bash
+   yarn start
+   ```
+
+4. Open [http://localhost:5173](http://localhost:5173) to view it in the browser
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `yarn start` - Starts the development server
+- `yarn build` - Builds the app for production
+- `yarn preview` - Locally preview the production build
+- `yarn test` - Run tests
+- `yarn test:coverage` - Run tests with coverage report
+- `yarn deploy` - Deploy to GitHub Pages
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `/src` - Source code
+  - `/assets` - Static assets (images, etc.)
+  - `/components` - Reusable React components
+  - `/pages` - Page components
+  - `/sections` - Page section components
+  - `appData.tsx` - Portfolio content
+  - `App.tsx` - Main application component
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Deployment
 
-### `npm test`
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## License
 
-### `npm run build`
+MIT
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Acknowledgments
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Thanks for visiting my portfolio repository!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
