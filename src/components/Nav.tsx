@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import classNames from 'classnames';
-import GithubSVG from '../assets/svgLogos/GithubSVG';
+import GithubSVG from '../assets/logos/GithubSVG';
 
 function scrollIntoView(id: string) {
 	const yOffset = -78;
@@ -9,16 +9,6 @@ function scrollIntoView(id: string) {
 	const y = target ? target.getBoundingClientRect().top + window.pageYOffset + yOffset : 72;
 	scrollContainer?.scrollTo({ top: y, behavior: 'smooth' });
 }
-
-// const taglineCSS = {
-// 	backgroundImage: 'var(--color-gradient-blue-200)',
-// 	backgroundClip: 'text',
-// 	color: 'transparent',
-
-// 	"&:hover": {
-// 		backgroundImage: 'var(--color-gradient-green-200)',
-// 	}
-// }
 
 const Nav = () => {
 	const [rootElement, setRootElement] = useState<HTMLElement | null>();

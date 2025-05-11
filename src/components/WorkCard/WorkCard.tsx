@@ -91,7 +91,7 @@ const WorkCard = ({
 				)}
 			>
 				<h4 className="w-full text-shadow-[0_0_6px_rgba(0,0,0,0.2)] text-white font-bold text-2xl md:text-4xl mt-5 xl:mt-0">{ headline }</h4>
-				<div className='bg-[rgba(62,62,62,0.18)] flex justify-center w-full items-center gap-3 rounded-full my-4 py-2 px-4 max-w-fit'>
+				<div className='bg-[rgba(62,62,62,0.38)] flex justify-center w-full items-center gap-3 rounded-full my-4 py-2 px-4 max-w-fit'>
 					{logos?.map((logo: ReactElement, index: number) => (
 						<div key={logo.key + '-' + index} className='work-card__img--tooling-logo'>
 							{ logo }

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
-import { TailwindAltSVG, ViteSVG } from '../assets/svgLogos/svgs';
-import LinkedinSVG from '../assets/svgLogos/LinkedinSVG';
+import { TailwindAltSVG, ViteSVG } from '../assets/logos/svgs';
+import LinkedinSVG from '../assets/logos/LinkedinSVG';
 
 const SocialButton = ({
 	href,

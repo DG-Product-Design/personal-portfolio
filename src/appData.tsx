@@ -23,15 +23,15 @@ import {
 	TailwindSVG,
 	TypescriptSVG,
 	ViteSVG
-} from './assets/svgLogos/svgs';
-import GithubSVG from './assets/svgLogos/GithubSVG';
+} from './assets/logos/svgs';
+import GithubSVG from './assets/logos/GithubSVG';
 import HomeSearchImg from './assets/img/homesearch-collage.png';
 import SjcImg from './assets/img/sjc-matching-engine.jpg';
 import LcaDesktop from './assets/img/lca/capabilities-table-wrapper.jpg';
 import LcaMobile from './assets/img/lca/list-view.png';
 import UxUiImg from './assets/img/ux-ui--no-bg.jpg';
 import TopshotImg from './assets/img/topshot.jpg';
-import CustomerIoImg from './assets/img/customerIo.png';
+import CustomerIoImg from './assets/logos/customerIo.png';
 import StudentImg from './assets/img/manifesto/student.png';
 import TrophyImg from './assets/img/manifesto/trophy.png';
 import ChartImg from './assets/img/manifesto/chart.png';
@@ -141,7 +141,7 @@ export const workCardData = [
 		,
 		body:
 		<>
-				I redesigned the business's primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design is still actively facilitating loan applications today.
+				I redesigned the business's primary revenue source - the Loan Application. Grew loan volume 500% to $1.2B and grew NPS 2+ points. This design is still actively facilitating loan applications today.
 				<br />
 				<br />
 				Designed in Figma and Sketch, written in React with Bootstrap and Typescript with Storybook for documentation, then deployed via Azure CI/CD.
