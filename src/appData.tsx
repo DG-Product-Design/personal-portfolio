@@ -59,15 +59,15 @@ export const workCardData = [
 		img: FringeMarketplaceImg,
 		imgAltText: 'Screenshots of Fringe Marketplace.',
 		logos: [
-			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
-			<img src={ViteSVG} alt='Vite logo' key='vite' className="w-auto h-6" />,
-			<img src={FramerMotionSVG} alt='Framer Motion logo' key='framer' className="w-auto h-6" />,
-			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
-			<img src={StyledComponentsSVG} alt='Styled Components logo' key='styled' className="w-auto h-6" />,
-			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" width={24} height={24} />,
+			<img src={ViteSVG} alt='Vite logo' key='vite' className="w-auto h-6" width={24} height={24} />,
+			<img src={FramerMotionSVG} alt='Framer Motion logo' key='framer' className="w-auto h-6" width={24} height={24} />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" width={24} height={24} />,
+			<img src={StyledComponentsSVG} alt='Styled Components logo' key='styled' className="w-auto h-6" width={24} height={24} />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" width={24} height={24} />,
 			<GithubSVG key='github' className="w-auto h-6" />,
-			<img src={NetlifySVG} alt='Netlify logo' key='netlify' className="w-auto h-6" />,
-			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={NetlifySVG} alt='Netlify logo' key='netlify' className="w-auto h-6" width={24} height={24} />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" width={24} height={24} />,
 		]
 	},
 	// PROPERTY SEARCH
@@ -89,13 +89,13 @@ export const workCardData = [
 		img: HomeSearchImg,
 		imgAltText: 'Screenshots of lead-gen tool for prospective Real Estate clients.',
 		logos: [
-			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
-			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" />,
-			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
-			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
-			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" />,
-			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />,
-			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" width={24} height={24} />,
+			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" width={24} height={24} />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" width={24} height={24} />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" width={24} height={24} />,
+			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" width={24} height={24} />,
+			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" width={24} height={24} />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" width={24} height={24} />,
 		]
 	},
 	// SJC MATCHING ENGINE
@@ -123,22 +123,28 @@ export const workCardData = [
 		img: SjcImg,
 		imgAltText: 'Screenshots of weighted Matching Engine.',
 		logos: [
-			<img src={AdobeSVG} alt='Adobe logo' key='adobe' className="w-auto h-6" />,
-			<img src={AngularSVG} alt='Angular logo' key='angular' className="w-auto h-6" />,
-			<img src={MaterialSVG} alt='Material logo' key='material' className="w-auto h-6" />,
-			<img src={JavascriptSVG} alt='Javascript logo' key='js' className="w-auto h-6" />,
-			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
-			<img src={GcpSVG} alt='GCP logo' key='gcp' className="w-auto h-6" />,
-			<img src={GitlabSVG} alt='Gitlab logo' key='gitlab' className="w-auto h-6" />
+			<img src={AdobeSVG} alt='Adobe logo' key='adobe' className="w-auto h-6" width={24} height={24} />,
+			<img src={AngularSVG} alt='Angular logo' key='angular' className="w-auto h-6" width={24} height={24} />,
+			<img src={MaterialSVG} alt='Material logo' key='material' className="w-auto h-6" width={24} height={24} />,
+			<img src={JavascriptSVG} alt='Javascript logo' key='js' className="w-auto h-6" width={24} height={24} />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" width={24} height={24} />,
+			<img src={GcpSVG} alt='GCP logo' key='gcp' className="w-auto h-6" width={24} height={24} />,
+			<img src={GitlabSVG} alt='Gitlab logo' key='gitlab' className="w-auto h-6" width={24} height={24} />
 		],
 	},
 	// LOAN APP
 	{
 		altImage:
 			<div className="alt-image__wrapper">
-				<img src={LoanAppImg} alt='Loan application' aria-label='Screenshots of Mortgage loan and refinance application.' />
-			</div>
-		,
+				<img 
+					src={LoanAppImg} 
+					alt='Loan application' 
+					aria-label='Screenshots of Mortgage loan and refinance application.' 
+					width={1200}
+					height={900}
+					loading="lazy"
+				/>
+			</div>,
 		body:
 		<>
 				I redesigned the business's primary revenue source - the Loan Application. Grew loan volume 500% to $1.2B and grew NPS 2+ points. This design is still actively facilitating loan applications today.
@@ -183,17 +189,24 @@ export const workCardData = [
 		img: TopshotImg,
 		imgAltText: 'Screenshots of NBA Top Shot.',
 		logos: [
-			<img src={CustomerIoImg} alt='customer.io logo' key='customerIo' className="w-auto h-6" />,
-			<img src={HubspotSVG} alt='Hubspot logo' key='hubspot' className="w-auto h-6" />,
-			<img src={AppsScriptSVG} alt='Google Apps Script logo' key='appsScript' className="w-auto h-6" />,
-			<img src={SlackSVG} alt='Slack logo' key='slack' className="w-auto h-6" />,
+			<img src={CustomerIoImg} alt='customer.io logo' key='customerIo' className="w-auto h-6" width={24} height={24} />,
+			<img src={HubspotSVG} alt='Hubspot logo' key='hubspot' className="w-auto h-6" width={24} height={24} />,
+			<img src={AppsScriptSVG} alt='Google Apps Script logo' key='appsScript' className="w-auto h-6" width={24} height={24} />,
+			<img src={SlackSVG} alt='Slack logo' key='slack' className="w-auto h-6" width={24} height={24} />,
 		]
 	},
 	// COMPONENT LIBRARY
 	{
 		altImage:
 			<div className="alt-image__wrapper">
-				<img src={ComponentLibraryImg} alt='Component library' aria-label='Screenshots of component library.' />
+				<img 
+					src={ComponentLibraryImg} 
+					alt='Component library' 
+					aria-label='Screenshots of component library.' 
+					width={1200}
+					height={900}
+					loading="lazy"
+				/>
 			</div>,
 		body:
 			<>
@@ -218,13 +231,13 @@ export const workCardData = [
 		imgAltText: 'Screenshots of UI component library.',
 		imgWrapperClass: 'w-auto h-full',
 		logos: [
-			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
-			<img src={TailwindSVG} alt='Tailwind logo' key='tw' className="w-auto h-6" />,
-			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" />,
-			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
-			<img src={NpmSVG} alt='NPM logo' key='npm' className="w-auto h-6" />,
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" width={24} height={24} />,
+			<img src={TailwindSVG} alt='Tailwind logo' key='tw' className="w-auto h-6" width={24} height={24} />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" width={24} height={24} />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" width={24} height={24} />,
+			<img src={NpmSVG} alt='NPM logo' key='npm' className="w-auto h-6" width={24} height={24} />,
 			<GithubSVG key='github' className="w-auto h-6" />,
-			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" width={24} height={24} />,
 		],
 		secondaryButton: {
 			className: 'no-underline',
@@ -282,9 +295,9 @@ export const workCardData = [
 		img: UxUiImg,
 		imgAltText: 'Screenshots of design work in Figma and Sketch.',
 		logos: [
-			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
-			<img src={SketchSVG} alt='Sketch logo' key='sketch' className="w-auto h-6" />,
-			<img src={AdobeSVG} alt='Adobe logo' key='adobe' className="w-auto h-6" />
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" width={24} height={24} />,
+			<img src={SketchSVG} alt='Sketch logo' key='sketch' className="w-auto h-6" width={24} height={24} />,
+			<img src={AdobeSVG} alt='Adobe logo' key='adobe' className="w-auto h-6" width={24} height={24} />
 		]
 	}
 ];

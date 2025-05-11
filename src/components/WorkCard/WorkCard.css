@@ -9,6 +9,8 @@
 
   img {
     @apply xl:absolute w-full xl:h-[calc(100%+10rem)] object-cover object-center;
+    aspect-ratio: 4/3;
+    will-change: transform;
   }
 }
 

@@ -54,7 +54,7 @@ const Nav = () => {
 	return (
 		<nav role="navigation" className={classNames(transparentBg ? 'bg-transparent' : 'bg-white shadow-sm', 'sticky top-0 z-10 transition-all duration-250 ease-out w-full px-2 lg:px-5 py-4')}>
 			<div className="flex w-full max-w-5xl xl:max-w-7xl items-center justify-between mx-auto">
-				<h1 role="link" className="cursor-pointer font-bold transition-colors duration-150 ease-out bg-clip-text text-transparent bg-linear-90 from-blue-200 to-blue-300 text-2xl mb-0 focus:from-green-200 focus:to-green-300 hover:from-green-200 hover:to-green-300" onClick={() => scrollIntoView('homepage')} tabIndex={0}>
+				<h1 role="link" className="cursor-pointer font-bold transition-colors duration-150 ease-out bg-clip-text text-transparent bg-linear-90 from-blue-200 to-blue-300 text-2xl mb-0 focus:from-green-200 focus:to-green-300 hover:from-green-200 hover:to-green-300" onClick={() => scrollIntoView('homepage')} tabIndex={0} aria-label="Click to scroll to top of homepage">
 					{screenBelowSm ? 'DG.' : 'David A. George'}
 				</h1>
 				<div className='flex gap-3 items-center'>

@@ -132,6 +132,9 @@ const WorkCard = ({
 						src={img} 
 						alt={imgAltText} 
 						className={classNames(imgClass && imgClass, 'rounded-2xl w-full shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]')} 
+						width={1200}
+						height={800}
+						loading="lazy"
 					/>
 				)}
 			</div>
