@@ -16,9 +16,17 @@ const Manifesto = ({
 	title,
 	body
 }: ManifestoProps) => (
-	<div className="w-full px-4 mb-4 mx-auto">
+	<div className="w-full">
 		<div className="flex max-w-full mb-4">
-			<img src={img} className={classNames(imgClass, 'h-40 w-auto mx-auto')} alt={imgAlt} tabIndex={-1} />
+			<img 
+				src={img} 
+				className={classNames(imgClass, 'h-40 w-auto mx-auto')} 
+				alt={imgAlt} 
+				tabIndex={-1} 
+				width={160} 
+				height={160}
+				loading="lazy"
+			/>
 		</div>
 		<h4 className="text-primary text-xl font-bold mb-3">{title}</h4>
 		<p>{body}</p>

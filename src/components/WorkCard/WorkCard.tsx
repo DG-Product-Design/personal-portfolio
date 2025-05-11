@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './WorkCard.css';
 
 interface WorkCardProps {
-  color: 'blue' | 'rose' | 'yellow' | 'purple',
+  color: 'blue' | 'rose' | 'yellow' | 'purple' | 'green' | 'nickel',
   img?: string,
   headline: ReactElement | string,
   body: string | ReactElement,
@@ -67,10 +67,12 @@ const WorkCard = ({
 			className && className,
 			rightAlign && 'right-align',
 			bannerContent && 'xl:pt-14',
-			color === 'blue' && 'bg-gradient-blue--angle',
+			color === 'blue' && 'bg-gradient-blue',
 			color === 'rose' && 'bg-gradient-rose',
 			color === 'yellow' && 'bg-gradient-yellow',
 			color === 'purple' && 'bg-gradient-purple',
+			color === 'green' && 'bg-gradient-green',
+			color === 'nickel' && 'bg-gradient-nickel',
 			'relative rounded-2xl text-white flex flex-wrap items-center px-4 sm:px-8 md:px-12 py-12 md:py-20'
 		)}
 	>
@@ -89,7 +91,7 @@ const WorkCard = ({
 				)}
 			>
 				<h4 className="w-full text-shadow-[0_0_6px_rgba(0,0,0,0.2)] text-white font-bold text-2xl md:text-4xl mt-5 xl:mt-0">{ headline }</h4>
-				<div className='bg-[rgba(62,62,62,0.18)] flex justify-center w-full items-center gap-3 rounded-full my-4 py-2 px-4 max-w-fit'>
+				<div className='bg-[rgba(62,62,62,0.38)] flex justify-center w-full items-center gap-3 rounded-full my-4 py-2 px-4 max-w-fit'>
 					{logos?.map((logo: ReactElement, index: number) => (
 						<div key={logo.key + '-' + index} className='work-card__img--tooling-logo'>
 							{ logo }
@@ -130,6 +132,9 @@ const WorkCard = ({
 						src={img} 
 						alt={imgAltText} 
 						className={classNames(imgClass && imgClass, 'rounded-2xl w-full shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]')} 
+						width={1200}
+						height={800}
+						loading="lazy"
 					/>
 				)}
 			</div>
