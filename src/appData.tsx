@@ -6,18 +6,23 @@ import {
 	AzureSVG,
 	BootstrapSVG,
 	FigmaSVG,
+	FramerMotionSVG,
 	GcpSVG,
 	GitlabSVG,
 	HubspotSVG,
 	JavascriptSVG,
 	KubernetesSVG,
 	MaterialSVG,
+	NetlifySVG,
 	NpmSVG,
 	ReactSVG,
 	SketchSVG,
 	SlackSVG,
+	StorybookSVG,
+	StyledComponentsSVG,
 	TailwindSVG,
-	TypescriptSVG
+	TypescriptSVG,
+	ViteSVG
 } from './assets/svgLogos/svgs';
 import GithubSVG from './assets/svgLogos/GithubSVG';
 import HomeSearchImg from './assets/img/homesearch-collage.png';
@@ -35,8 +40,36 @@ import GlobeImg from './assets/img/manifesto/globe.png';
 import PencilRideImg from './assets/img/manifesto/pencil-ride.png';
 import ComponentLibraryImg from './assets/img/component-library--no-bg.png';
 import LoanAppImg from './assets/img/loan-app-collage--no-bg.png';
-
+import FringeMarketplaceImg from './assets/img/fringe-marketplace.png';
 export const workCardData = [
+	// Fringe Marketplace
+	{
+		body:
+			<>
+				I led front-end architecture and established design system standards. I architected a comprehensive component library, reducing development time by ~40%, while spearheading platform-wide accessibility improvements, achieving ADA level AA compliance. 92% unit testing coverage was maintained via Jest, React Testing Library, and Vitest. Deployed via Github CI/CD and Netlify.
+				<br />
+				<br />
+				I led the engineering effort to ensure parity between Figma designs and our component library in Storybook, designed and implemented a theming system, and introduced application-wide animations using Framer Motion for React. Performance improvements included enhancing core web vitals, improving Lighthouse scores by 35%, and reducing bundle size by approximately 20%.
+				<br />
+				<br />
+				I successfully managed migrations from JavaScript to TypeScript, Create React App to Vite, and React 16 through versions 17 and 18.
+			</>,
+		color: 'blue' as const,
+		headline: "Fringe Marketplace",
+		img: FringeMarketplaceImg,
+		imgAltText: 'Screenshots of Fringe Marketplace.',
+		logos: [
+			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
+			<img src={ViteSVG} alt='Vite logo' key='vite' className="w-auto h-6" />,
+			<img src={FramerMotionSVG} alt='Framer Motion logo' key='framer' className="w-auto h-6" />,
+			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
+			<img src={StyledComponentsSVG} alt='Styled Components logo' key='styled' className="w-auto h-6" />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
+			<GithubSVG key='github' className="w-auto h-6" />,
+			<img src={NetlifySVG} alt='Netlify logo' key='netlify' className="w-auto h-6" />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+		]
+	},
 	// PROPERTY SEARCH
 	{
 		body:
@@ -51,17 +84,18 @@ export const workCardData = [
 			href: 'https://capcenter.com/homes/',
 			text: 'View live site',
 		},
-		color: 'blue' as const,
+		color: 'nickel' as const,
 		headline: "Real Estate Property Search",
 		img: HomeSearchImg,
 		imgAltText: 'Screenshots of lead-gen tool for prospective Real Estate clients.',
 		logos: [
-			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
 			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
 			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" />,
 			<img src={TypescriptSVG} alt='Typescript logo' key='tsx' className="w-auto h-6" />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
 			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" />,
-			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />
+			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
 		]
 	},
 	// SJC MATCHING ENGINE
@@ -84,7 +118,6 @@ export const workCardData = [
 			href: 'https://www.youtube.com/watch?v=V3bQb4yMH3k',
 			text: 'Watch video by Google',
 		},
-		className: 'xl:mt-32',
 		color: 'rose' as const,
 		headline: "Weighted-Algorithm Matching Engine",
 		img: SjcImg,
@@ -111,7 +144,7 @@ export const workCardData = [
 				I redesigned the business's primary revenue source - the Loan Application. Improved NPS 2+ points and facilitated 500% growth in intake volume. This design is still actively facilitating loan applications today.
 				<br />
 				<br />
-				Designed in Sketch, written in React with Bootstrap and Typescript, then deployed via Azure CI/CD.
+				Designed in Figma and Sketch, written in React with Bootstrap and Typescript with Storybook for documentation, then deployed via Azure CI/CD.
 			</>,
 		className: 'xl:items-stretch py-0',
 		color: 'yellow' as const,
@@ -119,12 +152,14 @@ export const workCardData = [
 		imgAltText: 'Screenshots of Mortgage loan and refinance application.',
 		imgWrapperClass: 'w-auto h-full',
 		logos: [
-			<img src={SketchSVG} alt='Sketch logo' key='sketch' className="w-auto h-6" />,
 			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
 			<img src={BootstrapSVG} alt='Bootstrap logo' key='bootstrap' className="w-auto h-6" />,
 			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
 			<img src={AzureSVG} alt='Azure logo' key='azure' className="w-auto h-6" />,
-			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />
+			<img src={KubernetesSVG} alt='Kubernetes logo' key='k8s' className="w-auto h-6" />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
+			<img src={SketchSVG} alt='Sketch logo' key='sketch' className="w-auto h-6" />,
 		],
 		textWrapperClass: 'xl:pt-14 pb-12'
 	},
@@ -165,7 +200,7 @@ export const workCardData = [
 				A UI component library that utilizes Storybook for component documentation and testing. Components are designed in Figma, built in React using Typescript and Tailwind, then published as a public NPM package for distribution and released to Github.
 				<br />
 				<br />
-				I've built similar (but larger) component libraries to this one, which are currently in use distributing design systems across various application ecosystems, including websites, apps, and digital tools.
+				I've built similar (but larger) component libraries to this one, which are currently in use distributing proprietary design systems across various ecosystems, including websites, apps, and digital tools.
 			</>,
 		button: {
 			className: 'no-underline',
@@ -183,12 +218,13 @@ export const workCardData = [
 		imgAltText: 'Screenshots of UI component library.',
 		imgWrapperClass: 'w-auto h-full',
 		logos: [
-			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
 			<img src={ReactSVG} alt='React logo' key='react' className="w-auto h-6" />,
 			<img src={TailwindSVG} alt='Tailwind logo' key='tw' className="w-auto h-6" />,
 			<img src={TypescriptSVG} alt='Typescript logo' key='typescript' className="w-auto h-6" />,
+			<img src={StorybookSVG} alt='Storybook logo' key='storybook' className="w-auto h-6" />,
 			<img src={NpmSVG} alt='NPM logo' key='npm' className="w-auto h-6" />,
-			<GithubSVG key='github' className="w-auto h-6" />
+			<GithubSVG key='github' className="w-auto h-6" />,
+			<img src={FigmaSVG} alt='Figma logo' key='figma' className="w-auto h-6" />,
 		],
 		secondaryButton: {
 			className: 'no-underline',

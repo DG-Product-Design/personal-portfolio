@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './WorkCard.css';
 
 interface WorkCardProps {
-  color: 'blue' | 'rose' | 'yellow' | 'purple',
+  color: 'blue' | 'rose' | 'yellow' | 'purple' | 'green' | 'nickel',
   img?: string,
   headline: ReactElement | string,
   body: string | ReactElement,
@@ -67,10 +67,12 @@ const WorkCard = ({
 			className && className,
 			rightAlign && 'right-align',
 			bannerContent && 'xl:pt-14',
-			color === 'blue' && 'bg-gradient-blue--angle',
+			color === 'blue' && 'bg-gradient-blue',
 			color === 'rose' && 'bg-gradient-rose',
 			color === 'yellow' && 'bg-gradient-yellow',
 			color === 'purple' && 'bg-gradient-purple',
+			color === 'green' && 'bg-gradient-green',
+			color === 'nickel' && 'bg-gradient-nickel',
 			'relative rounded-2xl text-white flex flex-wrap items-center px-4 sm:px-8 md:px-12 py-12 md:py-20'
 		)}
 	>
