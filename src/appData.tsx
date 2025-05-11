@@ -24,23 +24,23 @@ import {
 	TypescriptSVG,
 	ViteSVG
 } from './assets/logos/svgs';
+import HomeSearchImg from './assets/img/homesearch-collage.webp';
+import SjcImg from './assets/img/sjc-matching-engine.webp';
+import LcaDesktop from './assets/img/lca/capabilities-table-wrapper.webp';
+import LcaMobile from './assets/img/lca/list-view.webp';
+import UxUiImg from './assets/img/ux-ui--no-bg.webp';
+import ComponentLibraryImg from './assets/img/component-library--no-bg.webp';
+import LoanAppImg from './assets/img/loan-app-collage--no-bg.webp';
+import FringeMarketplaceImg from './assets/img/fringe-marketplace.png';
 import GithubSVG from './assets/logos/GithubSVG';
-import HomeSearchImg from './assets/img/homesearch-collage.png';
-import SjcImg from './assets/img/sjc-matching-engine.jpg';
-import LcaDesktop from './assets/img/lca/capabilities-table-wrapper.jpg';
-import LcaMobile from './assets/img/lca/list-view.png';
-import UxUiImg from './assets/img/ux-ui--no-bg.jpg';
 import TopshotImg from './assets/img/topshot.jpg';
 import CustomerIoImg from './assets/logos/customerIo.png';
-import StudentImg from './assets/img/manifesto/student.png';
-import TrophyImg from './assets/img/manifesto/trophy.png';
-import ChartImg from './assets/img/manifesto/chart.png';
-import ShapesImg from './assets/img/manifesto/shapes.png';
-import GlobeImg from './assets/img/manifesto/globe.png';
-import PencilRideImg from './assets/img/manifesto/pencil-ride.png';
-import ComponentLibraryImg from './assets/img/component-library--no-bg.png';
-import LoanAppImg from './assets/img/loan-app-collage--no-bg.png';
-import FringeMarketplaceImg from './assets/img/fringe-marketplace.png';
+import StudentImg from './assets/img/manifesto/student.webp';
+import TrophyImg from './assets/img/manifesto/trophy.webp';
+import ChartImg from './assets/img/manifesto/chart.webp';
+import ShapesImg from './assets/img/manifesto/shapes.webp';
+import GlobeImg from './assets/img/manifesto/globe.webp';
+import PencilRideImg from './assets/img/manifesto/pencil-ride.webp';
 export const workCardData = [
 	// Fringe Marketplace
 	{
