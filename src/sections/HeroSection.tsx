@@ -1,4 +1,4 @@
-import HeadshotImg from '../assets/img/david-a-george-design-headshot.png';
+import HeadshotImg from '../assets/img/david-a-george-design-headshot.webp';
 
 const HeroSection = () => (
 	<div className="flex flex-wrap items-center justify-between w-full">
@@ -21,7 +21,13 @@ const HeroSection = () => (
 		</div>
 		<div className="flex justify-center w-full md:w-auto mx-auto mt-4 lg:mt-0">
 			<div className="px-6 mt-5 sm:mt-4 lg:mt-0 max-w-[22rem]">
-				<img src={HeadshotImg} className="h-auto max-w-full" alt="David A George - product designer headshot" />
+				<img 
+					src={HeadshotImg} 
+					className="h-auto max-w-full" 
+					alt="David A George - product designer headshot" 
+					width={304}
+					height={340}
+				/>
 			</div>
 		</div>
 	</div>
