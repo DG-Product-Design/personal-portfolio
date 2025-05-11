@@ -46,7 +46,7 @@ export const workCardData = [
 	{
 		body:
 			<>
-				I led front-end architecture and established design system standards. I architected a comprehensive component library, reducing development time by ~40%, while spearheading platform-wide accessibility improvements, achieving ADA level AA compliance. 92% unit testing coverage was maintained via Jest, React Testing Library, and Vitest. Deployed via Github CI/CD and Netlify.
+				I led front-end architecture and established design system standards for a mid- to late-stage startup. I architected a comprehensive component library, reducing development time by ~40%, while spearheading platform-wide accessibility improvements, achieving ADA level AA compliance. 92% unit testing coverage was maintained via Jest, React Testing Library, and Vitest. Deployed via Github CI/CD and Netlify.
 				<br />
 				<br />
 				I led the engineering effort to ensure parity between Figma designs and our component library in Storybook, designed and implemented a theming system, and introduced application-wide animations using Framer Motion for React. Performance improvements included enhancing core web vitals, improving Lighthouse scores by 35%, and reducing bundle size by approximately 20%.
