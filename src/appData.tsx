@@ -488,11 +488,11 @@ export const workCardData = [
         ),
         body: (
             <>
-                I designed and built a UI component library that utilizes
-                Storybook for component documentation and testing. Components
-                are designed in Figma, built in React using Typescript and
-                Tailwind, then published as a public NPM package for
-                distribution, and released to Github.
+                I designed and built a UI component library that utilizes a
+                custom Storybook implementation for component documentation and
+                testing. Components are designed in Figma, built in React using
+                Typescript and Tailwind, then published as a public NPM package
+                for distribution, and released to Github.
                 <br />
                 <br />
                 I've built similar (but larger) component libraries to this one,
