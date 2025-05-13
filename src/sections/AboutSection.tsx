@@ -55,11 +55,11 @@ const AboutSection = () => {
                 About
             </motion.h2>
             <motion.div
-                className="mx-auto mb-18 flex w-full items-center justify-center gap-x-12 gap-y-6 md:gap-x-24"
+                className="mx-auto mb-18 flex w-full flex-wrap items-center justify-center gap-x-12 gap-y-6 md:flex-nowrap md:gap-x-24"
                 variants={staggerWrapper}
             >
                 <motion.div
-                    className="flex flex-col gap-2"
+                    className="order-2 flex w-full flex-col gap-2 md:order-1 md:w-auto"
                     variants={staggerWrapper}
                 >
                     <motion.h3
@@ -125,7 +125,7 @@ const AboutSection = () => {
                 </motion.div>
                 <PieWrapper
                     variants={scaleInVariants}
-                    className="pie-wrapper flex flex-col gap-2"
+                    className="pie-wrapper order-1 flex flex-col gap-2 md:order-2"
                     onMouseMove={handleHover}
                     onMouseLeave={resetStyles}
                 >
@@ -137,7 +137,7 @@ const AboutSection = () => {
                     />
                 </PieWrapper>
                 <motion.div
-                    className="flex flex-col gap-2"
+                    className="order-2 flex w-full flex-col gap-2 text-right md:w-auto md:text-left"
                     variants={staggerWrapper}
                 >
                     <motion.h3
@@ -206,13 +206,13 @@ const AboutSection = () => {
                 >
                     With over a decade in the tech trenches, I've been juggling
                     code and creativity since 2012. I'm a frontend developer,
-                    design engineer, and designer with a passion for creating
-                    beautiful, functional, and accessible web applications. With
-                    extensive experience in React, TypeScript, and modern web
-                    technologies, I bring designs to life with attention to
-                    detail and a focus on user experience. I've also dabbled in
-                    the NFT world with NBA Top Shot, helping personalize
-                    experiences for their 2M+ users.
+                    design engineer, and product designer with a passion for
+                    creating beautiful, functional, and accessible web
+                    applications. With extensive experience in React,
+                    TypeScript, and modern web technologies, I bring designs to
+                    life with attention to detail and a focus on user
+                    experience. I've also dabbled in the NFT world with NBA Top
+                    Shot, helping personalize experiences for their 2M+ users.
                 </motion.p>
                 <motion.p
                     className="text-lg"
