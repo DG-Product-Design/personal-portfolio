@@ -43,7 +43,7 @@ const Footer = () => {
             animate={isInView ? 'open' : 'closed'}
         >
             <div className="w-full bg-linear-0 from-blue-100 to-white">
-                <div className="mx-auto flex max-w-5xl items-center px-0 pt-12 pb-2 xl:max-w-7xl">
+                <div className="mx-auto flex max-w-5xl items-center px-2 pt-12 pb-2 lg:px-5 xl:max-w-7xl">
                     <div className="small mb-0 flex w-full items-end justify-between gap-x-4 gap-y-0">
                         <div className="flex flex-wrap gap-y-0">
                             <motion.p variants={staggerChild}>
