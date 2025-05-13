@@ -4,7 +4,6 @@ import Nav from './components/Nav'
 import HomePage from './pages/HomePage'
 import Footer from './components/Footer'
 import Error404Page from './pages/404'
-import { motion } from 'framer-motion'
 
 function App() {
     smoothscroll.polyfill()
