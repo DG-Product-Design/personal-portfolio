@@ -63,7 +63,6 @@ const codeElements = [
     'fixBug(true) // Sets bug to invisible',
 
     // Short bits
-    '=>() => ¯\\_(ツ)_/¯',
     'undefined is not undefined',
     'null && void && emptyInside',
     '!false === true // surprisingly',

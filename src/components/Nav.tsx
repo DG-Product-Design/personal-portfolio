@@ -63,7 +63,7 @@ const Nav = () => {
             role="navigation"
             className={classNames(
                 transparentBg ? 'bg-transparent' : 'bg-white shadow-sm',
-                'sticky top-0 z-10 w-full px-2 py-4 transition-all duration-250 ease-out lg:px-5'
+                'sticky top-0 z-20 w-full px-2 py-4 transition-all duration-250 ease-out lg:px-5'
             )}
             variants={navMotionVariants}
             initial="closed"
