@@ -156,7 +156,7 @@ export const workCardData = [
                 I designed and built a Zillow and Redfin replacement tool for
                 prospective Real Estate clients to find homes, view photos, and
                 schedule tours. Upon implementation, tour leads increased by
-                over 200%.
+                over 200% for the business.
                 <br />
                 <br />
                 Designed in Figma, written in React with Bootstrap and
@@ -488,10 +488,11 @@ export const workCardData = [
         ),
         body: (
             <>
-                A UI component library that utilizes Storybook for component
-                documentation and testing. Components are designed in Figma,
-                built in React using Typescript and Tailwind, then published as
-                a public NPM package for distribution and released to Github.
+                I designed and built a UI component library that utilizes
+                Storybook for component documentation and testing. Components
+                are designed in Figma, built in React using Typescript and
+                Tailwind, then published as a public NPM package for
+                distribution, and released to Github.
                 <br />
                 <br />
                 I've built similar (but larger) component libraries to this one,

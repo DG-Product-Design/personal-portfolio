@@ -28,6 +28,27 @@ export const staggerChild = {
     },
 }
 
+export const scaleInVariants = {
+    closed: {
+        scale: 0.3,
+        opacity: 0,
+        transition: {
+            scale: { duration: 0.3 },
+            opacity: { duration: 0.1 },
+            ease: 'easeOut',
+        },
+    },
+    open: {
+        scale: 1,
+        opacity: 1,
+        transition: {
+            scale: { duration: 0.3 },
+            opacity: { duration: 0.1 },
+            ease: 'easeOut',
+        },
+    },
+}
+
 export const navMotionVariants = {
     closed: {
         y: -50,
@@ -48,6 +69,27 @@ export const navMotionVariants = {
 
 // Section-level cascading animation variants
 export const sectionVariants = {
+    about: {
+        closed: {
+            opacity: 0,
+            y: 30,
+            transition: {
+                duration: 0.4,
+                staggerChildren: 0.05,
+                staggerDirection: -1,
+            },
+        },
+        open: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.4,
+                delay: 0.9,
+                staggerChildren: 0.07,
+                delayChildren: 0.15,
+            },
+        },
+    },
     work: {
         closed: {
             opacity: 0,
@@ -59,7 +101,7 @@ export const sectionVariants = {
             y: 0,
             transition: {
                 duration: 0.4,
-                delay: 0.9,
+                delay: 1.3,
             },
         },
     },
@@ -74,7 +116,7 @@ export const sectionVariants = {
             y: 0,
             transition: {
                 duration: 0.4,
-                delay: 1.3,
+                delay: 1.7,
             },
         },
     },
