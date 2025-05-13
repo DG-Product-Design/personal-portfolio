@@ -192,7 +192,7 @@ const AboutSection = () => {
                         className="text-lg"
                         variants={staggerChild}
                     >
-                        Lottie / Framer
+                        Framer Motion / Lottie
                     </motion.p>
                 </motion.div>
             </motion.div>
@@ -205,7 +205,7 @@ const AboutSection = () => {
                     variants={staggerChild}
                 >
                     With over a decade in the tech trenches, I've been juggling
-                    code and creativity since 2012. I'm a frontend developer,
+                    code and creativity since 2012. I'm a front-end developer,
                     design engineer, and product designer with a passion for
                     creating beautiful, functional, and accessible web
                     applications. With extensive experience in React,

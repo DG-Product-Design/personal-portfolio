@@ -62,8 +62,8 @@ const codeElements = [
     'const motivation = null; // Initialize as empty',
     'fixBug(true) // Sets bug to invisible',
 
-    // Short bits
-    'undefined is not undefined',
+    // Other bits
+    'undefined is not defined',
     'null && void && emptyInside',
     '!false === true // surprisingly',
     '2B || !2B',
