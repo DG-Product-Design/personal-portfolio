@@ -2,6 +2,7 @@ import ManifestoSection from '../sections/ManifestoSection'
 import HeroSection from '../sections/HeroSection'
 import WorkSection from '../sections/WorkSection'
 import BgPattern from '../assets/img/bg-pattern.svg'
+import QuoteSection from '../sections/QuoteSection'
 
 const HomePage = () => (
     <div
@@ -12,6 +13,7 @@ const HomePage = () => (
         <div className="mx-auto flex max-w-5xl flex-col gap-24 xl:max-w-7xl">
             <HeroSection />
             <WorkSection />
+            <QuoteSection />
             <ManifestoSection />
         </div>
     </div>

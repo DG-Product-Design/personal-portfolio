@@ -41,6 +41,12 @@ import ChartImg from './assets/img/manifesto/chart.webp'
 import ShapesImg from './assets/img/manifesto/shapes.webp'
 import GlobeImg from './assets/img/manifesto/globe.webp'
 import PencilRideImg from './assets/img/manifesto/pencil-ride.webp'
+
+import ErinImg from './assets/img/recs/erin.jpg'
+import MelissaImg from './assets/img/recs/melissa.jpg'
+import AndyImg from './assets/img/recs/andy.jpg'
+import ThoImg from './assets/img/recs/tho.jpg'
+
 export const workCardData = [
     // Fringe Marketplace
     {
@@ -688,6 +694,29 @@ export const workCardData = [
                 height={24}
             />,
         ],
+    },
+]
+
+export const quoteData = [
+    {
+        img: ErinImg,
+        name: 'Erin',
+        quote: "David is so passionate and knowledgeable about UI/UX, and he brings so much fun energy to a team! Working with him was a joy - he's collaborative, communicative, and always has insightful contributions to any conversation. He works quickly, efficiently, and with great attention to detail - he's a huge asset to any team!",
+    },
+    {
+        img: MelissaImg,
+        name: 'Melissa',
+        quote: 'David is such an incredible engineer. His design talent is second to none and due to his skills, experience, humor and kindness, he is the absolute best kind of coworker. While we were on the same team I was grateful every day for getting to work with him because his skillset was so complimentary to mine; I learned so much from him. I highly, highly recommend working with David to any company that is lucky enough to garner his interest.',
+    },
+    {
+        img: ThoImg,
+        name: 'Tho',
+        quote: "I had the pleasure of working with David when I was the tech lead and he one of the team's React developers. Anytime I had a question on how to do anything, David was there and always glad to help. He's sharp, reliable, and has a great instinct for building clean, user friendly interfaces. What stood out most was how effortlessly he tackled complex problems and always found a way to keep things moving forward, even under pressure. He was also a great team player, easy to work with, always willing to help, and someone you could count on. Any team would be lucky to have him!",
+    },
+    {
+        img: AndyImg,
+        name: 'Andy',
+        quote: 'David has long been a strategic go-to for me. When I feel I am slipping a little from "the edge", David is on a very short list of people who I will buy a lunch to get me back to the front of that line. David has great energy, a strong network of young entrepreneurs and professionals, and can envision plans for ideas to fresh, state of the culture, outcomes. He has accomplished a great deal in his early career, I am looking forward to see what he accomplishes over the next couple of decades.',
     },
 ]
 

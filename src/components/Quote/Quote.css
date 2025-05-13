@@ -1,0 +1,40 @@
+.quote-container {
+    &:nth-child(odd) {
+        .quotation-mark__wrapper {
+            left: 0;
+        }
+
+        .quote-author {
+            align-self: flex-start;
+        }
+
+        @media (min-width: 1024px) {
+            .quotation-mark__wrapper {
+                left: -2rem;
+            }
+        }
+    }
+
+    &:nth-child(even) {
+        margin-left: auto;
+        text-align: right;
+
+        .quotation-mark__wrapper {
+            right: 0;
+        }
+
+        .quotation-mark {
+            transform: scaleX(-1) !important;
+        }
+
+        .quote-author {
+            align-self: flex-end;
+        }
+
+        @media (min-width: 1024px) {
+            .quotation-mark__wrapper {
+                right: -2rem;
+            }
+        }
+    }
+}

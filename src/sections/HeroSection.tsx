@@ -3,7 +3,7 @@ import { staggerChild, staggerWrapper } from '../animations'
 import HeadshotImg from '../assets/img/david-a-george-design-headshot.webp'
 
 const HeroSection = () => (
-    <motion.div
+    <motion.section
         variants={staggerChild}
         initial="closed"
         animate="open"
@@ -59,7 +59,7 @@ const HeroSection = () => (
                 </div>
             </div>
         </motion.div>
-    </motion.div>
+    </motion.section>
 )
 
 export default HeroSection

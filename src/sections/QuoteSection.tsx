@@ -1,12 +1,15 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Manifesto from '../components/Manifesto'
-import { manifestoData } from '../appData'
 import { staggerChild, staggerWrapper } from '../animations'
+import { quoteData } from '../appData'
+import Quote from '../components/Quote/Quote'
 
-const ManifestoSection = () => {
+const QuoteSection = () => {
     const ref = useRef(null)
-    const isInView = useInView(ref, { amount: 0.25, once: true })
+    const isInView = useInView(ref, {
+        amount: 0.25,
+        once: true,
+    })
 
     return (
         <motion.section
@@ -16,17 +19,16 @@ const ManifestoSection = () => {
             animate={isInView ? 'open' : 'closed'}
         >
             <motion.h2
-                id="manifesto"
-                className="mb-4 w-full text-2xl"
+                className="mb-16 w-full text-2xl"
                 variants={staggerChild}
             >
-                Manifesto
+                Recommendations
             </motion.h2>
-            <div className="grid w-full grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                {manifestoData.map((item, index) => (
-                    <Manifesto
+            <div className="flex w-full flex-col gap-y-12">
+                {quoteData.map((quote, index) => (
+                    <Quote
                         key={index}
-                        {...item}
+                        {...quote}
                     />
                 ))}
             </div>
@@ -34,4 +36,4 @@ const ManifestoSection = () => {
     )
 }
 
-export default ManifestoSection
+export default QuoteSection
