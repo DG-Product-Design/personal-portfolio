@@ -205,12 +205,13 @@ const AboutSection = () => {
                     variants={staggerChild}
                 >
                     With over a decade in the tech trenches, I've been juggling
-                    code and creativity since 2012. I'm a front-end developer,
-                    design engineer, and product designer with a passion for
-                    creating beautiful, functional, and accessible web
-                    applications. With extensive experience in React,
-                    TypeScript, and modern web technologies, I bring designs to
-                    life with attention to detail and a focus on user
+                    code and creativity since 2012 - most often for Series A
+                    start-ups, but also for long-established businesses. I'm a
+                    front-end developer, design engineer, and product designer
+                    with a passion for creating beautiful, functional, and
+                    accessible web applications. With extensive experience in
+                    React, TypeScript, and modern web technologies, I bring
+                    designs to life with attention to detail and a focus on user
                     experience. I've also dabbled in the NFT world with NBA Top
                     Shot, helping personalize experiences for their 2M+ users.
                 </motion.p>
