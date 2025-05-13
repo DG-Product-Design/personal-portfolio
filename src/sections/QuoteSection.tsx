@@ -19,7 +19,7 @@ const QuoteSection = () => {
             animate={isInView ? 'open' : 'closed'}
         >
             <motion.h2
-                className="mb-16 w-full text-2xl"
+                className="mb-16 w-full text-3xl"
                 variants={staggerChild}
             >
                 Recommendations

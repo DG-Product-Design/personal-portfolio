@@ -11,7 +11,7 @@ const WorkSection = () => (
     >
         <motion.h2
             id="work"
-            className="mb-6 w-100 text-3xl"
+            className="mb-6 w-full text-3xl"
             variants={staggerChild}
         >
             Work

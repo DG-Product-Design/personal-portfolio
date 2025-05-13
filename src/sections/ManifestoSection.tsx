@@ -17,7 +17,7 @@ const ManifestoSection = () => {
         >
             <motion.h2
                 id="manifesto"
-                className="mb-4 w-full text-2xl"
+                className="mb-6 w-full text-3xl"
                 variants={staggerChild}
             >
                 Manifesto

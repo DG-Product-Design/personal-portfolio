@@ -85,6 +85,15 @@ const Nav = () => {
                         role="link"
                         tabIndex={0}
                         className={navlinkClasses}
+                        onClick={() => scrollIntoView('about')}
+                        variants={staggerChild}
+                    >
+                        About
+                    </motion.a>
+                    <motion.a
+                        role="link"
+                        tabIndex={0}
+                        className={navlinkClasses}
                         onClick={() => scrollIntoView('work')}
                         variants={staggerChild}
                     >

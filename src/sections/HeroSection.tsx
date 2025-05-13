@@ -8,7 +8,7 @@ const HeroSection = () => (
         variants={staggerChild}
         initial="closed"
         animate="open"
-        className="relative pt-40"
+        className="relative pt-24 pb-18 md:pt-40 md:pb-24"
     >
         <FloatingCodeSnippets />
         <motion.div

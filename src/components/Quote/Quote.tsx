@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { staggerChild, staggerWrapper } from '../../animations'
-import QuotationMarkIcon from '../../assets/svg/QuotationMarkIcon'
+import QuotationMarkIcon from '../../assets/svg/QuotationMarkSVG'
 
 import './Quote.css'
 
