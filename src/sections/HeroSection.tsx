@@ -1,15 +1,18 @@
 import { motion } from 'framer-motion'
 import { staggerChild, staggerWrapper } from '../animations'
 import HeadshotImg from '../assets/img/david-a-george-design-headshot.webp'
+import FloatingCodeSnippets from '../components/FloatingCodeSnippets'
 
 const HeroSection = () => (
     <motion.section
         variants={staggerChild}
         initial="closed"
         animate="open"
+        className="relative pt-40"
     >
+        <FloatingCodeSnippets />
         <motion.div
-            className="flex w-full flex-wrap items-center justify-between"
+            className="relative z-10 flex w-full flex-wrap items-center justify-between"
             variants={staggerWrapper}
         >
             <div className="gap-0 lg:gap-4">
