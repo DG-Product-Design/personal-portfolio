@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eg2.vscode-npm-script",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+    "wayou.vscode-todo-highlight",
+    "vscode-icons-team.vscode-icons"
+  ]
+} 
