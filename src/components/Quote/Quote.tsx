@@ -32,7 +32,7 @@ const Quote = ({ name, quote, img }: QuoteProps) => (
             variants={staggerChild}
         >
             <div className="mt-2 flex w-fit items-center gap-x-2">
-                <p className="text-lg">- {name}</p>
+                <p className="text-lg">-</p>
                 <img
                     src={img}
                     alt={name}
@@ -40,6 +40,7 @@ const Quote = ({ name, quote, img }: QuoteProps) => (
                     height={40}
                     className="rounded-full"
                 />
+                <p className="text-lg">{name}</p>
             </div>
         </motion.div>
     </motion.div>
