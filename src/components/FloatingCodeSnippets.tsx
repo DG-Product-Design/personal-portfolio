@@ -55,16 +55,13 @@ const codeElements = [
     'while(coding) { drinkCoffee() }',
     '// TODO: replace this hack before anyone notices',
     '/* Here be dragons */',
-    "// this.code = 'violence'; // If it doesn't work, use more.",
     'error instanceof Error ? blame(colleague) : takeCredit()',
     'npm install --save anxiety stress impostor-syndrome',
     'function amIAwake() { return Math.random() > 0.5 }',
-    'const motivation = null; // Initialize as empty',
     'fixBug(true) // Sets bug to invisible',
 
     // Other bits
     'undefined is not defined',
-    'null && void && emptyInside',
     '!false === true // surprisingly',
     '2B || !2B',
     '"0" == 0 ? "JS makes sense" : "Never happens"',
