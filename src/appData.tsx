@@ -56,7 +56,7 @@ export const workCardData = [
                 standards for a mid- to late-stage startup. I architected a
                 comprehensive component library, reducing development time by
                 ~40%, while spearheading platform-wide accessibility
-                improvements, achieving ADA level AA compliance. 92% unit
+                improvements, achieving WCAG 2.2 level AA compliance. 92% unit
                 testing coverage was maintained via Jest, React Testing Library,
                 and Vitest. Deployed via Github CI/CD and Netlify.
                 <br />
@@ -161,7 +161,7 @@ export const workCardData = [
                 <br />
                 Designed in Figma, written in React with Bootstrap and
                 Typescript, then deployed via Azure CI/CD and Kubernetes
-                clusters. ADA level AA compliant design.
+                clusters. WCAG 2.2 level AA compliant design.
             </>
         ),
         button: {
