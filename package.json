@@ -23,7 +23,7 @@
     "prebuild": "source $HOME/.nvm/nvm.sh && nvm use",
     "pretest": "source $HOME/.nvm/nvm.sh && nvm use",
     "start": "vite",
-    "deploy": "echo 'davidageorge.me' > ./build/CNAME && gh-pages -d build",
+    "deploy": "yarn build && echo 'davidageorge.me' > ./build/CNAME && gh-pages -d build",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest --ui",
