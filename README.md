@@ -79,7 +79,9 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
 1. Merge all changes into the main branch via a Github pull request.
 
-2. To manually deploy the site:
+2. Switch to the main branch.
+
+3. To manually deploy the site:
 
 **Build and deploy in one command:**
 
