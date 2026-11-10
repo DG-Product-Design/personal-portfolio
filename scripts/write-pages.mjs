@@ -59,6 +59,8 @@ const pages = [
 
 for (const [path, title, description] of pages) {
     const file = new URL(path, output)
+    const pageTitle = escape(`${title} | David A. George`)
+    const pageDescription = escape(description)
     const routeShell =
         path === 'work/creative-studio/index.html'
             ? preloadImage(shell, `href="${escape(creativeStudio.src)}"`)
@@ -69,12 +71,20 @@ for (const [path, title, description] of pages) {
         routeShell
             .replace(
                 /<title>[^<]*<\/title>/,
-                () => `<title>${escape(title)} | David A. George</title>`
+                () => `<title>${pageTitle}</title>`
             )
             .replace(
-                /<meta name="description" content="[^"]*"\s*\/?>/,
-                () =>
-                    `<meta name="description" content="${escape(description)}" />`
+                /(<meta (?:name="description"|property="og:description") content=")[^"]*(")/g,
+                (_match, start, end) => `${start}${pageDescription}${end}`
+            )
+            .replace(
+                /(<meta property="og:title" content=")[^"]*(")/,
+                (_match, start, end) => `${start}${pageTitle}${end}`
+            )
+            .replace(
+                /(<meta property="og:url" content=")([^"]*)(")/,
+                (_match, start, siteUrl, end) =>
+                    `${start}${new URL(path.replace(/index\.html$/, ''), siteUrl).href}${end}`
             )
     )
 }
