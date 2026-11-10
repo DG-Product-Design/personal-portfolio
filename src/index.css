@@ -1,81 +1,145 @@
-@import 'tailwindcss';
+@layer theme, base, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import './shadcn-chat.css';
 
-@theme static {
-    --font-sans:
-        'Sora', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-white: #ffffff;
-    --color-blue-100: #e0efff;
-    --color-blue-200: #a3ceff;
-    --color-blue-300: #6ba6e8;
-    --color-blue-400: #64adff;
-    --color-blue-500: #0393ff;
-    --color-blue-600: #0082f3;
-    --color-blue-800: #002f70;
-    --color-green-200: #c2fbe6;
-    --color-green-300: #75fac8;
-    --color-green-400: #4eedb1;
-    --color-apricot: #ffd6ba;
-    --color-rose-300: #f67984;
-    --color-rose-500: #f45b69;
-    --color-yellow-300: #ffb347;
-    --color-yellow-500: #ff9f1c;
-    --color-nickel-300: #818980;
-    --color-nickel-500: #6c756b;
-    --color-purple-300: #8f56c8;
-    --color-purple-400: #8546c3;
-    --color-purple-500: #7a3cb9;
+@theme {
+    --leading-cover-subtitle: 1.2;
+    --spacing-page-gutter: clamp(1.375rem, 5vw, 4.5rem);
+    --text-case-title: clamp(2.5rem, 7vw, 5.625rem);
+    --text-case-title--line-height: 0.98;
+    --text-case-title--letter-spacing: -0.065em;
+    --text-case-lede: clamp(1.125rem, 2.2vw, 1.5rem);
+    --text-section-title: clamp(1.75rem, 4vw, 3rem);
+    --text-about-lede: clamp(1.25rem, 2.6vw, 2rem);
+    --color-ink: #f7f2eb;
+    --color-muted: #c8c0b8;
+    --color-violet: #a9a3ff;
+    --color-rule: #6a6468;
+    --background-image-cover-shade: linear-gradient(
+        90deg,
+        #0b0b0cd9,
+        #0b0b0c89 29%,
+        #0b0b0c25 46%,
+        transparent 58%
+    );
+    --background-image-cover-shade-mobile: linear-gradient(
+        180deg,
+        #121212 0%,
+        #121212 39%,
+        #12121280 58%,
+        transparent 77%
+    );
+    --animate-image-pan: image-pan 100s ease-in-out infinite;
+    --animate-chat-message-in: chat-message-in 180ms ease-out both;
+    --animate-artwork-shimmer: artwork-shimmer 1.5s linear infinite;
+    --animate-sunglasses-drop: sunglasses-drop 700ms ease-out 350ms both;
 }
 
-/* Scaffolding for future DaisyUI themes */
-@plugin "daisyui" {
-    themes: false;
+@keyframes sunglasses-drop {
+    0% {
+        translate: 0 -46%;
+    }
+    78% {
+        translate: 0 1%;
+    }
+    91% {
+        translate: 0 -0.45%;
+    }
+    100% {
+        translate: 0 0;
+    }
 }
 
-@plugin "daisyui/theme" {
-    name: 'light-theme';
-    default: true;
-    prefersdark: false;
-    color-scheme: light;
-
-    /* Primary colors (blue theme) */
-    --color-primary: #0393ff; /* --color-blue-500 */
-    --color-primary-content: #ffffff; /* --color-white */
-    --color-primary-focus: #0082f3; /* --color-blue-600 */
-
-    /* Secondary colors (green theme) */
-    --color-secondary: #4eedb1; /* --color-green-400 */
-    --color-secondary-content: #002f70; /* --color-blue-800 */
-    --color-secondary-focus: #75fac8; /* --color-green-300 */
-
-    /* Accent colors (yellow theme) */
-    --color-accent: #ff9f1c; /* --color-yellow-500 */
-    --color-accent-content: #ffffff; /* --color-white */
-    --color-accent-focus: #ffb347; /* --color-yellow-300 */
-
-    /* Neutral colors */
-    --color-neutral: #6c756b; /* --color-nickel-500 */
-    --color-neutral-content: #ffffff; /* --color-white */
-    --color-neutral-focus: #818980; /* --color-nickel-300 */
-
-    /* Base colors */
-    --color-base-100: #ffffff; /* --color-white */
-    --color-base-200: #e0efff; /* --color-blue-100 */
-    --color-base-300: #a3ceff; /* --color-blue-200 */
-    --color-base-content: #002f70; /* --color-blue-800 */
-
-    /* State colors */
-    --color-info: #6ba6e8; /* --color-blue-300 */
-    --color-info-content: #ffffff; /* --color-white */
-    --color-success: #75fac8; /* --color-green-300 */
-    --color-success-content: #002f70; /* --color-blue-800 */
-    --color-warning: #ffb347; /* --color-yellow-300 */
-    --color-warning-content: #ffffff; /* --color-white */
-    --color-error: #f45b69; /* --color-rose-500 */
-    --color-error-content: #ffffff;
+@utility headline-shimmer {
+    @apply shimmer;
+    --shimmer-color: #e2dfff;
+    --shimmer-iterations: 1;
 }
 
-html,
-body {
-    font-size: 16px;
+@keyframes artwork-shimmer {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes chat-message-in {
+    from {
+        opacity: 0;
+        translate: 0 0.375rem;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@custom-variant compact (@media (max-width: 45rem));
+@custom-variant dark {
+    &:where([data-studio-theme='dark'], [data-studio-theme='dark'] *) {
+        @slot;
+    }
+    @media (prefers-color-scheme: dark) {
+        &:where([data-studio-theme='system'], [data-studio-theme='system'] *) {
+            @slot;
+        }
+    }
+}
+
+@layer base {
+    :root {
+        color-scheme: dark;
+        font-family: 'DM Sans', Arial, sans-serif;
+        color: var(--color-ink);
+        background: #121212;
+    }
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        border-width: 0;
+    }
+    body {
+        margin: 0;
+    }
+    img {
+        display: block;
+        max-width: 100%;
+    }
+    a {
+        color: inherit;
+        text-underline-offset: 0.22em;
+    }
+    a:hover {
+        color: var(--color-violet);
+    }
+    :focus-visible {
+        outline: 3px solid var(--color-violet);
+        outline-offset: 5px;
+    }
+    button,
+    select {
+        font: inherit;
+    }
+    button {
+        cursor: pointer;
+    }
+    p {
+        line-height: 1.65;
+    }
+}
+
+@keyframes image-pan {
+    0%,
+    3%,
+    100% {
+        transform: translateY(0);
+    }
+    47%,
+    54% {
+        transform: translateY(min(0px, calc(100cqh - 100%)));
+    }
 }

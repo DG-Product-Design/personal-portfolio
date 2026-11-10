@@ -1,0 +1,356 @@
+[
+  {
+    "slug": "creative-studio",
+    "name": "Creative Studio",
+    "title": "Building an ad creation and editing experience",
+    "intro": "I built Creative Studio end to end and served as its full-stack technical lead across design, frontend, backend, and AI/ML systems. The product helps marketers create and edit AI-generated ad imagery for different campaign formats.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "Clarvos"
+      },
+      {
+        "label": "My role",
+        "value": "Full-stack technical lead"
+      },
+      {
+        "label": "Timeline",
+        "value": "Shipped in 2026"
+      }
+    ],
+    "steps": [],
+    "sections": [
+      {
+        "title": "Create & adapt campaign ads",
+        "body": "I built the ad creation and editing experience around a practical goal: marketers should be able to revise an ad for a new message or format while keeping it recognizable as part of the same brand. Creative Studio helps them create on-brand imagery, revise existing images, and prepare ads in different aspect ratios."
+      },
+      {
+        "title": "Own design & delivery end to end",
+        "body": "As full-stack technical lead, I worked across the frontend, backend, AI/ML and agentic systems, and product design. I built the creation and editing experience and partnered with our product manager and designers to turn customer feedback into interface improvements, from the first draft through revisions."
+      }
+    ]
+  },
+  {
+    "slug": "fringe-discovery",
+    "name": "Marketplace discovery & checkout",
+    "title": "Helping people find benefits that fit",
+    "intro": "Employees use Fringe points to buy products and services. I rebuilt marketplace discovery and checkout so users could get from a relevant recommendation to their cart with fewer steps.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "Fringe"
+      },
+      {
+        "label": "My role",
+        "value": "Frontend + design engineering lead"
+      },
+      {
+        "label": "Timeline",
+        "value": "November 2022 – May 2025"
+      }
+    ],
+    "steps": [
+      {
+        "label": "Discover",
+        "title": "Interest-based categories",
+        "description": "Browse recommended vendors by what matters to you."
+      },
+      {
+        "label": "Choose",
+        "title": "Relevant product",
+        "description": "Move from browsing to a product with fewer steps."
+      },
+      {
+        "label": "Add to cart",
+        "title": "Clearer cart layout",
+        "description": "Review your selection before checkout."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Find out what people came for",
+        "body": "Through UserTesting and guided interviews, I learned what people looked for and where they struggled. We tested alternatives, iterated on prototypes, and ran A/B tests to refine the experience. Feedback also showed that the cart layout was a source of friction."
+      },
+      {
+        "title": "Make products easier to find and buy again",
+        "body": "The redesign grouped recommended vendors into categories based on users’ interests. Favorites helped people return to products they liked, and recurring purchases made it easier to keep buying products they already used. We also removed steps on the path to checkout and improved the cart layout."
+      },
+      {
+        "title": "Measure a real step in the journey",
+        "body": "Favorites and recurring purchases helped shorten the path to the cart. Across the redesign, production analytics showed an approximately 30% reduction in time from discovery to add-to-cart. The cart redesign also increased completed checkouts."
+      },
+      {
+        "title": "Build on a shared foundation",
+        "body": "At Fringe, I led frontend architecture and built a shared component library aligned with Figma and Storybook. I also led the JavaScript-to-TypeScript and Create React App-to-Vite migrations and upgraded React from 16 through 18. The product work and the engineering work both benefited from a consistent foundation."
+      }
+    ]
+  },
+  {
+    "slug": "adp-thrive",
+    "name": "ADP Thrive",
+    "title": "A purchase without another account",
+    "intro": "The ADP Thrive offering created a new way to buy from Fringe. I defined the MVP, designed the experience, and led UI development through launch and support.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "Fringe × ADP Thrive"
+      },
+      {
+        "label": "My role",
+        "value": "Lead product designer + UI developer"
+      },
+      {
+        "label": "Timeline",
+        "value": "2023–2024"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Discover and select",
+        "description": "Discover exclusive offerings and Fringe benefits where users already shop."
+      },
+      {
+        "title": "Buyers stay put",
+        "description": "View and purchase offerings in an officially-branded Fringe experience. No separate Fringe account or external redirect required."
+      },
+      {
+        "title": "Result: growth",
+        "description": "Purchase and exposure grew. The additional distribution channel exposed Fringe to new users who might not have otherwise discovered the platform or purchased a product."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Remove the separate signup",
+        "body": "The goal: increase purchases without adding friction. Partnering with ADP gave us a new distribution channel for Fringe, but requiring all ADP users to create a separate Fringe account added a step before they could buy. This offering let them make Fringe purchases through ADP's Thrive Marketplace without that extra account."
+      },
+      {
+        "title": "Define the first release",
+        "body": "I defined the MVP around a usable purchase experience, designed the interface, and led UI development. Owning both design and implementation let me carry the decisions about the purchase experience through to the shipped interface."
+      },
+      {
+        "title": "Carry it through launch",
+        "body": "My work continued after design and development: I guided the offering through launch and supported it afterward. The result was an additional distribution channel for Fringe and a simpler buying experience for people using Thrive."
+      },
+      {
+        "title": "Connect the purchase flow",
+        "body": "I built the interface with React and Vite. The purchase flow used OAuth and an auth proxy to call REST APIs, with Stripe supporting payment and fulfillment."
+      }
+    ]
+  },
+  {
+    "slug": "mortgage-application",
+    "name": "Redesigning a $1.2B pipeline",
+    "title": "Redesigning a $1.2B pipeline",
+    "intro": "I led the design and frontend development of CapCenter’s loan application redesign, carrying decisions about the application experience into the customer UI.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "CapCenter"
+      },
+      {
+        "label": "My role",
+        "value": "Product Designer + Lead UI/UX Developer"
+      },
+      {
+        "label": "Timeline",
+        "value": "Shipped in 2020"
+      }
+    ],
+    "steps": [
+      {
+        "title": "Product design",
+        "description": "Research, interview, and redesign the company's primary revenue stream."
+      },
+      {
+        "title": "Frontend & product engineering",
+        "description": "Implement the redesigned interface & architecture and capture feedback."
+      },
+      {
+        "title": "Delivery & improvement",
+        "description": "Carry the design into production. Get feedback, iterate, ship, repeat."
+      }
+    ],
+    "sections": [
+      {
+        "title": "The product context",
+        "body": "The loan application was the primary driver behind CapCenter’s digital experience for mortgage, lending, and real estate customers. At CapCenter I worked across product design and frontend engineering, with the loan application as one of my lead projects."
+      },
+      {
+        "title": "What I owned",
+        "body": "I led the user research and redesign of the loan application and the frontend work that brought it to life. Working across design and implementation gave me responsibility for both what the experience should do and how it behaved in the browser."
+      },
+      {
+        "title": "Results",
+        "body": "In its first year, the redesigned loan application pipeline grew over 500% to $1.2 billion in loan volume. The redesign alone raised CapCenter’s Net Promoter Score (NPS) by 2+ points."
+      }
+    ]
+  },
+  {
+    "slug": "capcenter-lca",
+    "name": "Loan Officer Assignment Tool",
+    "title": "Matching clients with loan consultants",
+    "intro": "I designed an internal tool that saved the company 750+ hours per year by assigning clients to loan consultants based on location, qualifications, and availability.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "CapCenter"
+      },
+      {
+        "label": "My role",
+        "value": "Product design + frontend development"
+      },
+      {
+        "label": "Time saved",
+        "value": "Per manager: 30+ minutes/day (125 hrs/year)"
+      }
+    ],
+    "steps": [],
+    "sections": [
+      {
+        "title": "Automate the assignment",
+        "body": "After meeting with managers about their pain points, the main things stealing their time became clear: finding the right consultant for a client and updating consultant criteria and capacity. I built a tool that automatically matched clients with consultants based on location, skills, qualifications, and availability. Managers could review and update consultant criteria and capacity all in one place."
+      },
+      {
+        "title": "Give managers 125+ hours back",
+        "body": "After rollout, the tool saved each manager in the program over 30 minutes per day, or over 125 hours per year. I designed the interface in Figma. The tool was built with React, Bootstrap, and TypeScript and deployed through Azure CI/CD."
+      }
+    ]
+  },
+  {
+    "slug": "real-estate-property-search",
+    "name": "Real Estate Property Search",
+    "title": "From finding a home to booking a tour",
+    "intro": "I led the design and frontend development of CapCenter’s home search, giving prospective buyers a place to find listings, browse property photos, and schedule tours.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "CapCenter"
+      },
+      {
+        "label": "My role",
+        "value": "Product Designer + Lead UI/UX Developer"
+      },
+      {
+        "label": "Results",
+        "value": "Over 200% increase in tour leads"
+      }
+    ],
+    "steps": [],
+    "sections": [
+      {
+        "title": "Connect discovery to the tour",
+        "body": "CapCenter wanted its own home search experience for buyers who might otherwise start on Zillow or Redfin. I designed the path from browsing listings and looking through property photos to scheduling a tour directly with CapCenter."
+      },
+      {
+        "title": "Take the design into production",
+        "body": "I designed the experience in Figma and built the frontend with React, TypeScript, and Bootstrap. Elasticsearch, MLS databases, and Google Maps APIs powered the search and map experience. Deployed through Azure CI/CD to Kubernetes."
+      },
+      {
+        "title": "Results",
+        "body": "After the property search launched, CapCenter saw an increase of more than 200% in tour leads."
+      }
+    ]
+  },
+  {
+    "slug": "nba-top-shot",
+    "name": "NBA Top Shot / Dapper Labs",
+    "title": "Personalizing NBA Top Shot messaging with collection data",
+    "intro": "I worked with Dapper Labs’ data engineering team to make NBA Top Shot user data usable in marketing automation for their NFTs, supporting personalized email for an audience of more than two million users.",
+    "facts": [
+      {
+        "label": "Company",
+        "value": "Dapper Labs"
+      },
+      {
+        "label": "My role",
+        "value": "Technical Consultant"
+      },
+      {
+        "label": "Timeline",
+        "value": "September–December 2021"
+      }
+    ],
+    "steps": [
+      {
+        "label": "Source",
+        "title": "User data from internal systems",
+        "description": ""
+      },
+      {
+        "label": "Normalize and sync",
+        "title": "Prepare data for Customer.io and HubSpot",
+        "description": ""
+      },
+      {
+        "label": "Apply",
+        "title": "Support personalized email and onboarding experiments",
+        "description": ""
+      }
+    ],
+    "sections": [
+      {
+        "title": "Connect data to the experience",
+        "body": "I worked with data engineering to sync data between internal databases and marketing tools including Customer.io and HubSpot. I implemented data normalization so we could use that data for email personalization at scale."
+      },
+      {
+        "title": "Support onboarding and internal operations",
+        "body": "I supported onboarding through messaging campaigns and built internal communication tools using the Slack API and Google Apps Script."
+      },
+      {
+        "title": "Target messages down to individual collectibles",
+        "body": "Once the collection data was normalized, we could run numerous A/B tests and automate messages based on which packs users owned and which drops were coming up. We could even trigger messages based on individual NFT collectibles in a user’s collection."
+      }
+    ]
+  },
+  {
+    "slug": "san-joaquin-matching-engine",
+    "name": "San Joaquin Matching Engine",
+    "title": "Helping social workers find prospective adoptive families",
+    "intro": "At Dito, I designed and built a tool that helped San Joaquin County social workers compare prospective adoptive families for children awaiting adoption. The matching engine used weighted criteria to rank potential matches for review.",
+    "facts": [
+      {
+        "label": "Client",
+        "value": "San Joaquin County"
+      },
+      {
+        "label": "My role",
+        "value": "Product design + frontend development, Dito"
+      },
+      {
+        "label": "Recognition",
+        "value": "2017 CCISDA Innovation Award"
+      }
+    ],
+    "steps": [
+      {
+        "label": "Select",
+        "title": "Start with a child’s profile",
+        "description": "Choose the profile to compare against prospective families."
+      },
+      {
+        "label": "Match",
+        "title": "Apply weighted criteria",
+        "description": "The engine scores and ranks potential matches."
+      },
+      {
+        "label": "Review",
+        "title": "Inspect potential matches",
+        "description": "Social workers can open family profiles alongside the ranked results."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Bring the comparison into one workflow",
+        "body": "The matching engine was part of the county’s I-CAN initiative. Social workers needed to compare a child’s profile with prospective families across several criteria. The tool brought the ranked results and profile details into the same workflow so workers could review the information behind a potential match."
+      },
+      {
+        "title": "Design and build the interface",
+        "body": "I designed the workflow in Adobe XD and built the interface in Angular with Material Design. I designed for Section 508 accessibility requirements. We migrated the frontend from JavaScript to TypeScript and deployed on Google App Engine using GitLab CI/CD."
+      },
+      {
+        "title": "Project recognition",
+        "body": "The project received a 2017 Innovation Award from the California County Information Services Directors Association (CCISDA)."
+      }
+    ]
+  }
+]

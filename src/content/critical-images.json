@@ -1,0 +1,12 @@
+{
+  "home": {
+    "src": "/img/portfolio/midnight-1586.jpg",
+    "srcSet": "/img/portfolio/midnight-800.jpg 800w, /img/portfolio/midnight-1200.jpg 1200w, /img/portfolio/midnight-1586.jpg 1586w",
+    "sizes": "(max-width: 45rem) max(100vw, 88svh), max(100vw, 160svh)"
+  },
+  "creativeStudio": {
+    "src": "/img/portfolio/get-outside-v1.jpg",
+    "width": 1044,
+    "height": 1507
+  }
+}

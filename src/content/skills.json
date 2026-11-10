@@ -1,0 +1,30 @@
+[
+  {
+    "category": "Product & Design",
+    "skills": "Product discovery, interaction design, usability testing, user interviews, A/B testing, product analytics, conversational interfaces, accessibility, data visualization, Figma, Sketch, Adobe XD, UserTesting"
+  },
+  {
+    "category": "Frontend & UI",
+    "skills": "React, Next.js, Vue, Angular, Tailwind CSS v4, Material UI, shadcn/ui, DaisyUI, Styled Components, Bootstrap, Quasar, Framer Motion, Lottie, Storybook, design systems, theming, design tokens"
+  },
+  {
+    "category": "Data, APIs & State",
+    "skills": "PostgreSQL, Drizzle ORM, tRPC, REST APIs, Firebase, Cloud Firestore, TanStack Query / React Query, React Router, Zustand, Recoil, React Context, Protocol Buffers, Capacitor"
+  },
+  {
+    "category": "Leadership & AI Workflows",
+    "skills": "Engineering management, mentoring, architecture, technical discovery, epic decomposition, cross-functional delivery, AI-agent integration, AI-assisted development, custom agent skills, Jira"
+  },
+  {
+    "category": "Testing & Delivery",
+    "skills": "Vitest, Jest, React Testing Library, Chromatic, Vite, Webpack, Git, GitHub CI/CD, Azure DevOps CI/CD, npm, Yarn, automated PR coverage reporting, PostHog feature flags"
+  },
+  {
+    "category": "Cloud & Observability",
+    "skills": "Google Cloud Platform, Cloud Run, Vertex AI, Pub/Sub, App Engine, Grafana, Datadog, Azure DevOps and Portal"
+  },
+  {
+    "category": "Languages & Web",
+    "skills": "TypeScript, JavaScript, Python, Java/Spring, Go, Google Apps Script, semantic HTML, CSS, Sass, Stylus, command-line tools"
+  }
+]
