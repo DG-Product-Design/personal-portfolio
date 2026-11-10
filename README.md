@@ -13,7 +13,7 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 ## Technologies
 
 - **Frontend**: React 19, TypeScript
-- **Styling**: Tailwind CSS v4, DaisyUI
+- **Styling**: Tailwind CSS v4
 - **Build Tool**: Vite
 - **Testing**: Vitest
 - **Deployment**: GitHub Pages
@@ -46,7 +46,7 @@ This is my personal portfolio website, built from the ground-up with Vite, React
     yarn start
     ```
 
-4. Open [http://localhost:5173](http://localhost:5173) to view it in the browser
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
 ## Available Scripts
 
@@ -63,8 +63,7 @@ This is my personal portfolio website, built from the ground-up with Vite, React
     - `/assets` - Static assets (images, etc.)
     - `/components` - Reusable React components
     - `/pages` - Page components
-    - `/sections` - Page section components
-    - `appData.tsx` - Portfolio content
+    - `/content` - Case studies, skills, and image metadata
     - `App.tsx` - Main application component
 
 ## Deployment
@@ -73,15 +72,20 @@ This site is deployed to GitHub Pages. There are two ways to deploy:
 
 ### Automatic Deployment (Recommended)
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the `gh-pages` branch via GitHub Actions.
+The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch via GitHub Actions. Simply:
+
+1. Make your changes
+2. Commit and push to the main branch:
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push origin main
+   ```
+3. GitHub Actions will automatically build and deploy your site
 
 ### Manual Deployment
 
-1. Merge all changes into the main branch via a Github pull request.
-
-2. Switch to the main branch.
-
-3. To manually deploy the site:
+If you need to deploy manually (not recommended for regular use):
 
 **Build and deploy in one command:**
 

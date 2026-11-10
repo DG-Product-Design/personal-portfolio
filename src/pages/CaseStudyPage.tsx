@@ -1,0 +1,125 @@
+import { ArrowLeft, Award } from 'lucide-react'
+import SiteNav from '../components/SiteNav'
+import CaseVisual, { ProjectScreenshot } from '../components/CaseVisual'
+import ProjectTechnologies from '../components/ProjectTechnologies'
+import projects from '../content/projects.json'
+
+function BackToWork() {
+    return (
+        <a
+            className="inline-flex min-h-11 items-center gap-2 text-violet no-underline hover:underline"
+            href="/#work"
+        >
+            <ArrowLeft
+                aria-hidden="true"
+                className="size-4"
+            />
+            Back
+        </a>
+    )
+}
+
+export default function CaseStudyPage({
+    project,
+    next,
+}: {
+    project: (typeof projects)[number]
+    next: (typeof projects)[number]
+}) {
+    return (
+        <div className="mx-auto max-w-310 px-page-gutter pb-12.5">
+            <SiteNav />
+            <main id="main">
+                <header className="pt-4 pb-7">
+                    <BackToWork />
+                    <p className="font-medium text-muted">{project.name}</p>
+                    <h1 className="mt-3 mb-5 text-case-title text-balance text-violet">
+                        {project.title}
+                    </h1>
+                    <div className="grid grid-cols-[minmax(0,1fr)_clamp(11rem,22%,15rem)] items-start gap-x-8 gap-y-5 compact:grid-cols-1">
+                        <div className="min-w-0">
+                            <p className="m-0 max-w-prose text-case-lede leading-snug text-muted">
+                                {project.intro}
+                            </p>
+                            <dl className="mt-6 mb-0 flex flex-wrap gap-x-9 gap-y-4.5 border-y border-solid border-rule py-4.5">
+                                {project.facts.map(({ label, value }) => (
+                                    <div key={label}>
+                                        <dt className="text-sm text-muted">
+                                            {label}
+                                        </dt>
+                                        <dd className="mx-0 mt-1 mb-0">
+                                            {label === 'Recognition' ? (
+                                                <span className="inline-flex items-center gap-2 rounded-full border border-solid border-amber-300/40 bg-amber-300/10 px-3 py-1.5 text-sm font-semibold text-amber-200">
+                                                    <Award
+                                                        aria-hidden="true"
+                                                        className="size-5 shrink-0"
+                                                    />
+                                                    {value}
+                                                </span>
+                                            ) : (
+                                                value
+                                            )}
+                                        </dd>
+                                    </div>
+                                ))}
+                            </dl>
+                            <ProjectScreenshot slug={project.slug} />
+                        </div>
+                        <ProjectTechnologies slug={project.slug} />
+                    </div>
+                </header>
+                <CaseVisual
+                    slug={project.slug}
+                    steps={project.steps}
+                />
+                <article className="my-10 grid grid-cols-2 gap-x-10.5 gap-y-6 compact:grid-cols-1">
+                    {project.sections.map(({ title, body }) => (
+                        <section key={title}>
+                            <h2 className="mt-0 mb-2 text-[clamp(1.4375rem,3vw,2.125rem)] leading-tight tracking-[-.04em]">
+                                {title}
+                            </h2>
+                            <p className="m-0 leading-snug text-muted">
+                                {body}
+                            </p>
+                        </section>
+                    ))}
+                </article>
+                {project.slug === 'san-joaquin-matching-engine' && (
+                    <section
+                        aria-labelledby="matching-engine-video"
+                        className="mb-10 max-w-3xl pt-10"
+                    >
+                        <h2
+                            id="matching-engine-video"
+                            className="mt-0 mb-3 text-2xl tracking-tight text-violet"
+                        >
+                            See the Matching Engine in action
+                        </h2>
+                        <iframe
+                            className="block aspect-video w-full rounded-lg bg-black"
+                            src="https://www.youtube-nocookie.com/embed/KXZbU77iWpY?start=63"
+                            title="San Joaquin Matching Engine video"
+                            loading="lazy"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allow="encrypted-media; picture-in-picture"
+                            allowFullScreen
+                        />
+                        <a
+                            className="mt-3 inline-block text-sm text-violet"
+                            href="https://www.youtube.com/watch?v=KXZbU77iWpY&t=63s"
+                        >
+                            Watch on YouTube
+                        </a>
+                    </section>
+                )}
+                <nav
+                    className="flex flex-wrap items-center justify-between gap-4 border-t border-solid border-rule pt-5.5"
+                    aria-label="Case study navigation"
+                >
+                    <BackToWork />
+                    <a href={`/work/${next.slug}/`}>Next: {next.name}</a>
+                </nav>
+            </main>
+        </div>
+    )
+}

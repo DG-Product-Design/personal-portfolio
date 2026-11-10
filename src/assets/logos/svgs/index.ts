@@ -1,6 +1,6 @@
 import AdobeSVG from './adobe.svg'
 import AngularSVG from './angular.svg'
-import AppsScriptSVG from './appsscript.svg'
+import AppsScriptSVG from './appsScript.svg'
 import AzureSVG from './azure.svg'
 import BootstrapSVG from './bootstrap.svg'
 import FigmaSVG from './figma.svg'
