@@ -49,7 +49,6 @@ const logos = {
     'Adobe XD': AdobeSVG,
     'Agentic models': Sparkles,
     'Asynchronous messaging': Network,
-    'Full-stack development': CodeXml,
     'Full-stack tech lead': CodeXml,
     'UX + UI design': PenTool,
     'UX + UI design lead': PenTool,
@@ -155,7 +154,7 @@ const projectContributions: Partial<Record<string, (keyof typeof logos)[]>> = {
         'Post-launch support',
     ],
     'capcenter-lca': [
-        'UX + UI design',
+        'UX + UI design lead',
         'Frontend lead',
         'User research and A/B testing',
         'Post-launch support',

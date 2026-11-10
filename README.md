@@ -15,7 +15,6 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 - **Frontend**: React 19, TypeScript
 - **Styling**: Tailwind CSS v4
 - **Build Tool**: Vite
-- **Testing**: Vitest
 - **Deployment**: GitHub Pages
 
 ## Getting Started
@@ -53,8 +52,6 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 - `yarn start` - Starts the development server
 - `yarn build` - Builds the app for production
 - `yarn preview` - Locally preview the production build
-- `yarn test` - Run tests
-- `yarn test:coverage` - Run tests with coverage report
 - `yarn deploy` - Deploy to GitHub Pages
 
 ## Project Structure

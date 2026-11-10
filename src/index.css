@@ -78,7 +78,6 @@
 }
 
 @custom-variant compact (@media (max-width: 45rem));
-@custom-variant narrow (@media (max-width: 29.375rem));
 @custom-variant dark {
     &:where([data-studio-theme='dark'], [data-studio-theme='dark'] *) {
         @slot;
