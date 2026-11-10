@@ -33,6 +33,22 @@
     --animate-image-pan: image-pan 100s ease-in-out infinite;
     --animate-chat-message-in: chat-message-in 180ms ease-out both;
     --animate-artwork-shimmer: artwork-shimmer 1.5s linear infinite;
+    --animate-sunglasses-drop: sunglasses-drop 700ms ease-out 350ms both;
+}
+
+@keyframes sunglasses-drop {
+    0% {
+        translate: 0 -46%;
+    }
+    78% {
+        translate: 0 1%;
+    }
+    91% {
+        translate: 0 -0.45%;
+    }
+    100% {
+        translate: 0 0;
+    }
 }
 
 @utility headline-shimmer {
