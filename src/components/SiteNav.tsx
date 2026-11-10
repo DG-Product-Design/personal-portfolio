@@ -21,7 +21,7 @@ export default function SiteNav({ cover = false }: { cover?: boolean }) {
                     </a>
                 )}
                 <nav
-                    className={`ml-auto flex gap-[clamp(1.125rem,3.7vw,3.5rem)] font-bold ${cover ? 'compact:ml-0' : ''}`}
+                    className="ml-auto flex gap-[clamp(1.125rem,3.7vw,3.5rem)] font-bold"
                     aria-label="Main navigation"
                 >
                     <a

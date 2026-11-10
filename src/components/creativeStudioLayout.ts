@@ -5,7 +5,7 @@ export const studioChatLayout =
     'min-h-125 min-w-0 rounded-3xl border border-solid border-black/10 bg-white text-neutral-900 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-50'
 
 export const studioArtworkLayout =
-    'grid aspect-[1034/1521] w-full max-w-80 place-items-center justify-self-center compact:max-w-64'
+    'grid aspect-[1034/1521] w-full max-w-80 place-items-center justify-self-center compact:max-w-64 compact:order-first'
 
 export const studioCaptionLayout =
     'col-span-full -my-4 text-center text-sm text-neutral-600 dark:text-neutral-400'
