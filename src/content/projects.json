@@ -51,18 +51,15 @@
     ],
     "steps": [
       {
-        "label": "Discover",
-        "title": "Interest-based categories",
+        "title": "Discover interest-based categories",
         "description": "Browse recommended vendors by what matters to you."
       },
       {
-        "label": "Choose",
-        "title": "Relevant product",
+        "title": "Choose a relevant product",
         "description": "Move from browsing to a product with fewer steps."
       },
       {
-        "label": "Add to cart",
-        "title": "Clearer cart layout",
+        "title": "Add to cart with a clearer layout",
         "description": "Review your selection before checkout."
       }
     ],
