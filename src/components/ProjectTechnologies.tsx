@@ -48,7 +48,7 @@ const logos = {
     'Google Maps APIs': googleMaps,
     'Adobe XD': AdobeSVG,
     'Agentic models': Sparkles,
-    'Asynchronous messaging': Network,
+    'Async messaging': Network,
     'Full-stack tech lead': CodeXml,
     'UX + UI design': PenTool,
     'UX + UI design lead': PenTool,
@@ -145,7 +145,7 @@ const projectContributions: Partial<Record<string, (keyof typeof logos)[]>> = {
         'UX + UI design',
         'Full-stack tech lead',
         'Agentic models',
-        'Asynchronous messaging',
+        'Async messaging',
     ],
     'adp-thrive': [
         'MVP definition',

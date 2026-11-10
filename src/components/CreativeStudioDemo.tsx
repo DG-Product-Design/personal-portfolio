@@ -240,7 +240,7 @@ export default function CreativeStudioDemo() {
             data-studio-theme={theme}
             className={studioLayout}
         >
-            <div className="col-span-full flex items-center justify-end gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="col-span-full flex items-center justify-end gap-2 text-sm text-neutral-600 dark:text-neutral-400 compact:order-first">
                 <span id={themeGroup}>Theme</span>
                 <div
                     role="radiogroup"
