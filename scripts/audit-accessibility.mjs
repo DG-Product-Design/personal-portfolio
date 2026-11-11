@@ -30,10 +30,16 @@ const browser = await chromium.launch({
 })
 const baseUrl = `http://127.0.0.1:${address.port}`
 let violationCount = 0
+const localAnalyticsRequests = new Set()
 
 try {
     const context = await browser.newContext()
     const page = await context.newPage()
+    page.on('request', (request) => {
+        if (request.url().startsWith('https://www.googletagmanager.com/')) {
+            localAnalyticsRequests.add(request.url())
+        }
+    })
     await page.emulateMedia({ reducedMotion: 'reduce' })
 
     for (const route of routes) {
@@ -68,8 +74,20 @@ try {
     })
 }
 
+if (localAnalyticsRequests.size) {
+    console.error('Local preview requested Google Tag Manager:')
+    for (const url of localAnalyticsRequests) {
+        console.error(`  ${url}`)
+    }
+    process.exitCode = 1
+} else {
+    console.log('Local analytics guard passed.')
+}
+
 if (violationCount) {
-    console.error(`Accessibility audit found ${violationCount} violation groups.`)
+    console.error(
+        `Accessibility audit found ${violationCount} violation groups.`
+    )
     process.exitCode = 1
 } else {
     console.log(`Accessibility audit passed ${routes.length} routes.`)

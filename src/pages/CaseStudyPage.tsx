@@ -43,11 +43,20 @@ export default function CaseStudyPage({
                             </p>
                             <dl className="mt-6 mb-0 flex flex-wrap gap-x-9 gap-y-4.5 border-y border-solid border-rule py-4.5">
                                 {project.facts.map(({ label, value }) => (
-                                    <div key={label}>
+                                    <div
+                                        key={label}
+                                        className={
+                                            label === 'Scope'
+                                                ? 'basis-full border-t border-solid border-rule pt-4'
+                                                : undefined
+                                        }
+                                    >
                                         <dt className="text-sm text-muted">
                                             {label}
                                         </dt>
-                                        <dd className="mx-0 mt-1 mb-0">
+                                        <dd
+                                            className={`mx-0 mt-1 mb-0 ${label === 'Scope' ? 'max-w-4xl leading-snug text-muted' : ''}`}
+                                        >
                                             {label === 'Recognition' ? (
                                                 <span className="inline-flex items-center gap-2 rounded-full border border-solid border-amber-300/40 bg-amber-300/10 px-3 py-1.5 text-sm font-semibold text-amber-200">
                                                     <Award
@@ -68,6 +77,14 @@ export default function CaseStudyPage({
                         <ProjectTechnologies slug={project.slug} />
                     </div>
                 </header>
+                <div className="flex flex-col mt-10 mb-20 gap-10">
+                    {project.keyDecisions?.length > 0 && (
+                        <HighlightBox slug={project.slug} title="Key decisions" items={project.keyDecisions} />
+                    )}
+                    {project.keyTakeaways?.length > 0 && (
+                        <HighlightBox slug={project.slug} title="Key takeaways" items={project.keyTakeaways} />
+                    )}
+                </div>
                 <CaseVisual
                     slug={project.slug}
                     steps={project.steps}
@@ -123,3 +140,41 @@ export default function CaseStudyPage({
         </div>
     )
 }
+
+const HighlightBox = ({
+    slug,
+    title,
+    items,
+}: {
+    slug: string
+    title: string
+    items: string[]
+}) => (
+    <section
+        aria-labelledby={`${slug}-key-decisions`}
+        className={"rounded-xl border border-solid border-rule bg-white/3 px-6 py-5 compact:px-5"}
+    >
+        <h2
+            id={`${slug}-key-decisions`}
+            className="mt-0 mb-6 text-[clamp(1.4375rem,3vw,2.125rem)] leading-tight tracking-[-.04em]"
+        >
+            {title}
+        </h2>
+        <ol className="m-0 list-none p-0 text-muted">
+            {items.map((item, index) => (
+                <li
+                    key={item}
+                    className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-4 border-t border-solid border-rule/70 py-4 first:border-t-0 first:pt-0 last:pb-0"
+                >
+                    <span
+                        aria-hidden="true"
+                        className="font-semibold text-violet"
+                    >
+                        {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span className="max-w-4xl leading-snug">{item}</span>
+                </li>
+            ))}
+        </ol>
+    </section>
+)
