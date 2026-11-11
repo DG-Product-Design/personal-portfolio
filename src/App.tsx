@@ -4,8 +4,8 @@ import CaseStudyPage from './pages/CaseStudyPage'
 import Error404Page from './pages/404'
 import projects from './content/projects.json'
 
-export default function App() {
-    const path = window.location.pathname
+export default function App({ path: requestedPath }: { path?: string }) {
+    const path = (requestedPath ?? window.location.pathname)
         .replace(/\/index\.html$/, '/')
         .replace(/\/+$/, '')
     if (!path) return <HomePage />

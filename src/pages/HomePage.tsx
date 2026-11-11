@@ -26,8 +26,11 @@ export default function HomePage() {
                         <br />
                         George
                     </h1>
-                    <p className="m-0 -mt-4 text-[clamp(1.25rem,2vw,1.875rem)] leading-cover-subtitle tracking-[-.045em]">
-                        Software engineer, product &amp; UX
+                    <p className="m-0 -mt-6 text-[clamp(1.25rem,2vw,1.875rem)] leading-cover-subtitle tracking-[-.045em]">
+                        Senior Product Engineer
+                    </p>
+                    <p className="m-0 mt-1 text-[clamp(1rem,1.5vw,1.625rem)] tracking-[-.045em]">
+                        From user insight to production systems.
                     </p>
                 </div>
                 <nav

@@ -17,7 +17,7 @@
   },
   {
     "category": "Testing & Delivery",
-    "skills": "Vitest, Jest, React Testing Library, Chromatic, Vite, Webpack, Git, GitHub CI/CD, Azure DevOps CI/CD, npm, Yarn, automated PR coverage reporting, PostHog feature flags"
+    "skills": "Vitest, Jest, React Testing Library, Chromatic, PostHog, Vite, Webpack, Git, GitHub CI/CD, Azure DevOps CI/CD, npm, Yarn, automated PR coverage reporting"
   },
   {
     "category": "Cloud & Observability",

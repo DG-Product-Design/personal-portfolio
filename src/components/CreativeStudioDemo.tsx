@@ -24,13 +24,13 @@ import {
     studioHint,
 } from './creativeStudioLayout'
 import criticalImages from '../content/critical-images.json'
-import duskPoster from '../assets/img/get-outside-v2.jpg'
-import duskPortrait from '../assets/img/get-outside-dusk-portrait.jpg'
-import scenicRoutePoster from '../assets/img/take-the-scenic-route-dusk-feed.jpg'
-import outsideFourFive from '../assets/img/ad-get-outside-4x5.jpg'
-import outsideNineSixteen from '../assets/img/ad-get-outside-9x16.jpg'
-import scenicFourFive from '../assets/img/ad-scenic-route-4x5.jpg'
-import scenicNineSixteen from '../assets/img/ad-scenic-route-9x16.jpg'
+import duskPoster from '../assets/img/chat-demo/get-outside-v2.jpg'
+import duskPortrait from '../assets/img/chat-demo/get-outside-dusk-portrait.jpg'
+import scenicRoutePoster from '../assets/img/chat-demo/take-the-scenic-route-dusk-feed.jpg'
+import outsideFourFive from '../assets/img/chat-demo/ad-get-outside-4x5.jpg'
+import outsideNineSixteen from '../assets/img/chat-demo/ad-get-outside-9x16.jpg'
+import scenicFourFive from '../assets/img/chat-demo/ad-scenic-route-4x5.jpg'
+import scenicNineSixteen from '../assets/img/chat-demo/ad-scenic-route-9x16.jpg'
 
 const scenicRoute = {
     src: scenicRoutePoster,

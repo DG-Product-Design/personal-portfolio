@@ -15,12 +15,15 @@
   },
   "scripts": {
     "start": "vite",
-    "deploy": "yarn build && echo 'davidageorge.me' > ./build/CNAME && gh-pages -d build",
-    "build": "tsc -b && vite build && node scripts/write-pages.mjs",
+    "deploy": "yarn build && gh-pages -d build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir .ssr-build && node scripts/write-pages.mjs",
     "preview": "vite preview",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test:a11y": "yarn build && node scripts/audit-accessibility.mjs",
+    "validate": "yarn build && yarn lint && node scripts/audit-accessibility.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@eslint/js": "^9.22.0",
     "@types/node": "^22.15.3",
     "@types/react": "^19.0.10",
@@ -34,6 +37,7 @@
     "eslint-plugin-tailwindcss": "4.4.0",
     "gh-pages": "^6.3.0",
     "globals": "^16.0.0",
+    "playwright-core": "1.65.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "~5.7.2",

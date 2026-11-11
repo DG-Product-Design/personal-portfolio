@@ -10,7 +10,7 @@
         "value": "Clarvos"
       },
       {
-        "label": "My role",
+        "label": "Project role",
         "value": "Full-stack technical lead"
       },
       {
@@ -21,12 +21,20 @@
     "steps": [],
     "sections": [
       {
-        "title": "Create & adapt campaign ads",
-        "body": "I built the ad creation and editing experience around a practical goal: marketers should be able to revise an ad for a new message or format while keeping it recognizable as part of the same brand. Creative Studio helps them create on-brand imagery, revise existing images, and prepare ads in different aspect ratios."
+        "title": "Start with the marketer’s real task",
+        "body": "The product decision was to treat creation and revision as one continuous workflow. Marketers needed to adapt an ad for a new message or format without losing the visual choices that made it recognizable as part of the same campaign. Creative Studio keeps that context in the editing experience instead of making every revision a new starting point."
       },
       {
-        "title": "Own design & delivery end to end",
-        "body": "As full-stack technical lead, I worked across the frontend, backend, AI/ML and agentic systems, and product design. I built the creation and editing experience and partnered with our product manager and designers to turn customer feedback into interface improvements, from the first draft through revisions."
+        "title": "Shape the workflow through feedback",
+        "body": "I partnered with our product manager and designers to turn customer feedback into product decisions, then carried those decisions through the interface. We refined how users moved from a first draft to targeted revisions, including changes to messaging, visual direction, and aspect ratio."
+      },
+      {
+        "title": "Connect the experience to agentic systems",
+        "body": "As full-stack technical lead, I worked across the frontend, backend, asynchronous messaging, and AI/ML agents that produced and revised the creative. I shaped the boundaries between those systems so the interface could communicate progress, preserve editing context, and present each generated result as part of a coherent workflow."
+      },
+      {
+        "title": "Own the path to production",
+        "body": "I remained hands-on from product and interaction design through architecture, implementation, and launch. That end-to-end ownership reduced handoffs between disciplines and let product feedback become working software without losing the original user intent."
       }
     ]
   },
@@ -41,8 +49,8 @@
         "value": "Fringe"
       },
       {
-        "label": "My role",
-        "value": "Frontend + design engineering lead"
+        "label": "Project role",
+        "value": "Product engineering lead + Frontend lead"
       },
       {
         "label": "Timeline",
@@ -65,20 +73,20 @@
     ],
     "sections": [
       {
-        "title": "Find out what people came for",
-        "body": "Through UserTesting and guided interviews, I learned what people looked for and where they struggled. We tested alternatives, iterated on prototypes, and ran A/B tests to refine the experience. Feedback also showed that the cart layout was a source of friction."
+        "title": "Find the friction before choosing a solution",
+        "body": "I established research with power users through UserTesting and guided interviews to learn what people came to the marketplace to find and where they stalled. We evaluated alternative concepts with prototypes and A/B tests rather than treating the first design as the answer. The research exposed friction in both product discovery and the cart."
       },
       {
-        "title": "Make products easier to find and buy again",
-        "body": "The redesign grouped recommended vendors into categories based on users’ interests. Favorites helped people return to products they liked, and recurring purchases made it easier to keep buying products they already used. We also removed steps on the path to checkout and improved the cart layout."
+        "title": "Design for relevance and repeat behavior",
+        "body": "The resulting product grouped recommendations around users’ interests instead of presenting an undifferentiated marketplace. Favorites and recurring purchases supported the way people returned to products they already valued, while a shorter path to checkout and a clearer cart removed unnecessary decisions."
       },
       {
-        "title": "Measure a real step in the journey",
-        "body": "Favorites and recurring purchases helped shorten the path to the cart. Across the redesign, production analytics showed an approximately 30% reduction in time from discovery to add-to-cart. The cart redesign also increased completed checkouts."
+        "title": "Measure the journey in production",
+        "body": "Production analytics showed an approximately 30% reduction in time from marketplace discovery to add-to-cart. The redesigned cart also increased completed checkouts. Those measures connected the interface changes to observable user behavior rather than relying on launch completion as the definition of success."
       },
       {
-        "title": "Build on a shared foundation",
-        "body": "At Fringe, I led frontend architecture and built a shared component library aligned with Figma and Storybook. I also led the JavaScript-to-TypeScript and Create React App-to-Vite migrations and upgraded React from 16 through 18. The product work and the engineering work both benefited from a consistent foundation."
+        "title": "Make the architecture support iteration",
+        "body": "I led the frontend architecture behind the product work: a shared component library aligned across Figma and Storybook, the JavaScript-to-TypeScript and Create React App-to-Vite migrations, and React upgrades from 16 through 18. The shared foundation reduced development time by approximately 40% and made later product experiments faster and more consistent to deliver."
       }
     ]
   },
@@ -93,8 +101,8 @@
         "value": "Fringe × ADP Thrive"
       },
       {
-        "label": "My role",
-        "value": "Lead product designer + UI developer"
+        "label": "Project role",
+        "value": "Product engineering lead + Frontend lead"
       },
       {
         "label": "Timeline",
@@ -117,20 +125,20 @@
     ],
     "sections": [
       {
-        "title": "Remove the separate signup",
-        "body": "The goal: increase purchases without adding friction. Partnering with ADP gave us a new distribution channel for Fringe, but requiring all ADP users to create a separate Fringe account added a step before they could buy. This offering let them make Fringe purchases through ADP's Thrive Marketplace without that extra account."
+        "title": "Choose the constraint that mattered",
+        "body": "ADP created a valuable distribution channel, but requiring every buyer to create a separate Fringe account introduced friction before purchase. I centered the MVP on removing that requirement so people could discover and buy Fringe offerings from the marketplace they were already using."
       },
       {
-        "title": "Define the first release",
-        "body": "I defined the MVP around a usable purchase experience, designed the interface, and led UI development. Owning both design and implementation let me carry the decisions about the purchase experience through to the shipped interface."
+        "title": "Define and deliver the MVP",
+        "body": "I defined the first release around a complete, usable purchase journey rather than a collection of disconnected screens. I designed the experience and led its UI development, carrying decisions about product scope and interaction behavior directly into the shipped interface."
       },
       {
-        "title": "Carry it through launch",
-        "body": "My work continued after design and development: I guided the offering through launch and supported it afterward. The result was an additional distribution channel for Fringe and a simpler buying experience for people using Thrive."
+        "title": "Connect identity, commerce, and fulfillment",
+        "body": "The React and Vite interface used OAuth and an authentication proxy to call Fringe REST APIs, while Stripe supported payment and fulfillment. That architecture let buyers remain in an officially branded Thrive experience without creating or navigating through a separate Fringe account."
       },
       {
-        "title": "Connect the purchase flow",
-        "body": "I built the interface with React and Vite. The purchase flow used OAuth and an auth proxy to call REST APIs, with Stripe supporting payment and fulfillment."
+        "title": "Carry the product beyond launch",
+        "body": "I guided the offering through launch and continued supporting it afterward. The result was a simpler buying experience and an additional distribution channel that exposed Fringe products to people who might not otherwise have discovered or purchased them."
       }
     ]
   },
@@ -145,8 +153,8 @@
         "value": "CapCenter"
       },
       {
-        "label": "My role",
-        "value": "Product Designer + Lead UI/UX Developer"
+        "label": "Project role",
+        "value": "Product engineering lead + Frontend lead"
       },
       {
         "label": "Timeline",
@@ -193,8 +201,8 @@
         "value": "CapCenter"
       },
       {
-        "label": "My role",
-        "value": "Product design + frontend development"
+        "label": "Project role",
+        "value": "Product engineering lead + Frontend lead"
       },
       {
         "label": "Time saved",
@@ -224,8 +232,8 @@
         "value": "CapCenter"
       },
       {
-        "label": "My role",
-        "value": "Product Designer + Lead UI/UX Developer"
+        "label": "Project role",
+        "value": "Product engineering lead + Frontend lead"
       },
       {
         "label": "Results",
@@ -259,7 +267,7 @@
         "value": "Dapper Labs"
       },
       {
-        "label": "My role",
+        "label": "Project role",
         "value": "Technical Consultant"
       },
       {
@@ -310,8 +318,8 @@
         "value": "San Joaquin County"
       },
       {
-        "label": "My role",
-        "value": "Product design + frontend development, Dito"
+        "label": "Project role",
+        "value": "Product engineering lead + FE development"
       },
       {
         "label": "Recognition",

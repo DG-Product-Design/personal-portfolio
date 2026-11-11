@@ -23,6 +23,7 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 
 - Node.js (version specified in `.nvmrc`)
 - Yarn package manager
+- Google Chrome for automated accessibility validation
 
 ### Installation
 
@@ -52,7 +53,11 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 - `yarn start` - Starts the development server
 - `yarn build` - Builds the app for production
 - `yarn preview` - Locally preview the production build
+- `yarn test:a11y` - Build the site and run automated accessibility checks
+- `yarn validate` - Run the production build, lint, and accessibility checks
 - `yarn deploy` - Deploy to GitHub Pages
+
+The accessibility audit finds Chrome automatically on macOS or through Playwright's `chrome` channel. Set `CHROME_PATH` to the Chrome executable when it is installed elsewhere.
 
 ## Project Structure
 
@@ -112,11 +117,11 @@ npx gh-pages -d build
 
 ### Custom Domain Setup
 
-The deployment automatically creates a CNAME file with `davidageorge.me`. To use a different domain:
+The build creates the CNAME file and all canonical, Open Graph, JSON-LD, robots, and sitemap URLs from `src/content/site.json`. To use a different domain:
 
-1. Update the domain in the `deploy` script in `package.json`
-2. Or manually create the CNAME file with your desired domain
-3. Configure your domain's DNS settings to point to your GitHub Pages URL
+1. Update `siteUrl` in `src/content/site.json`
+2. Configure the new domain's DNS settings to point to your GitHub Pages URL
+3. Run `yarn build` and verify `build/CNAME`, `build/robots.txt`, and `build/sitemap.xml` contain the new domain
 
 ## License
 
