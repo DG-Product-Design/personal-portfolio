@@ -7,14 +7,14 @@ import projects from '../content/projects.json'
 function BackToWork() {
     return (
         <a
-            className="inline-flex min-h-11 items-center gap-2 text-violet no-underline hover:underline"
+            className="inline-flex min-h-11 items-center gap-2 text-violet underline underline-offset-4"
             href="/#work"
         >
             <ArrowLeft
                 aria-hidden="true"
                 className="size-4"
             />
-            Back
+            Back to selected work
         </a>
     )
 }

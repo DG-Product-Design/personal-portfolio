@@ -1,7 +1,7 @@
-import jonathon from '../assets/img/recs/jonathon-alder.jpg'
-import aaron from '../assets/img/recs/aaron-boyarsky.jpg'
-import jeff from '../assets/img/recs/jeff-tyrrill.jpg'
-import david from '../assets/img/recs/david-list.jpg'
+import jonathon from '../assets/img/recs/jonathon.jpg'
+import aaron from '../assets/img/recs/aaron.jpg'
+import jeff from '../assets/img/recs/jeff.jpg'
+import sk from '../assets/img/recs/sk.jpg'
 
 const recommendations = [
     {
@@ -9,28 +9,28 @@ const recommendations = [
         photo: jonathon,
         title: 'Full-Stack Software Engineer',
         relationship: 'Former Fringe teammate',
-        quote: 'During our time together at Fringe, David was regarded as the person to go to when any custom design or interaction was to be implemented. With his keen eye for design, he was also an extremely valuable voice to have at the table during feature proposals and prototyping, offering a unique perspective of engineering feasibility coupled with UX best practices.',
+        quote: '"During our time together at Fringe, David was regarded as the person to go to when any custom design or interaction was to be implemented. With his keen eye for design, he was also an extremely valuable voice to have at the table during feature proposals and prototyping, offering a unique perspective of engineering feasibility coupled with UX best practices."',
     },
     {
-        name: 'Aaron',
-        photo: aaron,
-        title: 'Software Engineer / Artist',
-        relationship: 'Former direct manager',
-        quote: "He's built many reusable React components that mirror our design system, enabling other team members to easily build features that align with it. He's built the storybook stories to match, and led other team members in creating stories of their own. Often he goes above and beyond, ensuring the features he builds are responsive and accessible.",
+        name: 'SK',
+        photo: sk,
+        title: 'Senior Product Design & Product Management',
+        relationship: 'Former Fringe teammate',
+        quote: '"David shined working at a fast-paced, early-stage start-up where roles were blurred and deep creativity and understanding of strategy were paramount. He made my job easier daily, helping to bring, what sometimes could be very basic designs, into beautiful, relational, and easy-to-use features. I always enjoyed design review with David, debating user experience decisions, overall aesthetic, and usability."',
     },
     {
         name: 'Jeff',
         photo: jeff,
         title: 'Front-End Focused Full Stack Software Developer',
         relationship: 'Former Clarvos teammate',
-        quote: 'It was a pleasure working with David at Clarvos. David went above and beyond to improve the user experience throughout the product, with a strong focus on usability details as well as the software architecture underlying it.',
+        quote: '"It was a pleasure working with David at Clarvos. David went above and beyond to improve the user experience throughout the product, with a strong focus on usability details as well as the software architecture underlying it."',
     },
     {
-        name: 'David',
-        photo: david,
-        title: 'Staff Backend Engineer',
-        relationship: 'Senior engineering colleague at Clarvos',
-        quote: 'He combines great technical skill, a positive attitude, a collaborative mindset, and a very strong work ethic. In fact, he was always far enough ahead of the backend development that it made sense to pull him into some of the backend work, a challenge he was eager to accept.',
+        name: 'Aaron',
+        photo: aaron,
+        title: 'Software Engineer / Artist',
+        relationship: 'Former direct manager',
+        quote: '"His background in design is a huge asset. He has an eye for details that ensure what he builds comes out looking great. He’s proactive about working with our design team when there are questions about the design or he has refinements to suggest. He comes with proposals and solutions to solve problems other people haven’t yet encountered or anticipated, but also with an open mind as to what direction the team wants to go."',
     },
 ]
 

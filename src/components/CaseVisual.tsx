@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import {
     studioLayout,
     studioChatLayout,
@@ -8,14 +8,14 @@ import {
     studioHint,
 } from './creativeStudioLayout'
 import PanningImage from './PanningImage'
-import mortgage from '../assets/img/loan-app-collage--no-bg.webp'
-import propertySearch from '../assets/img/homesearch-collage.webp'
-import topShot from '../assets/img/topshot.jpg'
-import fringe from '../assets/img/fringe-marketplace.png'
-import adpThrive from '../assets/img/adp-thrive-product.png'
-import matchingEngine from '../assets/img/sjc-matching-engine.webp'
-import lcaDesktop from '../assets/img/lca/capabilities-table-wrapper.webp'
-import lcaMobile from '../assets/img/lca/list-view.webp'
+import mortgage from '../assets/img/case-studies/loan-app-collage--no-bg.webp'
+import propertySearch from '../assets/img/case-studies/homesearch-collage.webp'
+import topShot from '../assets/img/case-studies/topshot.jpg'
+import fringe from '../assets/img/case-studies/fringe-marketplace.png'
+import adpThrive from '../assets/img/case-studies/adp-thrive-product.png'
+import matchingEngine from '../assets/img/case-studies/sjc-matching-engine.webp'
+import lcaDesktop from '../assets/img/case-studies/lca/capabilities-table-wrapper.webp'
+import lcaMobile from '../assets/img/case-studies/lca/list-view.webp'
 
 const CreativeStudioDemo = lazy(() => import('./CreativeStudioDemo'))
 
@@ -151,7 +151,13 @@ export default function CaseVisual({
     slug: string
     steps: Step[]
 }) {
+    const [canLoadDemo, setCanLoadDemo] = useState(false)
+
+    useEffect(() => setCanLoadDemo(true), [])
+
     if (slug === 'creative-studio') {
+        if (!canLoadDemo) return <CreativeStudioSkeleton />
+
         return (
             <Suspense fallback={<CreativeStudioSkeleton />}>
                 <CreativeStudioDemo />

@@ -38,8 +38,9 @@ export default function AboutPage() {
                             I’m David.
                         </h1>
                         <p className="mt-6 mb-0 max-w-[30ch] text-about-lede leading-tight tracking-tight">
-                            Senior software engineer working across product, UX,
-                            and full-stack development.
+                            Senior Product Engineer working across product
+                            discovery, UX, experimentation, full-stack
+                            engineering, and AI/agentic systems.
                         </p>
                         <p className="mt-4 mb-0 max-w-[48ch] text-muted">
                             I’m happiest when I can understand the user problem,
@@ -49,7 +50,12 @@ export default function AboutPage() {
                         <ul className="mt-6 mb-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-sm">
                             <li>
                                 <a href="/download/David-A-George-Resume.pdf">
-                                    View résumé (PDF)
+                                    PDF résumé
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/download/David-A-George-Resume.docx">
+                                    DOCX résumé
                                 </a>
                             </li>
                             <li>

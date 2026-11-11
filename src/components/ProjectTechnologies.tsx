@@ -57,11 +57,13 @@ const logos = {
     'Frontend architecture and migrations': Layers,
     'Frontend development': CodeXml,
     'Frontend lead': CodeXml,
+    'Product engineering lead': CodeXml,
     'Post-launch support': Rocket,
     'Marketing automation and A/B testing': FlaskConical,
     'MVP definition': NotebookPen,
     'Onboarding and campaign messaging': ChartNoAxesCombined,
     'Internal tooling': CodeXml,
+    'Product discovery and experimentation': FlaskConical,
     'User research and A/B testing': FlaskConical,
     Angular: AngularSVG,
     'Google Apps Script': AppsScriptSVG,
@@ -150,24 +152,24 @@ const projectContributions: Partial<Record<string, (keyof typeof logos)[]>> = {
     'adp-thrive': [
         'MVP definition',
         'UX + UI design lead',
-        'Frontend lead',
+        'Product engineering lead',
         'Post-launch support',
     ],
     'capcenter-lca': [
         'UX + UI design lead',
-        'Frontend lead',
+        'Product engineering lead',
         'User research and A/B testing',
         'Post-launch support',
     ],
     'fringe-discovery': [
-        'User research and A/B testing',
+        'Product discovery and experimentation',
         'UX + UI design',
-        'Frontend lead',
+        'Product engineering lead',
         'Frontend architecture and migrations',
     ],
     'mortgage-application': [
         'UX + UI design lead',
-        'Frontend lead',
+        'Product engineering lead',
         'User research and A/B testing',
     ],
     'nba-top-shot': [
@@ -178,20 +180,23 @@ const projectContributions: Partial<Record<string, (keyof typeof logos)[]>> = {
     ],
     'real-estate-property-search': [
         'UX + UI design lead',
-        'Frontend lead',
+        'Product engineering lead',
         'User research and A/B testing',
     ],
     'san-joaquin-matching-engine': [
         'UX + UI design lead',
         'Accessibility design',
-        'Frontend development',
+        'Product engineering lead',
     ],
 }
 
 export default function ProjectTechnologies({ slug }: { slug: string }) {
     const isCreativeStudio = slug === 'creative-studio'
     const groups: { heading: string; items: (keyof typeof logos)[] }[] = [
-        { heading: 'My contribution', items: projectContributions[slug] ?? [] },
+        {
+            heading: 'Product-engineering contribution',
+            items: projectContributions[slug] ?? [],
+        },
         {
             heading: isCreativeStudio ? 'Demo built with' : 'Technologies',
             items: isCreativeStudio
