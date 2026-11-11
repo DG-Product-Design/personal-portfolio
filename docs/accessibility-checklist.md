@@ -1,6 +1,6 @@
 # Manual accessibility validation
 
-Run `yarn validate` first. Automated checks cannot determine whether the site is understandable, efficient, or comfortable to use, so complete this manual pass before each public release that changes navigation, layout, color, motion, or interactive behavior.
+Run `yarn validate` first. It requires Google Chrome; set `CHROME_PATH` to the Chrome executable when Chrome is not available through the standard macOS location or Playwright's `chrome` channel. Automated checks cannot determine whether the site is understandable, efficient, or comfortable to use, so complete this manual pass before each public release that changes navigation, layout, color, motion, or interactive behavior.
 
 ## Routes and viewports
 

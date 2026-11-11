@@ -19,17 +19,19 @@ import lcaMobile from '../assets/img/case-studies/lca/list-view.webp'
 
 const CreativeStudioDemo = lazy(() => import('./CreativeStudioDemo'))
 
-function CreativeStudioSkeleton() {
+function CreativeStudioSkeleton({ loading = false }: { loading?: boolean }) {
     return (
         <div
             data-studio-theme="system"
             className={studioLayout}
         >
             <span
-                role="status"
+                role={loading ? 'status' : undefined}
                 className="sr-only"
             >
-                Loading the conversational ad editor…
+                {loading
+                    ? 'Loading the conversational ad editor…'
+                    : 'The conversational ad editor demo requires JavaScript.'}
             </span>
             <div
                 aria-hidden="true"
@@ -159,7 +161,7 @@ export default function CaseVisual({
         if (!canLoadDemo) return <CreativeStudioSkeleton />
 
         return (
-            <Suspense fallback={<CreativeStudioSkeleton />}>
+            <Suspense fallback={<CreativeStudioSkeleton loading />}>
                 <CreativeStudioDemo />
             </Suspense>
         )

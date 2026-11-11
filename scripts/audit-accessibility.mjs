@@ -2,17 +2,13 @@ import AxeBuilder from '@axe-core/playwright'
 import { existsSync, readFileSync } from 'node:fs'
 import { chromium } from 'playwright-core'
 import { preview } from 'vite'
+import { createSiteRoutes } from './site-routes.mjs'
 
 const root = new URL('../', import.meta.url)
 const projects = JSON.parse(
     readFileSync(new URL('src/content/projects.json', root), 'utf8')
 )
-const routes = [
-    '/',
-    '/about/',
-    ...projects.map(({ slug }) => `/work/${slug}/`),
-    '/404.html',
-]
+const routes = createSiteRoutes(projects).map(({ routePath }) => routePath)
 const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const executablePath =
     process.env.CHROME_PATH || (existsSync(macChrome) ? macChrome : undefined)

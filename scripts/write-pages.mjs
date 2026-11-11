@@ -1,9 +1,13 @@
 // GitHub Pages resolves directory indexes, but does not rewrite arbitrary URLs to the SPA.
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { createSiteRoutes } from './site-routes.mjs'
 
 const output = new URL('../build/', import.meta.url)
 const serverOutput = new URL('../.ssr-build/', import.meta.url)
-const siteUrl = 'https://davidageorge.me/'
+const site = JSON.parse(
+    await readFile(new URL('../src/content/site.json', import.meta.url), 'utf8')
+)
+const siteUrl = site.siteUrl
 const personId = `${siteUrl}#david-a-george`
 const websiteId = `${siteUrl}#website`
 const { render } = await import(new URL('entry-server.js', serverOutput))
@@ -14,7 +18,8 @@ const projects = JSON.parse(
         'utf8'
     )
 )
-const { home, creativeStudio } = JSON.parse(
+const routes = createSiteRoutes(projects)
+const { home: homeImage, creativeStudio } = JSON.parse(
     await readFile(
         new URL('../src/content/critical-images.json', import.meta.url),
         'utf8'
@@ -51,13 +56,10 @@ const structuredData = (url, name, type = 'WebPage') => ({
         {
             '@type': 'Person',
             '@id': personId,
-            name: 'David A. George',
+            name: site.name,
             url: siteUrl,
-            jobTitle: 'Senior Product Engineer',
-            sameAs: [
-                'https://www.linkedin.com/in/dg-product-engineer',
-                'https://github.com/DG-Product-Design',
-            ],
+            jobTitle: site.jobTitle,
+            sameAs: [site.linkedInUrl, site.githubUrl],
             knowsAbout: [
                 'Product engineering',
                 'Product discovery',
@@ -71,7 +73,7 @@ const structuredData = (url, name, type = 'WebPage') => ({
             '@type': 'WebSite',
             '@id': websiteId,
             url: siteUrl,
-            name: 'David A. George',
+            name: site.name,
             publisher: { '@id': personId },
         },
         {
@@ -105,49 +107,27 @@ const withRouteMetadata = (html, routePath, name, type) => {
         )
 }
 
+const homeRoute = routes[0]
 await writeFile(
-    new URL('index.html', output),
+    new URL(homeRoute.filePath, output),
     withRouteMetadata(
         withPrerenderedApp(
             preloadImage(
                 shell,
-                `imagesrcset="${escape(home.srcSet)}" imagesizes="${escape(home.sizes)}"`
+                `imagesrcset="${escape(homeImage.srcSet)}" imagesizes="${escape(homeImage.sizes)}"`
             ),
-            '/'
+            homeRoute.routePath
         ),
-        '/',
-        'David A. George | Senior Product Engineer',
-        'ProfilePage'
+        homeRoute.routePath,
+        site.title,
+        homeRoute.schemaType
     )
 )
 
-const pages = [
-    [
-        'about/index.html',
-        '/about/',
-        'About',
-        'About David A. George, Senior Product Engineer working across product discovery, UX, experimentation, full-stack engineering, and agentic AI.',
-        'ProfilePage',
-    ],
-    ...projects.map(({ slug, name, intro }) => [
-        `work/${slug}/index.html`,
-        `/work/${slug}/`,
-        name,
-        intro,
-        'CreativeWork',
-    ]),
-    [
-        '404.html',
-        '/404',
-        'Page not found',
-        'This portfolio page could not be found.',
-        'WebPage',
-    ],
-]
-
-for (const [filePath, routePath, title, description, type] of pages) {
+for (const route of routes.slice(1)) {
+    const { filePath, routePath, title, description, schemaType } = route
     const file = new URL(filePath, output)
-    const pageTitle = escape(`${title} | David A. George`)
+    const pageTitle = escape(`${title} | ${site.name}`)
     const pageDescription = escape(description)
     const routeShell =
         filePath === 'work/creative-studio/index.html'
@@ -160,7 +140,7 @@ for (const [filePath, routePath, title, description, type] of pages) {
             withPrerenderedApp(routeShell, routePath),
             routePath,
             pageTitle.replace(/&amp;/g, '&'),
-            type
+            schemaType
         )
             .replace(
                 /<title>[^<]*<\/title>/,
@@ -182,15 +162,21 @@ for (const [filePath, routePath, title, description, type] of pages) {
     )
 }
 
-const sitemapRoutes = [
-    '/',
-    '/about/',
-    ...projects.map(({ slug }) => `/work/${slug}/`),
-]
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapRoutes.map((path) => `  <url><loc>${new URL(path, siteUrl).href}</loc></url>`).join('\n')}
+${routes
+    .filter(({ includeInSitemap }) => includeInSitemap)
+    .map(
+        ({ routePath }) =>
+            `  <url><loc>${new URL(routePath, siteUrl).href}</loc></url>`
+    )
+    .join('\n')}
 </urlset>
 `
 await writeFile(new URL('sitemap.xml', output), sitemap)
+await writeFile(
+    new URL('robots.txt', output),
+    `User-agent: *\nDisallow:\n\nSitemap: ${new URL('sitemap.xml', siteUrl).href}\n`
+)
+await writeFile(new URL('CNAME', output), `${new URL(siteUrl).hostname}\n`)
 await rm(serverOutput, { recursive: true, force: true })
