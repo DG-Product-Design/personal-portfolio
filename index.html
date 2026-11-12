@@ -31,6 +31,25 @@
     <script type="application/ld+json" id="structured-data">
       {"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"__SITE_URL__#david-a-george","name":"__SITE_NAME__","url":"__SITE_URL__","jobTitle":"__SITE_JOB_TITLE__","sameAs":["__SITE_LINKEDIN_URL__","__SITE_GITHUB_URL__"],"knowsAbout":["Product engineering","Product discovery","User experience","Experimentation","Full-stack engineering","AI and agentic systems"]},{"@type":"WebSite","@id":"__SITE_URL__#website","url":"__SITE_URL__","name":"__SITE_NAME__","publisher":{"@id":"__SITE_URL__#david-a-george"}},{"@type":"ProfilePage","@id":"__SITE_URL__#page","url":"__SITE_URL__","name":"__SITE_TITLE__","isPartOf":{"@id":"__SITE_URL__#website"},"mainEntity":{"@id":"__SITE_URL__#david-a-george"}}]}
     </script>
+    <script>
+      if (
+        ['davidageorge.me', 'www.davidageorge.me'].includes(
+          window.location.hostname,
+        )
+      ) {
+        window.dataLayer = window.dataLayer || []
+        window.gtag = function gtag() {
+          window.dataLayer.push(arguments)
+        }
+        window.gtag('js', new Date())
+
+        const googleTagManager = document.createElement('script')
+        googleTagManager.async = true
+        googleTagManager.src =
+          'https://www.googletagmanager.com/gtm.js?id=GTM-5ZMZ9VMR'
+        document.head.appendChild(googleTagManager)
+      }
+    </script>
     <title>__SITE_TITLE__</title>
   </head>
   <body>
