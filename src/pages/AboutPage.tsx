@@ -1,9 +1,19 @@
+import { ExternalLink } from 'lucide-react'
 import Headshot from '../components/Headshot'
 import SiteNav from '../components/SiteNav'
 import Recommendations from '../components/Recommendations'
 import skills from '../content/skills.json'
 
-const chapters = [
+type Chapter = {
+    title: string
+    body: string
+    liveWork?: {
+        label: string
+        url: string
+    }
+}
+
+const chapters: Chapter[] = [
     {
         title: 'New User Experience Lead',
         body: 'I started as a New User Experience Lead in 2012, working on onboarding and conversion. The goal: ensure every single free trial user becomes a paying customer. I still start by asking what someone came to do and where they get stuck.',
@@ -11,6 +21,10 @@ const chapters = [
     {
         title: 'Product design + engineering',
         body: 'At Dito, I designed and built experiences for prominent industry leaders like KFC and Northrop Grumman. At CapCenter I designed and built experiences for buying a home. At Fringe I used interviews, usability tests, and experiments to improve how people found products and checked out.',
+        liveWork: {
+            label: 'View the live KFC store locator',
+            url: 'https://locations.kfc.com/search?r=20',
+        },
     },
     {
         title: 'Product + Engineering leadership',
@@ -83,7 +97,7 @@ export default function AboutPage() {
                         How I got here
                     </h2>
                     <ol className="m-0 mt-5 grid list-none gap-5 p-0 md:grid-cols-3 md:gap-7">
-                        {chapters.map(({ title, body }, index) => (
+                        {chapters.map(({ title, body, liveWork }, index) => (
                             <li
                                 key={title}
                                 className="border-t border-solid border-rule pt-4"
@@ -100,6 +114,24 @@ export default function AboutPage() {
                                 <p className="m-0 max-w-[55ch] text-muted">
                                     {body}
                                 </p>
+                                {liveWork && (
+                                    <a
+                                        className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-violet"
+                                        href={liveWork.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {liveWork.label}
+                                        <span className="sr-only">
+                                            {' '}
+                                            (opens in a new tab)
+                                        </span>
+                                        <ExternalLink
+                                            aria-hidden="true"
+                                            className="size-4"
+                                        />
+                                    </a>
+                                )}
                             </li>
                         ))}
                     </ol>

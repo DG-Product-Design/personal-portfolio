@@ -48,6 +48,7 @@ try {
         })
         const results = await new AxeBuilder({ page })
             .exclude('iframe[src*="youtube-nocookie.com"]')
+            .exclude('iframe[src*="youtube.com/embed/"]')
             .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
             .analyze()
 

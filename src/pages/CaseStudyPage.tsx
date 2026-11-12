@@ -1,8 +1,14 @@
-import { ArrowLeft, Award } from 'lucide-react'
+import { ArrowLeft, Award, ExternalLink } from 'lucide-react'
 import SiteNav from '../components/SiteNav'
 import CaseVisual, { ProjectScreenshot } from '../components/CaseVisual'
 import ProjectTechnologies from '../components/ProjectTechnologies'
 import projects from '../content/projects.json'
+
+type LiveWork = {
+    label: string
+    note: string | null
+    url: string
+}
 
 function BackToWork() {
     return (
@@ -26,6 +32,8 @@ export default function CaseStudyPage({
     project: (typeof projects)[number]
     next: (typeof projects)[number]
 }) {
+    const liveWork = project.liveWork as LiveWork | null
+
     return (
         <div className="mx-auto max-w-310 px-page-gutter pb-12.5">
             <SiteNav />
@@ -72,6 +80,35 @@ export default function CaseStudyPage({
                                     </div>
                                 ))}
                             </dl>
+                            {liveWork && (
+                                <div className="mt-3 flex flex-wrap items-center justify-between gap-x-8 gap-y-1">
+                                    <a
+                                        className="inline-flex min-h-11 items-center gap-2 font-semibold text-violet"
+                                        href={liveWork.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {liveWork.label}
+                                        <span className="sr-only">
+                                            {' '}
+                                            (opens in a new tab)
+                                        </span>
+                                        <ExternalLink
+                                            aria-hidden="true"
+                                            className="size-4"
+                                        />
+                                    </a>
+                                    {liveWork.note && (
+                                        <div className="m-0 ml-auto flex max-w-128 min-w-68 flex-1 items-center gap-1">
+                                            <span className="text-5xl">[</span>
+                                            <p className="text-sm leading-snug text-muted">
+                                                {liveWork.note}
+                                            </p>
+                                            <span className="text-5xl">]</span>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                             <ProjectScreenshot slug={project.slug} />
                         </div>
                         <ProjectTechnologies slug={project.slug} />
@@ -122,11 +159,11 @@ export default function CaseStudyPage({
                         </h2>
                         <iframe
                             className="block aspect-video w-full rounded-lg bg-black"
-                            src="https://www.youtube-nocookie.com/embed/KXZbU77iWpY?start=63"
+                            src="https://www.youtube.com/embed/KXZbU77iWpY?start=63&playsinline=1&origin=https%3A%2F%2Fdavidageorge.me"
                             title="San Joaquin Matching Engine video"
                             loading="lazy"
                             referrerPolicy="strict-origin-when-cross-origin"
-                            allow="encrypted-media; picture-in-picture"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                         />
                         <a
