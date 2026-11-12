@@ -4,6 +4,11 @@
         "name": "Creative Studio",
         "title": "Building an ad creation and editing experience",
         "intro": "I led the full-stack build of Creative Studio, which lets marketers create AI-generated ads and revise them for new messages and formats without starting over.",
+        "liveWork": {
+            "label": "Explore Clarvos",
+            "note": null,
+            "url": "https://www.clarvos.com/"
+        },
         "facts": [
             {
                 "label": "Project role",
@@ -53,6 +58,11 @@
         "name": "Marketplace discovery & checkout",
         "title": "Helping people find benefits that fit",
         "intro": "Employees use Fringe points to buy products and services. I redesigned and rebuilt marketplace discovery and checkout so users could get from a relevant recommendation to checkout with fewer steps.",
+        "liveWork": {
+            "label": "Explore Fringe",
+            "note": null,
+            "url": "https://www.fringe.us/"
+        },
         "facts": [
             {
                 "label": "Project role",
@@ -115,6 +125,11 @@
         "name": "ADP Thrive",
         "title": "A purchase without another account",
         "intro": "ADP Thrive gave Fringe a new place to sell its benefits. I defined the MVP, designed the experience, and led UI development through launch and support.",
+        "liveWork": {
+            "label": "Explore Fringe",
+            "note": null,
+            "url": "https://www.fringe.us/"
+        },
         "facts": [
             {
                 "label": "Project role",
@@ -177,6 +192,11 @@
         "name": "Redesigning a $1.2B fintech pipeline",
         "title": "Redesigning a $1.2B fintech pipeline",
         "intro": "I led the product and interaction design for CapCenter's loan application, then built the frontend that put the redesign in customers' hands.",
+        "liveWork": {
+            "label": "Open the live loan application",
+            "note": "The interface has changed slightly since this work shipped, but the UX flow and UI architecture remain.",
+            "url": "https://www.capcenter.com/central/client/apply"
+        },
         "facts": [
             {
                 "label": "Project role",
@@ -221,6 +241,10 @@
                 "body": "The loan application sat at the center of CapCenter's digital business for mortgage, lending, and real estate customers. It was also one of the projects where my product design and frontend engineering responsibilities were most tightly connected."
             },
             {
+                "title": "The challenge",
+                "body": "The government's URLA form is a complex document that must be filled out accurately to avoid legal and financial risks. It also contains a lot of optional fields that can be confusing for borrowers. We needed an experience that was easy for borrowers to understand with rigorous enough validation to avoid legal and financial risks."
+            },
+            {
                 "title": "What I owned",
                 "body": "I led the user research and redesign, then built the frontend. That made me responsible for both what the application should do and how it actually behaved in the browser."
             },
@@ -235,6 +259,7 @@
         "name": "Loan Officer Assignment Tool",
         "title": "Matching clients with loan consultants",
         "intro": "I designed an internal tool that saved the company 750+ hours per year by assigning clients to loan consultants based on location, qualifications, and availability.",
+        "liveWork": null,
         "facts": [
             {
                 "label": "Project role",
@@ -276,6 +301,11 @@
         "name": "Real Estate Property Search",
         "title": "From finding a home to booking a tour",
         "intro": "I designed and built CapCenter's home search, where buyers could find listings, browse photos, and schedule a tour without leaving the site.",
+        "liveWork": {
+            "label": "Open the live home search",
+            "note": "The interface has changed slightly since this work shipped, but the UX flow and UI architecture remain.",
+            "url": "https://www.capcenter.com/homes/"
+        },
         "facts": [
             {
                 "label": "Project role",
@@ -321,6 +351,7 @@
         "name": "NBA Top Shot / Dapper Labs",
         "title": "Personalizing NBA Top Shot messaging with collection data",
         "intro": "I worked with Dapper Labs' data engineering team to make NBA Top Shot collection data usable in automated, personalized email for more than two million users.",
+        "liveWork": null,
         "facts": [
             {
                 "label": "Project role",
@@ -382,6 +413,7 @@
         "name": "San Joaquin Matching Engine",
         "title": "Helping social workers find prospective adoptive families",
         "intro": "At Dito, I designed and built a tool that helped San Joaquin County social workers compare prospective adoptive families for children awaiting adoption. The matching engine used weighted criteria to rank potential matches for review.",
+        "liveWork": null,
         "facts": [
             {
                 "label": "Project role",
