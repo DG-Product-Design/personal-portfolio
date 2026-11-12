@@ -8,6 +8,7 @@ import {
     studioHint,
 } from './creativeStudioLayout'
 import PanningImage from './PanningImage'
+import ImageFade from './ImageFade'
 import mortgage from '../assets/img/case-studies/loan-app-collage--no-bg.webp'
 import propertySearch from '../assets/img/case-studies/homesearch-collage.webp'
 import topShot from '../assets/img/case-studies/topshot.jpg'
@@ -102,15 +103,13 @@ export function ProjectScreenshot({ slug }: { slug: string }) {
     if (slug === 'capcenter-lca') {
         return (
             <div className="mt-5 grid grid-cols-[minmax(0,3fr)_minmax(0,1fr)] items-end gap-3">
-                <img
-                    className="h-auto w-full rounded-lg"
+                <ImageFade
                     src={lcaDesktop}
                     alt="Desktop view of consultant qualifications and availability"
                     width={1200}
                     height={999}
                 />
-                <img
-                    className="h-auto w-full rounded-lg"
+                <ImageFade
                     src={lcaMobile}
                     alt="Mobile list of loan consultants and their availability"
                     width={500}
@@ -137,9 +136,9 @@ export function ProjectScreenshot({ slug }: { slug: string }) {
     if (!screenshot) return null
 
     return (
-        <img
+        <ImageFade
             {...screenshot}
-            className="mt-5 h-auto w-full rounded-lg"
+            className="mt-5"
         />
     )
 }

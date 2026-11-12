@@ -1,3 +1,5 @@
+import ImageFade from './ImageFade'
+
 type ImageProps = {
     src: string
     alt: string
@@ -7,14 +9,11 @@ type ImageProps = {
 
 export default function PanningImage(props: ImageProps) {
     return (
-        <div
+        <ImageFade
+            {...props}
+            bgClass="bg-transparent"
             className="[container-type:size] max-h-[min(65svh,40rem)] w-full overflow-clip rounded-lg motion-reduce:max-h-none"
-            style={{ aspectRatio: `${props.width} / ${props.height}` }}
-        >
-            <img
-                {...props}
-                className="h-auto w-full motion-safe:animate-image-pan"
-            />
-        </div>
+            imageClassName="motion-safe:animate-image-pan"
+        />
     )
 }

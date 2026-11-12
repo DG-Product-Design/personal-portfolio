@@ -77,12 +77,20 @@ export default function CaseStudyPage({
                         <ProjectTechnologies slug={project.slug} />
                     </div>
                 </header>
-                <div className="flex flex-col mt-10 mb-20 gap-10">
+                <div className="mt-10 mb-20 flex flex-col gap-10">
                     {project.keyDecisions?.length > 0 && (
-                        <HighlightBox slug={project.slug} title="Key decisions" items={project.keyDecisions} />
+                        <HighlightBox
+                            slug={project.slug}
+                            title="Key decisions"
+                            items={project.keyDecisions}
+                        />
                     )}
                     {project.keyTakeaways?.length > 0 && (
-                        <HighlightBox slug={project.slug} title="Key takeaways" items={project.keyTakeaways} />
+                        <HighlightBox
+                            slug={project.slug}
+                            title="Key takeaways"
+                            items={project.keyTakeaways}
+                        />
                     )}
                 </div>
                 <CaseVisual
@@ -152,7 +160,7 @@ const HighlightBox = ({
 }) => (
     <section
         aria-labelledby={`${slug}-key-decisions`}
-        className={"rounded-xl border border-solid border-rule bg-white/3 px-6 py-5 compact:px-5"}
+        className="rounded-xl border border-solid border-rule bg-white/3 px-6 py-5 compact:px-5"
     >
         <h2
             id={`${slug}-key-decisions`}
