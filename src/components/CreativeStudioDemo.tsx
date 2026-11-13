@@ -24,13 +24,13 @@ import {
     studioHint,
 } from './creativeStudioLayout'
 import criticalImages from '../content/critical-images.json'
-import duskPoster from '../assets/img/chat-demo/get-outside-v2.jpg'
-import duskPortrait from '../assets/img/chat-demo/get-outside-dusk-portrait.jpg'
-import scenicRoutePoster from '../assets/img/chat-demo/take-the-scenic-route-dusk-feed.jpg'
-import outsideFourFive from '../assets/img/chat-demo/ad-get-outside-4x5.jpg'
-import outsideNineSixteen from '../assets/img/chat-demo/ad-get-outside-9x16.jpg'
-import scenicFourFive from '../assets/img/chat-demo/ad-scenic-route-4x5.jpg'
-import scenicNineSixteen from '../assets/img/chat-demo/ad-scenic-route-9x16.jpg'
+import duskPoster from '../assets/img/chat-demo/get-outside-v2.webp'
+import duskPortrait from '../assets/img/chat-demo/get-outside-dusk-portrait.webp'
+import scenicRoutePoster from '../assets/img/chat-demo/take-the-scenic-route-dusk-feed.webp'
+import outsideFourFive from '../assets/img/chat-demo/ad-get-outside-4x5.webp'
+import outsideNineSixteen from '../assets/img/chat-demo/ad-get-outside-9x16.webp'
+import scenicFourFive from '../assets/img/chat-demo/ad-scenic-route-4x5.webp'
+import scenicNineSixteen from '../assets/img/chat-demo/ad-scenic-route-9x16.webp'
 
 const scenicRoute = {
     src: scenicRoutePoster,
@@ -108,7 +108,7 @@ const edits = [
         reply: '“Take the Scenic Route” is in. I kept the cream lettering style, dusk palette, and feed framing.',
     },
     {
-        prompt: 'Add my brand logo near the bottom, centered horizontally.',
+        prompt: 'Add my brand logo somewhere.',
         action: 'Placed the brand logo',
         detail: 'Centered the Trailbound mark above the bottom edge of the ad. The headline and artwork carried over.',
         reply: 'I centered the Trailbound logo just above the bottom edge, using the same cream color as the headline.',

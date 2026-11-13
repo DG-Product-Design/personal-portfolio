@@ -38,6 +38,12 @@ export default function SiteNav({ cover = false }: { cover?: boolean }) {
                     </a>
                     <a
                         className={linkClass}
+                        href="/design-systems/"
+                    >
+                        Systems
+                    </a>
+                    <a
+                        className={linkClass}
                         href="mailto:dav.a.george@gmail.com"
                     >
                         Contact

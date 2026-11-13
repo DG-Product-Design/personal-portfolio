@@ -12,9 +12,11 @@ import ImageFade from './ImageFade'
 import mortgage from '../assets/img/case-studies/loan-app-collage--no-bg.webp'
 import propertySearch from '../assets/img/case-studies/homesearch-collage.webp'
 import topShot from '../assets/img/case-studies/topshot.jpg'
-import fringe from '../assets/img/case-studies/fringe-marketplace.png'
-import adpThrive from '../assets/img/case-studies/adp-thrive-product.png'
-import matchingEngine from '../assets/img/case-studies/sjc-matching-engine.webp'
+import fringe from '../assets/img/case-studies/fringe-marketplace.webp'
+import adpThrive from '../assets/img/case-studies/adp-thrive-product.webp'
+import thriveCheckout from '../assets/img/case-studies/thrive-checkout.webp'
+import matchingEngineCollapsed from '../assets/img/case-studies/sjc/matching-engine-collapsed.webp'
+import matchingEngineOpen from '../assets/img/case-studies/sjc/matching-engine-open.webp'
 import lcaDesktop from '../assets/img/case-studies/lca/capabilities-table-wrapper.webp'
 import lcaMobile from '../assets/img/case-studies/lca/list-view.webp'
 
@@ -67,12 +69,6 @@ function CreativeStudioSkeleton({ loading = false }: { loading?: boolean }) {
 const screenshots: Partial<
     Record<string, { src: string; alt: string; width: number; height: number }>
 > = {
-    'adp-thrive': {
-        src: adpThrive,
-        alt: 'ADP Thrive product page with discounted DoorDash gift cards and a shopping cart',
-        width: 1204,
-        height: 1262,
-    },
     'nba-top-shot': {
         src: topShot,
         alt: 'NBA Top Shot product screens',
@@ -91,15 +87,60 @@ const screenshots: Partial<
         width: 1920,
         height: 1320,
     },
-    'san-joaquin-matching-engine': {
-        src: matchingEngine,
-        alt: 'San Joaquin Matching Engine screens showing ranked family matches and profile details',
-        width: 1920,
-        height: 1320,
-    },
 }
 
 export function ProjectScreenshot({ slug }: { slug: string }) {
+    if (slug === 'adp-thrive') {
+        return (
+            <div className="mt-5 grid grid-cols-[minmax(0,1fr)_minmax(12rem,.58fr)] items-start gap-3 compact:grid-cols-1">
+                <ImageFade
+                    src={adpThrive}
+                    alt="ADP Thrive product page with discounted DoorDash gift cards and a shopping cart"
+                    width={1204}
+                    height={1262}
+                />
+                <ImageFade
+                    src={thriveCheckout}
+                    alt="ADP Thrive checkout for a DoorDash gift card"
+                    width={726}
+                    height={1296}
+                />
+            </div>
+        )
+    }
+
+    if (slug === 'san-joaquin-matching-engine') {
+        return (
+            <div className="mt-5 grid gap-5">
+                <figure className="m-0">
+                    <ImageFade
+                        src={matchingEngineCollapsed}
+                        alt="San Joaquin Matching Engine showing ranked prospective family matches in a collapsed view"
+                        width={1728}
+                        height={1117}
+                    />
+                    <figcaption className="mt-2 text-sm text-muted">
+                        Ranked matches provide a scannable overview before a
+                        social worker opens the comparison.
+                    </figcaption>
+                </figure>
+                <figure className="m-0">
+                    <ImageFade
+                        src={matchingEngineOpen}
+                        alt="San Joaquin Matching Engine comparing an expanded youth profile with an expanded prospective family profile"
+                        width={1728}
+                        height={1117}
+                        loading="lazy"
+                    />
+                    <figcaption className="mt-2 text-sm text-muted">
+                        Expanded profiles place matching criteria side by side
+                        for review.
+                    </figcaption>
+                </figure>
+            </div>
+        )
+    }
+
     if (slug === 'capcenter-lca') {
         return (
             <div className="mt-5 grid grid-cols-[minmax(0,3fr)_minmax(0,1fr)] items-end gap-3">

@@ -61,6 +61,12 @@ export default function AboutPage() {
                             help shape the experience, and build it through to
                             production.
                         </p>
+                        <p className="mt-4 mb-0 max-w-[48ch] text-muted">
+                            One of my strongest specialties is building design
+                            systems and component libraries that let design and
+                            engineering move faster without sacrificing
+                            accessibility, consistency, or product quality.
+                        </p>
                         <ul className="mt-6 mb-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-sm">
                             <li>
                                 <a href="/download/David-A-George-Resume.pdf">

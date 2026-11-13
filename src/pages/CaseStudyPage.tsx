@@ -10,6 +10,11 @@ type LiveWork = {
     url: string
 }
 
+type DesignSystemContributionData = {
+    paragraphs: string[]
+    bullets: string[]
+}
+
 function BackToWork() {
     return (
         <a
@@ -33,6 +38,8 @@ export default function CaseStudyPage({
     next: (typeof projects)[number]
 }) {
     const liveWork = project.liveWork as LiveWork | null
+    const designSystemContribution =
+        project.designSystemContribution as DesignSystemContributionData | null
 
     return (
         <div className="mx-auto max-w-310 px-page-gutter pb-12.5">
@@ -129,6 +136,13 @@ export default function CaseStudyPage({
                             items={project.keyTakeaways}
                         />
                     )}
+                    {designSystemContribution && (
+                        <DesignSystemContribution
+                            slug={project.slug}
+                            paragraphs={designSystemContribution.paragraphs}
+                            bullets={designSystemContribution.bullets}
+                        />
+                    )}
                 </div>
                 <CaseVisual
                     slug={project.slug}
@@ -155,7 +169,7 @@ export default function CaseStudyPage({
                             id="matching-engine-video"
                             className="mt-0 mb-3 text-2xl tracking-tight text-violet"
                         >
-                            See the Matching Engine in action
+                            See what others say about the Matching Engine
                         </h2>
                         <iframe
                             className="block aspect-video w-full rounded-lg bg-black"
@@ -221,5 +235,49 @@ const HighlightBox = ({
                 </li>
             ))}
         </ol>
+    </section>
+)
+
+const DesignSystemContribution = ({
+    slug,
+    paragraphs,
+    bullets,
+}: {
+    slug: string
+    paragraphs: string[]
+    bullets: string[]
+}) => (
+    <section
+        aria-labelledby={`${slug}-design-system-contribution`}
+        className="grid gap-6 border-y border-solid border-rule py-6 md:grid-cols-[minmax(13rem,.55fr)_minmax(0,1.45fr)]"
+    >
+        <h2
+            id={`${slug}-design-system-contribution`}
+            className="m-0 text-[clamp(1.4375rem,3vw,2.125rem)] leading-tight tracking-[-.04em]"
+        >
+            Design system contribution
+        </h2>
+        <div>
+            {paragraphs.map((paragraph) => (
+                <p
+                    key={paragraph}
+                    className="mt-0 mb-4 max-w-3xl leading-snug text-muted last:mb-0"
+                >
+                    {paragraph}
+                </p>
+            ))}
+            {bullets.length > 0 && (
+                <ul className="m-0 grid gap-3 pl-5 text-muted">
+                    {bullets.map((item) => (
+                        <li
+                            key={item}
+                            className="max-w-3xl pl-1 leading-snug marker:text-violet"
+                        >
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
     </section>
 )

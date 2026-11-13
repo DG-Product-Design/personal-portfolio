@@ -19,6 +19,15 @@ export function createSiteRoutes(projects) {
             schemaType: 'ProfilePage',
             includeInSitemap: true,
         },
+        {
+            filePath: 'design-systems/index.html',
+            routePath: '/design-systems/',
+            title: 'Design Systems',
+            description:
+                'Design systems and component-library work by David A. George across tokens, theming, accessibility, Storybook, reusable components, and production engineering.',
+            schemaType: 'CollectionPage',
+            includeInSitemap: true,
+        },
         ...projects.map(({ slug, name, intro }) => ({
             filePath: `work/${slug}/index.html`,
             routePath: `/work/${slug}/`,

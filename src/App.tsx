@@ -1,5 +1,6 @@
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
+import DesignSystemsPage from './pages/DesignSystemsPage'
 import CaseStudyPage from './pages/CaseStudyPage'
 import Error404Page from './pages/404'
 import projects from './content/projects.json'
@@ -10,6 +11,7 @@ export default function App({ path: requestedPath }: { path?: string }) {
         .replace(/\/+$/, '')
     if (!path) return <HomePage />
     if (path === '/about') return <AboutPage />
+    if (path === '/design-systems') return <DesignSystemsPage />
 
     const index = projects.findIndex(({ slug }) => path === `/work/${slug}`)
     if (index === -1) return <Error404Page />

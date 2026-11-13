@@ -4,6 +4,7 @@
         "name": "Creative Studio",
         "title": "Building an ad creation and editing experience",
         "intro": "I led the full-stack build of Creative Studio, which lets marketers create AI-generated ads and revise them for new messages and formats without starting over.",
+        "focus": "Product engineering · Design systems · AI/agentic systems",
         "liveWork": {
             "label": "Explore Clarvos",
             "note": null,
@@ -33,6 +34,15 @@
             "Design the frontend, backend, async messaging, and AI agents as one system that preserves context and shows progress."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": {
+            "paragraphs": [],
+            "bullets": [
+                "Translated 3 different application-wide rebrands into a scalable component and theming system.",
+                "Defined reusable visual, component, and interaction foundations.",
+                "Established Storybook as living component documentation.",
+                "Created patterns that supported faster prototyping and more consistent implementation."
+            ]
+        },
         "steps": [],
         "sections": [
             {
@@ -58,6 +68,7 @@
         "name": "Marketplace discovery & checkout",
         "title": "Helping people find benefits that fit",
         "intro": "Employees use Fringe points to buy products and services. I redesigned and rebuilt marketplace discovery and checkout so users could get from a relevant recommendation to checkout with fewer steps.",
+        "focus": "Product engineering · Design systems · UX",
         "liveWork": {
             "label": "Explore Fringe",
             "note": null,
@@ -87,6 +98,16 @@
             "Keep iterating after launch, using production data to improve recommendations, repeat purchases, and the cart."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": {
+            "paragraphs": [],
+            "bullets": [
+                "Built and evolved a shared component library used across the marketplace.",
+                "Established near pixel-perfect parity between Figma and production.",
+                "Reduced development time by approximately 40%.",
+                "Established a 92% testing coverage baseline",
+                "Established reusable accessibility and interaction patterns."
+            ]
+        },
         "steps": [
             {
                 "title": "Discover interest-based categories",
@@ -125,6 +146,7 @@
         "name": "ADP Thrive",
         "title": "A purchase without another account",
         "intro": "ADP Thrive gave Fringe a new place to sell its benefits. I defined the MVP, designed the experience, and led UI development through launch and support.",
+        "focus": "Product engineering · Marketplace UX · Commerce",
         "liveWork": {
             "label": "Explore Fringe",
             "note": null,
@@ -154,6 +176,7 @@
             "Make it fast. Building a tiny new app with auto-auth, Fringe APIs, and Stripe is better than extending the existing Fringe platform."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": null,
         "steps": [
             {
                 "title": "Discover and select",
@@ -192,6 +215,7 @@
         "name": "Redesigning a $1.2B fintech pipeline",
         "title": "Redesigning a $1.2B fintech pipeline",
         "intro": "I led the product and interaction design for CapCenter's loan application, then built the frontend that put the redesign in customers' hands.",
+        "focus": "Product design · Design systems · Frontend engineering",
         "liveWork": {
             "label": "Open the live loan application",
             "note": "The interface has changed slightly since this work shipped, but the UX flow and UI architecture remain.",
@@ -221,6 +245,14 @@
             "Treat launch as the start of the feedback loop, not the end of the project."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": {
+            "paragraphs": [],
+            "bullets": [
+                "Established reusable visual and interaction patterns across the digital experience.",
+                "Carried those patterns into the loan application, home search, and internal tools.",
+                "Built accessible frontend foundations aligned to WCAG 2.0 AA."
+            ]
+        },
         "steps": [
             {
                 "title": "Product design",
@@ -259,6 +291,7 @@
         "name": "Loan Officer Assignment Tool",
         "title": "Matching clients with loan consultants",
         "intro": "I designed an internal tool that saved the company 750+ hours per year by assigning clients to loan consultants based on location, qualifications, and availability.",
+        "focus": "Product engineering · Workflow automation · UX",
         "liveWork": null,
         "facts": [
             {
@@ -284,6 +317,7 @@
             "Give managers one place to review assignments and update the rules behind future matches."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": null,
         "steps": [],
         "sections": [
             {
@@ -301,6 +335,7 @@
         "name": "Real Estate Property Search",
         "title": "From finding a home to booking a tour",
         "intro": "I designed and built CapCenter's home search, where buyers could find listings, browse photos, and schedule a tour without leaving the site.",
+        "focus": "Product design · Search UX · Frontend engineering",
         "liveWork": {
             "label": "Open the live home search",
             "note": "The interface has changed slightly since this work shipped, but the UX flow and UI architecture remain.",
@@ -330,6 +365,7 @@
             "Keep tour scheduling inside CapCenter instead of sending buyers to another marketplace."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": null,
         "steps": [],
         "sections": [
             {
@@ -351,6 +387,7 @@
         "name": "NBA Top Shot / Dapper Labs",
         "title": "Personalizing NBA Top Shot messaging with collection data",
         "intro": "I worked with Dapper Labs' data engineering team to make NBA Top Shot collection data usable in automated, personalized email for more than two million users.",
+        "focus": "Data engineering · Personalization · Experimentation",
         "liveWork": null,
         "facts": [
             {
@@ -376,6 +413,7 @@
             "Use clean collection data for onboarding experiments, A/B tests, and automated messages to more than two million users."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": null,
         "steps": [
             {
                 "label": "Source",
@@ -413,6 +451,7 @@
         "name": "San Joaquin Matching Engine",
         "title": "Helping social workers find prospective adoptive families",
         "intro": "At Dito, I designed and built a tool that helped San Joaquin County social workers compare prospective adoptive families for children awaiting adoption. The matching engine used weighted criteria to rank potential matches for review.",
+        "focus": "UX · Accessibility · Design systems",
         "liveWork": null,
         "facts": [
             {
@@ -438,6 +477,13 @@
             "Meet Section 508 requirements and move the frontend to TypeScript so the application is easier to maintain."
         ],
         "keyTakeaways": [],
+        "designSystemContribution": {
+            "paragraphs": [
+                "I established a reusable UI foundation for the application rather than treating each screen as a one-off. That included shared components, consistent interaction patterns, and accessible styling conventions that could be applied across the product.",
+                "Because the application had strict Section 508 accessibility requirements, the component system also helped make accessible behavior repeatable instead of relying on individual implementation decisions on every screen."
+            ],
+            "bullets": []
+        },
         "steps": [
             {
                 "label": "Select",
