@@ -15,35 +15,37 @@ import thriveCheckout from '../assets/img/case-studies/thrive-checkout.webp'
 
 const foundations = [
     {
-        term: 'Tokens',
-        description: 'Color, typography, spacing, radii, and states.',
+        term: 'Tokens:',
+        definition: 'Color, typography, spacing, radii, and states.',
+        description:
+            'Semantic tokens separated brand choices from component behavior, making rebrands and themes easier to implement.',
     },
     {
-        term: 'Components',
-        description:
+        term: 'Components:',
+        definition:
             'Buttons, inputs, dialogs, cards, tables, navigation, and complex product patterns.',
-    },
-    {
-        term: 'Theming',
-        description: 'Brand and rebrand support, dark mode, and variants.',
-    },
-    {
-        term: 'Accessibility',
-        description: 'Keyboard behavior, focus states, ARIA, and contrast.',
-    },
-    {
-        term: 'Documentation',
         description:
-            'Storybook, usage guidance, browser tests, and working examples.',
+            'Composable components with documented APIs, variants, and interaction states, designed for reuse across workflows.',
     },
     {
-        term: 'Engineering ergonomics',
+        term: 'Accessibility:',
+        definition: 'Keyboard behavior, focus states, ARIA, and contrast.',
         description:
+            'Shared accessibility patterns for keyboard navigation, focus management, ARIA semantics, and contrast compliance.',
+    },
+    {
+        term: 'Engineering ergonomics:',
+        definition:
             'Clear prop APIs, composability, consistency, and maintainability.',
+        description:
+            'Component APIs and documentation designed to reduce one-off implementation and make adoption easier for engineers.',
     },
     {
-        term: 'Design/engineering parity',
-        description: 'Figma and production built from the same decisions.',
+        term: 'Documentation:',
+        definition:
+            'Storybook, interactive examples, configurable props, component variants, and usage guidance.',
+        description:
+            'Built living documentation with interactive playgrounds, implementation code, API references, and accessibility guidance to help engineers discover, understand, test, and correctly implement components.',
     },
 ]
 
@@ -207,14 +209,16 @@ export default function DesignSystemsPage() {
                     </div>
                     <div className="border-t border-solid border-rule pt-5">
                         <p className="m-0 text-case-lede leading-snug">
-                            I build the shared layer between product intent and
-                            production code: the tokens, components, behavior,
-                            documentation, and APIs that let teams move faster
-                            without lowering the quality bar.
+                            I build design systems that developers actually want
+                            to use. That means clear component APIs, proper
+                            extensibility, predictable behavior, accessible
+                            defaults, and documentation that makes the right
+                            implementation easier than inventing a new one.
                         </p>
                         <p className="mt-4 mb-0 text-sm text-muted">
-                            One Fringe library included 147+ documented
-                            component stories, backed by 92% test coverage.
+                            One component library I architected, built, and
+                            maintained grew to 147+ documented Storybook stories
+                            and achieved 92% unit-test coverage.
                         </p>
                     </div>
                 </header>
@@ -227,23 +231,30 @@ export default function DesignSystemsPage() {
                         What the system covers
                     </h2>
                     <dl className="mt-5 mb-0 border-t border-solid border-rule">
-                        {foundations.map(({ term, description }, index) => (
-                            <div
-                                key={term}
-                                className="grid gap-2 border-b border-solid border-rule/70 py-4 md:grid-cols-[3rem_minmax(12rem,.65fr)_minmax(0,1.35fr)] md:gap-5"
-                            >
-                                <span
-                                    aria-hidden="true"
-                                    className="text-sm font-semibold text-violet"
+                        {foundations.map(
+                            ({ term, definition, description }, index) => (
+                                <div
+                                    key={term}
+                                    className="grid gap-2 border-b border-solid border-rule/70 py-4 md:grid-cols-[3rem_minmax(12rem,.65fr)_minmax(0,1.35fr)] md:gap-5"
                                 >
-                                    {String(index + 1).padStart(2, '0')}
-                                </span>
-                                <dt className="font-semibold">{term}</dt>
-                                <dd className="m-0 text-muted">
-                                    {description}
-                                </dd>
-                            </div>
-                        ))}
+                                    <span
+                                        aria-hidden="true"
+                                        className="text-sm font-semibold text-violet"
+                                    >
+                                        {String(index + 1).padStart(2, '0')}
+                                    </span>
+                                    <dt>
+                                        <span className="font-semibold">
+                                            {term}
+                                        </span>
+                                        &nbsp;{definition}
+                                    </dt>
+                                    <dd className="m-0 text-muted">
+                                        {description}
+                                    </dd>
+                                </div>
+                            )
+                        )}
                     </dl>
                 </section>
 

@@ -28,6 +28,15 @@ export function createSiteRoutes(projects) {
             schemaType: 'CollectionPage',
             includeInSitemap: true,
         },
+        {
+            filePath: 'work/fringe-gifting/index.html',
+            routePath: '/work/fringe-gifting/',
+            title: 'Fringe Gifting Experience',
+            description:
+                'An interactive case study showing how David A. George designed and built a celebratory gifting experience for the Fringe marketplace.',
+            schemaType: 'CreativeWork',
+            includeInSitemap: true,
+        },
         ...projects.map(({ slug, name, intro }) => ({
             filePath: `work/${slug}/index.html`,
             routePath: `/work/${slug}/`,

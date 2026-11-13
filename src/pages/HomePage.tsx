@@ -150,6 +150,33 @@ export default function HomePage() {
                     </a>
                 </div>
             </section>
+            <section className="mx-auto grid max-w-310 gap-7 border-t border-solid border-rule px-page-gutter py-[clamp(3.75rem,8vw,6.5rem)] md:grid-cols-[minmax(14rem,.65fr)_minmax(0,1.35fr)]">
+                <div>
+                    <p className="m-0 text-sm font-semibold text-violet">
+                        Interaction craft
+                    </p>
+                    <h2 className="mt-3 mb-0 text-section-title leading-none tracking-[-.05em]">
+                        Making digital gifts feel real
+                    </h2>
+                </div>
+                <div className="border-t border-solid border-rule pt-5">
+                    <p className="m-0 max-w-3xl text-[clamp(1.125rem,2vw,1.5rem)] leading-snug">
+                        A notification, celebration, animated reveal, and
+                        redemption flow designed to give a digital exchange the
+                        anticipation of opening a physical gift.
+                    </p>
+                    <p className="mt-4 mb-0 text-sm text-muted">
+                        Interaction design · Motion design · React · User
+                        testing
+                    </p>
+                    <a
+                        className="mt-6 inline-flex min-h-11 items-center font-semibold text-violet"
+                        href="/work/fringe-gifting/"
+                    >
+                        Try the gifting interaction →
+                    </a>
+                </div>
+            </section>
         </>
     )
 }
