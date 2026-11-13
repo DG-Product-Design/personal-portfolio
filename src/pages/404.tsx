@@ -7,7 +7,7 @@ export default function Error404Page() {
         <div className="relative isolate">
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 right-0 -z-1 hidden w-1/2 mask-l-from-55% mask-l-to-100% bg-cover bg-right opacity-20 md:block md:bg-[url('/img/portfolio/midnight-800.jpg')]"
+                className="pointer-events-none absolute inset-y-0 right-0 -z-1 hidden w-1/2 mask-l-from-55% mask-l-to-100% bg-cover bg-right opacity-20 md:block md:bg-[url('/img/portfolio/midnight-800.webp')]"
             />
             <div className="mx-auto flex min-h-svh max-w-310 flex-col px-page-gutter">
                 <SiteNav />

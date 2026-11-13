@@ -1,0 +1,398 @@
+import SiteNav from '../components/SiteNav'
+import ImageFade from '../components/ImageFade'
+import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
+import fringeDarkMode from '../assets/img/design-systems/fringe-dark-mode.webp'
+import fringeLightMode from '../assets/img/design-systems/fringe-light-mode.webp'
+import gridsAndGuides from '../assets/img/design-systems/grids-and-guides.webp'
+import loanAppScreens from '../assets/img/design-systems/loan-app-screens.webp'
+import storybookButtons from '../assets/img/design-systems/buttons-preview.webp'
+import storybookColors from '../assets/img/design-systems/colors-preview.webp'
+import storybookColorsContinued from '../assets/img/design-systems/colors-preview-2.webp'
+import storybookDropdown from '../assets/img/design-systems/dropdown-preview.webp'
+import storybookIcons from '../assets/img/design-systems/icons-preview.webp'
+import storybookTypography from '../assets/img/design-systems/text-preview.webp'
+import thriveCheckout from '../assets/img/case-studies/thrive-checkout.webp'
+
+const foundations = [
+    {
+        term: 'Tokens',
+        description: 'Color, typography, spacing, radii, and states.',
+    },
+    {
+        term: 'Components',
+        description:
+            'Buttons, inputs, dialogs, cards, tables, navigation, and complex product patterns.',
+    },
+    {
+        term: 'Theming',
+        description: 'Brand and rebrand support, dark mode, and variants.',
+    },
+    {
+        term: 'Accessibility',
+        description: 'Keyboard behavior, focus states, ARIA, and contrast.',
+    },
+    {
+        term: 'Documentation',
+        description:
+            'Storybook, usage guidance, browser tests, and working examples.',
+    },
+    {
+        term: 'Engineering ergonomics',
+        description:
+            'Clear prop APIs, composability, consistency, and maintainability.',
+    },
+    {
+        term: 'Design/engineering parity',
+        description: 'Figma and production built from the same decisions.',
+    },
+]
+
+const evidence = [
+    {
+        company: 'Fringe',
+        result: '~40% faster development',
+        detail: 'Shared component architecture aligned across Figma, Storybook, and production.',
+        href: '/work/fringe-discovery/',
+    },
+    {
+        company: 'Clarvos',
+        result: 'Rebrand without one-off screens',
+        detail: 'A scalable theming system with Storybook as living documentation. Its modularity allowed it to adapt to 2 different redesigns. On the third, well-defined tokens and components made the transition from MUI to Tailwind seamless.',
+        href: '/work/creative-studio/',
+    },
+    {
+        company: 'CapCenter',
+        result: 'Patterns shared across products',
+        detail: 'Reusable foundations for the loan application, home search, and internal tools.',
+        href: '/work/mortgage-application/',
+    },
+    {
+        company: 'San Joaquin County',
+        result: 'Accessibility made repeatable',
+        detail: 'Shared components and conventions built around Section 508 requirements.',
+        href: '/work/san-joaquin-matching-engine/',
+    },
+]
+
+const storybookArtifacts = [
+    {
+        src: storybookColors,
+        alt: 'Storybook color documentation showing CapCenter theme colors, usage guidance, and a WCAG contrast note',
+        width: 1140,
+        height: 957,
+        title: 'Tokens and accessibility guidance',
+        caption:
+            'Theme colors, implementation classes, and WCAG 2.0 AA guidance documented together.',
+    },
+    {
+        src: storybookColorsContinued,
+        alt: 'Storybook documentation showing theme color scales, system colors, gradients, and arbitrary color usage',
+        width: 1140,
+        height: 1508,
+        title: 'Color scales and system states',
+        caption:
+            'Brand scales, semantic system colors, gradients, and escape hatches for exceptional cases.',
+    },
+    {
+        src: storybookButtons,
+        alt: 'Storybook button documentation showing a live example, source code, and configurable component properties',
+        width: 1140,
+        height: 1096,
+        title: 'Production-ready component APIs',
+        caption:
+            'Live examples, implementation code, prop definitions, variants, and component states.',
+    },
+    {
+        src: storybookDropdown,
+        alt: 'Storybook dropdown documentation showing an open menu, source code, and configurable properties',
+        width: 1140,
+        height: 1082,
+        title: 'Interactive component states',
+        caption:
+            'A working dropdown documented alongside its API, source example, and configurable behavior.',
+    },
+    {
+        src: storybookIcons,
+        alt: 'Storybook icon documentation showing sizing, color, rotation, and code examples',
+        width: 1140,
+        height: 1089,
+        title: 'Reusable icon behavior',
+        caption:
+            'Consistent sizing, color, interaction, and transformation patterns with usage examples.',
+    },
+    {
+        src: storybookTypography,
+        alt: 'Storybook typography documentation showing headline scales and implementation classes',
+        width: 1140,
+        height: 957,
+        title: 'Typography scale',
+        caption:
+            'Reusable type tokens presented with their visual output and production class names.',
+    },
+]
+
+const artifacts = [
+    {
+        src: componentLibraryVariations,
+        alt: 'CapCenter product screens and Figma component variants showing different visual directions built from shared components',
+        width: 1920,
+        height: 1320,
+        title: 'Token-driven visual direction',
+        caption:
+            'Small token changes created distinct visual directions without rebuilding the underlying components.',
+    },
+    {
+        src: gridsAndGuides,
+        alt: 'Figma grids and guides for desktop, tablet, and mobile breakpoints',
+        width: 1918,
+        height: 922,
+        title: 'Responsive foundations',
+        caption:
+            'Breakpoints and column grids gave designers and engineers the same responsive rules.',
+    },
+    {
+        src: fringeLightMode,
+        alt: 'Fringe marketplace rendered with the light theme',
+        width: 1788,
+        height: 1291,
+        title: 'Fringe light theme',
+        caption:
+            'The marketplace structure and component behavior remain consistent while theme tokens change.',
+    },
+    {
+        src: fringeDarkMode,
+        alt: 'Fringe marketplace rendered with the dark theme',
+        width: 1788,
+        height: 1291,
+        title: 'Fringe dark theme',
+        caption:
+            'A production dark mode built from the same shared components and theming system.',
+    },
+    {
+        src: loanAppScreens,
+        alt: 'CapCenter loan application screens across desktop and mobile showing a cohesive multi-step experience',
+        width: 1920,
+        height: 1320,
+        title: 'Cohesion across a complex journey',
+        caption:
+            'Shared components kept a long, multi-device loan application consistent across many screens and states.',
+    },
+    {
+        src: thriveCheckout,
+        alt: 'ADP Thrive checkout for a DoorDash gift card using Fringe marketplace components',
+        width: 726,
+        height: 1296,
+        title: 'Components across deployments',
+        caption:
+            'The modular checkout system carried into a partner deployment on another domain without becoming a separate one-off.',
+        figureClassName: 'max-w-md',
+    },
+]
+
+export default function DesignSystemsPage() {
+    return (
+        <div className="mx-auto max-w-310 px-page-gutter pb-16">
+            <SiteNav />
+            <main id="main">
+                <header className="grid gap-8 pt-[clamp(3rem,8vw,7rem)] pb-[clamp(3rem,7vw,6rem)] md:grid-cols-[minmax(0,1.15fr)_minmax(18rem,.85fr)] md:items-end">
+                    <div>
+                        <p className="m-0 text-sm font-semibold text-violet">
+                            Systems that ship
+                        </p>
+                        <h1 className="mt-3 mb-0 text-[clamp(3.5rem,10vw,8.5rem)] leading-[.82] font-extrabold tracking-[-.08em] text-violet motion-safe:headline-shimmer">
+                            Design
+                            <br />
+                            Systems
+                        </h1>
+                    </div>
+                    <div className="border-t border-solid border-rule pt-5">
+                        <p className="m-0 text-case-lede leading-snug">
+                            I build the shared layer between product intent and
+                            production code: the tokens, components, behavior,
+                            documentation, and APIs that let teams move faster
+                            without lowering the quality bar.
+                        </p>
+                        <p className="mt-4 mb-0 text-sm text-muted">
+                            One Fringe library included 147+ documented
+                            component stories, backed by 92% test coverage.
+                        </p>
+                    </div>
+                </header>
+
+                <section aria-labelledby="system-anatomy">
+                    <h2
+                        id="system-anatomy"
+                        className="m-0 text-section-title tracking-[-.04em]"
+                    >
+                        What the system covers
+                    </h2>
+                    <dl className="mt-5 mb-0 border-t border-solid border-rule">
+                        {foundations.map(({ term, description }, index) => (
+                            <div
+                                key={term}
+                                className="grid gap-2 border-b border-solid border-rule/70 py-4 md:grid-cols-[3rem_minmax(12rem,.65fr)_minmax(0,1.35fr)] md:gap-5"
+                            >
+                                <span
+                                    aria-hidden="true"
+                                    className="text-sm font-semibold text-violet"
+                                >
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+                                <dt className="font-semibold">{term}</dt>
+                                <dd className="m-0 text-muted">
+                                    {description}
+                                </dd>
+                            </div>
+                        ))}
+                    </dl>
+                </section>
+
+                <section
+                    aria-labelledby="storybook-artifacts"
+                    className="mt-[clamp(4rem,9vw,8rem)]"
+                >
+                    <div className="flex flex-wrap items-end justify-between gap-4">
+                        <div>
+                            <p className="m-0 text-sm font-semibold text-violet">
+                                CapCenter component library
+                            </p>
+                            <h2
+                                id="storybook-artifacts"
+                                className="mt-2 mb-0 text-section-title tracking-[-.04em]"
+                            >
+                                Inside the Storybook
+                            </h2>
+                        </div>
+                        <a
+                            className="inline-flex min-h-11 items-center font-semibold text-violet"
+                            href="https://github.com/DG-Product-Design/component-library"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            View the component-library source
+                            <span className="sr-only">
+                                {' '}
+                                (opens in a new tab)
+                            </span>
+                        </a>
+                    </div>
+                    <p className="mt-4 mb-0 max-w-3xl text-muted">
+                        These documentation screens show one of three component
+                        library generations I built at CapCenter. The system
+                        connected design direction to reusable code, documented
+                        APIs, interaction states, and accessibility guidance.
+                    </p>
+                    <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
+                        {storybookArtifacts.map(
+                            ({ src, alt, width, height, title, caption }) => (
+                                <figure
+                                    key={title}
+                                    className="m-0"
+                                >
+                                    <ImageFade
+                                        src={src}
+                                        alt={alt}
+                                        width={width}
+                                        height={height}
+                                        loading="lazy"
+                                    />
+                                    <figcaption className="mt-3 border-t border-solid border-rule/70 pt-3">
+                                        <strong className="block">
+                                            {title}
+                                        </strong>
+                                        <span className="mt-1 block text-sm text-muted">
+                                            {caption}
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            )
+                        )}
+                    </div>
+                </section>
+
+                <section
+                    aria-labelledby="system-evidence"
+                    className="mt-[clamp(4rem,9vw,8rem)]"
+                >
+                    <h2
+                        id="system-evidence"
+                        className="m-0 text-section-title tracking-[-.04em]"
+                    >
+                        Evidence in the work
+                    </h2>
+                    <div className="mt-5 grid border-t border-solid border-rule md:grid-cols-2">
+                        {evidence.map(({ company, result, detail, href }) => (
+                            <a
+                                key={company}
+                                href={href}
+                                className="group border-b border-solid border-rule/70 py-5 no-underline md:odd:pr-8 md:even:border-l md:even:pl-8"
+                            >
+                                <span className="text-sm font-semibold text-violet">
+                                    {company}
+                                </span>
+                                <strong className="mt-2 block text-xl tracking-tight group-hover:text-violet">
+                                    {result}
+                                </strong>
+                                <span className="mt-1 block max-w-xl text-muted">
+                                    {detail}
+                                </span>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+
+                <section
+                    aria-labelledby="system-artifacts"
+                    className="mt-[clamp(4rem,9vw,8rem)]"
+                >
+                    <div className="flex flex-wrap items-end justify-between gap-4">
+                        <h2
+                            id="system-artifacts"
+                            className="m-0 text-section-title tracking-[-.04em]"
+                        >
+                            The system in production
+                        </h2>
+                        <p className="m-0 max-w-xl text-sm text-muted">
+                            Shipped product surfaces show how the shared
+                            foundations held up beyond the component library.
+                        </p>
+                    </div>
+                    <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
+                        {artifacts.map(
+                            ({
+                                src,
+                                alt,
+                                width,
+                                height,
+                                title,
+                                caption,
+                                figureClassName,
+                            }) => (
+                                <figure
+                                    key={title}
+                                    className={`m-0 ${figureClassName ?? ''}`}
+                                >
+                                    <ImageFade
+                                        src={src}
+                                        alt={alt}
+                                        width={width}
+                                        height={height}
+                                        loading="lazy"
+                                    />
+                                    <figcaption className="mt-3 border-t border-solid border-rule/70 pt-3">
+                                        <strong className="block">
+                                            {title}
+                                        </strong>
+                                        <span className="mt-1 block text-sm text-muted">
+                                            {caption}
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            )
+                        )}
+                    </div>
+                </section>
+            </main>
+        </div>
+    )
+}
