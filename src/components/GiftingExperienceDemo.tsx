@@ -1,4 +1,5 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import ReactConfetti from 'react-confetti'
 import {
     ArrowRight,
@@ -10,7 +11,6 @@ import {
 } from 'lucide-react'
 import doorDashLogo from '../assets/img/case-studies/gifting/doordash-logo.png'
 import GiftWrapReveal from './GiftWrapReveal'
-import { type GiftRevealVariant, giftRevealOptions } from './giftRevealOptions'
 
 type DemoStage =
     | 'idle'
@@ -48,6 +48,7 @@ const burstRotations = [
 
 const GIFT_NOTIFICATION_DURATION_MS = 3000
 const GIFT_REVEAL_DELAY_MS = 1950
+const DEMO_START_DELAY_MS = 1000
 
 const cardFaceClass =
     'absolute inset-0 flex flex-col justify-center rounded-[clamp(1.25rem,4vw,2rem)] p-[clamp(1.6rem,5vw,3.25rem)] shadow-[0_2.25rem_5rem_#1a002b80] [backface-visibility:hidden]'
@@ -61,8 +62,6 @@ export default function GiftingExperienceDemo() {
     const [celebrationReady, setCelebrationReady] = useState(false)
     const [frameSize, setFrameSize] = useState({ height: 0, width: 0 })
     const [reduceMotion, setReduceMotion] = useState(false)
-    const [revealVariant, setRevealVariant] =
-        useState<GiftRevealVariant>('seam')
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const dialogRef = useRef<HTMLDivElement>(null)
     const frameRef = useRef<HTMLDivElement>(null)
@@ -71,14 +70,16 @@ export default function GiftingExperienceDemo() {
     const notificationButtonRef = useRef<HTMLButtonElement>(null)
     const startButtonRef = useRef<HTMLButtonElement>(null)
     const hasDialog = ['celebration', 'reveal', 'redeemed'].includes(stage)
-    const marketplaceIsHidden =
-        stage === 'idle' || stage === 'starting' || hasDialog
+    const marketplaceIsHidden = stage === 'idle' || hasDialog
     const giftIsUnread = stage === 'notifying' || stage === 'ready'
     const closeIsAvailable = stage !== 'celebration' || celebrationReady
 
     useEffect(() => {
         if (stage !== 'starting') return
-        const timeout = window.setTimeout(() => setStage('notifying'), 1000)
+        const timeout = window.setTimeout(
+            () => setStage('notifying'),
+            DEMO_START_DELAY_MS
+        )
         return () => window.clearTimeout(timeout)
     }, [stage])
 
@@ -208,40 +209,6 @@ export default function GiftingExperienceDemo() {
             className="text-[#32104e]"
             aria-label="Interactive demonstration of the Fringe gifting experience"
         >
-            <fieldset className="mb-5 grid gap-4 border-y border-solid border-rule/70 py-4 text-ink md:grid-cols-[minmax(12rem,.55fr)_minmax(0,1.45fr)] md:items-center">
-                <legend className="sr-only">
-                    Choose a gift reveal prototype
-                </legend>
-                <div>
-                    <strong className="block text-sm">Reveal prototype</strong>
-                    <span className="mt-1 block text-xs text-muted">
-                        Choose one, then run or replay the demo.
-                    </span>
-                </div>
-                <div className="grid gap-2 sm:grid-cols-3">
-                    {giftRevealOptions.map(({ id, label, description }) => (
-                        <button
-                            key={id}
-                            className={`min-h-16 rounded-md border border-solid px-3 py-2 text-left transition-[border-color,background-color] duration-200 motion-reduce:transition-none ${revealVariant === id ? 'border-violet bg-violet/12' : 'border-rule bg-transparent hover:border-violet/70'} disabled:cursor-not-allowed disabled:opacity-45`}
-                            type="button"
-                            aria-pressed={revealVariant === id}
-                            disabled={
-                                hasDialog ||
-                                stage === 'starting' ||
-                                stage === 'notifying'
-                            }
-                            onClick={() => setRevealVariant(id)}
-                        >
-                            <strong className="block text-xs text-violet">
-                                {label}
-                            </strong>
-                            <span className="mt-1 block text-[.6875rem] leading-snug text-muted">
-                                {description}
-                            </span>
-                        </button>
-                    ))}
-                </div>
-            </fieldset>
             <div
                 ref={frameRef}
                 className="relative isolate min-h-[clamp(32rem,70vw,48rem)] overflow-hidden rounded-[clamp(1rem,2vw,1.75rem)] border border-solid border-rule/75 bg-[#19002c] shadow-[0_1.8rem_5rem_#0006]"
@@ -342,10 +309,16 @@ export default function GiftingExperienceDemo() {
                                 Explore benefits
                             </span>
                         </div>
-                        <div className="grid -rotate-3 grid-cols-3 gap-3 compact:grid-cols-2">
-                            <span className="min-h-[clamp(13rem,25vw,22rem)] rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[linear-gradient(180deg,transparent_52%,#160023_52%),linear-gradient(145deg,#dd5f8d,#ffaf58_47%,#3d0d70_48%)] shadow-[0_1.5rem_3rem_#0e001c80]" />
-                            <span className="min-h-[clamp(13rem,25vw,22rem)] translate-y-8 rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[linear-gradient(180deg,transparent_52%,#160023_52%),linear-gradient(145deg,#3bbed1,#70d79f_47%,#3d0d70_48%)] shadow-[0_1.5rem_3rem_#0e001c80]" />
-                            <span className="min-h-[clamp(13rem,25vw,22rem)] rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[linear-gradient(180deg,transparent_52%,#160023_52%),linear-gradient(145deg,#f2ce49,#f36c51_47%,#3d0d70_48%)] shadow-[0_1.5rem_3rem_#0e001c80] compact:hidden" />
+                        <div className="grid -rotate-3 transform-gpu grid-cols-3 gap-3 [backface-visibility:hidden] compact:grid-cols-2">
+                            <span className="relative min-h-[clamp(10rem,20vw,15.75rem)] transform-gpu overflow-hidden rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[#3d0d70] bg-clip-padding shadow-[0_1.5rem_3rem_#0e001c80] [backface-visibility:hidden]">
+                                <span className="absolute inset-0 bg-[linear-gradient(145deg,#dd5f8d,#ffaf58)] [clip-path:polygon(0_0,100%_0,100%_52%,0_calc(100%_-_1.25rem))]" />
+                            </span>
+                            <span className="relative min-h-[clamp(10rem,20vw,15.75rem)] translate-y-8 transform-gpu overflow-hidden rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[#3d0d70] bg-clip-padding shadow-[0_1.5rem_3rem_#0e001c80] [backface-visibility:hidden]">
+                                <span className="absolute inset-0 bg-[linear-gradient(145deg,#3bbed1,#70d79f)] [clip-path:polygon(0_0,100%_0,100%_52%,0_calc(100%_-_1.25rem))]" />
+                            </span>
+                            <span className="relative min-h-[clamp(10rem,20vw,15.75rem)] transform-gpu overflow-hidden rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[#3d0d70] bg-clip-padding shadow-[0_1.5rem_3rem_#0e001c80] [backface-visibility:hidden] compact:hidden">
+                                <span className="absolute inset-0 bg-[linear-gradient(145deg,#f2ce49,#f36c51)] [clip-path:polygon(0_0,100%_0,100%_52%,0_calc(100%_-_1.25rem))]" />
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -377,18 +350,15 @@ export default function GiftingExperienceDemo() {
                     </button>
                 )}
 
-                {(stage === 'idle' || stage === 'starting') && (
+                {stage === 'idle' && (
                     <div className="absolute inset-0 z-10 grid place-items-center bg-[#05050682] backdrop-blur-2xl">
                         <button
                             ref={startButtonRef}
-                            className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] aria-disabled:cursor-wait aria-disabled:opacity-75 motion-reduce:transition-none"
+                            className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] motion-reduce:transition-none"
                             type="button"
-                            aria-disabled={stage === 'starting'}
-                            onClick={stage === 'idle' ? startDemo : undefined}
+                            onClick={startDemo}
                         >
-                            {stage === 'starting'
-                                ? 'Starting interactive demo…'
-                                : 'Start interactive demo'}
+                            Start interactive demo
                         </button>
                     </div>
                 )}
@@ -425,9 +395,17 @@ export default function GiftingExperienceDemo() {
                                     tweenDuration={120}
                                 />
                             )}
-                        <div
+                        <motion.div
                             ref={dialogRef}
-                            className="relative z-2 aspect-[35.5/24] w-[min(35.5rem,94%)] animate-gift-card outline-none [perspective:70rem] motion-reduce:animate-none compact:aspect-auto compact:min-h-88 compact:w-full"
+                            className="relative z-2 aspect-[35.5/24] w-[min(35.5rem,94%)] outline-none [perspective:70rem] compact:aspect-auto compact:min-h-88 compact:w-full"
+                            initial={reduceMotion ? false : { y: -220 }}
+                            animate={{ y: 0 }}
+                            transition={{
+                                type: 'spring',
+                                stiffness: 9000,
+                                damping: 700,
+                                mass: 35,
+                            }}
                             role="dialog"
                             aria-modal="true"
                             aria-labelledby={
@@ -460,10 +438,7 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    <GiftWrapReveal
-                                        key={revealVariant}
-                                        variant={revealVariant}
-                                    />
+                                    <GiftWrapReveal />
                                     <div
                                         className={`animate-gift-congratulations opacity-0 motion-reduce:animate-none motion-reduce:opacity-100 ${celebrationReady ? '' : 'pointer-events-none'}`}
                                     >
@@ -567,7 +542,7 @@ export default function GiftingExperienceDemo() {
                                     )}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 )}
             </div>

@@ -1,8 +1,6 @@
 import { motion, useAnimationControls } from 'framer-motion'
 import { useEffect, useId } from 'react'
-import type { CSSProperties } from 'react'
 import giftCard from '../assets/img/case-studies/gifting/gift-card-clean.png'
-import type { GiftRevealVariant } from './giftRevealOptions'
 
 type Point = readonly [number, number]
 type CurveSegment = { control1: Point; control2: Point; end: Point }
@@ -20,35 +18,14 @@ type Piece = {
     duration: number
     origin: string
     path: string
-    rotateX: string
-    rotateY: string
-    rotateZ: string
-    x: string
-    y: string
 }
 
-const meshByVariant: Record<GiftRevealVariant, MeshConfig> = {
-    seam: {
-        amplitude: 34,
-        columns: [0, 244, 526, 800],
-        density: 9,
-        rows: [0, 174, 358, 549],
-        stagger: 135,
-    },
-    corners: {
-        amplitude: 48,
-        columns: [0, 286, 554, 800],
-        density: 11,
-        rows: [0, 204, 367, 549],
-        stagger: 510,
-    },
-    cascade: {
-        amplitude: 20,
-        columns: [0, 191, 402, 611, 800],
-        density: 13,
-        rows: [0, 132, 276, 414, 549],
-        stagger: 510,
-    },
+const handTornMesh: MeshConfig = {
+    amplitude: 34,
+    columns: [0, 244, 526, 800],
+    density: 9,
+    rows: [0, 174, 358, 549],
+    stagger: 135,
 }
 
 const seededNoise = (seed: number, index: number) => {
@@ -152,31 +129,12 @@ const createPiecePath = (
 ) =>
     `M ${point(top.start)} ${forwardCommands(top)} ${forwardCommands(right)} ${reverseCommands(bottom)} ${reverseCommands(left)} Z`
 
-const directionalPeel = {
-    duration: 560,
-    origin: '0% 100%',
-    rotateX: '24deg',
-    rotateY: '-32deg',
-    rotateZ: '-6deg',
-    x: '-20%',
-    y: '18%',
-} as const
-
 const handTornPeel = {
     duration: 285,
     origin: '0% 100%',
-    rotateX: '0deg',
-    rotateY: '-24deg',
-    rotateZ: '-5deg',
-    x: '-24%',
-    y: '54%',
 } as const
 
-const createPieces = (
-    config: MeshConfig,
-    peel: Omit<Piece, 'centerX' | 'delay' | 'path'> = directionalPeel,
-    continuousWave = false
-): Piece[] => {
+const createPieces = (config: MeshConfig): Piece[] => {
     const columnCount = config.columns.length - 1
 
     const horizontalEdges = config.rows.map((y, row) =>
@@ -212,34 +170,29 @@ const createPieces = (
     )
 
     const waveRanks = new Map<string, number>()
-    if (continuousWave) {
-        const positions = config.rows.slice(0, -1).flatMap((_, row) =>
-            config.columns.slice(0, -1).map((__, column) => ({
-                column,
-                diagonalOrder: row + (columnCount - 1 - column),
-                row,
-            }))
+    const positions = config.rows.slice(0, -1).flatMap((_, row) =>
+        config.columns.slice(0, -1).map((__, column) => ({
+            column,
+            diagonalOrder: row + (columnCount - 1 - column),
+            row,
+        }))
+    )
+    positions
+        .sort((a, b) => a.diagonalOrder - b.diagonalOrder || a.row - b.row)
+        .forEach(({ column, row }, rank) =>
+            waveRanks.set(`${row}-${column}`, rank)
         )
-        positions
-            .sort((a, b) => a.diagonalOrder - b.diagonalOrder || a.row - b.row)
-            .forEach(({ column, row }, rank) =>
-                waveRanks.set(`${row}-${column}`, rank)
-            )
-    }
 
     return config.rows.slice(0, -1).flatMap((_, row) =>
         config.columns.slice(0, -1).map((__, column) => {
-            const diagonalOrder = row + (columnCount - 1 - column)
-            const delay = continuousWave
-                ? (waveRanks.get(`${row}-${column}`) ?? 0) *
-                  (config.stagger / 2)
-                : diagonalOrder * config.stagger
+            const delay =
+                (waveRanks.get(`${row}-${column}`) ?? 0) * (config.stagger / 2)
 
             return {
                 centerX:
                     (config.columns[column] + config.columns[column + 1]) / 2,
                 delay,
-                ...peel,
+                ...handTornPeel,
                 path: createPiecePath(
                     horizontalEdges[row][column],
                     verticalEdges[row][column + 1],
@@ -251,142 +204,7 @@ const createPieces = (
     )
 }
 
-const horizontalTearY = (
-    x: number,
-    baseY: number,
-    amplitude: number,
-    seed: number
-) => {
-    const taper = Math.sin((x / 800) * Math.PI)
-    return (
-        baseY +
-        taper *
-            amplitude *
-            (Math.sin(x / 54 + seed * 0.83) * 0.48 +
-                Math.sin(x / 23 + seed * 1.37) * 0.31 +
-                Math.sin(x / 10.5 + seed * 0.41) * 0.14)
-    )
-}
-
-const makeHorizontalTearBoundary = (
-    startX: number,
-    endX: number,
-    baseY: number,
-    amplitude: number,
-    seed: number
-): Boundary => {
-    if (baseY === 0 || baseY === 549) {
-        return makeStraightBoundary([startX, baseY], [endX, baseY])
-    }
-
-    const segmentCount = Math.max(1, Math.ceil((endX - startX) / 34))
-    const points: Point[] = Array.from(
-        { length: segmentCount + 1 },
-        (_, index) => {
-            const x = startX + ((endX - startX) * index) / segmentCount
-            return [x, horizontalTearY(x, baseY, amplitude, seed)]
-        }
-    )
-
-    return makeCurvedBoundary(points)
-}
-
-const createStaggeredPieces = (): Piece[] => {
-    const rowDefinitions = [
-        {
-            top: [0, 246, 536, 800],
-            bottom: [0, 208, 516, 800],
-        },
-        {
-            top: [0, 164, 372, 612, 800],
-            bottom: [0, 196, 418, 652, 800],
-        },
-        {
-            top: [0, 292, 566, 800],
-            bottom: [0, 258, 592, 800],
-        },
-    ]
-    const rows = [0, 188, 374, 549]
-    const seamSeeds = [0, 17, 29, 0]
-    const seamAmplitudes = [0, 34, 29, 0]
-
-    const stagedPieces = rowDefinitions.flatMap((definition, row) => {
-        const verticalEdges = definition.top.map((topX, edge) => {
-            const bottomX = definition.bottom[edge]
-            const start: Point = [
-                topX,
-                horizontalTearY(
-                    topX,
-                    rows[row],
-                    seamAmplitudes[row],
-                    seamSeeds[row]
-                ),
-            ]
-            const end: Point = [
-                bottomX,
-                horizontalTearY(
-                    bottomX,
-                    rows[row + 1],
-                    seamAmplitudes[row + 1],
-                    seamSeeds[row + 1]
-                ),
-            ]
-
-            return edge === 0 || edge === definition.top.length - 1
-                ? makeStraightBoundary(start, end)
-                : makeOrganicBoundary(start, end, 23, 8, row * 37 + edge * 13)
-        })
-
-        return definition.top.slice(0, -1).map((topX, column) => {
-            const topEndX = definition.top[column + 1]
-            const bottomX = definition.bottom[column]
-            const bottomEndX = definition.bottom[column + 1]
-            const diagonalLevel = row + (definition.top.length - 2 - column)
-
-            return {
-                centerX: (topX + topEndX + bottomX + bottomEndX) / 4,
-                delay: diagonalLevel * 510,
-                ...directionalPeel,
-                path: createPiecePath(
-                    makeHorizontalTearBoundary(
-                        topX,
-                        topEndX,
-                        rows[row],
-                        seamAmplitudes[row],
-                        seamSeeds[row]
-                    ),
-                    verticalEdges[column + 1],
-                    makeHorizontalTearBoundary(
-                        bottomX,
-                        bottomEndX,
-                        rows[row + 1],
-                        seamAmplitudes[row + 1],
-                        seamSeeds[row + 1]
-                    ),
-                    verticalEdges[column]
-                ),
-            }
-        })
-    })
-
-    return stagedPieces
-}
-
-const piecesByVariant: Record<GiftRevealVariant, Piece[]> = {
-    seam: createPieces(meshByVariant.seam, handTornPeel, true),
-    corners: createStaggeredPieces(),
-    cascade: createPieces(meshByVariant.cascade),
-}
-
-type PieceStyle = CSSProperties & {
-    '--piece-delay': string
-    '--piece-duration': string
-    '--piece-rotate-x': string
-    '--piece-rotate-y': string
-    '--piece-rotate-z': string
-    '--piece-x': string
-    '--piece-y': string
-}
+const pieces = createPieces(handTornMesh)
 
 const TEAR_START_DELAY_MS = 1000
 
@@ -490,16 +308,11 @@ function HandTornPiece({
     )
 }
 
-export default function GiftWrapReveal({
-    variant,
-}: {
-    variant: GiftRevealVariant
-}) {
+export default function GiftWrapReveal() {
     const reactId = useId()
     const id = reactId.replace(/:/g, '')
     const wrapperArtworkClipId = `${id}-wrapper-artwork-clip`
     const wrapperPatternId = `${id}-wrapper-pattern`
-    const pieces = piecesByVariant[variant]
 
     return (
         <svg
@@ -556,45 +369,14 @@ export default function GiftWrapReveal({
                     </clipPath>
                 ))}
             </defs>
-            {pieces.map((piece, index) => {
-                const clipPathId = `${id}-clip-${index}`
-
-                return variant === 'seam' ? (
-                    <HandTornPiece
-                        key={`${variant}-${index}`}
-                        index={index}
-                        piece={piece}
-                        wrapperPatternId={wrapperPatternId}
-                    />
-                ) : (
-                    <g
-                        key={`${variant}-${index}`}
-                        clipPath={`url(#${clipPathId})`}
-                        className="animate-[gift-wrapper-peel_var(--piece-duration)_cubic-bezier(.55,.05,.9,.35)_var(--piece-delay)_both] will-change-[transform,opacity,filter] [transform-box:fill-box]"
-                        style={
-                            {
-                                '--piece-delay': `${piece.delay + TEAR_START_DELAY_MS}ms`,
-                                '--piece-duration': `${piece.duration}ms`,
-                                '--piece-rotate-x': piece.rotateX,
-                                '--piece-rotate-y': piece.rotateY,
-                                '--piece-rotate-z': piece.rotateZ,
-                                '--piece-x': piece.x,
-                                '--piece-y': piece.y,
-                                transformOrigin: piece.origin,
-                            } as PieceStyle
-                        }
-                    >
-                        <image
-                            href={giftCard}
-                            x="-10"
-                            y="-10"
-                            width="820"
-                            height="569"
-                            preserveAspectRatio="none"
-                        />
-                    </g>
-                )
-            })}
+            {pieces.map((piece, index) => (
+                <HandTornPiece
+                    key={`hand-torn-${index}`}
+                    index={index}
+                    piece={piece}
+                    wrapperPatternId={wrapperPatternId}
+                />
+            ))}
         </svg>
     )
 }
