@@ -79,6 +79,15 @@
     }
 }
 
+/* Fade all four edges of the existing photo into the page background.
+   Intersecting masks keeps the horizontal and vertical fades independent. */
+@utility home-hero-artwork {
+    mask-image:
+        linear-gradient(to right, transparent, #000 24%, #000 84%, transparent),
+        linear-gradient(to bottom, transparent, #000 18%, #000 74%, transparent);
+    mask-composite: intersect;
+}
+
 @utility headline-shimmer {
     @apply shimmer;
     --shimmer-color: #e2dfff;
