@@ -15,7 +15,7 @@ export function createSiteRoutes(projects) {
             routePath: '/about/',
             title: 'About',
             description:
-                'About David A. George, Senior Product Engineer working across product discovery, UX, experimentation, full-stack engineering, and agentic AI.',
+                'About David A. George, Senior Product Engineer and Design Engineerworking across product discovery, UX, experimentation, full-stack engineering, and agentic AI.',
             schemaType: 'ProfilePage',
             includeInSitemap: true,
         },

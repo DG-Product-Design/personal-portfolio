@@ -52,8 +52,8 @@ export default function AboutPage() {
                             I’m David.
                         </h1>
                         <p className="mt-6 mb-0 max-w-[30ch] text-about-lede leading-tight tracking-tight">
-                            Senior Product Engineer working across product
-                            discovery, UX, experimentation, full-stack
+                            Senior Product and Design Engineer working across
+                            product discovery, UX, experimentation, full-stack
                             engineering, and AI/agentic systems.
                         </p>
                         <p className="mt-4 mb-0 max-w-[48ch] text-muted">

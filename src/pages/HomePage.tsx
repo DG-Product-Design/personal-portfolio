@@ -96,7 +96,7 @@ export default function HomePage() {
                                 George
                             </h1>
                             <p className="m-0 text-[clamp(1.125rem,1.8vw,1.75rem)] leading-tight font-semibold tracking-[-.035em]">
-                                Senior Product Engineer
+                                Senior Product & Design Engineer
                             </p>
                             <p className="mt-2 mb-0 max-w-112 text-[clamp(1rem,1.4vw,1.25rem)] leading-relaxed text-muted">
                                 I design and build products people love, the
