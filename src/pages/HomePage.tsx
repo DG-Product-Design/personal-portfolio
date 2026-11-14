@@ -1,182 +1,287 @@
-import { ChevronDown } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import SiteNav from '../components/SiteNav'
 import projects from '../content/projects.json'
 import criticalImages from '../content/critical-images.json'
+import mortgagePreview from '../assets/img/case-studies/loan-app--no-bg.webp'
+
+const workPaths = [
+    {
+        title: 'Product engineering',
+        description: 'Research, design, and delivery.',
+        href: '#work',
+    },
+    {
+        title: 'Design systems',
+        description: 'Tokens, components, and theming.',
+        href: '/design-systems/',
+    },
+    {
+        title: 'Interactions',
+        description: 'Try the gifting animation.',
+        href: '/work/fringe-gifting/',
+    },
+]
+
+const selectedWork = [
+    {
+        slug: 'creative-studio',
+        title: 'Creative Studio',
+        description: 'Create and revise ads with AI.',
+        image: '/img/portfolio/creative-studio-preview-1200.webp',
+        srcSet: '/img/portfolio/creative-studio-preview-600.webp 600w, /img/portfolio/creative-studio-preview-1200.webp 1200w',
+        width: 1200,
+        height: 667,
+        imageFit: 'object-contain',
+        cta: 'Read the case study',
+    },
+    {
+        slug: 'mortgage-application',
+        title: 'Redesigning a $1.2B fintech pipeline',
+        description: 'From product design to a shipped loan application.',
+        image: mortgagePreview,
+        srcSet: undefined,
+        width: 1046,
+        height: 1132,
+        imageFit: 'object-cover',
+        cta: 'Read the case study',
+    },
+    {
+        slug: 'fringe-gifting',
+        title: 'Gifting interaction',
+        description: 'Making digital gifts feel real.',
+        image: '/img/portfolio/gifting-preview-900.webp',
+        srcSet: '/img/portfolio/gifting-preview-450.webp 450w, /img/portfolio/gifting-preview-900.webp 900w',
+        width: 900,
+        height: 600,
+        imageFit: 'object-cover',
+        cta: 'Try the demo',
+    },
+]
 
 export default function HomePage() {
-    const [featured, ...secondary] = projects
-    const projectLink =
-        'block min-h-11 border-b border-solid border-[#e8ded5] pb-2.75 font-extrabold leading-[1.04] tracking-[-.042em] no-underline hover:border-current'
+    const secondary = projects.filter(
+        ({ slug }) => !selectedWork.some((work) => work.slug === slug)
+    )
 
     return (
         <>
-            <div className="relative isolate grid min-h-svh grid-rows-[auto_1fr] px-[clamp(1.375rem,3.7vw,4.25rem)] pb-[clamp(5rem,8vh,6.5rem)] before:absolute before:inset-0 before:-z-1 before:bg-cover-shade compact:pb-20 compact:before:bg-cover-shade-mobile cover-medium:before:bg-cover-shade-medium">
-                <img
-                    className="absolute inset-0 -z-2 size-full object-cover compact:top-auto compact:h-[40svh] compact:object-[68%_bottom]"
-                    {...criticalImages.home}
-                    alt=""
-                    fetchPriority="high"
-                />
+            <div className="mx-auto max-w-360 px-page-gutter">
                 <SiteNav cover />
-                <main
-                    className="flex w-cover-content flex-col justify-end gap-[clamp(1.1875rem,4.3vh,3.6875rem)] pt-[clamp(0rem,2vh,1.375rem)] compact:w-full compact:justify-start compact:gap-7.5 compact:pt-6"
-                    id="main"
-                >
-                    <div className="-mt-12 compact:mt-0">
-                        <h1 className="mt-0 mb-6 text-[clamp(3rem,min(11.3vw,18svh),11.375rem)] leading-[.82] font-extrabold tracking-[-.085em] whitespace-nowrap text-[#938cff] motion-safe:headline-shimmer motion-safe:pb-[.24em] compact:text-[clamp(3.375rem,15vw,6.625rem)]">
-                            David A.
-                            <br />
-                            George
-                        </h1>
-                        <p className="m-0 -mt-6 text-[clamp(1.25rem,2vw,1.875rem)] leading-cover-subtitle tracking-[-.045em]">
-                            Senior Product Engineer
-                        </p>
-                        <p className="m-0 mt-1 text-[clamp(1rem,1.5vw,1.625rem)] tracking-[-.045em]">
-                            From user insight to production systems.
-                        </p>
-                    </div>
-                    <nav
-                        id="work"
-                        className="mt-8 grid gap-[clamp(0.625rem,2.3vh,1.5rem)] compact:mt-4"
-                        aria-label="Selected case studies"
-                    >
-                        <a
-                            className={`${projectLink} text-[clamp(1.625rem,4.7vw,4.25rem)] compact:text-[clamp(1.625rem,7vw,2.75rem)]`}
-                            href={`/work/${featured.slug}/`}
-                        >
-                            <span className="block">
-                                {featured.name} / DSP / Adtech
-                            </span>
-                            <span className="mt-2 block text-[clamp(.75rem,1.1vw,1rem)] font-medium tracking-normal text-muted [text-shadow:0_1px_2px_#000,0_3px_10px_#000c] lg:[text-shadow:none]">
-                                Focus: {featured.focus}
-                            </span>
-                        </a>
-                        <div className="grid grid-cols-[1fr_.8fr] items-end gap-x-[clamp(0.875rem,3vw,3rem)] gap-y-[clamp(0.5625rem,1.8vh,1.125rem)]">
-                            {secondary.map(({ slug, name, focus }) => (
-                                <a
-                                    key={slug}
-                                    className={`${projectLink} text-[clamp(1rem,1.9vw,1.8125rem)] compact:text-[clamp(1rem,4vw,1.5625rem)]`}
-                                    href={`/work/${slug}/`}
-                                >
-                                    <span className="block">{name}</span>
-                                    <span className="mt-1.5 block text-[clamp(.6875rem,.95vw,.875rem)] leading-snug font-medium tracking-normal text-muted [text-shadow:0_1px_2px_#000,0_3px_10px_#000c] lg:[text-shadow:none]">
-                                        Focus: {focus}
-                                    </span>
-                                </a>
-                            ))}
-                        </div>
-                    </nav>
-                </main>
-                <a
-                    className="absolute bottom-3 left-1/2 z-2 inline-flex min-h-11 -translate-x-1/2 items-center text-sm font-semibold text-ink/75 no-underline hover:text-violet"
-                    href="#capabilities"
-                    aria-label="More: design systems and component libraries"
-                >
-                    <span className="flex flex-col items-center motion-safe:animate-more-float motion-safe:will-change-transform">
-                        [ More ]
-                        <ChevronDown
-                            aria-hidden="true"
-                            className="mt-0.5 size-5"
-                        />
-                    </span>
-                </a>
             </div>
-            <section
-                id="capabilities"
-                aria-labelledby="design-systems-capability"
-                className="mx-auto grid max-w-310 gap-8 px-page-gutter py-[clamp(3.75rem,9vw,7.5rem)] md:grid-cols-[minmax(15rem,.7fr)_minmax(0,1.3fr)]"
-            >
-                <div>
-                    <p className="m-0 text-sm font-semibold text-violet">
-                        What I do
-                    </p>
+            <main id="main">
+                <section
+                    className="relative isolate"
+                    aria-labelledby="home-title"
+                >
+                    {/* Keep the original artwork at every viewport size. The
+                        CSS mask fades all four edges without editing the asset. */}
+                    <div className="pointer-events-none absolute inset-y-0 right-0 -z-1 w-full opacity-60 md:w-[64%] md:opacity-100">
+                        <img
+                            className="size-full home-hero-artwork object-cover object-right"
+                            src={criticalImages.home.src}
+                            srcSet={criticalImages.home.srcSet}
+                            sizes={criticalImages.home.sizes}
+                            alt=""
+                            fetchPriority="high"
+                        />
+                    </div>
+                    <div className="mx-auto flex max-w-360 items-center px-page-gutter pt-8 pb-12 md:min-h-108 md:py-14 lg:min-h-116">
+                        <div className="md:max-w-[54%]">
+                            <h1
+                                id="home-title"
+                                className="mt-0 mb-6 text-[clamp(3.75rem,8vw,7rem)] leading-[.88] font-extrabold tracking-[-.085em] text-[#938cff]"
+                            >
+                                David A.
+                                <br />
+                                George
+                            </h1>
+                            <p className="m-0 text-[clamp(1.125rem,1.8vw,1.75rem)] leading-tight font-semibold tracking-[-.035em]">
+                                Senior Product & Design Engineer
+                            </p>
+                            <p className="mt-2 mb-0 max-w-112 text-[clamp(1rem,1.4vw,1.25rem)] leading-relaxed text-muted">
+                                I design and build products people love, the
+                                systems behind them, and the details people
+                                interact with.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="mx-auto max-w-360 px-page-gutter">
+                    <nav
+                        className="grid border-y border-solid border-rule md:grid-cols-3 md:gap-x-10"
+                        aria-label="Explore my work"
+                    >
+                        {workPaths.map(({ title, description, href }) => (
+                            <a
+                                key={href}
+                                href={href}
+                                className="group flex min-h-11 items-center justify-between gap-3 border-b border-solid border-rule py-5 no-underline last:border-b-0 md:justify-start md:border-b-0 md:py-9"
+                            >
+                                <span>
+                                    <span className="block text-[clamp(1.25rem,2vw,1.75rem)] leading-tight font-bold tracking-[-.035em]">
+                                        {title}
+                                    </span>
+                                    <span className="mt-1.5 block text-sm leading-snug text-muted">
+                                        {description}
+                                    </span>
+                                </span>
+                                <ArrowRight
+                                    className="size-5 shrink-0 motion-safe:transition-transform motion-safe:group-hover:translate-x-1"
+                                    aria-hidden="true"
+                                />
+                            </a>
+                        ))}
+                    </nav>
+                </div>
+
+                <section
+                    id="work"
+                    className="mx-auto max-w-360 scroll-mt-8 px-page-gutter pt-14 md:pt-20"
+                    aria-labelledby="selected-work-title"
+                >
                     <h2
-                        id="design-systems-capability"
-                        className="mt-3 mb-0 text-section-title leading-none tracking-[-.05em]"
+                        id="selected-work-title"
+                        className="mt-0 mb-7 text-xl font-semibold tracking-[-.025em]"
                     >
-                        Design Systems &amp; Component Libraries
+                        Selected work
                     </h2>
-                </div>
-                <div className="border-t border-solid border-rule pt-5">
-                    <p className="m-0 max-w-3xl text-[clamp(1.125rem,2vw,1.5rem)] leading-snug">
-                        I build reusable UI systems that make both products and
-                        engineering teams faster: design tokens, theming,
-                        accessible components, interaction patterns, Storybook
-                        documentation, and production-ready component APIs.
-                    </p>
-                    <dl className="mt-7 mb-0 grid gap-4 text-sm md:grid-cols-2">
-                        <div className="border-t border-solid border-rule/70 pt-3">
-                            <dt className="font-semibold text-violet">
-                                Fringe
-                            </dt>
-                            <dd className="mt-1 ml-0 text-muted">
-                                ~40% faster development, better Figma/production
-                                parity.
-                            </dd>
-                        </div>
-                        <div className="border-t border-solid border-rule/70 pt-3">
-                            <dt className="font-semibold text-violet">
-                                Clarvos
-                            </dt>
-                            <dd className="mt-1 ml-0 text-muted">
-                                Scalable rebrand system + living Storybook
-                                documentation.
-                            </dd>
-                        </div>
-                        <div className="border-t border-solid border-rule/70 pt-3">
-                            <dt className="font-semibold text-violet">
-                                CapCenter
-                            </dt>
-                            <dd className="mt-1 ml-0 text-muted">
-                                Three generations of shared component libraries
-                                and a unified design direction across the
-                                digital experience.
-                            </dd>
-                        </div>
-                        <div className="border-t border-solid border-rule/70 pt-3">
-                            <dt className="font-semibold text-violet">Dito</dt>
-                            <dd className="mt-1 ml-0 text-muted">
-                                Design systems and component libraries for each
-                                project, including the award-winning San Joaquin
-                                Matching Engine.
-                            </dd>
-                        </div>
-                    </dl>
-                    <a
-                        className="mt-7 inline-flex min-h-11 items-center font-semibold text-violet"
-                        href="/design-systems/"
-                    >
-                        See the design-systems work →
-                    </a>
-                </div>
-            </section>
-            <section className="mx-auto grid max-w-310 gap-7 border-t border-solid border-rule px-page-gutter py-[clamp(3.75rem,8vw,6.5rem)] md:grid-cols-[minmax(14rem,.65fr)_minmax(0,1.35fr)]">
-                <div>
-                    <p className="m-0 text-sm font-semibold text-violet">
-                        Interaction craft
-                    </p>
-                    <h2 className="mt-3 mb-0 text-section-title leading-none tracking-[-.05em]">
-                        Making digital gifts feel real
+                    <div className="grid gap-x-10 gap-y-12 lg:grid-cols-3">
+                        {selectedWork.map((work) => (
+                            <a
+                                key={work.slug}
+                                className={`group grid grid-rows-[auto_auto_auto] no-underline lg:row-span-3 lg:grid-rows-subgrid ${work.slug === 'creative-studio' ? 'gap-4 lg:gap-6' : 'gap-6'}`}
+                                href={`/work/${work.slug}/`}
+                                aria-labelledby={`${work.slug}-preview-title`}
+                            >
+                                <div>
+                                    <h3
+                                        id={`${work.slug}-preview-title`}
+                                        className="m-0 text-[clamp(1.5rem,2.4vw,2rem)] leading-tight font-bold tracking-[-.035em]"
+                                    >
+                                        {work.title}
+                                    </h3>
+                                    <p className="mt-2 mb-0 text-base text-muted">
+                                        {work.description}
+                                    </p>
+                                </div>
+                                <img
+                                    className={`h-auto w-full rounded-xl ${work.imageFit} ${work.slug === 'creative-studio' ? 'aspect-auto lg:aspect-3/2' : 'aspect-3/2'}`}
+                                    src={work.image}
+                                    srcSet={work.srcSet}
+                                    sizes="(max-width: 64rem) 90vw, (max-width: 90rem) 30vw, 27rem"
+                                    width={work.width}
+                                    height={work.height}
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <span
+                                    className={`inline-flex min-h-11 w-fit items-center gap-3 self-start font-semibold ${work.slug === 'fringe-gifting' ? 'rounded-full bg-violet px-5 py-2.5 text-[#171421] group-hover:bg-[#c5c1ff]' : 'text-violet'}`}
+                                >
+                                    {work.cta}
+                                    <ArrowRight
+                                        className="size-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-1"
+                                        aria-hidden="true"
+                                    />
+                                </span>
+                            </a>
+                        ))}
+                    </div>
+
+                    <h2 className="mt-16 mb-2 text-xl font-semibold tracking-[-.025em] md:mt-24">
+                        More product engineering
                     </h2>
-                </div>
-                <div className="border-t border-solid border-rule pt-5">
-                    <p className="m-0 max-w-3xl text-[clamp(1.125rem,2vw,1.5rem)] leading-snug">
-                        A notification, celebration, animated reveal, and
-                        redemption flow designed to give a digital exchange the
-                        anticipation of opening a physical gift.
-                    </p>
-                    <p className="mt-4 mb-0 text-sm text-muted">
-                        Interaction design · Motion design · React · User
-                        testing
-                    </p>
-                    <a
-                        className="mt-6 inline-flex min-h-11 items-center font-semibold text-violet"
-                        href="/work/fringe-gifting/"
-                    >
-                        Try the gifting interaction →
-                    </a>
-                </div>
-            </section>
+                    <div className="grid gap-x-12 md:grid-cols-2">
+                        {secondary.map(({ slug, name, focus }) => (
+                            <a
+                                key={slug}
+                                className="block min-h-11 border-b border-solid border-rule py-6 no-underline hover:border-violet"
+                                href={`/work/${slug}/`}
+                            >
+                                <span className="block text-[clamp(1.375rem,2vw,1.75rem)] leading-tight font-bold tracking-[-.035em]">
+                                    {name}
+                                </span>
+                                <span className="mt-2 block text-sm leading-relaxed text-muted">
+                                    {focus}
+                                </span>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+                <section
+                    id="capabilities"
+                    aria-labelledby="design-systems-capability"
+                    className="mx-auto grid max-w-360 gap-8 px-page-gutter py-[clamp(3.75rem,9vw,7.5rem)] md:grid-cols-[minmax(15rem,.7fr)_minmax(0,1.3fr)]"
+                >
+                    <div>
+                        <p className="m-0 text-sm font-semibold text-violet">
+                            What I do
+                        </p>
+                        <h2
+                            id="design-systems-capability"
+                            className="mt-3 mb-0 text-section-title leading-none tracking-[-.05em]"
+                        >
+                            Design Systems &amp; Component Libraries
+                        </h2>
+                    </div>
+                    <div className="border-t border-solid border-rule pt-5">
+                        <p className="m-0 max-w-3xl text-[clamp(1.125rem,2vw,1.5rem)] leading-snug">
+                            I build reusable UI systems that make both products
+                            and engineering teams faster: design tokens,
+                            theming, accessible components, interaction
+                            patterns, Storybook documentation, and
+                            production-ready component APIs.
+                        </p>
+                        <dl className="mt-7 mb-0 grid gap-4 text-sm md:grid-cols-2">
+                            <div className="border-t border-solid border-rule/70 pt-3">
+                                <dt className="font-semibold text-violet">
+                                    Fringe
+                                </dt>
+                                <dd className="mt-1 ml-0 text-muted">
+                                    ~40% faster development, better
+                                    Figma/production parity.
+                                </dd>
+                            </div>
+                            <div className="border-t border-solid border-rule/70 pt-3">
+                                <dt className="font-semibold text-violet">
+                                    Clarvos
+                                </dt>
+                                <dd className="mt-1 ml-0 text-muted">
+                                    Scalable rebrand system + living Storybook
+                                    documentation.
+                                </dd>
+                            </div>
+                            <div className="border-t border-solid border-rule/70 pt-3">
+                                <dt className="font-semibold text-violet">
+                                    CapCenter
+                                </dt>
+                                <dd className="mt-1 ml-0 text-muted">
+                                    Three generations of shared component
+                                    libraries and a unified design direction
+                                    across the digital experience.
+                                </dd>
+                            </div>
+                            <div className="border-t border-solid border-rule/70 pt-3">
+                                <dt className="font-semibold text-violet">
+                                    Dito
+                                </dt>
+                                <dd className="mt-1 ml-0 text-muted">
+                                    Design systems and component libraries for
+                                    each project, including the award-winning
+                                    San Joaquin Matching Engine.
+                                </dd>
+                            </div>
+                        </dl>
+                        <a
+                            className="mt-7 inline-flex min-h-11 items-center font-semibold text-violet"
+                            href="/design-systems/"
+                        >
+                            See the design-systems work →
+                        </a>
+                    </div>
+                </section>
+            </main>
         </>
     )
 }

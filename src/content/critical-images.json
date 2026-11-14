@@ -2,7 +2,7 @@
     "home": {
         "src": "/img/portfolio/midnight-1586.webp",
         "srcSet": "/img/portfolio/midnight-800.webp 800w, /img/portfolio/midnight-1200.webp 1200w, /img/portfolio/midnight-1586.webp 1586w",
-        "sizes": "(max-width: 45rem) max(100vw, 64svh), max(100vw, 160svh)"
+        "sizes": "(max-width: 48rem) 100vw, 64vw"
     },
     "creativeStudio": {
         "src": "/img/portfolio/get-outside-v1.webp",
