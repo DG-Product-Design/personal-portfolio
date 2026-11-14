@@ -53,11 +53,17 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 - `yarn start` - Starts the development server
 - `yarn build` - Builds the app for production
 - `yarn preview` - Locally preview the production build
+- `yarn test:gifting` - Build the site and check gift artwork loading, replay, and failure handling
 - `yarn test:a11y` - Build the site and run automated accessibility checks
 - `yarn validate` - Run the production build, lint, and accessibility checks
 - `yarn deploy` - Deploy to GitHub Pages
 
 The accessibility audit finds Chrome automatically on macOS or through Playwright's `chrome` channel. Set `CHROME_PATH` to the Chrome executable when it is installed elsewhere.
+
+The gifting check uses installed Chrome on macOS or Playwright's Chromium elsewhere. Run `npx playwright-core install chromium` if that browser is missing. To check Firefox, install its test browser with `npx playwright-core install firefox`, then run `GIFT_TEST_BROWSER=firefox yarn test:gifting`. `GIFT_TEST_BROWSER_PATH` can select a compatible executable; Firefox requires Playwright's build rather than a regular Firefox installation.
+
+This regression check runs separately from `yarn validate` and the deployment workflow. It verifies loading and animation state, not device frame rates or every browser paint issue. The script stays in `scripts/` and is not included in the deployed site.
+
 
 ## Project Structure
 

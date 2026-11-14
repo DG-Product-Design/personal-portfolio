@@ -1,3 +1,19 @@
+/**
+ * Regression check for the first-run gift artwork loading race.
+ *
+ * Run `yarn test:gifting` to build and check the current code, or run this file
+ * directly after `yarn build`. Use the Node version in .nvmrc.
+ *
+ * Defaults to installed Chrome on macOS, otherwise Playwright's Chromium.
+ * Set GIFT_TEST_BROWSER=firefox to use Playwright's Firefox build, and optionally
+ * GIFT_TEST_BROWSER_PATH to select a compatible browser executable. Stock
+ * Firefox does not support the protocol used by Playwright's Firefox driver.
+ *
+ * These checks exercise the production build in an isolated browser. They
+ * verify download/decode gating, replay, and graceful artwork failure. Opacity
+ * sampling checks animation state; it cannot detect every SVG paint glitch or
+ * establish frame-rate performance on a physical phone.
+ */
 import assert from 'node:assert/strict'
 import { existsSync } from 'node:fs'
 import { chromium, firefox } from 'playwright-core'
@@ -9,6 +25,8 @@ const macChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const executablePath =
     process.env.GIFT_TEST_BROWSER_PATH ||
     (browserType === chromium && existsSync(macChrome) ? macChrome : undefined)
+// Test the generated site, including its hashed asset URL. An ephemeral local
+// port avoids colliding with a developer's running Vite server.
 const server = await preview({
     logLevel: 'error',
     preview: { host: '127.0.0.1', port: 0 },
@@ -23,6 +41,8 @@ try {
     const page = await browser.newPage()
     const errors = []
     page.on('pageerror', (error) => errors.push(error.message))
+    // Hold the real artwork request so a fast local connection or warm cache
+    // cannot hide the race. Each new browser context starts with a fresh cache.
     let releaseRequest
     const requestGate = new Promise((resolve) => {
         releaseRequest = resolve
@@ -48,6 +68,8 @@ try {
             }
         }
     })
+    // Waiting for the full load event here would deadlock on the request we
+    // intentionally withheld. Check the disabled UI before releasing each gate.
     await page.goto(url, { waitUntil: 'domcontentloaded' })
     const preparing = page.getByRole('button', { name: 'Preparing your gift…' })
     await preparing.waitFor()
@@ -67,6 +89,8 @@ try {
             .click()
         await page.getByRole('button', { name: /You have a new gift/ }).click()
     }
+    // Reuse the page for replay: it must complete without fetching the wrapper
+    // again or carrying stale animation state from the first run.
     for (const run of ['cold', 'replay']) {
         await openGift()
         const result = await page.evaluate(async () => {
@@ -77,6 +101,10 @@ try {
             let resets = 0
             const intermediate = new Set()
             const start = performance.now()
+            // The current last peel ends at 2,040 ms. Leave a small settling
+            // margin; update this observation window if the choreography changes.
+            // requestAnimationFrame samples intermediate animation state, not just
+            // a final hidden wrapper that could conceal a skipped animation.
             while (performance.now() - start < 2400) {
                 const opacity = pieces.map((piece) =>
                     Number(getComputedStyle(piece).opacity)
@@ -122,6 +150,9 @@ try {
     assert.deepEqual(errors, [])
     await page.close()
 
+    // A missing decorative image must not prevent redemption. Separate contexts
+    // keep the successful download above from masking the forced failure; also
+    // verify that reduced-motion users can complete the same flow.
     for (const reducedMotion of ['no-preference', 'reduce']) {
         const fallback = await browser.newPage({ reducedMotion })
         await fallback.route('**/gift-card-clean-*.webp', (route) =>
@@ -146,6 +177,7 @@ try {
         await fallback.close()
     }
 } finally {
+    // Release the browser and preview port even when an assertion fails.
     await browser?.close()
     await new Promise((resolve) => server.httpServer.close(resolve))
 }
