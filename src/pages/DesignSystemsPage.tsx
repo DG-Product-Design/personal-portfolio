@@ -1,7 +1,19 @@
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import SiteNav from '../components/SiteNav'
-import ImageFade from '../components/ImageFade'
+import ImageLightbox from '../components/ImageLightbox'
 import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
+import componentLibraryVariationsFull from '../assets/img/design-systems/full-res/component-library-variations.png'
+import fringeDarkModeFull from '../assets/img/design-systems/full-res/fringe-dark-mode.png'
+import fringeLightModeFull from '../assets/img/design-systems/full-res/fringe-light-mode.png'
+import gridsAndGuidesFull from '../assets/img/design-systems/full-res/grids-and-guides.png'
+import loanAppScreensFull from '../assets/img/design-systems/full-res/loan-app-screens.png'
+import storybookButtonsFull from '../assets/img/design-systems/full-res/buttons-preview.png'
+import storybookColorsContinuedFull from '../assets/img/design-systems/full-res/colors-preview-2.png'
+import storybookColorsFull from '../assets/img/design-systems/full-res/colors-preview.png'
+import storybookDropdownFull from '../assets/img/design-systems/full-res/dropdown-preview.png'
+import storybookIconsFull from '../assets/img/design-systems/full-res/icons-preview.png'
+import storybookTypographyFull from '../assets/img/design-systems/full-res/text-preview.png'
+import thriveCheckoutFull from '../assets/img/design-systems/full-res/thrive-checkout.png'
 import fringeDarkMode from '../assets/img/design-systems/fringe-dark-mode.webp'
 import fringeLightMode from '../assets/img/design-systems/fringe-light-mode.webp'
 import gridsAndGuides from '../assets/img/design-systems/grids-and-guides.webp'
@@ -80,6 +92,7 @@ const evidence = [
 const storybookArtifacts = [
     {
         src: storybookColors,
+        fullSrc: storybookColorsFull,
         alt: 'Storybook color documentation showing CapCenter theme colors, usage guidance, and a WCAG contrast note',
         width: 1140,
         height: 957,
@@ -89,6 +102,7 @@ const storybookArtifacts = [
     },
     {
         src: storybookColorsContinued,
+        fullSrc: storybookColorsContinuedFull,
         alt: 'Storybook documentation showing theme color scales, system colors, gradients, and arbitrary color usage',
         width: 1140,
         height: 1508,
@@ -98,6 +112,7 @@ const storybookArtifacts = [
     },
     {
         src: storybookButtons,
+        fullSrc: storybookButtonsFull,
         alt: 'Storybook button documentation showing a live example, source code, and configurable component properties',
         width: 1140,
         height: 1096,
@@ -107,6 +122,7 @@ const storybookArtifacts = [
     },
     {
         src: storybookDropdown,
+        fullSrc: storybookDropdownFull,
         alt: 'Storybook dropdown documentation showing an open menu, source code, and configurable properties',
         width: 1140,
         height: 1082,
@@ -116,6 +132,7 @@ const storybookArtifacts = [
     },
     {
         src: storybookIcons,
+        fullSrc: storybookIconsFull,
         alt: 'Storybook icon documentation showing sizing, color, rotation, and code examples',
         width: 1140,
         height: 1089,
@@ -125,6 +142,7 @@ const storybookArtifacts = [
     },
     {
         src: storybookTypography,
+        fullSrc: storybookTypographyFull,
         alt: 'Storybook typography documentation showing headline scales and implementation classes',
         width: 1140,
         height: 957,
@@ -137,6 +155,7 @@ const storybookArtifacts = [
 const artifacts = [
     {
         src: componentLibraryVariations,
+        fullSrc: componentLibraryVariationsFull,
         alt: 'CapCenter product screens and Figma component variants showing different visual directions built from shared components',
         width: 1920,
         height: 1320,
@@ -146,6 +165,7 @@ const artifacts = [
     },
     {
         src: gridsAndGuides,
+        fullSrc: gridsAndGuidesFull,
         alt: 'Figma grids and guides for desktop, tablet, and mobile breakpoints',
         width: 1918,
         height: 922,
@@ -155,6 +175,7 @@ const artifacts = [
     },
     {
         src: fringeLightMode,
+        fullSrc: fringeLightModeFull,
         alt: 'Fringe marketplace rendered with the light theme',
         width: 1788,
         height: 1291,
@@ -164,6 +185,7 @@ const artifacts = [
     },
     {
         src: fringeDarkMode,
+        fullSrc: fringeDarkModeFull,
         alt: 'Fringe marketplace rendered with the dark theme',
         width: 1788,
         height: 1291,
@@ -173,6 +195,7 @@ const artifacts = [
     },
     {
         src: loanAppScreens,
+        fullSrc: loanAppScreensFull,
         alt: 'CapCenter loan application screens across desktop and mobile showing a cohesive multi-step experience',
         width: 1920,
         height: 1320,
@@ -182,6 +205,7 @@ const artifacts = [
     },
     {
         src: thriveCheckout,
+        fullSrc: thriveCheckoutFull,
         alt: 'ADP Thrive checkout for a DoorDash gift card using Fringe marketplace components',
         width: 726,
         height: 1296,
@@ -309,16 +333,26 @@ export default function DesignSystemsPage() {
                     </div>
                     <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
                         {storybookArtifacts.map(
-                            ({ src, alt, width, height, title, caption }) => (
+                            ({
+                                src,
+                                fullSrc,
+                                alt,
+                                width,
+                                height,
+                                title,
+                                caption,
+                            }) => (
                                 <figure
                                     key={title}
                                     className="m-0"
                                 >
-                                    <ImageFade
+                                    <ImageLightbox
                                         src={src}
+                                        fullSrc={fullSrc}
                                         alt={alt}
                                         width={width}
                                         height={height}
+                                        title={title}
                                         loading="lazy"
                                     />
                                     <figcaption className="mt-3 border-t border-solid border-rule/70 pt-3">
@@ -393,6 +427,7 @@ export default function DesignSystemsPage() {
                         {artifacts.map(
                             ({
                                 src,
+                                fullSrc,
                                 alt,
                                 width,
                                 height,
@@ -404,11 +439,13 @@ export default function DesignSystemsPage() {
                                     key={title}
                                     className={`m-0 ${figureClassName ?? ''}`}
                                 >
-                                    <ImageFade
+                                    <ImageLightbox
                                         src={src}
+                                        fullSrc={fullSrc}
                                         alt={alt}
                                         width={width}
                                         height={height}
+                                        title={title}
                                         loading="lazy"
                                     />
                                     <figcaption className="mt-3 border-t border-solid border-rule/70 pt-3">

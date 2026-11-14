@@ -9,7 +9,8 @@ import {
     X,
 } from 'lucide-react'
 import doorDashLogo from '../assets/img/case-studies/gifting/doordash-logo.png'
-import giftCard from '../assets/img/case-studies/gifting/gift-card.png'
+import GiftWrapReveal from './GiftWrapReveal'
+import { type GiftRevealVariant, giftRevealOptions } from './giftRevealOptions'
 
 type DemoStage =
     | 'idle'
@@ -46,10 +47,10 @@ const burstRotations = [
 ]
 
 const GIFT_NOTIFICATION_DURATION_MS = 3000
-const GIFT_REVEAL_DELAY_MS = 1600
+const GIFT_REVEAL_DELAY_MS = 1950
 
 const cardFaceClass =
-    'absolute inset-0 flex flex-col justify-center overflow-hidden rounded-[clamp(1.25rem,4vw,2rem)] bg-white p-[clamp(1.6rem,5vw,3.25rem)] shadow-[0_2.25rem_5rem_#1a002b80] [backface-visibility:hidden]'
+    'absolute inset-0 flex flex-col justify-center rounded-[clamp(1.25rem,4vw,2rem)] p-[clamp(1.6rem,5vw,3.25rem)] shadow-[0_2.25rem_5rem_#1a002b80] [backface-visibility:hidden]'
 const primaryButtonClass =
     'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#5b1598] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-white hover:bg-[#26003f] focus-visible:outline-[#32104e] [&>svg]:size-4'
 const scriptTitleClass =
@@ -60,6 +61,8 @@ export default function GiftingExperienceDemo() {
     const [celebrationReady, setCelebrationReady] = useState(false)
     const [frameSize, setFrameSize] = useState({ height: 0, width: 0 })
     const [reduceMotion, setReduceMotion] = useState(false)
+    const [revealVariant, setRevealVariant] =
+        useState<GiftRevealVariant>('seam')
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const dialogRef = useRef<HTMLDivElement>(null)
     const frameRef = useRef<HTMLDivElement>(null)
@@ -71,6 +74,7 @@ export default function GiftingExperienceDemo() {
     const marketplaceIsHidden =
         stage === 'idle' || stage === 'starting' || hasDialog
     const giftIsUnread = stage === 'notifying' || stage === 'ready'
+    const closeIsAvailable = stage !== 'celebration' || celebrationReady
 
     useEffect(() => {
         if (stage !== 'starting') return
@@ -136,7 +140,7 @@ export default function GiftingExperienceDemo() {
             return
         }
         if (hasDialog) {
-            closeButtonRef.current?.focus()
+            dialogRef.current?.focus()
             return
         }
         if (stage === 'idle' && hasInteractedRef.current) {
@@ -204,6 +208,40 @@ export default function GiftingExperienceDemo() {
             className="text-[#32104e]"
             aria-label="Interactive demonstration of the Fringe gifting experience"
         >
+            <fieldset className="mb-5 grid gap-4 border-y border-solid border-rule/70 py-4 text-ink md:grid-cols-[minmax(12rem,.55fr)_minmax(0,1.45fr)] md:items-center">
+                <legend className="sr-only">
+                    Choose a gift reveal prototype
+                </legend>
+                <div>
+                    <strong className="block text-sm">Reveal prototype</strong>
+                    <span className="mt-1 block text-xs text-muted">
+                        Choose one, then run or replay the demo.
+                    </span>
+                </div>
+                <div className="grid gap-2 sm:grid-cols-3">
+                    {giftRevealOptions.map(({ id, label, description }) => (
+                        <button
+                            key={id}
+                            className={`min-h-16 rounded-md border border-solid px-3 py-2 text-left transition-[border-color,background-color] duration-200 motion-reduce:transition-none ${revealVariant === id ? 'border-violet bg-violet/12' : 'border-rule bg-transparent hover:border-violet/70'} disabled:cursor-not-allowed disabled:opacity-45`}
+                            type="button"
+                            aria-pressed={revealVariant === id}
+                            disabled={
+                                hasDialog ||
+                                stage === 'starting' ||
+                                stage === 'notifying'
+                            }
+                            onClick={() => setRevealVariant(id)}
+                        >
+                            <strong className="block text-xs text-violet">
+                                {label}
+                            </strong>
+                            <span className="mt-1 block text-[.6875rem] leading-snug text-muted">
+                                {description}
+                            </span>
+                        </button>
+                    ))}
+                </div>
+            </fieldset>
             <div
                 ref={frameRef}
                 className="relative isolate min-h-[clamp(32rem,70vw,48rem)] overflow-hidden rounded-[clamp(1rem,2vw,1.75rem)] border border-solid border-rule/75 bg-[#19002c] shadow-[0_1.8rem_5rem_#0006]"
@@ -401,9 +439,11 @@ export default function GiftingExperienceDemo() {
                         >
                             <button
                                 ref={closeButtonRef}
-                                className="absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] focus-visible:outline-[#32104e] [&>svg]:size-4.5"
+                                className={`absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] transition-opacity duration-200 focus-visible:outline-[#32104e] motion-reduce:transition-none [&>svg]:size-4.5 ${closeIsAvailable ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
                                 type="button"
                                 onClick={closeGift}
+                                aria-hidden={!closeIsAvailable}
+                                tabIndex={closeIsAvailable ? 0 : -1}
                             >
                                 <X aria-hidden="true" />
                                 <span className="sr-only">Close gift</span>
@@ -412,7 +452,7 @@ export default function GiftingExperienceDemo() {
                                 className={`absolute inset-0 transition-transform duration-850 ease-[cubic-bezier(.65,0,.35,1)] [transform-style:preserve-3d] motion-reduce:transition-none ${stage === 'reveal' || stage === 'redeemed' ? '[transform:rotateY(180deg)]' : ''}`}
                             >
                                 <div
-                                    className={`${cardFaceClass} bg-[radial-gradient(circle_at_17%_20%,#4dcdd7_0_4px,transparent_5px),radial-gradient(circle_at_79%_24%,#ffd21c_0_5px,transparent_6px),radial-gradient(circle_at_86%_76%,#ff3655_0_4px,transparent_5px),radial-gradient(circle_at_25%_83%,#5632b5_0_4px,transparent_5px)]`}
+                                    className={`${cardFaceClass} overflow-visible bg-white bg-[radial-gradient(circle_at_24%_12%,#4dcdd7_0_4px,transparent_5px),radial-gradient(circle_at_79%_24%,#ffd21c_0_5px,transparent_6px),radial-gradient(circle_at_86%_76%,#ff3655_0_4px,transparent_5px),radial-gradient(circle_at_45%_85%,#5632b5_0_4px,transparent_5px)]`}
                                     aria-hidden={stage !== 'celebration'}
                                     inert={
                                         stage !== 'celebration'
@@ -420,12 +460,9 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    <img
-                                        className="pointer-events-none absolute inset-[-1%] z-3 size-[102%] max-w-none animate-gift-cover object-cover motion-reduce:hidden"
-                                        src={giftCard}
-                                        alt=""
-                                        width="800"
-                                        height="549"
+                                    <GiftWrapReveal
+                                        key={revealVariant}
+                                        variant={revealVariant}
                                     />
                                     <div
                                         className={`animate-gift-congratulations opacity-0 motion-reduce:animate-none motion-reduce:opacity-100 ${celebrationReady ? '' : 'pointer-events-none'}`}
@@ -436,16 +473,17 @@ export default function GiftingExperienceDemo() {
                                         >
                                             Congratulations!
                                         </p>
-                                        <p className="my-3 leading-normal">
+                                        <p className="mt-3 leading-normal">
                                             You received a gift from{' '}
                                             <strong>Morgan</strong>.
                                         </p>
-                                        <blockquote className="my-[clamp(.75rem,3vw,1.5rem)] border-l-3 border-solid border-[#e0c9ee] py-3 pr-0 pl-4 text-[clamp(.75rem,2vw,1rem)] leading-snug text-[#725886]">
-                                            Thanks for everything you do. Enjoy
-                                            something on me!
-                                        </blockquote>
+                                        <p className="my-[clamp(.75rem,3vw,1.5rem)] text-[clamp(.75rem,2vw,1rem)] leading-snug text-[#725886] italic">
+                                            "Thanks for everything you do. Our
+                                            team is so grateful to have you.
+                                            Enjoy something on me!"
+                                        </p>
                                         <button
-                                            className={primaryButtonClass}
+                                            className={`${primaryButtonClass} mt-2`}
                                             type="button"
                                             tabIndex={celebrationReady ? 0 : -1}
                                             onClick={() => setStage('reveal')}
@@ -457,7 +495,7 @@ export default function GiftingExperienceDemo() {
                                 </div>
 
                                 <div
-                                    className={`${cardFaceClass} [transform:rotateY(180deg)]`}
+                                    className={`${cardFaceClass} [transform:rotateY(180deg)] overflow-hidden bg-white`}
                                     aria-hidden={stage === 'celebration'}
                                     inert={
                                         stage === 'celebration'

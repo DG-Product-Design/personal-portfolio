@@ -47,7 +47,7 @@ export default function HomePage() {
                             <span className="block">
                                 {featured.name} / DSP / Adtech
                             </span>
-                            <span className="mt-2 block text-[clamp(.75rem,1.1vw,1rem)] font-medium tracking-normal text-muted">
+                            <span className="mt-2 block text-[clamp(.75rem,1.1vw,1rem)] font-medium tracking-normal text-muted [text-shadow:0_1px_2px_#000,0_3px_10px_#000c] lg:[text-shadow:none]">
                                 Focus: {featured.focus}
                             </span>
                         </a>
@@ -59,7 +59,7 @@ export default function HomePage() {
                                     href={`/work/${slug}/`}
                                 >
                                     <span className="block">{name}</span>
-                                    <span className="mt-1.5 block text-[clamp(.6875rem,.95vw,.875rem)] leading-snug font-medium tracking-normal text-muted">
+                                    <span className="mt-1.5 block text-[clamp(.6875rem,.95vw,.875rem)] leading-snug font-medium tracking-normal text-muted [text-shadow:0_1px_2px_#000,0_3px_10px_#000c] lg:[text-shadow:none]">
                                         Focus: {focus}
                                     </span>
                                 </a>
