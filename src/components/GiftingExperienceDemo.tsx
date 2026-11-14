@@ -1,4 +1,5 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import ReactConfetti from 'react-confetti'
 import {
     ArrowRight,
@@ -9,7 +10,7 @@ import {
     X,
 } from 'lucide-react'
 import doorDashLogo from '../assets/img/case-studies/gifting/doordash-logo.png'
-import giftCard from '../assets/img/case-studies/gifting/gift-card.png'
+import GiftWrapReveal from './GiftWrapReveal'
 
 type DemoStage =
     | 'idle'
@@ -46,10 +47,11 @@ const burstRotations = [
 ]
 
 const GIFT_NOTIFICATION_DURATION_MS = 3000
-const GIFT_REVEAL_DELAY_MS = 1600
+const GIFT_REVEAL_DELAY_MS = 1950
+const DEMO_START_DELAY_MS = 1000
 
 const cardFaceClass =
-    'absolute inset-0 flex flex-col justify-center overflow-hidden rounded-[clamp(1.25rem,4vw,2rem)] bg-white p-[clamp(1.6rem,5vw,3.25rem)] shadow-[0_2.25rem_5rem_#1a002b80] [backface-visibility:hidden]'
+    'absolute inset-0 flex flex-col justify-center rounded-[clamp(1.25rem,4vw,2rem)] p-[clamp(1.6rem,5vw,3.25rem)] shadow-[0_2.25rem_5rem_#1a002b80] [backface-visibility:hidden]'
 const primaryButtonClass =
     'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#5b1598] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-white hover:bg-[#26003f] focus-visible:outline-[#32104e] [&>svg]:size-4'
 const scriptTitleClass =
@@ -68,13 +70,16 @@ export default function GiftingExperienceDemo() {
     const notificationButtonRef = useRef<HTMLButtonElement>(null)
     const startButtonRef = useRef<HTMLButtonElement>(null)
     const hasDialog = ['celebration', 'reveal', 'redeemed'].includes(stage)
-    const marketplaceIsHidden =
-        stage === 'idle' || stage === 'starting' || hasDialog
+    const marketplaceIsHidden = stage === 'idle' || hasDialog
     const giftIsUnread = stage === 'notifying' || stage === 'ready'
+    const closeIsAvailable = stage !== 'celebration' || celebrationReady
 
     useEffect(() => {
         if (stage !== 'starting') return
-        const timeout = window.setTimeout(() => setStage('notifying'), 1000)
+        const timeout = window.setTimeout(
+            () => setStage('notifying'),
+            DEMO_START_DELAY_MS
+        )
         return () => window.clearTimeout(timeout)
     }, [stage])
 
@@ -136,7 +141,7 @@ export default function GiftingExperienceDemo() {
             return
         }
         if (hasDialog) {
-            closeButtonRef.current?.focus()
+            dialogRef.current?.focus()
             return
         }
         if (stage === 'idle' && hasInteractedRef.current) {
@@ -304,10 +309,16 @@ export default function GiftingExperienceDemo() {
                                 Explore benefits
                             </span>
                         </div>
-                        <div className="grid -rotate-3 grid-cols-3 gap-3 compact:grid-cols-2">
-                            <span className="min-h-[clamp(13rem,25vw,22rem)] rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[linear-gradient(180deg,transparent_52%,#160023_52%),linear-gradient(145deg,#dd5f8d,#ffaf58_47%,#3d0d70_48%)] shadow-[0_1.5rem_3rem_#0e001c80]" />
-                            <span className="min-h-[clamp(13rem,25vw,22rem)] translate-y-8 rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[linear-gradient(180deg,transparent_52%,#160023_52%),linear-gradient(145deg,#3bbed1,#70d79f_47%,#3d0d70_48%)] shadow-[0_1.5rem_3rem_#0e001c80]" />
-                            <span className="min-h-[clamp(13rem,25vw,22rem)] rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[linear-gradient(180deg,transparent_52%,#160023_52%),linear-gradient(145deg,#f2ce49,#f36c51_47%,#3d0d70_48%)] shadow-[0_1.5rem_3rem_#0e001c80] compact:hidden" />
+                        <div className="grid -rotate-3 transform-gpu grid-cols-3 gap-3 [backface-visibility:hidden] compact:grid-cols-2">
+                            <span className="relative min-h-[clamp(10rem,20vw,15.75rem)] transform-gpu overflow-hidden rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[#3d0d70] bg-clip-padding shadow-[0_1.5rem_3rem_#0e001c80] [backface-visibility:hidden]">
+                                <span className="absolute inset-0 bg-[linear-gradient(145deg,#dd5f8d,#ffaf58)] [clip-path:polygon(0_0,100%_0,100%_52%,0_calc(100%_-_1.25rem))]" />
+                            </span>
+                            <span className="relative min-h-[clamp(10rem,20vw,15.75rem)] translate-y-8 transform-gpu overflow-hidden rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[#3d0d70] bg-clip-padding shadow-[0_1.5rem_3rem_#0e001c80] [backface-visibility:hidden]">
+                                <span className="absolute inset-0 bg-[linear-gradient(145deg,#3bbed1,#70d79f)] [clip-path:polygon(0_0,100%_0,100%_52%,0_calc(100%_-_1.25rem))]" />
+                            </span>
+                            <span className="relative min-h-[clamp(10rem,20vw,15.75rem)] transform-gpu overflow-hidden rounded-[clamp(.75rem,2vw,1.5rem)] border-[.45rem] border-solid border-white/13 bg-[#3d0d70] bg-clip-padding shadow-[0_1.5rem_3rem_#0e001c80] [backface-visibility:hidden] compact:hidden">
+                                <span className="absolute inset-0 bg-[linear-gradient(145deg,#f2ce49,#f36c51)] [clip-path:polygon(0_0,100%_0,100%_52%,0_calc(100%_-_1.25rem))]" />
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -339,18 +350,15 @@ export default function GiftingExperienceDemo() {
                     </button>
                 )}
 
-                {(stage === 'idle' || stage === 'starting') && (
+                {stage === 'idle' && (
                     <div className="absolute inset-0 z-10 grid place-items-center bg-[#05050682] backdrop-blur-2xl">
                         <button
                             ref={startButtonRef}
-                            className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] aria-disabled:cursor-wait aria-disabled:opacity-75 motion-reduce:transition-none"
+                            className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] motion-reduce:transition-none"
                             type="button"
-                            aria-disabled={stage === 'starting'}
-                            onClick={stage === 'idle' ? startDemo : undefined}
+                            onClick={startDemo}
                         >
-                            {stage === 'starting'
-                                ? 'Starting interactive demo…'
-                                : 'Start interactive demo'}
+                            Start interactive demo
                         </button>
                     </div>
                 )}
@@ -387,9 +395,17 @@ export default function GiftingExperienceDemo() {
                                     tweenDuration={120}
                                 />
                             )}
-                        <div
+                        <motion.div
                             ref={dialogRef}
-                            className="relative z-2 aspect-[35.5/24] w-[min(35.5rem,94%)] animate-gift-card outline-none [perspective:70rem] motion-reduce:animate-none compact:aspect-auto compact:min-h-88 compact:w-full"
+                            className="relative z-2 aspect-[35.5/24] w-[min(35.5rem,94%)] outline-none [perspective:70rem] compact:aspect-auto compact:min-h-88 compact:w-full"
+                            initial={reduceMotion ? false : { y: -220 }}
+                            animate={{ y: 0 }}
+                            transition={{
+                                type: 'spring',
+                                stiffness: 9000,
+                                damping: 700,
+                                mass: 35,
+                            }}
                             role="dialog"
                             aria-modal="true"
                             aria-labelledby={
@@ -401,9 +417,11 @@ export default function GiftingExperienceDemo() {
                         >
                             <button
                                 ref={closeButtonRef}
-                                className="absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] focus-visible:outline-[#32104e] [&>svg]:size-4.5"
+                                className={`absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] transition-opacity duration-200 focus-visible:outline-[#32104e] motion-reduce:transition-none [&>svg]:size-4.5 ${closeIsAvailable ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
                                 type="button"
                                 onClick={closeGift}
+                                aria-hidden={!closeIsAvailable}
+                                tabIndex={closeIsAvailable ? 0 : -1}
                             >
                                 <X aria-hidden="true" />
                                 <span className="sr-only">Close gift</span>
@@ -412,7 +430,7 @@ export default function GiftingExperienceDemo() {
                                 className={`absolute inset-0 transition-transform duration-850 ease-[cubic-bezier(.65,0,.35,1)] [transform-style:preserve-3d] motion-reduce:transition-none ${stage === 'reveal' || stage === 'redeemed' ? '[transform:rotateY(180deg)]' : ''}`}
                             >
                                 <div
-                                    className={`${cardFaceClass} bg-[radial-gradient(circle_at_17%_20%,#4dcdd7_0_4px,transparent_5px),radial-gradient(circle_at_79%_24%,#ffd21c_0_5px,transparent_6px),radial-gradient(circle_at_86%_76%,#ff3655_0_4px,transparent_5px),radial-gradient(circle_at_25%_83%,#5632b5_0_4px,transparent_5px)]`}
+                                    className={`${cardFaceClass} overflow-visible bg-white bg-[radial-gradient(circle_at_24%_12%,#4dcdd7_0_4px,transparent_5px),radial-gradient(circle_at_79%_24%,#ffd21c_0_5px,transparent_6px),radial-gradient(circle_at_86%_76%,#ff3655_0_4px,transparent_5px),radial-gradient(circle_at_45%_85%,#5632b5_0_4px,transparent_5px)]`}
                                     aria-hidden={stage !== 'celebration'}
                                     inert={
                                         stage !== 'celebration'
@@ -420,13 +438,7 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    <img
-                                        className="pointer-events-none absolute inset-[-1%] z-3 size-[102%] max-w-none animate-gift-cover object-cover motion-reduce:hidden"
-                                        src={giftCard}
-                                        alt=""
-                                        width="800"
-                                        height="549"
-                                    />
+                                    <GiftWrapReveal />
                                     <div
                                         className={`animate-gift-congratulations opacity-0 motion-reduce:animate-none motion-reduce:opacity-100 ${celebrationReady ? '' : 'pointer-events-none'}`}
                                     >
@@ -436,16 +448,17 @@ export default function GiftingExperienceDemo() {
                                         >
                                             Congratulations!
                                         </p>
-                                        <p className="my-3 leading-normal">
+                                        <p className="mt-3 leading-normal">
                                             You received a gift from{' '}
                                             <strong>Morgan</strong>.
                                         </p>
-                                        <blockquote className="my-[clamp(.75rem,3vw,1.5rem)] border-l-3 border-solid border-[#e0c9ee] py-3 pr-0 pl-4 text-[clamp(.75rem,2vw,1rem)] leading-snug text-[#725886]">
-                                            Thanks for everything you do. Enjoy
-                                            something on me!
-                                        </blockquote>
+                                        <p className="my-[clamp(.75rem,3vw,1.5rem)] text-[clamp(.75rem,2vw,1rem)] leading-snug text-[#725886] italic">
+                                            "Thanks for everything you do. Our
+                                            team is so grateful to have you.
+                                            Enjoy something on me!"
+                                        </p>
                                         <button
-                                            className={primaryButtonClass}
+                                            className={`${primaryButtonClass} mt-2`}
                                             type="button"
                                             tabIndex={celebrationReady ? 0 : -1}
                                             onClick={() => setStage('reveal')}
@@ -457,7 +470,7 @@ export default function GiftingExperienceDemo() {
                                 </div>
 
                                 <div
-                                    className={`${cardFaceClass} [transform:rotateY(180deg)]`}
+                                    className={`${cardFaceClass} [transform:rotateY(180deg)] overflow-hidden bg-white`}
                                     aria-hidden={stage === 'celebration'}
                                     inert={
                                         stage === 'celebration'
@@ -529,7 +542,7 @@ export default function GiftingExperienceDemo() {
                                     )}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 )}
             </div>
