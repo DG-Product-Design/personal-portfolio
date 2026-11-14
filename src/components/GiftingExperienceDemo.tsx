@@ -315,7 +315,7 @@ export default function GiftingExperienceDemo() {
                 {stage === 'notifying' && (
                     <button
                         ref={notificationButtonRef}
-                        className="absolute top-[clamp(5.25rem,10vw,7.25rem)] right-[clamp(1rem,4vw,3rem)] z-3 grid min-h-20 w-[min(22rem,calc(100%-2rem))] animate-gift-notification grid-cols-[auto_1fr_auto] items-center gap-3.5 rounded-2xl border border-solid border-white/35 bg-[#f3eaff] px-4 py-3.5 text-left text-[#3b1261] shadow-[0_1.25rem_3rem_#0c001a99] hover:-translate-y-0.5 focus-visible:outline-[#32104e] motion-reduce:animate-none [&>svg]:size-4.5"
+                        className="absolute top-[clamp(5.25rem,10vw,7.25rem)] right-[clamp(1rem,4vw,3rem)] z-3 grid min-h-20 w-[min(22rem,calc(100%-2rem))] animate-[gift-notification-lifecycle_var(--gift-notification-duration)_cubic-bezier(0.16,1,0.3,1)_both] grid-cols-[auto_1fr_auto] items-center gap-3.5 rounded-2xl border border-solid border-white/35 bg-[#f3eaff] px-4 py-3.5 text-left text-[#3b1261] shadow-[0_1.25rem_3rem_#0c001a99] hover:-translate-y-0.5 focus-visible:outline-[#32104e] motion-reduce:animate-none [&>svg]:size-4.5"
                         type="button"
                         onClick={openGift}
                         style={
