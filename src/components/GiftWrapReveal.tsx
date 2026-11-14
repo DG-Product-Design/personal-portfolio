@@ -1,6 +1,6 @@
-import { motion, useAnimationControls } from 'framer-motion'
-import { useEffect, useId } from 'react'
-import giftCard from '../assets/img/case-studies/gifting/gift-card-clean.png'
+import { motion } from 'framer-motion'
+import { useId } from 'react'
+import giftCard from '../assets/img/case-studies/gifting/gift-card-clean.webp'
 
 type Point = readonly [number, number]
 type CurveSegment = { control1: Point; control2: Point; end: Point }
@@ -20,6 +20,8 @@ type Piece = {
     path: string
 }
 
+// Define the nine pieces in the SVG's 800 × 549 artwork coordinates. Keeping
+// the mesh independent of screen size lets the same tears fit every card size.
 const handTornMesh: MeshConfig = {
     amplitude: 34,
     columns: [0, 244, 526, 800],
@@ -28,16 +30,23 @@ const handTornMesh: MeshConfig = {
     stagger: 135,
 }
 
+// Repeatable variation keeps the tears organic without changing their shape
+// between server rendering, hydration, and replay.
 const seededNoise = (seed: number, index: number) => {
     const value = Math.sin(seed * 91.731 + index * 47.293) * 43758.5453
     return (value - Math.floor(value)) * 2 - 1
 }
 
+// Outer edges stay straight. Expressing them as cubic segments lets the path
+// builders handle the perimeter and torn interior edges in the same way.
 const makeStraightBoundary = (start: Point, end: Point): Boundary => ({
     start,
     segments: [{ control1: start, control2: end, end }],
 })
 
+// Convert a Catmull–Rom spline through the sampled points into cubic Béziers.
+// The neighboring points determine each tangent; the 1/6 factors preserve
+// smooth joins, avoiding sharp zigzags along the torn-paper silhouette.
 const makeCurvedBoundary = (points: Point[]): Boundary => ({
     start: points[0],
     segments: points.slice(0, -1).map((current, index) => {
@@ -59,6 +68,8 @@ const makeCurvedBoundary = (points: Point[]): Boundary => ({
     }),
 })
 
+// Combine broad bends with smaller irregularities to suggest a hand-torn edge.
+// Fixed endpoints let adjacent boundaries meet exactly at the mesh corners.
 const makeOrganicBoundary = (
     start: Point,
     end: Point,
@@ -72,11 +83,15 @@ const makeOrganicBoundary = (
         if (index === 0) return start
         if (index === density) return end
 
+        // Reduce the sideways displacement near each endpoint so the tear
+        // blends back into its corner instead of forming a large hook there.
         const edgeTaper = Math.sin(progress * Math.PI)
         const largeTear =
             Math.sin(progress * Math.PI * 3 + seed * 0.73) * amplitude * 0.42
         const smallTear = seededNoise(seed, index) * amplitude * 0.78
         const offset = (largeTear + smallTear) * edgeTaper
+        // Vary spacing along the edge as well as across it to avoid an evenly
+        // spaced wave pattern.
         const alongJitter =
             seededNoise(seed + 17, index) *
             (horizontal ? end[0] - start[0] : end[1] - start[1]) *
@@ -98,8 +113,11 @@ const makeOrganicBoundary = (
     return makeCurvedBoundary(points)
 }
 
+// Two decimals keep SVG path strings compact while retaining subpixel detail
+// at the card's rendered size.
 const point = ([x, y]: Point) => `${x.toFixed(2)} ${y.toFixed(2)}`
 
+// Serialize an edge in its stored direction: left-to-right or top-to-bottom.
 const forwardCommands = (boundary: Boundary) =>
     boundary.segments
         .map(
@@ -108,6 +126,8 @@ const forwardCommands = (boundary: Boundary) =>
         )
         .join(' ')
 
+// Traverse the exact same edge backward, swapping Bézier controls as well as
+// segment order. Reusing its geometry prevents mismatched seams between pieces.
 const reverseCommands = (boundary: Boundary) =>
     [...boundary.segments]
         .reverse()
@@ -121,6 +141,8 @@ const reverseCommands = (boundary: Boundary) =>
         })
         .join(' ')
 
+// Walk clockwise around a piece. Bottom and left edges must run backward to
+// close the outline without changing the shared curves.
 const createPiecePath = (
     top: Boundary,
     right: Boundary,
@@ -129,11 +151,15 @@ const createPiecePath = (
 ) =>
     `M ${point(top.start)} ${forwardCommands(top)} ${forwardCommands(right)} ${reverseCommands(bottom)} ${reverseCommands(left)} Z`
 
+// A half-second peel leaves enough visible motion before fading on slower
+// devices. The lower-left pivot makes each piece lift away like a paper flap.
 const handTornPeel = {
-    duration: 285,
+    duration: 500,
     origin: '0% 100%',
 } as const
 
+// Build every boundary once, then share it between neighboring pieces. The
+// assembled wrapper stays continuous even though each piece moves independently.
 const createPieces = (config: MeshConfig): Piece[] => {
     const columnCount = config.columns.length - 1
 
@@ -169,6 +195,8 @@ const createPieces = (config: MeshConfig): Piece[] => {
         })
     )
 
+    // Peel from the upper-right toward the lower-left. Ranking individual
+    // pieces, including ties on a diagonal, avoids whole rows vanishing at once.
     const waveRanks = new Map<string, number>()
     const positions = config.rows.slice(0, -1).flatMap((_, row) =>
         config.columns.slice(0, -1).map((__, column) => ({
@@ -204,8 +232,14 @@ const createPieces = (config: MeshConfig): Piece[] => {
     )
 }
 
+// Geometry is static: calculate it once per module load, outside React renders
+// and animation frames.
 const pieces = createPieces(handTornMesh)
 
+// Let the card's entrance settle before tearing starts. Artwork decoding is
+// handled by GiftingExperienceDemo before the demo can start; this is pacing,
+// not an image-loading workaround. Keep its reveal-ready timing in sync when
+// changing this delay, the stagger, or the peel duration.
 const TEAR_START_DELAY_MS = 1000
 
 function HandTornPiece({
@@ -217,82 +251,58 @@ function HandTornPiece({
     piece: Piece
     wrapperPatternId: string
 }) {
-    const controls = useAnimationControls()
-
-    useEffect(() => {
-        const totalDuration = piece.duration / 1000
-        const variation = (index % 3) - 1
-        const delay = (piece.delay + TEAR_START_DELAY_MS) / 1000
-        const rotateYDirection = piece.centerX < 400 ? -1 : 1
-
-        const run = async () => {
-            await controls.start({
-                x: -2,
-                y: 2,
-                rotateX: 0,
-                rotateY: 0,
-                rotateZ: -1 + variation * 0.25,
-                transition: {
-                    type: 'spring',
-                    duration: totalDuration * 0.28,
-                    bounce: 0.04,
-                    delay,
-                },
-            })
-            await controls.start({
-                x: -18,
-                y: 20,
-                rotateX: 10,
-                rotateY: 12 * rotateYDirection,
-                rotateZ: -4 + variation * 0.6,
-                filter: 'drop-shadow(0.3rem 0.55rem 0.45rem #4b001c55)',
-                transition: {
-                    type: 'spring',
-                    duration: totalDuration * 0.22,
-                    bounce: 0.12,
-                },
-            })
-            await controls.start({
-                x: -68 + variation * 5,
-                y: 118 + Math.abs(variation) * 12,
-                rotateX: 28,
-                rotateY: 32 * rotateYDirection,
-                rotateZ: -12 + variation * 2.5,
-                opacity: 0,
-                filter: 'drop-shadow(0 1.5rem 1.25rem #16002466)',
-                transition: {
-                    default: {
-                        type: 'spring',
-                        duration: totalDuration * 0.5,
-                        bounce: 0.06,
-                    },
-                    opacity: {
-                        duration: totalDuration * 0.32,
-                        delay: totalDuration * 0.18,
-                        ease: [0.55, 0.05, 0.9, 0.35],
-                    },
-                },
-            })
-        }
-
-        void run()
-        return () => controls.stop()
-    }, [controls, index, piece.centerX, piece.delay, piece.duration])
+    // Small, deterministic differences keep the pieces from moving in lockstep;
+    // opposite Y rotations make the left and right sides peel outward.
+    const variation = (index % 3) - 1
+    const rotateYDirection = piece.centerX < 400 ? -1 : 1
 
     return (
         <motion.g
             initial={{
+                // Start fully assembled and opaque throughout each piece's delay.
                 x: 0,
                 y: 0,
                 rotateX: 0,
                 rotateY: 0,
                 rotateZ: 0,
                 opacity: 1,
-                filter: 'drop-shadow(0 0 0 transparent)',
             }}
-            animate={controls}
-            className="will-change-[transform,opacity,filter] [transform-box:fill-box] motion-reduce:hidden"
+            animate={{
+                // One timeline carries the tug, lift, and fall instead of chaining
+                // short springs. Only transforms and opacity change since animated
+                // drop shadows added rendering cost during the confetti burst.
+                x: [0, -2, -18, -68 + variation * 5],
+                y: [0, 2, 20, 118 + Math.abs(variation) * 12],
+                rotateX: [0, 0, 10, 28],
+                rotateY: [0, 0, 12 * rotateYDirection, 32 * rotateYDirection],
+                rotateZ: [
+                    0,
+                    -1 + variation * 0.25,
+                    -4 + variation * 0.6,
+                    -12 + variation * 2.5,
+                ],
+                opacity: [1, 1, 1, 0],
+            }}
+            transition={{
+                duration: piece.duration / 1000,
+                delay: (piece.delay + TEAR_START_DELAY_MS) / 1000,
+                // Spend most of the duration on the visible fall. Linear segments
+                // keep movement continuous without settling between keyframes.
+                times: [0, 0.16, 0.42, 1],
+                ease: 'linear',
+                opacity: {
+                    // Hold the paper opaque for 65% of the peel so its movement
+                    // reads clearly before it fades, rather than simply vanishing.
+                    duration: piece.duration / 1000,
+                    delay: (piece.delay + TEAR_START_DELAY_MS) / 1000,
+                    times: [0, 0.16, 0.65, 1],
+                    ease: 'easeIn',
+                },
+            }}
+            className="will-change-[transform,opacity] [transform-box:fill-box] motion-reduce:hidden"
             style={{
+                // fill-box makes the pivot relative to this piece, not the entire
+                // SVG. Perspective gives the X/Y rotations a modest sense of depth.
                 transformOrigin: piece.origin,
                 transformPerspective: 1120,
             }}
@@ -301,6 +311,7 @@ function HandTornPiece({
                 d={piece.path}
                 fill={`url(#${wrapperPatternId})`}
                 stroke={`url(#${wrapperPatternId})`}
+                // Slightly overlap the shared edges to cover seams
                 strokeWidth="2.5"
                 strokeLinejoin="round"
             />
@@ -309,14 +320,18 @@ function HandTornPiece({
 }
 
 export default function GiftWrapReveal() {
+    // Scope SVG paint/clip references to this instance and keep IDs consistent
+    // across server rendering and hydration.
     const reactId = useId()
     const id = reactId.replace(/:/g, '')
     const wrapperArtworkClipId = `${id}-wrapper-artwork-clip`
     const wrapperPatternId = `${id}-wrapper-pattern`
 
+    // Overscan hides slivers of the white card at mismatched rounded corners;
+    // the taller mobile card needs a little more coverage than desktop.
     return (
         <svg
-            className="pointer-events-none absolute inset-0 z-3 size-full [transform:scale(1.01)] overflow-visible [perspective:70rem] motion-reduce:hidden"
+            className="pointer-events-none absolute inset-0 z-3 size-full [transform:scale(1.01)] overflow-visible [perspective:70rem] motion-reduce:hidden compact:[transform:scale(1.02)]"
             viewBox="0 0 800 549"
             preserveAspectRatio="none"
             aria-hidden="true"
@@ -341,6 +356,8 @@ export default function GiftWrapReveal() {
                         height="553"
                     />
                 </clipPath>
+                {/* Use one artwork coordinate system for every piece so the
+                    ribbon and texture stay aligned across the assembled mesh. */}
                 <pattern
                     id={wrapperPatternId}
                     x="-4"

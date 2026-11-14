@@ -1,16 +1,10 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import ReactConfetti from 'react-confetti'
-import {
-    ArrowRight,
-    Check,
-    Gift,
-    RotateCcw,
-    ShoppingBag,
-    X,
-} from 'lucide-react'
+import { ArrowRight, Gift, RotateCcw, ShoppingBag, X } from 'lucide-react'
 import doorDashLogo from '../assets/img/case-studies/gifting/doordash-logo.png'
 import GiftWrapReveal from './GiftWrapReveal'
+import giftCard from '../assets/img/case-studies/gifting/gift-card-clean.webp'
 
 type DemoStage =
     | 'idle'
@@ -47,7 +41,8 @@ const burstRotations = [
 ]
 
 const GIFT_NOTIFICATION_DURATION_MS = 3000
-const GIFT_REVEAL_DELAY_MS = 1950
+// The final piece finishes at 1,000 + 8 × 67.5 + 500 = 2,040 ms.
+const GIFT_REVEAL_DELAY_MS = 2150
 const DEMO_START_DELAY_MS = 1000
 
 const cardFaceClass =
@@ -57,8 +52,52 @@ const primaryButtonClass =
 const scriptTitleClass =
     "m-0 font-['Georgia','Times_New_Roman',serif] text-[clamp(1.85rem,5vw,3.5rem)] leading-none tracking-[-.045em] text-[#5b2082] italic"
 
+function RedemptionCheckmark({ reduceMotion }: { reduceMotion: boolean }) {
+    return (
+        <motion.span
+            className="grid size-full place-items-center rounded-full bg-[#2a9d75] text-white"
+            aria-hidden="true"
+            initial={reduceMotion ? false : { scale: 0.8, opacity: 0 }}
+            animate={{ scale: reduceMotion ? 1 : [0.8, 1.08, 1], opacity: 1 }}
+            transition={{
+                scale: {
+                    duration: reduceMotion ? 0 : 0.36,
+                    delay: reduceMotion ? 0 : 0.1,
+                    times: [0, 0.65, 1],
+                    ease: 'easeOut',
+                },
+                opacity: { duration: reduceMotion ? 0 : 0.12 },
+            }}
+        >
+            <svg
+                className="w-[55%]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            >
+                <motion.path
+                    d="m5 12 4 4L19 6"
+                    initial={reduceMotion ? false : { pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{
+                        duration: reduceMotion ? 0 : 0.28,
+                        delay: reduceMotion ? 0 : 0.24,
+                        ease: 'easeOut',
+                    }}
+                />
+            </svg>
+        </motion.span>
+    )
+}
+
 export default function GiftingExperienceDemo() {
     const [stage, setStage] = useState<DemoStage>('idle')
+    const [artworkStatus, setArtworkStatus] = useState<
+        'loading' | 'ready' | 'failed'
+    >('loading')
     const [celebrationReady, setCelebrationReady] = useState(false)
     const [frameSize, setFrameSize] = useState({ height: 0, width: 0 })
     const [reduceMotion, setReduceMotion] = useState(false)
@@ -71,8 +110,31 @@ export default function GiftingExperienceDemo() {
     const startButtonRef = useRef<HTMLButtonElement>(null)
     const hasDialog = ['celebration', 'reveal', 'redeemed'].includes(stage)
     const marketplaceIsHidden = stage === 'idle' || hasDialog
+    const isRedeemed = stage === 'redeemed'
     const giftIsUnread = stage === 'notifying' || stage === 'ready'
     const closeIsAvailable = stage !== 'celebration' || celebrationReady
+    const artworkIsLoading = artworkStatus === 'loading' && !reduceMotion
+
+    useEffect(() => {
+        let cancelled = false
+        const image = new Image()
+        image.src = giftCard
+
+        // Fetching alone is insufficient so we wait for decoding before allowing
+        // the first reveal to mount its SVG pattern and start its timeline.
+        void image.decode().then(
+            () => {
+                if (!cancelled) setArtworkStatus('ready')
+            },
+            () => {
+                if (!cancelled) setArtworkStatus('failed')
+            }
+        )
+
+        return () => {
+            cancelled = true
+        }
+    }, [])
 
     useEffect(() => {
         if (stage !== 'starting') return
@@ -97,7 +159,7 @@ export default function GiftingExperienceDemo() {
             setCelebrationReady(false)
             return
         }
-        if (reduceMotion) {
+        if (reduceMotion || artworkStatus === 'failed') {
             setCelebrationReady(true)
             return
         }
@@ -107,7 +169,7 @@ export default function GiftingExperienceDemo() {
             GIFT_REVEAL_DELAY_MS
         )
         return () => window.clearTimeout(timeout)
-    }, [reduceMotion, stage])
+    }, [artworkStatus, reduceMotion, stage])
 
     useEffect(() => {
         const frame = frameRef.current
@@ -200,6 +262,7 @@ export default function GiftingExperienceDemo() {
         setStage('celebration')
     }
     const startDemo = () => {
+        if (artworkIsLoading) return
         hasInteractedRef.current = true
         setStage('starting')
     }
@@ -357,8 +420,12 @@ export default function GiftingExperienceDemo() {
                             className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] motion-reduce:transition-none"
                             type="button"
                             onClick={startDemo}
+                            disabled={artworkIsLoading}
+                            aria-busy={artworkIsLoading}
                         >
-                            Start interactive demo
+                            {artworkIsLoading
+                                ? 'Preparing your gift…'
+                                : 'Start interactive demo'}
                         </button>
                     </div>
                 )}
@@ -390,7 +457,9 @@ export default function GiftingExperienceDemo() {
                                     gravity={0.12}
                                     initialVelocityX={11}
                                     initialVelocityY={18}
-                                    numberOfPieces={320}
+                                    numberOfPieces={
+                                        frameSize.width <= 720 ? 80 : 320
+                                    }
                                     recycle={false}
                                     tweenDuration={120}
                                 />
@@ -411,7 +480,9 @@ export default function GiftingExperienceDemo() {
                             aria-labelledby={
                                 stage === 'celebration'
                                     ? 'gift-demo-congratulations-title'
-                                    : 'gift-demo-reveal-title'
+                                    : isRedeemed
+                                      ? 'gift-demo-redeemed-title'
+                                      : 'gift-demo-reveal-title'
                             }
                             tabIndex={-1}
                         >
@@ -438,7 +509,8 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    <GiftWrapReveal />
+                                    {artworkStatus === 'ready' &&
+                                        !reduceMotion && <GiftWrapReveal />}
                                     <div
                                         className={`animate-gift-congratulations opacity-0 motion-reduce:animate-none motion-reduce:opacity-100 ${celebrationReady ? '' : 'pointer-events-none'}`}
                                     >
@@ -478,38 +550,37 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    {stage === 'redeemed' ? (
-                                        <div className="animate-gift-content text-center motion-reduce:animate-none">
-                                            <span className="mx-auto mb-4 grid size-[clamp(3rem,8vw,4.5rem)] place-items-center rounded-full bg-[#2a9d75] text-white [&>svg]:w-[55%]">
-                                                <Check aria-hidden="true" />
-                                            </span>
-                                            <p
-                                                className={scriptTitleClass}
-                                                id="gift-demo-reveal-title"
-                                            >
-                                                Gift redeemed!
-                                            </p>
-                                            <p className="my-3 leading-normal">
-                                                The redemption details are on
-                                                their way to your inbox.
-                                            </p>
-                                            <button
-                                                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#f2eafd] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-[#5b1598] focus-visible:outline-[#32104e]"
-                                                type="button"
-                                                onClick={restart}
-                                            >
-                                                Replay interaction
-                                            </button>
-                                        </div>
-                                    ) : (
-                                        <div className="animate-gift-content motion-reduce:animate-none">
+                                    <div className="grid items-center">
+                                        <motion.div
+                                            className="[grid-area:1/1]"
+                                            initial={false}
+                                            animate={{
+                                                opacity: isRedeemed ? 0 : 1,
+                                                y:
+                                                    isRedeemed && !reduceMotion
+                                                        ? -10
+                                                        : 0,
+                                            }}
+                                            transition={{
+                                                duration: reduceMotion
+                                                    ? 0
+                                                    : 0.2,
+                                                ease: 'easeInOut',
+                                            }}
+                                            aria-hidden={stage !== 'reveal'}
+                                            inert={
+                                                stage !== 'reveal'
+                                                    ? true
+                                                    : undefined
+                                            }
+                                        >
                                             <p
                                                 className={scriptTitleClass}
                                                 id="gift-demo-reveal-title"
                                             >
                                                 Enjoy your gift!
                                             </p>
-                                            <div className="my-[clamp(.8rem,3vw,1.5rem)] flex items-center gap-4 rounded-2xl bg-[#f8f3fb] p-[clamp(.75rem,2vw,1.1rem)]">
+                                            <div className="my-8 flex items-center gap-4 rounded-2xl bg-[#f8f3fb] p-[clamp(.75rem,2vw,1.1rem)]">
                                                 <img
                                                     className="size-[clamp(3rem,8vw,4.5rem)] shrink-0 rounded-2xl object-contain"
                                                     src={doorDashLogo}
@@ -538,8 +609,60 @@ export default function GiftingExperienceDemo() {
                                                     <ArrowRight aria-hidden="true" />
                                                 </button>
                                             </div>
-                                        </div>
-                                    )}
+                                        </motion.div>
+                                        <motion.div
+                                            className="text-center [grid-area:1/1]"
+                                            initial={false}
+                                            animate={{
+                                                opacity: isRedeemed ? 1 : 0,
+                                                y:
+                                                    isRedeemed || reduceMotion
+                                                        ? 0
+                                                        : 12,
+                                            }}
+                                            transition={{
+                                                duration: reduceMotion
+                                                    ? 0
+                                                    : 0.32,
+                                                delay:
+                                                    isRedeemed && !reduceMotion
+                                                        ? 0.08
+                                                        : 0,
+                                                ease: [0.22, 1, 0.36, 1],
+                                            }}
+                                            aria-hidden={!isRedeemed}
+                                            inert={
+                                                !isRedeemed ? true : undefined
+                                            }
+                                        >
+                                            <div className="mx-auto mb-4 size-[clamp(3rem,8vw,4.5rem)]">
+                                                {isRedeemed && (
+                                                    <RedemptionCheckmark
+                                                        reduceMotion={
+                                                            reduceMotion
+                                                        }
+                                                    />
+                                                )}
+                                            </div>
+                                            <p
+                                                className={scriptTitleClass}
+                                                id="gift-demo-redeemed-title"
+                                            >
+                                                Gift redeemed!
+                                            </p>
+                                            <p className="my-3 leading-normal">
+                                                The redemption details are on
+                                                their way to your inbox.
+                                            </p>
+                                            <button
+                                                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#f2eafd] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-[#5b1598] focus-visible:outline-[#32104e]"
+                                                type="button"
+                                                onClick={restart}
+                                            >
+                                                Replay interaction
+                                            </button>
+                                        </motion.div>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -551,7 +674,9 @@ export default function GiftingExperienceDemo() {
                     className="m-0 compact:max-w-[70%]"
                     aria-live="polite"
                 >
-                    {stageAnnouncement[stage]}
+                    {stage === 'idle' && artworkIsLoading
+                        ? 'Preparing your gift.'
+                        : stageAnnouncement[stage]}
                 </p>
                 <button
                     className="inline-flex min-h-11 items-center gap-2 bg-transparent font-bold text-violet disabled:cursor-default disabled:opacity-40 [&>svg]:size-4"

@@ -43,11 +43,27 @@ export default function GiftingExperiencePage() {
                             The challenge
                         </h2>
                         <p className="m-0 text-muted">
+                            <span className="font-semibold">
+                                First challenge:
+                            </span>{' '}
+                            To encourage platform growth and stickiness, we
+                            needed a way to increase the economy around Fringe
+                            points. User research showed that gifting is a way
+                            for employees to show appreciation and recognize
+                            each other, which increases point exchange without
+                            requiring employers to invest in more points.
+                            <br />
+                            <br />
+                            <span className="font-semibold">
+                                Second challenge:
+                            </span>{' '}
                             Receiving points or a product should feel like
                             receiving a gift, not like another account
                             transaction. The experience needed to attract
                             attention without interrupting the rest of the
-                            marketplace, then reward the user for opening it.
+                            marketplace, then reward the user for opening it. It
+                            also needed to be performant on mobile, which
+                            required some creativity.
                         </p>
                     </section>
                     <section>
@@ -55,11 +71,16 @@ export default function GiftingExperiencePage() {
                             The interaction
                         </h2>
                         <p className="m-0 text-muted">
-                            A small navigation notification started the flow.
-                            Opening it expanded into a full celebration with
-                            confetti and a personal note. The gift-card form
-                            then flipped to reveal the reward and carry the user
-                            into redemption.
+                            A small menu animation and a notification started
+                            the flow. The animation should feel more fun and
+                            exciting than a simple notification ping. Opening it
+                            expanded into a full celebration with confetti. A
+                            wrapped gift image appears then tears away to reveal
+                            a personal note, building anticipation. The note
+                            then flipped to reveal the gift and carry the user
+                            into redemption. The animation needed to be
+                            performant on mobile, which required some
+                            creativity.
                         </p>
                     </section>
                     <section>
@@ -69,9 +90,13 @@ export default function GiftingExperiencePage() {
                         <p className="m-0 text-muted">
                             User testing was strongly positive, and gifting
                             became a central driver of how Fringe points moved
-                            across the platform. The interaction also
-                            established a pattern for later gifting and
-                            point-transfer experiences.
+                            across the platform, successfully driving up the
+                            movement of points. Coupled with email notifications
+                            for receiving gifts, the feature was successful in
+                            increasing the number of daily users coming back to
+                            use the platform. The interaction also established a
+                            pattern for later gifting and point-transfer
+                            experiences.
                         </p>
                     </section>
                 </article>
