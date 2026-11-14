@@ -42,8 +42,19 @@
     --animate-chat-message-in: chat-message-in 180ms ease-out both;
     --animate-artwork-shimmer: artwork-shimmer 1.5s linear infinite;
     --animate-sunglasses-drop: sunglasses-drop 700ms ease-out 350ms both;
-    --animate-more-float: more-float 2s cubic-bezier(0.45, 0, 0.55, 1)
-        infinite;
+    --animate-more-float: more-float 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    --animate-gift-starburst: gift-starburst 1.8s cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+    --animate-gift-icon: gift-icon-pulse 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    --animate-gift-tooltip: gift-tooltip-in 450ms cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+    --animate-gift-overlay: gift-overlay-in 350ms ease-out both;
+    --animate-gift-card: gift-card-in 700ms cubic-bezier(0.2, 0.85, 0.25, 1.2)
+        both;
+    --animate-gift-cover: gift-cover-away 700ms ease-in 900ms forwards;
+    --animate-gift-congratulations: gift-content-in 600ms ease-out 1.35s
+        forwards;
+    --animate-gift-content: gift-content-in 500ms ease-out 350ms both;
 }
 
 @keyframes more-float {
@@ -167,5 +178,109 @@
     47%,
     54% {
         transform: translateY(min(0px, calc(100cqh - 100%)));
+    }
+}
+
+@keyframes gift-notification-lifecycle {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -1rem, 0) scale(0.96);
+    }
+    14%,
+    82% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, -0.5rem, 0) scale(0.98);
+    }
+}
+
+@keyframes gift-starburst {
+    0% {
+        opacity: 0;
+        transform: translateY(-0.45rem) scaleY(0.2);
+    }
+    18% {
+        opacity: 1;
+    }
+    58% {
+        opacity: 1;
+        transform: translateY(-1.75rem) scaleY(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-2.25rem) scaleY(1);
+    }
+}
+
+@keyframes gift-icon-pulse {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 0 transparent);
+        transform: scale(1);
+    }
+    25% {
+        filter: drop-shadow(0 0 0.45rem #ffd21c);
+        transform: scale(1.28);
+    }
+    58% {
+        filter: drop-shadow(0 0 0.25rem #ffd21c);
+        transform: scale(1.12);
+    }
+}
+
+@keyframes gift-tooltip-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.4rem) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes gift-overlay-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes gift-card-in {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 2rem, 0) scale(0.78);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes gift-cover-away {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.035);
+    }
+}
+
+@keyframes gift-content-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
