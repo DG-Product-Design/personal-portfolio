@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { type CSSProperties, useEffect, useRef, useState } from 'react'
 import ReactConfetti from 'react-confetti'
 import {
     ArrowRight,
@@ -45,21 +45,31 @@ const burstRotations = [
     'rotate-[330deg]',
 ]
 
+const GIFT_NOTIFICATION_DURATION_MS = 3000
+const GIFT_REVEAL_DELAY_MS = 1600
+
 const cardFaceClass =
     'absolute inset-0 flex flex-col justify-center overflow-hidden rounded-[clamp(1.25rem,4vw,2rem)] bg-white p-[clamp(1.6rem,5vw,3.25rem)] shadow-[0_2.25rem_5rem_#1a002b80] [backface-visibility:hidden]'
 const primaryButtonClass =
-    'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#5b1598] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-white hover:bg-[#26003f] [&>svg]:size-4'
+    'inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#5b1598] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-white hover:bg-[#26003f] focus-visible:outline-[#32104e] [&>svg]:size-4'
 const scriptTitleClass =
     "m-0 font-['Georgia','Times_New_Roman',serif] text-[clamp(1.85rem,5vw,3.5rem)] leading-none tracking-[-.045em] text-[#5b2082] italic"
 
 export default function GiftingExperienceDemo() {
     const [stage, setStage] = useState<DemoStage>('idle')
+    const [celebrationReady, setCelebrationReady] = useState(false)
     const [frameSize, setFrameSize] = useState({ height: 0, width: 0 })
     const [reduceMotion, setReduceMotion] = useState(false)
+    const closeButtonRef = useRef<HTMLButtonElement>(null)
     const dialogRef = useRef<HTMLDivElement>(null)
     const frameRef = useRef<HTMLDivElement>(null)
+    const giftButtonRef = useRef<HTMLButtonElement>(null)
+    const hasInteractedRef = useRef(false)
+    const notificationButtonRef = useRef<HTMLButtonElement>(null)
+    const startButtonRef = useRef<HTMLButtonElement>(null)
     const hasDialog = ['celebration', 'reveal', 'redeemed'].includes(stage)
-    const marketplaceIsHidden = stage === 'idle' || hasDialog
+    const marketplaceIsHidden =
+        stage === 'idle' || stage === 'starting' || hasDialog
     const giftIsUnread = stage === 'notifying' || stage === 'ready'
 
     useEffect(() => {
@@ -70,9 +80,29 @@ export default function GiftingExperienceDemo() {
 
     useEffect(() => {
         if (stage !== 'notifying') return
-        const timeout = window.setTimeout(() => setStage('ready'), 3000)
+        const timeout = window.setTimeout(
+            () => setStage('ready'),
+            GIFT_NOTIFICATION_DURATION_MS
+        )
         return () => window.clearTimeout(timeout)
     }, [stage])
+
+    useEffect(() => {
+        if (stage !== 'celebration') {
+            setCelebrationReady(false)
+            return
+        }
+        if (reduceMotion) {
+            setCelebrationReady(true)
+            return
+        }
+
+        const timeout = window.setTimeout(
+            () => setCelebrationReady(true),
+            GIFT_REVEAL_DELAY_MS
+        )
+        return () => window.clearTimeout(timeout)
+    }, [reduceMotion, stage])
 
     useEffect(() => {
         const frame = frameRef.current
@@ -97,9 +127,26 @@ export default function GiftingExperienceDemo() {
     }, [])
 
     useEffect(() => {
+        if (stage === 'notifying') {
+            notificationButtonRef.current?.focus()
+            return
+        }
+        if (stage === 'ready') {
+            giftButtonRef.current?.focus()
+            return
+        }
+        if (hasDialog) {
+            closeButtonRef.current?.focus()
+            return
+        }
+        if (stage === 'idle' && hasInteractedRef.current) {
+            startButtonRef.current?.focus()
+        }
+    }, [hasDialog, stage])
+
+    useEffect(() => {
         if (!hasDialog) return
 
-        dialogRef.current?.focus()
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                 setStage('ready')
@@ -114,22 +161,43 @@ export default function GiftingExperienceDemo() {
             ).filter((element) => !element.closest('[inert]'))
             if (focusable.length === 0) return
 
-            const currentIndex = focusable.indexOf(
-                document.activeElement as HTMLElement
-            )
-            const nextIndex = event.shiftKey
-                ? (currentIndex - 1 + focusable.length) % focusable.length
-                : (currentIndex + 1) % focusable.length
-            event.preventDefault()
-            focusable[nextIndex]?.focus()
+            const activeElement = document.activeElement as HTMLElement
+            const firstElement = focusable[0]
+            const lastElement = focusable.at(-1)
+            const focusIsInside = dialogRef.current.contains(activeElement)
+
+            if (!focusIsInside) {
+                event.preventDefault()
+                ;(event.shiftKey ? lastElement : firstElement)?.focus()
+                return
+            }
+            if (event.shiftKey && activeElement === firstElement) {
+                event.preventDefault()
+                lastElement?.focus()
+                return
+            }
+            if (!event.shiftKey && activeElement === lastElement) {
+                event.preventDefault()
+                firstElement?.focus()
+            }
         }
         document.addEventListener('keydown', handleKeyDown)
         return () => document.removeEventListener('keydown', handleKeyDown)
-    }, [hasDialog, stage])
+    }, [hasDialog])
 
-    const restart = () => setStage('idle')
+    const restart = () => {
+        hasInteractedRef.current = true
+        setStage('idle')
+    }
     const closeGift = () => setStage('ready')
-    const openGift = () => setStage('celebration')
+    const openGift = () => {
+        hasInteractedRef.current = true
+        setStage('celebration')
+    }
+    const startDemo = () => {
+        hasInteractedRef.current = true
+        setStage('starting')
+    }
 
     return (
         <section
@@ -167,6 +235,7 @@ export default function GiftingExperienceDemo() {
                                 David George
                             </span>
                             <button
+                                ref={giftButtonRef}
                                 className="relative -my-1.5 -mr-3 -ml-1.5 grid size-11 place-items-center rounded-full bg-transparent text-white hover:bg-white/10 disabled:cursor-default [&>svg]:size-4.5"
                                 type="button"
                                 aria-label={
@@ -245,9 +314,15 @@ export default function GiftingExperienceDemo() {
 
                 {stage === 'notifying' && (
                     <button
-                        className="absolute top-[clamp(5.25rem,10vw,7.25rem)] right-[clamp(1rem,4vw,3rem)] z-3 grid min-h-20 w-[min(22rem,calc(100%-2rem))] animate-gift-notification grid-cols-[auto_1fr_auto] items-center gap-3.5 rounded-2xl border border-solid border-white/35 bg-[#f3eaff] px-4 py-3.5 text-left text-[#3b1261] shadow-[0_1.25rem_3rem_#0c001a99] hover:-translate-y-0.5 motion-reduce:animate-none [&>svg]:size-4.5"
+                        ref={notificationButtonRef}
+                        className="absolute top-[clamp(5.25rem,10vw,7.25rem)] right-[clamp(1rem,4vw,3rem)] z-3 grid min-h-20 w-[min(22rem,calc(100%-2rem))] animate-gift-notification grid-cols-[auto_1fr_auto] items-center gap-3.5 rounded-2xl border border-solid border-white/35 bg-[#f3eaff] px-4 py-3.5 text-left text-[#3b1261] shadow-[0_1.25rem_3rem_#0c001a99] hover:-translate-y-0.5 focus-visible:outline-[#32104e] motion-reduce:animate-none [&>svg]:size-4.5"
                         type="button"
                         onClick={openGift}
+                        style={
+                            {
+                                '--gift-notification-duration': `${GIFT_NOTIFICATION_DURATION_MS}ms`,
+                            } as CSSProperties
+                        }
                     >
                         <span className="grid size-11 place-items-center rounded-full bg-[#5b1598] text-white [&>svg]:size-5.5">
                             <Gift aria-hidden="true" />
@@ -264,14 +339,18 @@ export default function GiftingExperienceDemo() {
                     </button>
                 )}
 
-                {stage === 'idle' && (
+                {(stage === 'idle' || stage === 'starting') && (
                     <div className="absolute inset-0 z-10 grid place-items-center bg-[#05050682] backdrop-blur-2xl">
                         <button
-                            className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] motion-reduce:transition-none"
+                            ref={startButtonRef}
+                            className="min-h-13 rounded-full border border-solid border-white/35 bg-white/7 px-5.5 py-3 font-extrabold text-white shadow-[0_1rem_2.5rem_#0008] transition-[color,background,transform] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-[#28133b] aria-disabled:cursor-wait aria-disabled:opacity-75 motion-reduce:transition-none"
                             type="button"
-                            onClick={() => setStage('starting')}
+                            aria-disabled={stage === 'starting'}
+                            onClick={stage === 'idle' ? startDemo : undefined}
                         >
-                            Start interactive demo
+                            {stage === 'starting'
+                                ? 'Starting interactive demo…'
+                                : 'Start interactive demo'}
                         </button>
                     </div>
                 )}
@@ -320,6 +399,15 @@ export default function GiftingExperienceDemo() {
                             }
                             tabIndex={-1}
                         >
+                            <button
+                                ref={closeButtonRef}
+                                className="absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] focus-visible:outline-[#32104e] [&>svg]:size-4.5"
+                                type="button"
+                                onClick={closeGift}
+                            >
+                                <X aria-hidden="true" />
+                                <span className="sr-only">Close gift</span>
+                            </button>
                             <div
                                 className={`absolute inset-0 transition-transform duration-850 ease-[cubic-bezier(.65,0,.35,1)] [transform-style:preserve-3d] motion-reduce:transition-none ${stage === 'reveal' || stage === 'redeemed' ? '[transform:rotateY(180deg)]' : ''}`}
                             >
@@ -332,26 +420,16 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    {stage === 'celebration' && (
-                                        <button
-                                            className="absolute top-4 right-4 z-4 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] [&>svg]:size-4.5"
-                                            type="button"
-                                            onClick={closeGift}
-                                        >
-                                            <X aria-hidden="true" />
-                                            <span className="sr-only">
-                                                Close gift
-                                            </span>
-                                        </button>
-                                    )}
                                     <img
-                                        className="pointer-events-none absolute inset-[-1%] z-3 size-[102%] max-w-none animate-gift-cover object-cover motion-reduce:animate-none"
+                                        className="pointer-events-none absolute inset-[-1%] z-3 size-[102%] max-w-none animate-gift-cover object-cover motion-reduce:hidden"
                                         src={giftCard}
                                         alt=""
                                         width="800"
                                         height="549"
                                     />
-                                    <div className="animate-gift-congratulations opacity-0 motion-reduce:animate-none motion-reduce:opacity-100">
+                                    <div
+                                        className={`animate-gift-congratulations opacity-0 motion-reduce:animate-none motion-reduce:opacity-100 ${celebrationReady ? '' : 'pointer-events-none'}`}
+                                    >
                                         <p
                                             className={scriptTitleClass}
                                             id="gift-demo-congratulations-title"
@@ -369,6 +447,7 @@ export default function GiftingExperienceDemo() {
                                         <button
                                             className={primaryButtonClass}
                                             type="button"
+                                            tabIndex={celebrationReady ? 0 : -1}
                                             onClick={() => setStage('reveal')}
                                         >
                                             View your gift
@@ -386,16 +465,6 @@ export default function GiftingExperienceDemo() {
                                             : undefined
                                     }
                                 >
-                                    <button
-                                        className="absolute top-4 right-4 z-4 grid size-11 place-items-center rounded-full bg-[#f2eafd] text-[#58227a] [&>svg]:size-4.5"
-                                        type="button"
-                                        onClick={closeGift}
-                                    >
-                                        <X aria-hidden="true" />
-                                        <span className="sr-only">
-                                            Close gift
-                                        </span>
-                                    </button>
                                     {stage === 'redeemed' ? (
                                         <div className="animate-gift-content text-center motion-reduce:animate-none">
                                             <span className="mx-auto mb-4 grid size-[clamp(3rem,8vw,4.5rem)] place-items-center rounded-full bg-[#2a9d75] text-white [&>svg]:w-[55%]">
@@ -412,7 +481,7 @@ export default function GiftingExperienceDemo() {
                                                 their way to your inbox.
                                             </p>
                                             <button
-                                                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#f2eafd] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-[#5b1598]"
+                                                className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#f2eafd] px-4.5 py-2.5 text-[clamp(.75rem,2vw,.95rem)] font-extrabold text-[#5b1598] focus-visible:outline-[#32104e]"
                                                 type="button"
                                                 onClick={restart}
                                             >

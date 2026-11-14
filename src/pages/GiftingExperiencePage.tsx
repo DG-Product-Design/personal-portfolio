@@ -67,11 +67,11 @@ export default function GiftingExperiencePage() {
                             The outcome
                         </h2>
                         <p className="m-0 text-muted">
-                            The interaction received positive feedback in user
-                            testing and established a pattern for gifting and
-                            point-transfer moments elsewhere in the platform.
-                            Motion clarified each state change while giving the
-                            exchange the emotional weight it was missing.
+                            User testing was strongly positive, and gifting
+                            became a central driver of how Fringe points moved
+                            across the platform. The interaction also
+                            established a pattern for later gifting and
+                            point-transfer experiences.
                         </p>
                     </section>
                 </article>

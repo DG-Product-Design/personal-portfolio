@@ -43,8 +43,9 @@
     --animate-artwork-shimmer: artwork-shimmer 1.5s linear infinite;
     --animate-sunglasses-drop: sunglasses-drop 700ms ease-out 350ms both;
     --animate-more-float: more-float 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    --animate-gift-notification: gift-notification-lifecycle 3s
-        cubic-bezier(0.16, 1, 0.3, 1) both;
+    --animate-gift-notification: gift-notification-lifecycle
+        var(--gift-notification-duration, 3000ms) cubic-bezier(0.16, 1, 0.3, 1)
+        both;
     --animate-gift-starburst: gift-starburst 1.8s cubic-bezier(0.16, 1, 0.3, 1)
         both;
     --animate-gift-icon: gift-icon-pulse 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;

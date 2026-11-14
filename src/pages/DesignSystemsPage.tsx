@@ -1,3 +1,4 @@
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import SiteNav from '../components/SiteNav'
 import ImageFade from '../components/ImageFade'
 import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
@@ -262,7 +263,7 @@ export default function DesignSystemsPage() {
                     aria-labelledby="storybook-artifacts"
                     className="mt-[clamp(4rem,9vw,8rem)]"
                 >
-                    <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div className="flex flex-wrap items-end justify-between gap-8">
                         <div>
                             <p className="m-0 text-sm font-semibold text-violet">
                                 CapCenter component library
@@ -274,25 +275,38 @@ export default function DesignSystemsPage() {
                                 Inside the Storybook
                             </h2>
                         </div>
-                        <a
-                            className="inline-flex min-h-11 items-center font-semibold text-violet"
-                            href="https://github.com/DG-Product-Design/component-library"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            View the component-library source
-                            <span className="sr-only">
-                                {' '}
-                                (opens in a new tab)
-                            </span>
-                        </a>
                     </div>
-                    <p className="mt-4 mb-0 max-w-3xl text-muted">
+                    <p className="mt-4 mb-0 text-muted">
                         These documentation screens show one of three component
                         library generations I built at CapCenter. The system
                         connected design direction to reusable code, documented
                         APIs, interaction states, and accessibility guidance.
                     </p>
+                    <div className="my-8 flex w-full items-center justify-between">
+                        <div className="mx-auto max-w-sm rounded-lg border border-dashed border-violet bg-muted/10 p-4 text-center">
+                            <a
+                                className="mb-4 inline-flex items-center font-semibold text-violet"
+                                href="https://github.com/DG-Product-Design/component-library"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                View the component-library source
+                                <ExternalLink
+                                    aria-hidden="true"
+                                    className="ml-2 size-4"
+                                />
+                                <span className="sr-only">
+                                    {' '}
+                                    (opens in a new tab)
+                                </span>
+                            </a>
+                            <p className="m-0 text-xs leading-normal text-muted">
+                                Representative implementation from the same
+                                period; the production system evolved across
+                                several generations.
+                            </p>
+                        </div>
+                    </div>
                     <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
                         {storybookArtifacts.map(
                             ({ src, alt, width, height, title, caption }) => (
@@ -346,6 +360,13 @@ export default function DesignSystemsPage() {
                                 </strong>
                                 <span className="mt-1 block max-w-xl text-muted">
                                     {detail}
+                                </span>
+                                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-violet">
+                                    View case study
+                                    <ArrowRight
+                                        aria-hidden="true"
+                                        className="size-4 transition-transform group-hover:translate-x-1 motion-reduce:transition-none"
+                                    />
                                 </span>
                             </a>
                         ))}
