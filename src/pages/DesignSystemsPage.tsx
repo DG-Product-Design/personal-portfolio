@@ -1,4 +1,24 @@
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import {
+    ArrowRight,
+    ExternalLink,
+    PencilRulerIcon,
+    StickyNoteIcon,
+} from 'lucide-react'
+import AdobeSVG from '../assets/logos/svgs/adobe.svg'
+import bootstrapLogo from '../assets/logos/svgs/bootstrap.svg'
+import daisyUILogo from '../assets/logos/svgs/daisyui.svg'
+import dreamweaverLogo from '../assets/logos/dreamweaver.webp'
+import figmaLogo from '../assets/logos/svgs/figma.svg'
+import framerMotionLogo from '../assets/logos/svgs/framerMotion.svg'
+import radixLogo from '../assets/logos/svgs/radixui.svg'
+import headlessUiLogo from '../assets/logos/svgs/headlessUi.svg'
+import muiLogo from '../assets/logos/svgs/mui.svg'
+import quasarLogo from '../assets/logos/svgs/quasar.svg'
+import shadcnLogo from '../assets/logos/svgs/shadcn.svg'
+import sketchLogo from '../assets/logos/svgs/sketch.svg'
+import storybookLogo from '../assets/logos/svgs/storybook.svg'
+import styledComponentsLogo from '../assets/logos/svgs/styledComponents.svg'
+import tailwindLogo from '../assets/logos/svgs/tailwind-alt.svg'
 import SiteNav from '../components/SiteNav'
 import ImageLightbox from '../components/ImageLightbox'
 import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
@@ -25,6 +45,45 @@ import storybookDropdown from '../assets/img/design-systems/dropdown-preview.web
 import storybookIcons from '../assets/img/design-systems/icons-preview.webp'
 import storybookTypography from '../assets/img/design-systems/text-preview.webp'
 import thriveCheckout from '../assets/img/case-studies/thrive-checkout.webp'
+
+const toolGroups: {
+    label: string
+    tools: { name: string; icon?: string | React.ReactNode }[]
+}[] = [
+    {
+        label: 'Web styling & components',
+        tools: [
+            { name: 'Tailwind CSS', icon: tailwindLogo },
+            { name: 'shadcn/ui', icon: shadcnLogo },
+            { name: 'Material UI (MUI)', icon: muiLogo },
+            { name: 'Storybook', icon: storybookLogo },
+            { name: 'Styled Components', icon: styledComponentsLogo },
+            { name: 'Framer Motion', icon: framerMotionLogo },
+            { name: 'daisyUI', icon: daisyUILogo },
+            { name: 'Radix UI', icon: radixLogo },
+            { name: 'Headless UI', icon: headlessUiLogo },
+            { name: 'Bootstrap', icon: bootstrapLogo },
+            { name: 'Quasar', icon: quasarLogo },
+        ],
+    },
+    {
+        label: 'Design & prototyping',
+        tools: [
+            { name: 'Figma', icon: figmaLogo },
+            { name: 'Sketch', icon: sketchLogo },
+            { name: 'Adobe XD', icon: AdobeSVG },
+            {
+                name: 'Paper & pen',
+                icon: <PencilRulerIcon className="size-3 shrink-0" />,
+            },
+            {
+                name: 'Sticky notes',
+                icon: <StickyNoteIcon className="size-3 shrink-0" />,
+            },
+            { name: 'Dreamweaver (lol)', icon: dreamweaverLogo },
+        ],
+    },
+]
 
 const foundations = [
     {
@@ -248,12 +307,58 @@ export default function DesignSystemsPage() {
                     </div>
                 </header>
 
+                <section
+                    aria-labelledby="systems-toolkit"
+                    className="mb-14"
+                >
+                    <h2
+                        id="systems-toolkit"
+                        className="m-0 text-section-title tracking-[-.04em]"
+                    >
+                        Tools I work with
+                    </h2>
+                    <div className="mt-5 grid gap-5 border-y border-solid border-rule py-5 md:grid-cols-[2fr_1fr] md:gap-8">
+                        {toolGroups.map(({ label, tools }) => (
+                            <div key={label}>
+                                <h3 className="m-0 text-sm font-semibold">
+                                    {label}
+                                </h3>
+                                <ul
+                                    role="list"
+                                    className="mt-3 mb-0 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-sm text-muted"
+                                >
+                                    {tools.map(({ name, icon }) => (
+                                        <li
+                                            key={name}
+                                            className="inline-flex items-center gap-2"
+                                        >
+                                            {icon &&
+                                                (typeof icon === 'string' ? (
+                                                    <img
+                                                        src={icon}
+                                                        alt=""
+                                                        width={16}
+                                                        height={16}
+                                                        className="size-4 shrink-0 object-contain"
+                                                    />
+                                                ) : (
+                                                    icon
+                                                ))}
+                                            {name}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 <section aria-labelledby="system-anatomy">
                     <h2
                         id="system-anatomy"
                         className="m-0 text-section-title tracking-[-.04em]"
                     >
-                        What the system covers
+                        What the systems cover
                     </h2>
                     <dl className="mt-5 mb-0 border-t border-solid border-rule">
                         {foundations.map(
