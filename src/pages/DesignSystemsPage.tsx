@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 import AdobeSVG from '../assets/logos/svgs/adobe.svg'
 import bootstrapLogo from '../assets/logos/svgs/bootstrap.svg'
-import daisyUILogo from '../assets/logos/svgs/daisyui.svg'
+import daisyUILogo from '../assets/logos/svgs/daisyUI.svg'
 import dreamweaverLogo from '../assets/logos/dreamweaver.webp'
 import figmaLogo from '../assets/logos/svgs/figma.svg'
 import framerMotionLogo from '../assets/logos/svgs/framerMotion.svg'
