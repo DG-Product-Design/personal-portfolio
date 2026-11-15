@@ -12,6 +12,7 @@ import JavascriptSVG from './javascript.svg'
 import KubernetesSVG from './kubernetes.svg'
 import MaterialSVG from './material.svg'
 import NetlifySVG from './netlify.svg'
+import QuasarSVG from './quasar.svg'
 import ReactSVG from './react.svg'
 import SketchSVG from './sketch.svg'
 import SlackSVG from './slack.svg'
@@ -35,6 +36,7 @@ export {
     KubernetesSVG,
     MaterialSVG,
     NetlifySVG,
+    QuasarSVG,
     ReactSVG,
     SketchSVG,
     SlackSVG,
