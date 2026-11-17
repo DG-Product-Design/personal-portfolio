@@ -23,6 +23,7 @@ import SiteNav from '../components/SiteNav'
 import ImageLightbox from '../components/ImageLightbox'
 import VideoPreview from '../components/VideoPreview'
 import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
+import clarvosScreenshot from '../assets/img/design-systems/clarvos-screenshot.webp'
 import componentLibraryVariationsFull from '../assets/img/design-systems/full-res/component-library-variations.png'
 import fringeDarkModeFull from '../assets/img/design-systems/full-res/fringe-dark-mode.png'
 import fringeLightModeFull from '../assets/img/design-systems/full-res/fringe-light-mode.png'
@@ -712,6 +713,52 @@ export default function DesignSystemsPage() {
                             foundations held up beyond the component library.
                         </p>
                     </div>
+                    <section
+                        aria-labelledby="clarvos-production"
+                        className="mt-6 border-b border-solid border-rule/70 pb-6"
+                    >
+                        <h3
+                            id="clarvos-production"
+                            className="m-0 text-xl font-semibold tracking-tight"
+                        >
+                            Clarvos
+                        </h3>
+                        <p className="mt-3 mb-0 max-w-3xl text-muted">
+                            I built shared components and a theming system that
+                            supported three application-wide rebrands at
+                            Clarvos. Those foundations carried into Creative
+                            Studio, where marketers create and revise
+                            AI-generated ads in one workflow, with Storybook
+                            documenting the reusable components and interaction
+                            patterns.
+                        </p>
+                        <a
+                            href="https://www.clarvos.com/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-4 inline-flex items-center gap-2 font-semibold text-violet"
+                        >
+                            Visit Clarvos
+                            <ExternalLink
+                                aria-hidden="true"
+                                className="size-4 shrink-0"
+                            />
+                            <span className="sr-only">
+                                {' '}
+                                (opens in a new tab)
+                            </span>
+                        </a>
+                        <figure className="mt-6 mb-0">
+                            <ImageLightbox
+                                src={clarvosScreenshot}
+                                fullSrc={clarvosScreenshot}
+                                alt="Clarvos homepage with a black and yellow visual identity, campaign summary, customer signal, platform budgets, and audience segments"
+                                width={1567}
+                                height={1116}
+                                title="Clarvos in production"
+                            />
+                        </figure>
+                    </section>
                     <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
                         {artifacts.map(
                             ({
