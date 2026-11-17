@@ -8,6 +8,8 @@ type ImageLightboxProps = {
     fullSrc: string
     height: number
     loading?: 'eager' | 'lazy'
+    /** Preview bounds in source-image pixels; the lightbox keeps the full image. */
+    previewCrop?: { x: number; y: number; width: number; height: number }
     src: string
     title: string
     width: number
@@ -18,6 +20,7 @@ export default function ImageLightbox({
     fullSrc,
     height,
     loading = 'lazy',
+    previewCrop,
     src,
     title,
     width,
@@ -62,9 +65,20 @@ export default function ImageLightbox({
                 <ImageFade
                     src={src}
                     alt={alt}
-                    width={width}
-                    height={height}
+                    width={previewCrop?.width ?? width}
+                    height={previewCrop?.height ?? height}
                     loading={loading}
+                    style={
+                        previewCrop
+                            ? {
+                                  width: `${(width / previewCrop.width) * 100}%`,
+                                  height: `${(height / previewCrop.height) * 100}%`,
+                                  maxWidth: 'none',
+                                  left: `${(-previewCrop.x / previewCrop.width) * 100}%`,
+                                  top: `${(-previewCrop.y / previewCrop.height) * 100}%`,
+                              }
+                            : undefined
+                    }
                 />
                 <span
                     aria-hidden="true"

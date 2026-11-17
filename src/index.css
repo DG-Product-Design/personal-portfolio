@@ -41,6 +41,8 @@
     --animate-image-pan: image-pan 100s ease-in-out infinite;
     --animate-chat-message-in: chat-message-in 180ms ease-out both;
     --animate-artwork-shimmer: artwork-shimmer 1.5s linear infinite;
+    --animate-video-loading-label: video-loading-label 1.6s ease-in-out infinite;
+    --animate-video-loading-bar: video-loading-bar 1.6s ease-in-out infinite;
     --animate-sunglasses-drop: sunglasses-drop 700ms ease-out 350ms both;
     --animate-more-float: more-float 2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
     --animate-gift-starburst: gift-starburst 1.8s cubic-bezier(0.16, 1, 0.3, 1)
@@ -52,6 +54,25 @@
     --animate-gift-congratulations: gift-content-in 750ms ease-out 300ms
         forwards;
     --animate-gift-content: gift-content-in 500ms ease-out 350ms both;
+}
+
+@keyframes video-loading-label {
+    0%,
+    100% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes video-loading-bar {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(400%);
+    }
 }
 
 @keyframes more-float {

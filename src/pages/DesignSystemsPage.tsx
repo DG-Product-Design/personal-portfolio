@@ -21,7 +21,9 @@ import styledComponentsLogo from '../assets/logos/svgs/styledComponents.svg'
 import tailwindLogo from '../assets/logos/svgs/tailwind-alt.svg'
 import SiteNav from '../components/SiteNav'
 import ImageLightbox from '../components/ImageLightbox'
+import VideoPreview from '../components/VideoPreview'
 import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
+import clarvosScreenshot from '../assets/img/design-systems/clarvos-screenshot.webp'
 import componentLibraryVariationsFull from '../assets/img/design-systems/full-res/component-library-variations.png'
 import fringeDarkModeFull from '../assets/img/design-systems/full-res/fringe-dark-mode.png'
 import fringeLightModeFull from '../assets/img/design-systems/full-res/fringe-light-mode.png'
@@ -45,6 +47,91 @@ import storybookDropdown from '../assets/img/design-systems/dropdown-preview.web
 import storybookIcons from '../assets/img/design-systems/icons-preview.webp'
 import storybookTypography from '../assets/img/design-systems/text-preview.webp'
 import thriveCheckout from '../assets/img/case-studies/thrive-checkout.webp'
+import dgStudioWelcome from '../assets/img/design-systems/full-res/dg-studio-welcome.png'
+import dgStudioThemes from '../assets/img/design-systems/full-res/dg-studio-themes.png'
+import dgStudioAppFrame from '../assets/img/design-systems/full-res/dg-studio-app-frame.png'
+import dgStudioContainerQueries from '../assets/img/design-systems/full-res/dg-studio-container-queries.png'
+import dgStudioChat from '../assets/img/design-systems/full-res/dg-studio-chat.png'
+import dgStudioBorderGlow from '../assets/img/design-systems/full-res/dg-studio-border-glow.png'
+import dgStudioMotion from '../assets/img/design-systems/full-res/dg-studio-motion.png'
+import dgStudioGlowVideo from '../assets/video/dg-studio-border-glow.mp4'
+import dgStudioStaggerVideo from '../assets/video/dg-studio-stagger.mp4'
+
+const dgStudioArtifacts = [
+    {
+        src: dgStudioWelcome,
+        width: 2558,
+        height: 1321,
+        previewCrop: { x: 828, y: 89, width: 1200, height: 540 },
+        title: 'A home for the collection',
+        alt: 'D.G Studio UI welcome page with a retrowave sunset, centered D.G lettering, and interactive component examples',
+        caption:
+            'The welcome page introduces the library through image reveals, an animated total, and the cart animation.',
+        wide: true,
+    },
+    {
+        src: dgStudioBorderGlow,
+        video: dgStudioGlowVideo,
+        width: 1790,
+        height: 984,
+        previewCrop: { x: 546, y: 488, width: 866, height: 488 },
+        title: 'Light shared between neighboring cards',
+        alt: 'Two cards with pink and cyan border glows concentrated along their neighboring edges',
+        caption:
+            'Nearby borders respond together to pointer movement, with keyboard, touch, and reduced-motion behavior.',
+    },
+    {
+        src: dgStudioMotion,
+        video: dgStudioStaggerVideo,
+        width: 1790,
+        height: 984,
+        previewCrop: { x: 546, y: 270, width: 1000, height: 631 },
+        title: 'Motion with configurable timing',
+        alt: 'Six artwork cards in a stagger-animation demo with controls for timing, starting position, and item motion',
+        caption:
+            'Shared animation variants coordinate entry and exit, with adjustable stagger timing and reduced-motion support.',
+    },
+    {
+        src: dgStudioThemes,
+        width: 1790,
+        height: 984,
+        previewCrop: { x: 445, y: 148, width: 1200, height: 642 },
+        title: 'Four themes, shared tokens',
+        alt: 'Miami 85, Matrix, Calm, and Blue Hour palettes with matching buttons and status badges',
+        caption:
+            'Miami 85, Matrix, Calm, and Blue Hour apply the same semantic tokens to surfaces, text, actions, and feedback.',
+    },
+    {
+        src: dgStudioAppFrame,
+        width: 1790,
+        height: 984,
+        previewCrop: { x: 306, y: 48, width: 1478, height: 784 },
+        title: 'Components in context',
+        alt: 'D.G Studio app frame combining a header, sidebar navigation, image carousel, and footer',
+        caption:
+            'Navigation, layout, and media components come together in a complete workspace example.',
+    },
+    {
+        src: dgStudioContainerQueries,
+        width: 1790,
+        height: 984,
+        previewCrop: { x: 546, y: 294, width: 1000, height: 690 },
+        title: 'Layouts that respond to their container',
+        alt: 'Container-query example with workspace sizing controls and artwork cards containing images, descriptions, and metadata',
+        caption:
+            'Each asset card responds to its own available space, with controls for workspace width and content density.',
+    },
+    {
+        src: dgStudioChat,
+        width: 1790,
+        height: 984,
+        previewCrop: { x: 550, y: 210, width: 710, height: 660 },
+        title: 'A conversation for creative work',
+        alt: 'Creative assistant chat with a user message, moodboard attachment, assistant response, and message composer',
+        caption:
+            'Messages, attachments, structured responses, and a composer form a reusable chat interface.',
+    },
+]
 
 const toolGroups: {
     label: string
@@ -258,7 +345,7 @@ const artifacts = [
         alt: 'CapCenter loan application screens across desktop and mobile showing a cohesive multi-step experience',
         width: 1920,
         height: 1320,
-        title: 'Cohesion across a complex journey',
+        title: 'This design carried $1.2B in loans',
         caption:
             'Shared components kept a long, multi-device loan application consistent across many screens and states.',
     },
@@ -386,6 +473,104 @@ export default function DesignSystemsPage() {
                             )
                         )}
                     </dl>
+                </section>
+
+                <section
+                    aria-labelledby="dg-studio-library"
+                    className="mt-[clamp(4rem,9vw,8rem)]"
+                >
+                    <div className="flex flex-wrap items-end justify-between gap-8">
+                        <div>
+                            <p className="m-0 text-sm font-semibold text-violet">
+                                Collection of various components, animations, &
+                                patterns
+                            </p>
+                            <h2
+                                id="dg-studio-library"
+                                className="m-0 text-section-title tracking-[-.04em]"
+                            >
+                                D.G Studio UI
+                            </h2>
+                        </div>
+                    </div>
+                    <p className="mt-4 mb-0 text-muted">
+                        My current React component library brings together
+                        patterns from my product work and interaction
+                        experiments: photo libraries, AI chat, image treatments,
+                        data tables, forms, and motion. Built with TypeScript,
+                        Tailwind CSS, and shadcn/ui, it includes 200+ components
+                        and 242 Storybook stories across four themes.
+                    </p>
+                    <div className="my-8 flex w-full items-center justify-between">
+                        <div className="mx-auto max-w-sm rounded-lg border border-dashed border-violet bg-muted/10 p-4 text-center">
+                            <a
+                                className="inline-flex items-center font-semibold text-violet"
+                                href="https://github.com/DG-Product-Design/dg-studio"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Explore D.G Studio UI on GitHub
+                                <ExternalLink
+                                    aria-hidden="true"
+                                    className="ml-2 size-4"
+                                />
+                                <span className="sr-only">
+                                    {' '}
+                                    (opens in a new tab)
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
+                        {dgStudioArtifacts.map(
+                            ({
+                                src,
+                                width,
+                                height,
+                                previewCrop,
+                                title,
+                                alt,
+                                caption,
+                                wide,
+                                video,
+                            }) => (
+                                <figure
+                                    key={title}
+                                    className={`m-0 ${wide ? 'md:col-span-2' : ''}`}
+                                >
+                                    {video ? (
+                                        <VideoPreview
+                                            src={video}
+                                            poster={src}
+                                            posterWidth={width}
+                                            posterHeight={height}
+                                            previewCrop={previewCrop}
+                                            title={title}
+                                            alt={alt}
+                                        />
+                                    ) : (
+                                        <ImageLightbox
+                                            src={src}
+                                            fullSrc={src}
+                                            alt={alt}
+                                            width={width}
+                                            height={height}
+                                            previewCrop={previewCrop}
+                                            title={title}
+                                        />
+                                    )}
+                                    <figcaption className="mt-3 border-t border-solid border-rule/70 pt-3">
+                                        <strong className="block">
+                                            {title}
+                                        </strong>
+                                        <span className="mt-1 block text-sm text-muted">
+                                            {caption}
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            )
+                        )}
+                    </div>
                 </section>
 
                 <section
@@ -521,13 +706,59 @@ export default function DesignSystemsPage() {
                             id="system-artifacts"
                             className="m-0 text-section-title tracking-[-.04em]"
                         >
-                            The system in production
+                            The systems in production
                         </h2>
                         <p className="m-0 max-w-xl text-sm text-muted">
                             Shipped product surfaces show how the shared
                             foundations held up beyond the component library.
                         </p>
                     </div>
+                    <section
+                        aria-labelledby="clarvos-production"
+                        className="mt-6 border-b border-solid border-rule/70 pb-6"
+                    >
+                        <h3
+                            id="clarvos-production"
+                            className="m-0 text-xl font-semibold tracking-tight"
+                        >
+                            Clarvos
+                        </h3>
+                        <p className="mt-3 mb-0 max-w-3xl text-muted">
+                            I built shared components and a theming system that
+                            supported three application-wide rebrands at
+                            Clarvos. Those foundations carried into Creative
+                            Studio, where marketers create and revise
+                            AI-generated ads in one workflow, with Storybook
+                            documenting the reusable components and interaction
+                            patterns.
+                        </p>
+                        <a
+                            href="https://www.clarvos.com/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-4 inline-flex items-center gap-2 font-semibold text-violet"
+                        >
+                            Visit Clarvos
+                            <ExternalLink
+                                aria-hidden="true"
+                                className="size-4 shrink-0"
+                            />
+                            <span className="sr-only">
+                                {' '}
+                                (opens in a new tab)
+                            </span>
+                        </a>
+                        <figure className="mt-6 mb-0">
+                            <ImageLightbox
+                                src={clarvosScreenshot}
+                                fullSrc={clarvosScreenshot}
+                                alt="Clarvos homepage with a black and yellow visual identity, campaign summary, customer signal, platform budgets, and audience segments"
+                                width={1567}
+                                height={1116}
+                                title="Clarvos in production"
+                            />
+                        </figure>
+                    </section>
                     <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
                         {artifacts.map(
                             ({
