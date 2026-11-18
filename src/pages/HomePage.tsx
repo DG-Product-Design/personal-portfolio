@@ -100,8 +100,8 @@ export default function HomePage() {
                             </p>
                             <p className="mt-2 mb-0 max-w-112 text-[clamp(1rem,1.4vw,1.25rem)] leading-relaxed text-muted">
                                 I design and build products people love, the
-                                systems behind them, and the details people
-                                interact with.
+                                systems behind them, and the details users &amp;
+                                engineers interact with.
                             </p>
                         </div>
                     </div>
