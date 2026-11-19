@@ -1,0 +1,117 @@
+@property --dg-glow-angle {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 230deg;
+}
+.dg-glow-group {
+    --dg-glow-spread: 90deg;
+    --dg-glow-blur: 10px;
+    --dg-glow-idle: 0;
+}
+.dg-glow-border {
+    --dg-glow-angle: 230deg;
+    --dg-glow-opacity: var(--dg-glow-idle, 0);
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--dg-glow-radius, 16px);
+    border: 1px solid var(--dg-glow-border-color, var(--color-rule));
+    background: var(--dg-glow-surface, #c8c0b81a);
+}
+.dg-glow-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    border-radius: inherit;
+}
+.dg-glow-border::after,
+.dg-glow-halo::before {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    inset: -1px;
+    z-index: 2;
+    border-radius: inherit;
+    padding: var(--dg-glow-width, 1.5px);
+    background: conic-gradient(
+        from var(--dg-glow-angle),
+        transparent 0deg,
+        var(--dg-glow-primary, #ff8bc8) calc(var(--dg-glow-spread) * 0.3),
+        var(--dg-glow-secondary, #a9a3ff) calc(var(--dg-glow-spread) * 0.65),
+        transparent var(--dg-glow-spread)
+    );
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: var(--dg-glow-opacity);
+    transition: opacity 1s ease;
+}
+.dg-glow-halo {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    inset: -3px;
+    border-radius: inherit;
+    filter: blur(var(--dg-glow-blur, 10px));
+}
+.dg-glow-halo::before {
+    inset: 0;
+    padding: 4px;
+}
+.dg-glow-border:focus-within::after,
+.dg-glow-border:focus-within > .dg-glow-halo::before {
+    opacity: 1;
+}
+.dg-glow-border:focus-within {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 3px;
+}
+.dg-glow-group[data-glow-disabled] .dg-glow-border::after,
+.dg-glow-group[data-glow-disabled] .dg-glow-halo {
+    display: none;
+}
+@keyframes dg-glow-orbit {
+    to {
+        --dg-glow-angle: 590deg;
+    }
+}
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+    .dg-glow-border {
+        animation: dg-glow-orbit 15s linear infinite;
+        --dg-glow-opacity: 0.85;
+    }
+    .dg-glow-border:nth-child(2n) {
+        animation-delay: -5s;
+    }
+}
+/* The explicit orbit mode uses the same motion as a touch device. */
+@media (prefers-reduced-motion: no-preference) {
+    .dg-glow-group[data-glow-mode='orbit'] .dg-glow-border {
+        animation: dg-glow-orbit 15s linear infinite;
+        --dg-glow-opacity: 0.85;
+    }
+    .dg-glow-group[data-glow-mode='orbit'] .dg-glow-border:nth-child(2n) {
+        animation-delay: -5s;
+    }
+}
+.dg-glow-group[data-glow-disabled] .dg-glow-border {
+    animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .dg-glow-border {
+        animation: none;
+    }
+    .dg-glow-halo {
+        display: none;
+    }
+    .dg-glow-border::after {
+        background: linear-gradient(
+            125deg,
+            var(--dg-glow-primary, #ff8bc8),
+            var(--dg-glow-secondary, #6ee7e0),
+            var(--dg-glow-primary, #ff8bc8)
+        );
+        opacity: 0.75;
+        transition: none;
+    }
+}

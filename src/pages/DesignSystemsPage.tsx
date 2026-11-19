@@ -22,6 +22,7 @@ import tailwindLogo from '../assets/logos/svgs/tailwind-alt.svg'
 import SiteNav from '../components/SiteNav'
 import ImageLightbox from '../components/ImageLightbox'
 import VideoPreview from '../components/VideoPreview'
+import { GlowBorder, GlowGroup } from '../components/GlowBorder'
 import componentLibraryVariations from '../assets/img/design-systems/component-library-variations.webp'
 import clarvosScreenshot from '../assets/img/design-systems/clarvos-screenshot.webp'
 import componentLibraryVariationsFull from '../assets/img/design-systems/full-res/component-library-variations.png'
@@ -197,7 +198,7 @@ const foundations = [
         definition:
             'Clear prop APIs, composability, consistency, and maintainability.',
         description:
-            'Component APIs and documentation designed to reduce one-off implementation and make adoption easier for engineers.',
+            'Designed type-safe component APIs using TypeScript discriminated unions and constrained prop combinations to prevent invalid UI states, enforce interaction contracts, and make components easier for engineers to use correctly.',
     },
     {
         term: 'Documentation:',
@@ -362,6 +363,17 @@ const artifacts = [
     },
 ]
 
+const dgStudioLinks = [
+    {
+        label: 'Explore the deployed library',
+        href: 'https://dg-product-design.github.io/dg-studio',
+    },
+    {
+        label: 'View source code on GitHub',
+        href: 'https://github.com/DG-Product-Design/dg-studio',
+    },
+]
+
 export default function DesignSystemsPage() {
     return (
         <div className="mx-auto max-w-310 px-page-gutter pb-16">
@@ -501,26 +513,34 @@ export default function DesignSystemsPage() {
                         Tailwind CSS, and shadcn/ui, it includes 200+ components
                         and 242 Storybook stories across four themes.
                     </p>
-                    <div className="my-8 flex w-full items-center justify-between">
-                        <div className="mx-auto max-w-sm rounded-lg border border-dashed border-violet bg-muted/10 p-4 text-center">
-                            <a
-                                className="inline-flex items-center font-semibold text-violet"
-                                href="https://github.com/DG-Product-Design/dg-studio"
-                                target="_blank"
-                                rel="noreferrer"
+                    <GlowGroup className="my-8 flex w-full items-center justify-center gap-8">
+                        {dgStudioLinks.map(({ label, href }) => (
+                            <GlowBorder
+                                className="max-w-sm"
+                                radius={8}
                             >
-                                Explore D.G Studio UI on GitHub
-                                <ExternalLink
-                                    aria-hidden="true"
-                                    className="ml-2 size-4"
-                                />
-                                <span className="sr-only">
-                                    {' '}
-                                    (opens in a new tab)
-                                </span>
-                            </a>
-                        </div>
-                    </div>
+                                <div className="flex flex-col items-center gap-4 p-4 text-center">
+                                    <a
+                                        key={href}
+                                        className="inline-flex items-center font-semibold text-violet"
+                                        href={href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {label}
+                                        <ExternalLink
+                                            aria-hidden="true"
+                                            className="ml-2 size-4 shrink-0"
+                                        />
+                                        <span className="sr-only">
+                                            {' '}
+                                            (opens in a new tab)
+                                        </span>
+                                    </a>
+                                </div>
+                            </GlowBorder>
+                        ))}
+                    </GlowGroup>
                     <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
                         {dgStudioArtifacts.map(
                             ({
@@ -596,31 +616,36 @@ export default function DesignSystemsPage() {
                         connected design direction to reusable code, documented
                         APIs, interaction states, and accessibility guidance.
                     </p>
-                    <div className="my-8 flex w-full items-center justify-between">
-                        <div className="mx-auto max-w-sm rounded-lg border border-dashed border-violet bg-muted/10 p-4 text-center">
-                            <a
-                                className="mb-4 inline-flex items-center font-semibold text-violet"
-                                href="https://github.com/DG-Product-Design/component-library"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                View the component-library source
-                                <ExternalLink
-                                    aria-hidden="true"
-                                    className="ml-2 size-4"
-                                />
-                                <span className="sr-only">
-                                    {' '}
-                                    (opens in a new tab)
-                                </span>
-                            </a>
-                            <p className="m-0 text-xs leading-normal text-muted">
-                                Representative implementation from the same
-                                period; the production system evolved across
-                                several generations.
-                            </p>
-                        </div>
-                    </div>
+                    <GlowGroup className="my-8 flex w-full items-center justify-between">
+                        <GlowBorder
+                            className="mx-auto max-w-sm"
+                            radius={8}
+                        >
+                            <div className="p-4 text-center">
+                                <a
+                                    className="mb-4 inline-flex items-center font-semibold text-violet"
+                                    href="https://github.com/DG-Product-Design/component-library"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    View source code on GitHub
+                                    <ExternalLink
+                                        aria-hidden="true"
+                                        className="ml-2 size-4"
+                                    />
+                                    <span className="sr-only">
+                                        {' '}
+                                        (opens in a new tab)
+                                    </span>
+                                </a>
+                                <p className="m-0 text-xs leading-normal text-muted">
+                                    Representative implementation from the same
+                                    period; the production system evolved across
+                                    several generations.
+                                </p>
+                            </div>
+                        </GlowBorder>
+                    </GlowGroup>
                     <div className="mt-6 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
                         {storybookArtifacts.map(
                             ({
