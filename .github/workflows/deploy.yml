@@ -85,19 +85,13 @@ jobs:
               with:
                   name: portfolio-build
                   path: build/
-            - name: Read Playwright version
-              id: playwright
-              run: >-
-                  node -e 'require("fs").appendFileSync(process.env.GITHUB_OUTPUT,
-                  "version=" + require("playwright-core/package.json").version + "\n")'
-            - name: Restore Chromium cache
-              uses: actions/cache@v4
-              with:
-                  path: ~/.cache/ms-playwright
-                  key: chromium-ubuntu-24.04-${{ runner.arch }}-${{ steps.playwright.outputs.version }}
-            # Cached browser binaries are reused; each runner still needs OS libraries.
-            - name: Install Chromium and system dependencies
-              run: yarn playwright-core install --with-deps chromium
+            # GitHub's Ubuntu image already includes Chrome and its OS libraries.
+            - name: Use preinstalled Chrome
+              shell: bash
+              run: |
+                  chrome_path="$(command -v google-chrome)"
+                  "$chrome_path" --version
+                  printf 'CHROME_PATH=%s\nGIFT_TEST_BROWSER_PATH=%s\n' "$chrome_path" "$chrome_path" >> "$GITHUB_ENV"
             - name: ${{ matrix.name }}
               run: node ${{ matrix.script }}
             - name: Upload failure screenshots
