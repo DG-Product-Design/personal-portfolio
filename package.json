@@ -18,12 +18,15 @@
     "scripts": {
         "start": "vite",
         "deploy": "yarn build && gh-pages -d build",
+        "typecheck": "tsc -b",
         "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir .ssr-build && node scripts/write-pages.mjs",
         "preview": "vite preview",
         "lint": "eslint src",
         "test:gifting": "yarn build && node scripts/check-gifting-loading.mjs",
         "test:a11y": "yarn build && node scripts/audit-accessibility.mjs",
-        "validate": "yarn build && yarn lint && node scripts/audit-accessibility.mjs"
+        "validate": "yarn lint && yarn build && node scripts/check-site-links.mjs && node scripts/audit-accessibility.mjs && node scripts/check-site-smoke.mjs && node scripts/check-gifting-loading.mjs",
+        "test:smoke": "yarn build && node scripts/check-site-smoke.mjs",
+        "test:links": "yarn build && node scripts/check-site-links.mjs"
     },
     "devDependencies": {
         "@axe-core/playwright": "4.14.0",

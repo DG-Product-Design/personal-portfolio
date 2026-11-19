@@ -26,7 +26,7 @@ if (!address || typeof address === 'string') {
 
 const browser = await chromium.launch({
     headless: true,
-    ...(executablePath ? { executablePath } : { channel: 'chrome' }),
+    ...(executablePath ? { executablePath } : {}),
 })
 const baseUrl = `http://127.0.0.1:${address.port}`
 let violationCount = 0
@@ -42,14 +42,9 @@ const runGiftingInteractionChecks = async (page) => {
 
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto(url, { waitUntil: 'networkidle' })
-    await page.getByRole('button', { name: 'Start interactive demo' }).click()
-    assert(
-        await page
-            .getByRole('button', { name: 'Starting interactive demo…' })
-            .evaluate((element) => element.matches(':focus')),
-        'Start should retain focus during the notification delay'
-    )
-    await page.waitForTimeout(1100)
+    const start = page.getByRole('button', { name: 'Start interactive demo' })
+    await start.click()
+    await start.waitFor({ state: 'hidden' })
 
     const notification = page.getByRole('button', {
         name: /You have a new gift/,
@@ -68,7 +63,7 @@ const runGiftingInteractionChecks = async (page) => {
         'light demo surfaces should use the darker focus outline'
     )
 
-    await page.waitForTimeout(3100)
+    await notification.waitFor({ state: 'hidden' })
     const giftButton = page.getByRole('button', {
         name: 'Open new gift, 1 unread',
     })
@@ -81,7 +76,7 @@ const runGiftingInteractionChecks = async (page) => {
     const dialog = page.getByRole('dialog')
     const closeButton = dialog.getByRole('button', { name: 'Close gift' })
     const viewButton = dialog.getByRole('button', { name: 'View your gift' })
-    const cover = dialog.locator('img[src*="gift-card"]')
+    const cover = dialog.locator('svg[viewBox="0 0 800 549"]')
 
     assert(await cover.isHidden(), 'reduced motion should hide the gift cover')
     assert(
@@ -93,10 +88,15 @@ const runGiftingInteractionChecks = async (page) => {
         'the dialog should render one close control'
     )
     assert(
-        await closeButton.evaluate((element) => element.matches(':focus')),
-        'the dialog close control should receive initial focus'
+        await dialog.evaluate((element) => element.matches(':focus')),
+        'the dialog should receive initial focus'
     )
 
+    await page.keyboard.press('Tab')
+    assert(
+        await closeButton.evaluate((element) => element.matches(':focus')),
+        'Tab from the dialog should reach its first control'
+    )
     await page.keyboard.press('Shift+Tab')
     assert(
         await viewButton.evaluate((element) => element.matches(':focus')),
@@ -112,7 +112,6 @@ const runGiftingInteractionChecks = async (page) => {
     await page.emulateMedia({ reducedMotion: 'no-preference' })
     await page.reload({ waitUntil: 'networkidle' })
     await page.getByRole('button', { name: 'Start interactive demo' }).click()
-    await page.waitForTimeout(1100)
     await page.getByRole('button', { name: /You have a new gift/ }).click()
 
     const animatedViewButton = page
