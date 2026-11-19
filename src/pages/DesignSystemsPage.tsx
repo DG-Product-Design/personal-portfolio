@@ -516,7 +516,7 @@ export default function DesignSystemsPage() {
                     <GlowGroup className="my-8 flex w-full items-center justify-center gap-8">
                         {dgStudioLinks.map(({ label, href }) => (
                             <GlowBorder
-                                className="max-w-sm"
+                                className="flex min-h-26 max-w-sm items-center justify-center md:min-h-22"
                                 radius={8}
                             >
                                 <div className="flex flex-col items-center gap-4 p-4 text-center">
@@ -530,7 +530,7 @@ export default function DesignSystemsPage() {
                                         {label}
                                         <ExternalLink
                                             aria-hidden="true"
-                                            className="ml-2 size-4 shrink-0"
+                                            className="ml-1 size-4 shrink-0 md:ml-2"
                                         />
                                         <span className="sr-only">
                                             {' '}
@@ -618,7 +618,7 @@ export default function DesignSystemsPage() {
                     </p>
                     <GlowGroup className="my-8 flex w-full items-center justify-between">
                         <GlowBorder
-                            className="mx-auto max-w-sm"
+                            className="mx-auto flex min-h-26 max-w-sm items-center justify-center md:min-h-22"
                             radius={8}
                         >
                             <div className="p-4 text-center">

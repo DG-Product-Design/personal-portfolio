@@ -1,4 +1,4 @@
-name: Portfolio CI and deployment
+name: Portfolio CI + deployment
 
 on:
     push:
