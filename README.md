@@ -23,7 +23,7 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 
 - Node.js (version specified in `.nvmrc`)
 - Yarn package manager
-- Google Chrome for automated accessibility validation
+- Google Chrome on macOS, or Playwright Chromium (`yarn playwright-core install chromium`) for browser checks
 
 ### Installation
 
@@ -51,18 +51,23 @@ This is my personal portfolio website, built from the ground-up with Vite, React
 ## Available Scripts
 
 - `yarn start` - Starts the development server
+- `yarn typecheck` - Checks TypeScript for the app and Vite configuration
 - `yarn build` - Builds the app for production
 - `yarn preview` - Locally preview the production build
 - `yarn test:gifting` - Build the site and check gift artwork loading, replay, and failure handling
 - `yarn test:a11y` - Build the site and run automated accessibility checks
-- `yarn validate` - Run the production build, lint, and accessibility checks
+- `yarn test:smoke` - Build the site and check desktop/mobile navigation, lightboxes, page errors, and horizontal overflow
+- `yarn test:links` - Build the site and check generated pages, internal links, anchors, and referenced assets
+- `yarn validate` - Run lint, build once, then run all link, accessibility, smoke, and gifting checks
 - `yarn deploy` - Deploy to GitHub Pages
 
-The accessibility audit finds Chrome automatically on macOS or through Playwright's `chrome` channel. Set `CHROME_PATH` to the Chrome executable when it is installed elsewhere.
+The accessibility, smoke, and link checks use installed Chrome on macOS or Playwright's Chromium elsewhere. Set `CHROME_PATH` to use another compatible executable. CI installs Chromium and its Linux dependencies before running the checks.
 
 The gifting check uses installed Chrome on macOS or Playwright's Chromium elsewhere. Run `npx playwright-core install chromium` if that browser is missing. To check Firefox, install its test browser with `npx playwright-core install firefox`, then run `GIFT_TEST_BROWSER=firefox yarn test:gifting`. `GIFT_TEST_BROWSER_PATH` can select a compatible executable; Firefox requires Playwright's build rather than a regular Firefox installation.
 
-This regression check runs separately from `yarn validate` and the deployment workflow. It verifies loading and animation state, not device frame rates or every browser paint issue. The script stays in `scripts/` and is not included in the deployed site.
+The gifting regression check runs in `yarn validate` and CI. It verifies loading and animation state, not device frame rates or every browser paint issue. The scripts stay in `scripts/` and are not included in the deployed site.
+
+Pull requests and pushes to `main` run TypeScript, lint, the production build, internal-link and asset checks, accessibility, desktop/mobile smoke tests, and gifting regression tests. CI reuses the same build for every check; deployment runs only after they pass. Smoke-test failures upload a screenshot artifact retained for seven days. External websites are excluded from link validation so third-party downtime does not block deployment.
 
 
 ## Project Structure

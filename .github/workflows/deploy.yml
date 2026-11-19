@@ -1,40 +1,66 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v5
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v5
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'yarn'
-        
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
 
-    - name: Lint
-      run: yarn lint
-      
-    - name: Build
-      run: yarn build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      if: github.ref == 'refs/heads/main'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        cname: davidageorge.me
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
 
+            - name: Setup Node.js
+              uses: actions/setup-node@v5
+              with:
+                  node-version-file: '.nvmrc'
+                  cache: 'yarn'
 
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+
+            - name: TypeScript check
+              run: yarn typecheck
+
+            - name: Lint
+              run: yarn lint
+
+            - name: Build React app
+              run: yarn build
+
+            - name: Install browser for checks
+              run: yarn playwright-core install --with-deps chromium
+
+            - name: Check internal links and assets
+              run: node scripts/check-site-links.mjs
+
+            - name: Accessibility audit
+              run: node scripts/audit-accessibility.mjs
+
+            - name: Desktop and mobile smoke tests
+              run: node scripts/check-site-smoke.mjs
+
+            - name: Gifting regression tests
+              run: node scripts/check-gifting-loading.mjs
+
+            - name: Upload failure screenshots
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: browser-check-failures
+                  path: test-results/
+                  if-no-files-found: ignore
+                  retention-days: 7
+
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
+              if: github.ref == 'refs/heads/main'
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./build
+                  cname: davidageorge.me
