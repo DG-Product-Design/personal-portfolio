@@ -1,0 +1,24 @@
+name: Set up portfolio dependencies
+description: Use the pinned Node version and reuse installed dependencies across jobs.
+
+runs:
+    using: composite
+    steps:
+        - name: Setup Node.js
+          uses: actions/setup-node@v5
+          with:
+              node-version-file: .nvmrc
+              cache: yarn
+              cache-dependency-path: yarn.lock
+
+        - name: Restore installed dependencies
+          id: dependencies
+          uses: actions/cache@v4
+          with:
+              path: node_modules
+              key: modules-ubuntu-24.04-${{ runner.arch }}-${{ hashFiles('.nvmrc', 'package.json', 'yarn.lock') }}
+
+        - name: Install dependencies
+          if: steps.dependencies.outputs.cache-hit != 'true'
+          shell: bash
+          run: yarn install --frozen-lockfile

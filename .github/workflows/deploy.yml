@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Portfolio CI + deployment
 
 on:
     push:
@@ -6,60 +6,130 @@ on:
     pull_request:
         branches: [main]
 
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        timeout-minutes: 15
+permissions:
+    contents: read
 
+jobs:
+    typecheck:
+        name: TypeScript check
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
         steps:
             - name: Checkout
               uses: actions/checkout@v5
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v5
-              with:
-                  node-version-file: '.nvmrc'
-                  cache: 'yarn'
-
-            - name: Install dependencies
-              run: yarn install --frozen-lockfile
-
+            - name: Set up dependencies
+              uses: ./.github/actions/setup-project
             - name: TypeScript check
               run: yarn typecheck
 
+    lint:
+        name: Lint
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+            - name: Set up dependencies
+              uses: ./.github/actions/setup-project
             - name: Lint
               run: yarn lint
 
+    build:
+        name: Build React app
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+            - name: Set up dependencies
+              uses: ./.github/actions/setup-project
             - name: Build React app
-              run: yarn build
+              run: yarn build:app
+            - name: Upload production build
+              uses: actions/upload-artifact@v4
+              with:
+                  name: portfolio-build
+                  path: build/
+                  if-no-files-found: error
+                  include-hidden-files: true
+                  retention-days: 7
 
-            - name: Install browser for checks
+    browser-checks:
+        name: ${{ matrix.name }}
+        needs: build
+        runs-on: ubuntu-24.04
+        timeout-minutes: 10
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - id: links
+                      name: Internal links and assets
+                      script: scripts/check-site-links.mjs
+                    - id: accessibility
+                      name: Accessibility audit
+                      script: scripts/audit-accessibility.mjs
+                    - id: smoke
+                      name: Desktop and mobile smoke tests
+                      script: scripts/check-site-smoke.mjs
+                    - id: gifting
+                      name: Gifting regression tests
+                      script: scripts/check-gifting-loading.mjs
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+            - name: Set up dependencies
+              uses: ./.github/actions/setup-project
+            - name: Download production build
+              uses: actions/download-artifact@v4
+              with:
+                  name: portfolio-build
+                  path: build/
+            - name: Read Playwright version
+              id: playwright
+              run: >-
+                  node -e 'require("fs").appendFileSync(process.env.GITHUB_OUTPUT,
+                  "version=" + require("playwright-core/package.json").version + "\n")'
+            - name: Restore Chromium cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/ms-playwright
+                  key: chromium-ubuntu-24.04-${{ runner.arch }}-${{ steps.playwright.outputs.version }}
+            # Cached browser binaries are reused; each runner still needs OS libraries.
+            - name: Install Chromium and system dependencies
               run: yarn playwright-core install --with-deps chromium
-
-            - name: Check internal links and assets
-              run: node scripts/check-site-links.mjs
-
-            - name: Accessibility audit
-              run: node scripts/audit-accessibility.mjs
-
-            - name: Desktop and mobile smoke tests
-              run: node scripts/check-site-smoke.mjs
-
-            - name: Gifting regression tests
-              run: node scripts/check-gifting-loading.mjs
-
+            - name: ${{ matrix.name }}
+              run: node ${{ matrix.script }}
             - name: Upload failure screenshots
               if: failure()
               uses: actions/upload-artifact@v4
               with:
-                  name: browser-check-failures
+                  name: browser-check-failures-${{ matrix.id }}
                   path: test-results/
                   if-no-files-found: ignore
                   retention-days: 7
 
+    deploy:
+        name: Deploy to GitHub Pages
+        needs: [typecheck, lint, build, browser-checks]
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        runs-on: ubuntu-24.04
+        timeout-minutes: 5
+        permissions:
+            contents: write
+        concurrency:
+            group: portfolio-pages-deploy
+            cancel-in-progress: false
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+            - name: Download tested production build
+              uses: actions/download-artifact@v4
+              with:
+                  name: portfolio-build
+                  path: build/
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v4
-              if: github.ref == 'refs/heads/main'
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./build
